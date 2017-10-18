@@ -18,6 +18,7 @@
 #include "../common/utils.h"
 
 #include "sys_irq.h"
+#include "sys_svc.h"
 
 #if defined(STM32L_PLATFORM)
 #include "../common/xprintf.h"
@@ -137,10 +138,10 @@ void sys_dbg_fatal(const int8_t* s, uint8_t c) {
 	sys_ctrl_delay_us(1000);
 
 #if defined(RELEASE)
-#if 0
+#if 1
 	sys_ctrl_reset();
 #else
-	sys_ctrl_reset_without_reset_peripherals();
+	sys_ctrl_reset();
 #endif
 #endif
 
@@ -277,3 +278,43 @@ void sys_dbg_fatal(const int8_t* s, uint8_t c) {
 	}
 }
 
+void sys_dbg_func_stack_dump(uint32_t* args) {
+	/**
+	Stack frame contains:
+	r0, r1, r2, r3, r12, r14, the return address and xPSR
+	- Stacked R0	<-> args[0]
+	- Stacked R1	<-> args[1]
+	- Stacked R2	<-> args[2]
+	- Stacked R3	<-> args[3]
+	- Stacked R12	<-> args[4]
+	- Stacked LR	<-> args[5]
+	- Stacked PC	<-> args[6]
+	- Stacked xPSR	<-> args[7]
+	*/
+	SYS_DBG("[st]R0\t0x%08X\n",		args[0]);
+	SYS_DBG("[st]R1\t0x%08X\n",		args[1]);
+	SYS_DBG("[st]R2\t0x%08X\n",		args[2]);
+	SYS_DBG("[st]R3\t0x%08X\n",		args[3]);
+	SYS_DBG("[st]R12\t0x%08X\n",	args[4]);
+	SYS_DBG("[st]LR\t0x%08X\n",		args[5]);
+	SYS_DBG("[st]PC\t0x%08X\n",		args[6]);
+	SYS_DBG("[st]PSR\t0x%08X\n",	args[7]);
+}
+
+void sys_dbg_cpu_dump() {
+	SYS_PRINT("[cr]IPSR\t%d\n", __get_IPSR());
+	SYS_PRINT("[cr]PRIMASK\t0x%08X\n", __get_PRIMASK());
+	SYS_PRINT("[cr]FAULTMASK\t0x%08X\n", __get_FAULTMASK());
+	SYS_PRINT("[cr]BASEPRI\t0x%08X\n", __get_BASEPRI());
+	SYS_PRINT("[cr]CONTROL\t0x%08X\n", __get_CONTROL());
+}
+
+void sys_dbg_stack_space_dump() {
+	extern uint32_t _estack;
+	uint32_t* start_addr = (uint32_t*)((uint32_t)&_estack) - sizeof(uint32_t);
+	uint32_t* end_addr = (uint32_t*)((uint32_t)__get_MSP());
+	SYS_PRINT("--- sys_dbg_stack_space_dump ---\n");
+	for (uint32_t* i = start_addr; i > end_addr ; i--) {
+		SYS_PRINT("[%08X] %08X\n", i, *i);
+	}
+}

@@ -22,6 +22,10 @@
 #include "../../sys/sys_def.h"
 #include "../../sys/sys_ctrl.h"
 
+#include "system.h"
+
+#include "../../app/app.h"
+
 /* Private define */
 static uint32_t delay_coeficient = 0;
 static void xputchar(uint8_t c);
@@ -110,6 +114,15 @@ void sys_cfg_console() {
 	USART_Cmd(USARTx, ENABLE);
 
 	xfunc_out = xputchar;
+}
+
+void sys_cfg_svc() {
+	NVIC_InitTypeDef NVIC_InitStructure;
+	NVIC_InitStructure.NVIC_IRQChannel = SVC_IRQn;
+	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 3;
+	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
+	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+	NVIC_Init(&NVIC_InitStructure);
 }
 
 void sys_cfg_update_info() {
@@ -268,4 +281,7 @@ void sys_ctrl_get_firmware_info(firmware_header_t* header) {
 	header->psk = FIRMWARE_PSK;
 	header->checksum = (check_sum & 0xFFFF);
 	header->bin_len = len_of_flash;
+}
+
+void sys_ctrl_jump_to_app() {
 }

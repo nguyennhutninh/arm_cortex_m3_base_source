@@ -21,9 +21,6 @@ extern "C"
 /* reset system (soft reset) */
 extern void sys_ctrl_reset();
 
-/* reset system (soft reset) */
-extern void sys_ctrl_reset_without_reset_peripherals();
-
 /* hardware watchdog interface */
 extern void sys_ctrl_independent_watchdog_init();
 extern void sys_ctrl_independent_watchdog_reset();
@@ -61,6 +58,9 @@ extern void sys_ctr_sleep_wait_for_irq();
 
 /* get exception number */
 extern uint32_t sys_ctr_get_exception_number();
+
+/* system restart application */
+extern void sys_ctr_restart_app();
 
 #ifdef __cplusplus
 }

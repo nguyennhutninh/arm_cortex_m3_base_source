@@ -16,6 +16,7 @@ extern "C"
 
 #include "../ak/task.h"
 #include "../ak/message.h"
+#include "sys_svc.h"
 
 #if defined(TIVA_PLATFORM)
 #include <stdbool.h>
@@ -92,6 +93,9 @@ do { \
 } while (0);
 
 extern void sys_dbg_fatal(const int8_t* s, uint8_t c);
+extern void sys_dbg_func_stack_dump(uint32_t*);
+extern void sys_dbg_cpu_dump();
+extern void sys_dbg_stack_space_dump();
 
 #ifdef __cplusplus
 }

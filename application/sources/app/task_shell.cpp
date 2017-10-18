@@ -18,6 +18,8 @@
 #include "../sys/sys_dbg.h"
 #include "../sys/sys_ctrl.h"
 #include "../sys/sys_irq.h"
+#include "../sys/sys_svc.h"
+#include "../sys/sys_io.h"
 
 #include "app.h"
 #include "app_dbg.h"

@@ -82,6 +82,7 @@ int main_app() {
 
 	/* adc peripheral configure */
 	io_cfg_adc1();			/* configure adc for thermistor and CT sensor */
+	adc_thermistor_io_cfg();
 
 	/* adc configure for ct sensor */
 	adc_ct_io_cfg();

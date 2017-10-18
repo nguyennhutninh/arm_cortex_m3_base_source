@@ -50,7 +50,7 @@ void bus_fault_handler()    __attribute__ ((weak));
 void usage_fault_handler()  __attribute__ ((weak));
 
 /* cortex-M processor non-fault exceptions */
-void svc_handler();
+void svc_handler()          __attribute__ ((weak, alias("default_handler")));
 void dg_monitor_handler()   __attribute__ ((weak, alias("default_handler")));
 void pendsv_handler()       __attribute__ ((weak, alias("default_handler")));
 void systick_handler();
@@ -201,17 +201,12 @@ void bus_fault_handler() {
 void usage_fault_handler() {
 }
 
-void svc_handler () {
-}
-
-
 /*******************************************/
 /* cortex-M processor non-fault exceptions */
 /*******************************************/
 void systick_handler() {
 	sys_irq_timer_10ms();
 }
-
 
 /************************/
 /* external interrupts  */

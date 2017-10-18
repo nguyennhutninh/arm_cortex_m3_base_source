@@ -11,27 +11,23 @@ extern task_t app_task_table[];
  *  Note: Task id MUST be increasing order.
  */
 /*****************************************************************************/
-/**
-  * SYSTEM TASKS
-  **************/
-#define TASK_TIMER_TICK_ID				0
+enum {
+	/* SYSTEM TASKS */
+	TASK_TIMER_TICK_ID,
 
-/**
-  * APP TASKS
-  **************/
-#define AC_TASK_FW_ID					1
-#define AC_TASK_SHELL_ID				2
-#define AC_TASK_LIFE_ID					3
-#define AC_TASK_IF_ID					4
-#define AC_TASK_RF24_IF_ID				5
-#define AC_TASK_UART_IF_ID				6
-#define AC_TASK_DBG_ID					7
-#define AC_TASK_DISPLAY_ID				8
+	/* APP TASKS */
+	AC_TASK_FW_ID,
+	AC_TASK_SHELL_ID,
+	AC_TASK_LIFE_ID,
+	AC_TASK_IF_ID,
+	AC_TASK_RF24_IF_ID,
+	AC_TASK_UART_IF_ID,
+	AC_TASK_DBG_ID,
+	AC_TASK_DISPLAY_ID,
 
-/**
-  * EOT task ID
-  **************/
-#define AK_TASK_EOT_ID					9
+	/* EOT task ID */
+	AK_TASK_EOT_ID,
+};
 
 /*****************************************************************************/
 /*  DECLARE: Task entry point

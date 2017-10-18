@@ -22,6 +22,7 @@
 #include "../sys/sys_io.h"
 #include "../sys/sys_dbg.h"
 #include "../sys/sys_irq.h"
+#include "../sys/sys_svc.h"
 #include "../sys/sys_arduino.h"
 
 #include "app.h"
@@ -80,6 +81,8 @@ static int32_t shell_lcd(uint8_t* argv);
 static int32_t shell_dbg(uint8_t* argv);
 static int32_t shell_boot(uint8_t* argv);
 static int32_t shell_fwu(uint8_t* argv);
+static int32_t shell_svc(uint8_t* argv);
+static int32_t shell_psv(uint8_t* argv);
 
 /*****************************************************************************/
 /*  command table
@@ -103,6 +106,8 @@ cmd_line_t lgn_cmd_table[] = {
 	{(const int8_t*)"lcd",		shell_lcd,			(const int8_t*)"lcd"},
 	{(const int8_t*)"boot",		shell_boot,			(const int8_t*)"boot share "},
 	{(const int8_t*)"fwu",		shell_fwu,			(const int8_t*)"app burn firmware"},
+	{(const int8_t*)"svc",		shell_svc,			(const int8_t*)"system service call"},
+	{(const int8_t*)"psv",		shell_psv,			(const int8_t*)"psv"},
 
 	/*************************************************************************/
 	/* debug command */
@@ -534,6 +539,7 @@ int32_t shell_lcd(uint8_t* argv) {
 
 int32_t shell_dbg(uint8_t* argv) {
 	(void)(argv);
+	LOGIN_PRINT("%d\n", adc_thermistor_io_read(1));
 	return 0;
 }
 
@@ -665,6 +671,11 @@ int32_t shell_ram(uint8_t* argv) {
 	}
 		break;
 
+	case 's': {
+		sys_dbg_stack_space_dump();
+	}
+		break;
+
 	default:
 		LOGIN_PRINT("unknown option\n");
 		break;
@@ -753,5 +764,25 @@ int32_t shell_fwu(uint8_t* argv) {
 	sys_boot_set(&sb);
 
 	sys_ctrl_reset();
+	return 0;
+}
+
+int32_t shell_svc(uint8_t* argv) {
+	switch (*(argv + 4)) {
+	case 'r': {
+		sys_svc_restart_app();
+	}
+		break;
+
+	default:
+		break;
+	}
+
+	return 0;
+}
+
+int32_t shell_psv(uint8_t* argv) {
+	(void)argv;
+	SCB->ICSR |= SCB_ICSR_PENDSVSET_Msk;
 	return 0;
 }

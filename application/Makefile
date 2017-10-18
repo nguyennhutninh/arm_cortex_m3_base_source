@@ -9,7 +9,7 @@ PROJECT		= $(NAME_MODULE)
 
 APP_ADDR		= -DAPP_START_ADDR=0x08003000
 OPTIMIZE_OPTION		= -g -Os
-RELEASE_OPTION		= -URELEASE
+RELEASE_OPTION		= -DRELEASE
 IRQ_DEBUG_OPTION	= -UAK_IO_IRQ_ANALYZER
 RF24_OPTION		= -DRF24_USED_POLLING
 LOG_AK_KERNEL_ENABLE	= -UAK_TASK_LOG_ENABLE
@@ -156,7 +156,11 @@ $(OBJECTS_DIR)/%.o: %.s
 
 flash: 	all
 	$(Print) BURNING $(TARGET:.axf=.bin) to target
+ifeq ($(ak_flash),yes)
+	@ak_flash /dev/ttyUSB0 $(TARGET:.axf=.bin) 0x08003000
+else
 	@st-flash write $(TARGET:.axf=.bin) 0x08003000
+endif
 
 debug:	all
 	xterm -e openocd -f $(OPENOCD_PATH)/tcl/board/stm32ldiscovery.cfg &

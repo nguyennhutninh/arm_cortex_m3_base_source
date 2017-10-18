@@ -3,6 +3,7 @@
 #include "../ak/message.h"
 
 #include "../sys/sys_ctrl.h"
+#include "../sys/sys_io.h"
 
 #include "../common/utils.h"
 

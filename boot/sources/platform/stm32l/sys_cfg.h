@@ -35,6 +35,7 @@ extern "C"
 
 extern void sys_cfg_clock();
 extern void sys_cfg_tick();
+extern void sys_cfg_svc();
 extern void sys_cfg_console();
 extern void sys_cfg_update_info();
 

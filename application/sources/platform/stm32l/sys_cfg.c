@@ -116,6 +116,24 @@ void sys_cfg_console() {
 	xfunc_out = xputchar;
 }
 
+void sys_cfg_svc() {
+	NVIC_InitTypeDef NVIC_InitStructure;
+	NVIC_InitStructure.NVIC_IRQChannel = SVC_IRQn;
+	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 3;
+	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
+	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+	NVIC_Init(&NVIC_InitStructure);
+}
+
+void sys_cfg_pendsv() {
+	NVIC_InitTypeDef NVIC_InitStructure;
+	NVIC_InitStructure.NVIC_IRQChannel = PendSV_IRQn;
+	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0xF;
+	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
+	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+	NVIC_Init(&NVIC_InitStructure);
+}
+
 void sys_cfg_update_info() {
 	extern uint32_t _start_flash;
 	extern uint32_t _end_flash;
@@ -211,35 +229,6 @@ void sys_ctrl_reset() {
 	NVIC_SystemReset();
 }
 
-void sys_ctrl_reset_without_reset_peripherals() {
-#if 1
-	sys_ctrl_reset();
-#else
-	volatile uint32_t normal_stack_pointer	=	(uint32_t) *(volatile uint32_t*)(APP_START_ADDR);
-	volatile uint32_t normal_jump_address	=	(uint32_t) *(volatile uint32_t*)(APP_START_ADDR + 4);
-
-	p_jump_func jump_to_normal = (p_jump_func)normal_jump_address;
-
-	/* Disable interrupt */
-	DISABLE_INTERRUPTS();
-
-	__DMB();
-
-	/* update interrupt vertor table */
-	SCB->VTOR = APP_START_ADDR;
-
-	/* set stack pointer */
-	__asm volatile ("MSR msp, %0\n" : : "r" (normal_stack_pointer) : "sp");
-
-	__DSB();
-
-	/* jump to normal program */
-	jump_to_normal();
-
-	while(1);
-#endif
-}
-
 void sys_ctrl_delay_us(volatile uint32_t count) {
 	volatile uint32_t delay_value = 0;
 	delay_value = count*delay_coeficient / 8;
@@ -277,6 +266,32 @@ void sys_ctr_sleep_wait_for_irq() {
 uint32_t sys_ctr_get_exception_number() {
 	volatile uint32_t exception_number = (uint32_t)__get_IPSR();
 	return exception_number;
+}
+
+void sys_ctr_restart_app() {
+	volatile uint32_t normal_stack_pointer	=	(uint32_t) *(volatile uint32_t*)(APP_START_ADDR);
+	volatile uint32_t normal_jump_address	=	(uint32_t) *(volatile uint32_t*)(APP_START_ADDR + 4);
+
+
+	p_jump_func jump_to_normal = (p_jump_func)normal_jump_address;
+
+	/* Disable interrupt */
+	DISABLE_INTERRUPTS();
+
+	__DMB();
+
+	/* update interrupt vertor table */
+	SCB->VTOR = APP_START_ADDR;
+
+	/* set stack pointer */
+	__asm volatile ("MSR msp, %0\n" : : "r" (normal_stack_pointer) : "sp");
+
+	__DSB();
+
+	/* jump to normal program */
+	jump_to_normal();
+
+	while(1);
 }
 
 void sys_ctrl_independent_watchdog_init() {

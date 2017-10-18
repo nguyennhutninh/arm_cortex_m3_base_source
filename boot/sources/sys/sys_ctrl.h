@@ -55,6 +55,8 @@ extern void sys_ctrl_get_firmware_info(firmware_header_t*);
 
 extern uint8_t sys_is_power_on_reset();
 
+extern void sys_ctrl_jump_to_app();
+
 #ifdef __cplusplus
 }
 #endif

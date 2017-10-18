@@ -20,6 +20,7 @@
 #include "../../sys/sys_ctrl.h"
 #include "../../sys/sys_irq.h"
 #include "../../sys/sys_boot.h"
+#include "../../sys/sys_svc.h"
 
 #include "../../ak/ak.h"
 #include "../../ak/message.h"
@@ -69,13 +70,15 @@ void bus_fault_handler()    __attribute__ ((weak));
 void usage_fault_handler()  __attribute__ ((weak));
 
 /* cortex-M processor non-fault exceptions */
-void svc_handler()          __attribute__ ((weak, alias("default_handler")));
 void dg_monitor_handler()   __attribute__ ((weak, alias("default_handler")));
-void pendsv_handler()       __attribute__ ((weak, alias("default_handler")));
+void pendsv_handler();
+void svc_handler();
 void systick_handler();
 
 /* external interrupts */
-static void shell_handler();
+void shell_handler();
+void svc_exe(uint32_t* svc_args);
+void pendsv_exe(uint32_t* svc_args);
 
 /*****************************************************************************/
 /* system variable                                                           */
@@ -204,9 +207,11 @@ void reset_handler() {
 
 	ENTRY_CRITICAL();
 
-	sys_cfg_clock();
-	sys_cfg_tick();     /* system tick 1ms */
-	sys_cfg_console();  /* system console */
+	sys_cfg_clock(); /* init system clock */
+	sys_cfg_svc(); /* setting svc exception priority */
+	sys_cfg_pendsv(); /* setting psv exception priority */
+	sys_cfg_tick(); /* system tick 1ms */
+	sys_cfg_console(); /* system console */
 
 	/* invoke all static constructors */
 	cnt = __preinit_array_end - __preinit_array_start;
@@ -283,6 +288,55 @@ void systick_handler() {
 	div_counter++;
 
 	task_exit_interrupt();
+}
+
+void svc_exe(uint32_t* svc_args) {
+	uint8_t svc_number;
+
+	sys_dbg_func_stack_dump(svc_args);
+	sys_dbg_cpu_dump();
+
+	svc_number = ((uint8_t*)svc_args[6])[-2];
+
+	switch (svc_number) {
+	/* start application */
+	case 0x01: {
+	}
+		break;
+
+		/* switch to unprivileged state*/
+	case 0x02: {
+	}
+		break;
+
+	default:
+		break;
+	}
+}
+
+void pendsv_exe(uint32_t* svc_args) {
+	sys_dbg_func_stack_dump(svc_args);
+	sys_dbg_cpu_dump();
+}
+
+void __attribute__ ((naked)) svc_handler() {
+	__asm volatile (
+				"tst lr, #4\n"
+				"ite eq\n"
+				"mrseq r0, msp\n"
+				"mrsne r0, psp\n"
+				"b svc_exe\n"
+				);
+}
+
+void __attribute__ ((naked)) pendsv_handler() {
+	__asm volatile (
+				"tst lr, #4\n"
+				"ite eq\n"
+				"mrseq r0, msp\n"
+				"mrsne r0, psp\n"
+				"b pendsv_exe\n"
+				);
 }
 
 /************************/
