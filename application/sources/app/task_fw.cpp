@@ -174,9 +174,7 @@ void task_fw(ak_msg_t* msg) {
 
 		/* TODO: when recieve firmware update request.
 		 * depend on each system, we need to check system state then decide update or respondse busy signal */
-		ak_msg_t* s_msg = get_pure_msg();
-		set_msg_sig(s_msg, FW_UPDATE_SM_OK);
-		task_post(AC_TASK_FW_ID, s_msg);
+		task_post_pure_msg(AC_TASK_FW_ID, FW_UPDATE_SM_OK);
 	}
 		break;
 
@@ -288,7 +286,6 @@ void task_fw(ak_msg_t* msg) {
 
 	case FW_INTERNAL_UPDATE_APP_RES_OK: {
 		APP_DBG_SIG("FW_INTERNAL_UPDATE_APP_RES_OK\n");
-
 		/* update share flash info */
 		fw_update_app_req_c_external_flash_io_none(&firmware_header_file);
 

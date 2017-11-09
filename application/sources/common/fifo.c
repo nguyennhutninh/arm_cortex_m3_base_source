@@ -29,6 +29,10 @@ bool fifo_is_empty(fifo_t* fifo) {
 	return (fifo->fill_size == 0) ? true : false;
 }
 
+bool fifo_is_full(fifo_t* fifo) {
+	return (fifo->fill_size == fifo->buffer_size) ? true : false;
+}
+
 uint8_t fifo_put(fifo_t* fifo, void* data) {
 	uint8_t next_tail_index;
 

@@ -11,8 +11,9 @@ APP_ADDR		= -DAPP_START_ADDR=0x08003000
 OPTIMIZE_OPTION		= -g -Os
 RELEASE_OPTION		= -DRELEASE
 IRQ_DEBUG_OPTION	= -UAK_IO_IRQ_ANALYZER
-RF24_OPTION		= -DRF24_USED_POLLING
+RF24_OPTION		= -URF24_USED_POLLING
 LOG_AK_KERNEL_ENABLE	= -UAK_TASK_LOG_ENABLE
+WARNING_OPTION		= -Werror -W
 
 GCC_PATH	= /home/thannt/workspace/tools/gcc-arm-none-eabi-5_4-2016q3
 OPENOCD_PATH	= /home/thannt/workspace/tools/openocd
@@ -75,6 +76,7 @@ CFLAGS +=	-mthumb			\
 		-std=c99		\
 		-c			\
 		$(IRQ_DEBUG_OPTION)	\
+		$(WARNING_OPTION)	\
 		$(RF24_OPTION)		\
 		$(OPTIMIZE_OPTION)	\
 		$(RELEASE_OPTION)	\
@@ -88,7 +90,7 @@ CFLAGS +=	-mthumb			\
 		-DSYS_DBG_EN		\
 		-DAPP_DBG_EN		\
 		-DAPP_PRINT_EN		\
-		-UAPP_DBG_SIG_EN	\
+		-DAPP_DBG_SIG_EN	\
 
 # C++ compiler flags
 CPPFLAGS += 	-mthumb			\
@@ -104,6 +106,7 @@ CPPFLAGS += 	-mthumb			\
 		-std=c++11		\
 		-c			\
 		$(IRQ_DEBUG_OPTION)	\
+		$(WARNING_OPTION)	\
 		$(RF24_OPTION)		\
 		$(OPTIMIZE_OPTION)	\
 		$(RELEASE_OPTION)	\
@@ -112,13 +115,11 @@ CPPFLAGS += 	-mthumb			\
 		-DUSE_STDPERIPH_DRIVER	\
 		-DSTM32L1XX_MD		\
 		-DSTM32L_PLATFORM	\
-		-DMINIMAL		\
 		-DLOGIN_PRINT_EN	\
 		-DSYS_PRINT_EN		\
-		-DSYS_DBG_EN		\
-		-DAPP_DBG_EN		\
-		-DAPP_PRINT_EN		\
-		-USERIAL_DEBUG		\
+		-USYS_DBG_EN		\
+		-UAPP_DBG_EN		\
+		-UAPP_PRINT_EN		\
 		-UAPP_DBG_SIG_EN	\
 
 # linker flags
@@ -157,7 +158,7 @@ $(OBJECTS_DIR)/%.o: %.s
 flash: 	all
 	$(Print) BURNING $(TARGET:.axf=.bin) to target
 ifeq ($(ak_flash),yes)
-	@ak_flash /dev/ttyUSB0 $(TARGET:.axf=.bin) 0x08003000
+	@sudo ak_flash /dev/ac_mod_com $(TARGET:.axf=.bin) 0x08003000
 else
 	@st-flash write $(TARGET:.axf=.bin) 0x08003000
 endif
@@ -171,6 +172,9 @@ else
 	$(Print) DBG GDB
 	$(ARM_GDB) --command=stm32l_init.gdb $(TARGET)
 endif
+
+com:
+	sudo minicom -D /dev/ac_mod_com -b 115200
 
 clean:
 	$(Print) CLEAN $(OBJECTS_DIR) folder

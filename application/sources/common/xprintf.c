@@ -43,7 +43,7 @@ int xstream(x_stream_t* stream, const char *fmt, va_list va_args) {
 	int32_t i;
 
 	uint32_t zero_padding = 0;
-	int32_t format_lenght = 0;
+	uint32_t format_lenght = 0;
 	uint32_t base;
 	uint32_t minus;
 	uint8_t num_stack[11];

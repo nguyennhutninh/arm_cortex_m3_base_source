@@ -142,7 +142,7 @@ uint8_t ir_send_rawdata(ir_t* ir, uint16_t* buf, uint32_t len) {
 	uint32_t idx = 0;
 	volatile uint32_t	current_timeout = 0;
 	volatile uint32_t	current;
-	volatile int32_t	start = 0;
+	volatile uint32_t	start = 0;
 
 	if (len == 0 || buf == (uint16_t*)0 || ir->state != IR_STATE_IDLE) {
 		return IR_DRIVER_NG;

@@ -115,7 +115,7 @@ void (* const isr_vector[])() = {
 		default_handler,						//	FLASH
 		default_handler,						//	RCC
 		default_handler,						//	EXTI Line 0
-		default_handler,						//	EXTI Line 1
+		exti_line1_irq,							//	EXTI Line 1
 		default_handler,						//	EXTI Line 2
 		default_handler,						//	EXTI Line 3
 		default_handler,						//	EXTI Line 4
@@ -158,6 +158,7 @@ void (* const isr_vector[])() = {
 void __attribute__((naked))
 sys_ctrl_delay(volatile uint32_t count)
 {
+	(void)count;
 	__asm("    subs    r0, #1\n"
 	"    bne     sys_ctrl_delay\n"
 	"    bx      lr");
@@ -357,8 +358,8 @@ void exti_line1_irq() {
 	task_entry_interrupt();
 
 	if (EXTI_GetITStatus(EXTI_Line1) != RESET) {
-		EXTI_ClearITPendingBit(EXTI_Line1);
 		sys_irq_nrf24l01();
+		EXTI_ClearITPendingBit(EXTI_Line1);
 	}
 
 	task_exit_interrupt();
@@ -368,8 +369,8 @@ void exti_line15_irq() {
 	task_entry_interrupt();
 
 	if (EXTI_GetITStatus(EXTI_Line15) != RESET) {
-		EXTI_ClearITPendingBit(EXTI_Line15);
 		sys_irq_ir_io_rev();
+		EXTI_ClearITPendingBit(EXTI_Line15);
 	}
 
 	task_exit_interrupt();
@@ -379,8 +380,8 @@ void timer6_irq() {
 	task_entry_interrupt();
 
 	if (TIM_GetITStatus(TIM6, TIM_IT_Update) != RESET) {
-		TIM_ClearITPendingBit(TIM6, TIM_IT_Update);
 		sys_irq_timer_50us();
+		TIM_ClearITPendingBit(TIM6, TIM_IT_Update);
 	}
 
 	task_exit_interrupt();
@@ -388,8 +389,8 @@ void timer6_irq() {
 
 void timer7_irq() {
 	if (TIM_GetITStatus(TIM7, TIM_IT_Update) != RESET) {
-		TIM_ClearITPendingBit(TIM7, TIM_IT_Update);
 		sys_ctrl_soft_watchdog_increase_counter();
+		TIM_ClearITPendingBit(TIM7, TIM_IT_Update);
 	}
 }
 
@@ -397,8 +398,8 @@ void timer4_irq() {
 	task_entry_interrupt();
 
 	if (TIM_GetITStatus(TIM4, TIM_IT_CC4) != RESET) {
-		TIM_ClearITPendingBit(TIM4, TIM_IT_CC4);
 		sys_irq_timer_hs1101();
+		TIM_ClearITPendingBit(TIM4, TIM_IT_CC4);
 	}
 
 	task_exit_interrupt();

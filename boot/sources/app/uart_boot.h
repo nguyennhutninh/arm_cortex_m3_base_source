@@ -4,7 +4,7 @@
 #include <stdint.h>
 
 /* uart_boot_frame_t */
-#define UART_BOOT_FRAME_DATA_SIZE			(256)
+#define UART_BOOT_FRAME_DATA_SIZE			(254)
 #define UART_BOOT_CMD_DATA_SIZE				(128)
 
 /* uart_boot_command_t */

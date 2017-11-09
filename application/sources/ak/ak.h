@@ -32,9 +32,6 @@ extern "C"
 /* debug option */
 #define AK_TASK_DEBUG					AK_ENABLE
 
-/* preemptive option */
-#define AK_PREEMPTIVE					AK_DISABLE
-
 /*****************************************************************************
  * DEFINITION: signals
  *

@@ -5,14 +5,17 @@
  ******************************************************************************
 **/
 
-#ifndef APP_H
-#define APP_H
+#ifndef __APP_H__
+#define __APP_H__
 
 #ifdef __cplusplus
 extern "C"
 {
 #endif
 #include "../ak/ak.h"
+
+#include "../rf_protocols/rf24/nwk/nrf_nwk_sig.h"
+
 #include "app_if.h"
 #include "app_eeprom.h"
 #include "app_data.h"
@@ -69,21 +72,14 @@ enum {
  */
 /*****************************************************************************/
 /* private define */
-#define AC_RF24_IF_WATCH_DOG_COUNTER_MAX			30		/* 30' */
-
 /* define timer */
-#define AC_RF24_IF_POLLING_INTERVAL					(100)	/* 100 ms */
-#define AC_RF24_IF_TIMER_PACKET_DELAY_INTERVAL		(100)	/* 100 ms */
-
 /* define signal */
 enum {
-	AC_RF24_IF_IRQ_TX_FAIL = AK_USER_DEFINE_SIG,
-	AC_RF24_IF_IRQ_TX_SUCCESS,
-	AC_RF24_IF_IRQ_RX_READY,
-	AC_RF24_IF_INIT_NETWORK,
+	AC_RF24_IF_INIT_NETWORK = AK_USER_DEFINE_SIG,
 	AC_RF24_IF_PURE_MSG_OUT,
 	AC_RF24_IF_COMMON_MSG_OUT,
-	AC_RF24_IF_TIMER_PACKET_DELAY,
+	AC_RF24_IF_PURE_MSG_IN,
+	AC_RF24_IF_COMMON_MSG_IN,
 };
 
 /*****************************************************************************/
@@ -108,11 +104,14 @@ enum {
  */
 /*****************************************************************************/
 /* timer signal */
+#define AC_UART_IF_FRAME_TO_INTERVAL		10
+
 /* define signal */
 enum {
 	AC_UART_IF_PURE_MSG_OUT = AK_USER_DEFINE_SIG,
 	AC_UART_IF_COMMON_MSG_OUT,
 	AC_UART_IF_DYNAMIC_MSG_OUT,
+	AC_UART_IF_FRAME_TO,
 };
 
 /*****************************************************************************/
@@ -137,6 +136,7 @@ enum {
 /* define signal */
 enum {
 	AC_DBG_TEST_1 = AK_USER_DEFINE_SIG,
+	AC_DBG_TEST_2
 };
 
 /*****************************************************************************/
@@ -164,4 +164,4 @@ extern int  main_app();
 }
 #endif
 
-#endif //APP_H
+#endif //__APP_H__

@@ -1,6 +1,7 @@
 #include "../ak/fsm.h"
 #include "../ak/port.h"
 #include "../ak/message.h"
+#include "../ak/timer.h"
 
 #include "../common/cmd_line.h"
 #include "../common/utils.h"
@@ -17,8 +18,10 @@
 #include "task_uart_if.h"
 #include "task_list.h"
 
+#define RF24_SIG_DBG_EN		0
+
 #define IFCPU_SOP_CHAR					(0xEF)
-#define IFCPU_DATA_SIZE					(512)
+#define IFCPU_DATA_SIZE					(128)
 
 #define SOP_STATE						(0x00)
 #define LEN_STATE						(0x01)
@@ -45,8 +48,9 @@ static uint8_t data_dynamic_if_buffer[IFCPU_DATA_SIZE];
 void task_uart_if(ak_msg_t* msg) {
 	switch (msg->sig) {
 	case AC_UART_IF_PURE_MSG_OUT: {
+#if (RF24_SIG_DBG_EN == 1)
 		APP_DBG("[IF UART][SEND] AC_UART_IF_PURE_MSG_OUT\n");
-
+#endif
 		ak_msg_pure_if_t app_if_msg;
 
 		/* assign if message */
@@ -62,8 +66,9 @@ void task_uart_if(ak_msg_t* msg) {
 		break;
 
 	case AC_UART_IF_COMMON_MSG_OUT: {
+#if (RF24_SIG_DBG_EN == 1)
 		APP_DBG("[IF UART][SEND] AC_UART_IF_COMMON_MSG_OUT\n");
-
+#endif
 		ak_msg_common_if_t app_if_msg;
 
 		/* assign if message */
@@ -82,8 +87,9 @@ void task_uart_if(ak_msg_t* msg) {
 		break;
 
 	case AC_UART_IF_DYNAMIC_MSG_OUT: {
+#if (RF24_SIG_DBG_EN == 1)
 		APP_DBG("[IF UART][SEND] AC_UART_IF_DYNAMIC_MSG_OUT\n");
-
+#endif
 		ak_msg_dynamic_if_t app_if_msg;
 
 		/* assign if message */
@@ -109,6 +115,11 @@ void task_uart_if(ak_msg_t* msg) {
 	}
 		break;
 
+	case AC_UART_IF_FRAME_TO: {
+		uart_rx_frame_state = SOP_STATE;
+	}
+		break;
+
 	default:
 		break;
 	}
@@ -121,6 +132,7 @@ uint8_t rx_frame_parser(uint8_t ch) {
 	case SOP_STATE: {
 		if (IFCPU_SOP_CHAR == ch) {
 			uart_rx_frame_state = LEN_STATE;
+			timer_set(AC_TASK_UART_IF_ID, AC_UART_IF_FRAME_TO, AC_UART_IF_FRAME_TO_INTERVAL, TIMER_ONE_SHOT);
 		}
 		else {
 			is_parser_frame = APP_FLAG_OFF;
@@ -130,6 +142,8 @@ uint8_t rx_frame_parser(uint8_t ch) {
 
 	case LEN_STATE: {
 		if (ch > IFCPU_DATA_SIZE) {
+			timer_remove_attr(AC_TASK_UART_IF_ID, AC_UART_IF_FRAME_TO);
+
 			uart_rx_frame_state = SOP_STATE;
 			is_parser_frame = APP_FLAG_OFF;
 		}
@@ -137,6 +151,8 @@ uint8_t rx_frame_parser(uint8_t ch) {
 			if_uart_frame.len = ch;
 			if_uart_frame.data_index = 0;
 			uart_rx_frame_state = DATA_STATE;
+
+			timer_set(AC_TASK_UART_IF_ID, AC_UART_IF_FRAME_TO, (AC_UART_IF_FRAME_TO_INTERVAL * if_uart_frame.len), TIMER_ONE_SHOT);
 		}
 	}
 		break;
@@ -151,6 +167,8 @@ uint8_t rx_frame_parser(uint8_t ch) {
 		break;
 
 	case FCS_STATE: {
+		timer_remove_attr(AC_TASK_UART_IF_ID, AC_UART_IF_FRAME_TO);
+
 		uart_rx_frame_state = SOP_STATE;
 
 		if_uart_frame.frame_fcs = ch;
@@ -162,7 +180,9 @@ uint8_t rx_frame_parser(uint8_t ch) {
 
 			switch (if_msg_header->type) {
 			case PURE_MSG_TYPE: {
+#if (RF24_SIG_DBG_EN == 1)
 				APP_DBG("[IF UART][REV] PURE_MSG_TYPE\n");
+#endif
 				ak_msg_t* s_msg = get_pure_msg();
 
 				set_if_src_task_id(s_msg, if_msg_header->src_task_id);
@@ -177,7 +197,9 @@ uint8_t rx_frame_parser(uint8_t ch) {
 				break;
 
 			case COMMON_MSG_TYPE: {
+#if (RF24_SIG_DBG_EN == 1)
 				APP_DBG("[IF UART][REV] COMMON_MSG_TYPE\n");
+#endif
 				ak_msg_t* s_msg = get_common_msg();
 
 				set_if_src_task_id(s_msg, if_msg_header->src_task_id);
@@ -193,7 +215,9 @@ uint8_t rx_frame_parser(uint8_t ch) {
 				break;
 
 			case DYNAMIC_MSG_TYPE: {
+#if (RF24_SIG_DBG_EN == 1)
 				APP_DBG("[IF UART][REV] DYNAMIC_MSG_TYPE\n");
+#endif
 				ak_msg_t* s_msg = get_dynamic_msg();
 
 				set_if_src_task_id(s_msg, if_msg_header->src_task_id);

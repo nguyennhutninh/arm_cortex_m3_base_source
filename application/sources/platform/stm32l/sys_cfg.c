@@ -218,8 +218,8 @@ uint8_t sys_ctrl_shell_get_char() {
 	volatile uint8_t c;
 
 	if (USART_GetITStatus(USARTx, USART_IT_RXNE) == SET) {
-		USART_ClearITPendingBit(USARTx, USART_IT_RXNE);
 		c = (uint8_t)USART_ReceiveData(USARTx);
+		USART_ClearITPendingBit(USARTx, USART_IT_RXNE);
 	}
 
 	return c;

@@ -124,11 +124,6 @@ void task_post(task_id_t des_task_id, ak_msg_t* msg) {
 
 		/* change status task to ready*/
 		task_ready |= t_tcb->mask;
-
-#if (AK_PREEMPTIVE == AK_ENABLE)
-		task_sheduler();
-#endif
-
 	}
 	else {
 		/* put message to queue */
@@ -137,6 +132,19 @@ void task_post(task_id_t des_task_id, ak_msg_t* msg) {
 	}
 
 	EXIT_CRITICAL();
+}
+
+void task_post_pure_msg(task_id_t des_task_id, uint8_t sig) {
+	ak_msg_t* s_msg = get_pure_msg();
+	set_msg_sig(s_msg, sig);
+	task_post(des_task_id, s_msg);
+}
+
+void task_post_common_msg(task_id_t des_task_id, uint8_t sig, uint8_t* data, uint8_t len) {
+	ak_msg_t* s_msg = get_common_msg();
+	set_msg_sig(s_msg, sig);
+	set_data_common_msg(s_msg, data, len);
+	task_post(des_task_id, s_msg);
 }
 
 void task_entry_interrupt() {
@@ -215,8 +223,9 @@ int task_run() {
 		/* idle handler */
 		ENTRY_CRITICAL();
 		current_task_id = AK_TASK_IDLE_ID;
-		sys_ctr_sleep_wait_for_irq();
 		EXIT_CRITICAL();
+
+		sys_ctr_sleep_wait_for_irq();
 	}
 }
 
@@ -239,8 +248,12 @@ void task_sheduler() {
 		8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8,
 		8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8
 	};
-	uint8_t t_task_current = task_current;
+
 	uint8_t t_task_new;
+
+	ENTRY_CRITICAL();
+
+	uint8_t t_task_current = task_current;
 
 	while((t_task_new = log2lkup[task_ready]) > t_task_current) {
 		/* get task */
@@ -272,14 +285,11 @@ void task_sheduler() {
 		current_task_id = t_msg->if_des_task_id;
 
 		/* execute task */
-#if (AK_PREEMPTIVE == AK_ENABLE)
 		EXIT_CRITICAL();
-#endif
+
 		task_table[t_msg->des_task_id].task(t_msg);
 
-#if (AK_PREEMPTIVE == AK_ENABLE)
 		ENTRY_CRITICAL();
-#endif
 
 #if (AK_TASK_DEBUG == AK_ENABLE)
 		/* reject msg of timer task */
@@ -334,6 +344,8 @@ void task_sheduler() {
 	}
 
 	task_current = t_task_current;
+
+	EXIT_CRITICAL();
 }
 
 task_id_t task_self() {

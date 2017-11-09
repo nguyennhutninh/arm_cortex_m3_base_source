@@ -514,5 +514,6 @@ int16_t Adafruit_GFX::height(void) {
 
 void Adafruit_GFX::invertDisplay(bool i) {
   // Do nothing, must be subclassed if supported
+  (void)i;
 }
 

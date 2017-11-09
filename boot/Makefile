@@ -9,7 +9,8 @@ PROJECT		= $(NAME_MODULE)
 
 APP_ADDR		= -DAPP_START_ADDR=0x08003000
 OPTIMIZE_OPTION		= -g -Os
-#RELEASE_OPTION		= -DRELEASE
+RELEASE_OPTION		= -DRELEASE
+WARNING_OPTION		= -Werror -W
 
 GCC_PATH	= /home/thannt/workspace/tools/gcc-arm-none-eabi-5_4-2016q3
 OPENOCD_PATH	= /home/thannt/workspace/tools/openocd
@@ -70,6 +71,7 @@ CFLAGS +=	-mthumb			\
 		-std=c99		\
 		-c			\
 		$(OPTIMIZE_OPTION)	\
+		$(WARNING_OPTION)	\
 		$(RELEASE_OPTION)	\
 		$(LOG_AK_KERNEL_ENABLE)	\
 		$(APP_ADDR)		\
@@ -96,6 +98,7 @@ CPPFLAGS += 	-mthumb			\
 		-std=c++11		\
 		-c			\
 		$(OPTIMIZE_OPTION)	\
+		$(WARNING_OPTION)	\
 		$(RELEASE_OPTION)	\
 		$(LOG_AK_KERNEL_ENABLE)	\
 		$(APP_ADDR)		\
@@ -105,10 +108,8 @@ CPPFLAGS += 	-mthumb			\
 		-DLOGIN_PRINT_EN	\
 		-DSYS_PRINT_EN		\
 		-DAPP_PRINT_EN		\
-		-DSYS_DBG_EN		\
-		-DAPP_DBG_EN		\
-		-USERIAL_DEBUG		\
-		-UMINIMAL		\
+		-USYS_DBG_EN		\
+		-UAPP_DBG_EN		\
 
 # linker flags
 LDFLAGS	=	-Map=$(OBJECTS_DIR)/$(PROJECT).map	\

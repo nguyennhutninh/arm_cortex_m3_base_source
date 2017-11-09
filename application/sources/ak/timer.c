@@ -266,17 +266,14 @@ uint8_t timer_remove_attr(task_id_t des_task_id, timer_sig_t sig) {
 
 				/* remove node */
 				timer_list_head = timer_msg->next;
-
-				/* free node memory */
-				free_timer_msg(timer_msg);
 			}
 			else {
 				/* remove node */
 				timer_msg_prev->next = timer_msg->next;
-
-				/* free node memory */
-				free_timer_msg(timer_msg);
 			}
+
+			/* free node memory */
+			free_timer_msg(timer_msg);
 
 			EXIT_CRITICAL();
 

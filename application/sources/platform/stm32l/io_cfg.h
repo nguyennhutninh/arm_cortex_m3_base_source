@@ -188,10 +188,12 @@ extern uint8_t flash_transfer(uint8_t);
 * nfr24l01 IO function
 *******************************************************************************/
 extern void nrf24l01_io_ctrl_init();
+extern void nrf24l01_spi_ctrl_init();
 extern void nrf24l01_ce_low();
 extern void nrf24l01_ce_high();
 extern void nrf24l01_csn_low();
 extern void nrf24l01_csn_high();
+extern uint8_t nrf24l01_spi_rw(uint8_t);
 
 /******************************************************************************
 * ir IO function

@@ -28,7 +28,7 @@ void xprintf(const char *fmt, ...) {
 	uint32_t num, digit;
 	int32_t i;
 	int32_t zero_padding = 0;
-	int32_t format_lenght = 0;
+	uint32_t format_lenght = 0;
 	int32_t base;
 	int32_t minus;
 	int8_t num_stack[11];

@@ -60,6 +60,8 @@ extern log_queue_t log_irq_queue; /* exception log queue */
 
 extern void task_create(task_t* task_tbl);
 extern void task_post(task_id_t des_task_id, ak_msg_t* msg);
+extern void task_post_pure_msg(task_id_t des_task_id, uint8_t sig);
+extern void task_post_common_msg(task_id_t des_task_id, uint8_t sig, uint8_t* data, uint8_t len);
 extern int task_init();
 extern int task_run();
 

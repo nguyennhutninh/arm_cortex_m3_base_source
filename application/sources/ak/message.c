@@ -105,7 +105,7 @@ void msg_dec_ref_count(ak_msg_t* msg) {
 	}
 }
 
-uint32_t	get_pool_msg_free(ak_msg_t* pool_msg) {
+uint32_t get_pool_msg_free(ak_msg_t* pool_msg) {
 	uint32_t used = 0;
 	ak_msg_t* head_pool = pool_msg;
 	while(head_pool != AK_MSG_NULL) {
@@ -113,6 +113,26 @@ uint32_t	get_pool_msg_free(ak_msg_t* pool_msg) {
 		head_pool = head_pool->next;
 	}
 	return used;
+}
+
+void* ak_malloc(size_t size) {
+	extern uint32_t __heap_end__;
+	void* allocate = malloc(size);
+	if (allocate != NULL) {
+		if (((uint32_t)allocate + size) > ((uint32_t)&__heap_end__)) {
+			FATAL("ML", 0x01);
+			allocate = NULL;
+		}
+	}
+	else {
+		FATAL("ML", 0x21);
+	}
+
+	return allocate;
+}
+
+void ak_free(void* ptr) {
+	free(ptr);
 }
 
 /*****************************************************************************
@@ -504,4 +524,21 @@ void free_data_dynamic_pdu_pool(dynamic_pdu_t* dynamic_pdu) {
 	}
 
 	EXIT_CRITICAL();
+}
+
+/*****************************************************************************
+ * debug message function define.
+ *****************************************************************************/
+void msg_dbg_dum(ak_msg_t* msg) {
+	xprintf("stid:%d dtid:%d rfc:%02X sig:%d Istid:%d Idtid:%d Ist:%d Idt:%d Isig:%d\n",	\
+			msg->src_task_id,	\
+			msg->des_task_id,	\
+			msg->ref_count,		\
+			msg->sig,			\
+			msg->if_src_task_id,\
+			msg->if_des_task_id,\
+			msg->if_src_type,	\
+			msg->if_des_type,	\
+			msg->if_sig			\
+			);
 }

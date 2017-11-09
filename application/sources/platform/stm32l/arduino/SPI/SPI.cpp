@@ -70,6 +70,7 @@ void SPIClass::end() {
 }
 
 void SPIClass::setBitOrder(uint8_t ssPin, uint8_t bitOrder) {
+	(void)ssPin;
 	SSIBitOrder = bitOrder;
 }
 

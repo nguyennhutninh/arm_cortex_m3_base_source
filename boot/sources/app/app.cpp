@@ -135,8 +135,8 @@ int boot_main() {
 		led_blink_set(&led_life, 1000, 50);		/* led flash with duty 1s*/
 
 		external_fw_index = 0;
+#if 0
 		uint32_t temp;
-
 		while (external_fw_index <  app_sys_boot.update_fw_app_header.bin_len) {
 			temp = 0;
 			sys_ctrl_independent_watchdog_reset();
@@ -153,7 +153,40 @@ int boot_main() {
 								FLASH_FLAG_SIZERR | FLASH_FLAG_OPTVERR | FLASH_FLAG_OPTVERRUSR);
 			}
 		}
+#else
+		uint8_t halfpage_buffer[128]; /* halfpage external flash buffer */
+		uint32_t external_fw_reamain; /* remain firmware */
+		uint32_t external_fw_read_buf_len; /* actual data is read from external flash */
+		while (external_fw_index <  app_sys_boot.update_fw_app_header.bin_len) {
+			sys_ctrl_independent_watchdog_reset();
 
+			external_fw_reamain = app_sys_boot.update_fw_app_header.bin_len - external_fw_index;
+
+			if (external_fw_reamain < 128) {
+				external_fw_read_buf_len = external_fw_reamain;
+			}
+			else {
+				external_fw_read_buf_len = 128;
+			}
+
+			memset(halfpage_buffer, 0 ,128);
+			flash_read(app_sys_boot.fw_app_cmd.src_addr + external_fw_index, halfpage_buffer, external_fw_read_buf_len);
+
+			flash_status = FLASH_BUSY;
+
+			ENTRY_CRITICAL();
+			flash_status =  FLASH_ProgramHalfPage(app_sys_boot.fw_app_cmd.des_addr + external_fw_index, (uint32_t*)halfpage_buffer);
+			EXIT_CRITICAL();
+
+			if (flash_status == FLASH_COMPLETE) {
+				external_fw_index += external_fw_read_buf_len;
+			}
+			else {
+				FLASH_ClearFlag(FLASH_FLAG_EOP|FLASH_FLAG_WRPERR | FLASH_FLAG_PGAERR |
+								FLASH_FLAG_SIZERR | FLASH_FLAG_OPTVERR | FLASH_FLAG_OPTVERRUSR);
+			}
+		}
+#endif
 		/**
 		 * calculate checksum, if its incorrectly, restart system and update again
 		 */
@@ -189,10 +222,8 @@ int boot_main() {
 		 * waiting load application
 		 */
 		APP_PRINT("[BOOT] unexpected status\n");
-		APP_PRINT("[BOOT] waiting load application\n");
-		led_blink_set(&led_life, 250, 50);
-		while (1) {
-		}
+		APP_PRINT("[BOOT] start application\n");
+		jump_to_application();
 	}
 
 	return 0;
@@ -358,7 +389,9 @@ void uart_boot_cmd_transfer_fw_res(void* boot_obj) {
 		flash_status = FLASH_BUSY;
 
 		while (flash_status != FLASH_COMPLETE) {
+			ENTRY_CRITICAL();
 			flash_status =  FLASH_ProgramHalfPage(app_sys_boot.fw_app_cmd.des_addr + transfer_fw_index, (uint32_t*)(uart_boot_object->data));
+			EXIT_CRITICAL();
 
 			if (memcmp((uint8_t*)(app_sys_boot.fw_app_cmd.des_addr + transfer_fw_index), (uint8_t*)(uart_boot_object->data), uart_boot_object->len) != 0) {
 				flash_status = FLASH_BUSY;

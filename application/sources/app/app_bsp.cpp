@@ -27,11 +27,7 @@ void btn_mode_callback(void* b) {
 
 	case BUTTON_SW_STATE_RELEASED: {
 		APP_DBG("[btn_mode_callback] BUTTON_SW_STATE_RELEASED\n");
-		{
-			ak_msg_t* s_msg = get_pure_msg();
-			set_msg_sig(s_msg, AC_DISPLAY_SHOW_ON_LOGO);
-			task_post(AC_TASK_DISPLAY_ID, s_msg);
-		}
+		task_post_pure_msg(AC_TASK_DISPLAY_ID, AC_DISPLAY_SHOW_ON_LOGO);
 	}
 		break;
 

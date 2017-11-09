@@ -53,8 +53,8 @@
 /*  local declare
  */
 /*****************************************************************************/
-#define STR_LIST_MAX_SIZE		10
-#define STR_BUFFER_SIZE			128
+#define STR_LIST_MAX_SIZE		50
+#define STR_BUFFER_SIZE			500
 
 static char cmd_buffer[STR_BUFFER_SIZE];
 static char* str_list[STR_LIST_MAX_SIZE];
@@ -106,7 +106,7 @@ cmd_line_t lgn_cmd_table[] = {
 	{(const int8_t*)"lcd",		shell_lcd,			(const int8_t*)"lcd"},
 	{(const int8_t*)"boot",		shell_boot,			(const int8_t*)"boot share "},
 	{(const int8_t*)"fwu",		shell_fwu,			(const int8_t*)"app burn firmware"},
-	{(const int8_t*)"svc",		shell_svc,			(const int8_t*)"system service call"},
+	{(const int8_t*)"svc",		shell_svc,			(const int8_t*)"system service call "},
 	{(const int8_t*)"psv",		shell_psv,			(const int8_t*)"psv"},
 
 	/*************************************************************************/
@@ -352,6 +352,7 @@ int32_t shell_fatal(uint8_t* argv) {
 }
 
 int32_t shell_stt(uint8_t* argv) {
+	(void)argv;
 	LOGIN_PRINT("SYS:\n\n");
 	LOGIN_PRINT("sys_soft_reboot_counter: %d\n", sys_soft_reboot_counter);
 	LOGIN_PRINT("get_nest_entry_critical_counter: %d\n", get_nest_entry_critical_counter());
@@ -537,9 +538,51 @@ int32_t shell_lcd(uint8_t* argv) {
 	return 0;
 }
 
+#include "../rf_protocols/rf24/hal/hal_nrf.h"
+
 int32_t shell_dbg(uint8_t* argv) {
 	(void)(argv);
-	LOGIN_PRINT("%d\n", adc_thermistor_io_read(1));
+	switch (*(argv + 4)) {
+	case '0': {
+		LOGIN_PRINT("req update fw from external flash\n");
+		task_post_pure_msg(AC_TASK_FW_ID, FW_INTERNAL_UPDATE_APP_RES_OK);
+	}
+		break;
+
+	case '1': {
+		ak_msg_t* s_msg = get_pure_msg();
+		set_if_des_type(s_msg, IF_TYPE_RF24_GW);
+		set_if_src_type(s_msg, IF_TYPE_RF24_AC);
+		set_if_des_task_id(s_msg, AC_TASK_DBG_ID);
+		set_if_sig(s_msg, AC_DBG_TEST_2);
+
+		set_msg_sig(s_msg, AC_IF_PURE_MSG_OUT);
+		task_post(AC_TASK_IF_ID, s_msg);
+	}
+		break;
+
+	case '2': {
+		uint8_t test_buf[64];
+		for (int i = 0; i < 64; i++) {
+			test_buf[i] = i;
+		}
+
+		ak_msg_t* s_msg = get_common_msg();
+		set_if_des_type(s_msg, IF_TYPE_RF24_GW);
+		set_if_src_type(s_msg, IF_TYPE_RF24_AC);
+		set_if_des_task_id(s_msg, AC_TASK_DBG_ID);
+		set_if_sig(s_msg, AC_DBG_TEST_2);
+		set_if_data_common_msg(s_msg, test_buf, 64);
+
+		set_msg_sig(s_msg, AC_IF_COMMON_MSG_OUT);
+		task_post(AC_TASK_IF_ID, s_msg);
+	}
+		break;
+
+	default:
+		break;
+	}
+
 	return 0;
 }
 

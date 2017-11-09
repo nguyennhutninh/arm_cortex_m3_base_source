@@ -42,13 +42,7 @@ void sys_irq_shell() {
 			if (c == '\r' || c == '\n') {
 				shell.data[shell.index] = c;
 				shell.data[shell.index + 1] = 0;
-
-				{
-					ak_msg_t* msg = get_common_msg();
-					set_msg_sig(msg, AC_SHELL_LOGIN_CMD);
-					set_data_common_msg(msg, &shell.data[0], shell.index + 2);
-					task_post(AC_TASK_SHELL_ID, msg);
-				}
+				task_post_common_msg(AC_TASK_SHELL_ID, AC_SHELL_LOGIN_CMD, (uint8_t*)&shell.data[0], shell.index + 2);
 
 				shell.index = 0;
 			}

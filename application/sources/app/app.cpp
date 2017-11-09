@@ -121,9 +121,6 @@ int main_app() {
 	flash_erase_sector(APP_FLASH_AK_DBG_FATAL_LOG_SECTOR);
 	flash_write(APP_FLASH_AK_DBG_FATAL_LOG_SECTOR, (uint8_t*)&app_fatal_log, sizeof(fatal_log_t));
 
-	/* get server settings info */
-	eeprom_read(EEPROM_APP_NETWORK_CONFIG_ADDR, (uint8_t*)&ac_network_config, sizeof(network_config_t));
-
 	EXIT_CRITICAL();
 
 	/* start timer for application */
@@ -152,9 +149,6 @@ int main_app() {
 void app_start_timer() {
 	/* start timer to toggle life led */
 	timer_set(AC_TASK_LIFE_ID, AC_LIFE_SYSTEM_CHECK, AC_LIFE_TASK_TIMER_LED_LIFE_INTERVAL, TIMER_PERIODIC);
-
-	/* checking firmware update */
-	timer_set(AC_TASK_FW_ID, FW_CHECKING_REQ, FW_CHECKING_INTERVAL, TIMER_ONE_SHOT);
 }
 
 /* init state machine for tasks
@@ -167,17 +161,9 @@ void app_init_state_machine() {
  * used for app tasks
  */
 void app_task_init() {
-	{
-		ak_msg_t* s_msg = get_pure_msg();
-		set_msg_sig(s_msg, AC_RF24_IF_INIT_NETWORK);
-		task_post(AC_TASK_RF24_IF_ID, s_msg);
-	}
-
-	{
-		ak_msg_t* s_msg = get_pure_msg();
-		set_msg_sig(s_msg, AC_DISPLAY_INITIAL);
-		task_post(AC_TASK_DISPLAY_ID, s_msg);
-	}
+	task_post_pure_msg(AC_TASK_FW_ID, FW_CHECKING_REQ);
+	task_post_pure_msg(AC_TASK_RF24_IF_ID, AC_RF24_IF_INIT_NETWORK);
+	task_post_pure_msg(AC_TASK_DISPLAY_ID, AC_DISPLAY_INITIAL);
 }
 
 /*****************************************************************************/

@@ -1,2 +1,1 @@
--include sources/rf_protocols/RF24/Makefile.mk
--include sources/rf_protocols/RF24Network/Makefile.mk
+-include sources/rf_protocols/rf24/Makefile.mk

@@ -26,18 +26,6 @@
 #include "task_rf24_if.h"
 
 void rf_printf(uint8_t* buf, uint32_t len) {
-	uint32_t remain = len;
-	uint8_t* write_buf = buf;
-	RF24NetworkHeader server_header(ac_network_config.node_server_addr, RF24_DATA_REMOTE_CMD_TYPE);
-	while(remain) {
-		if (remain > 64) {
-			local_network.write(server_header, write_buf, 64);
-			remain -= 64;
-			write_buf += 64;
-		}
-		else {
-			local_network.write(server_header, write_buf, remain);
-			remain -= remain;
-		}
-	}
+	(void)buf;
+	(void)len;
 }

@@ -19,12 +19,7 @@ void task_display(ak_msg_t* msg) {
 	case AC_DISPLAY_INITIAL: {
 		APP_DBG_SIG("AC_DISPLAY_INITIAL\n");
 		view_render.initialize();
-
-		{
-			ak_msg_t* s_msg = get_pure_msg();
-			set_msg_sig(s_msg, AC_DISPLAY_SHOW_ON_LOGO);
-			task_post(AC_TASK_DISPLAY_ID, s_msg);
-		}
+		task_post_pure_msg(AC_TASK_DISPLAY_ID, AC_DISPLAY_SHOW_ON_LOGO);
 	}
 		break;
 

@@ -14,6 +14,7 @@ extern "C"
 #endif
 
 #include <stdint.h>
+#include <stdlib.h>
 #include "ak.h"
 #include "port.h"
 
@@ -171,6 +172,13 @@ extern void msg_inc_ref_count(ak_msg_t* msg);
 extern void msg_dec_ref_count(ak_msg_t* msg);
 
 /*****************************************************************************
+ * DEFINITION: dynamic allocate
+ *
+ *****************************************************************************/
+extern void* ak_malloc(size_t);
+extern void ak_free(void*);
+
+/*****************************************************************************
  * DEFINITION: message
  *
  *****************************************************************************/
@@ -201,6 +209,12 @@ extern uint32_t get_dynamic_msg_pool_used();
 extern uint8_t set_data_dynamic_msg(ak_msg_t* msg, uint8_t* data, uint32_t size);
 extern uint8_t get_data_dynamic_msg(ak_msg_t* msg, uint8_t* data, uint32_t size);
 extern uint32_t get_data_len_dynamic_msg(ak_msg_t* msg);
+
+/*****************************************************************************
+ * DEFINITION: debug message
+ *
+ *****************************************************************************/
+extern void msg_dbg_dum(ak_msg_t* msg);
 
 #ifdef __cplusplus
 }
