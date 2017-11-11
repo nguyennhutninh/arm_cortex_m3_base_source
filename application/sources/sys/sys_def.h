@@ -12,8 +12,6 @@ extern "C"
 {
 #endif
 
-#define SYS_CONSOLE_BAUDRATE		(115200)
-
 #ifdef __cplusplus
 }
 #endif

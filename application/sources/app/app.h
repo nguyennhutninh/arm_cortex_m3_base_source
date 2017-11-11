@@ -104,7 +104,7 @@ enum {
  */
 /*****************************************************************************/
 /* timer signal */
-#define AC_UART_IF_FRAME_TO_INTERVAL		10
+#define AC_UART_IF_FRAME_TO_INTERVAL		20
 
 /* define signal */
 enum {

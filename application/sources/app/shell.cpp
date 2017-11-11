@@ -106,7 +106,7 @@ cmd_line_t lgn_cmd_table[] = {
 	{(const int8_t*)"lcd",		shell_lcd,			(const int8_t*)"lcd"},
 	{(const int8_t*)"boot",		shell_boot,			(const int8_t*)"boot share "},
 	{(const int8_t*)"fwu",		shell_fwu,			(const int8_t*)"app burn firmware"},
-	{(const int8_t*)"svc",		shell_svc,			(const int8_t*)"system service call "},
+	{(const int8_t*)"svc",		shell_svc,			(const int8_t*)"system service call"},
 	{(const int8_t*)"psv",		shell_psv,			(const int8_t*)"psv"},
 
 	/*************************************************************************/

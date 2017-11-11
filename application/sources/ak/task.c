@@ -200,31 +200,25 @@ int task_init() {
 
 int task_run() {
 	/* init active object log queue */
-	log_queue_init(&log_task_dbg_object_queue					\
-				   , (uint32_t)task_dbg_active_obj_queue		\
-				   , (LOG_QUEUE_OBJECT_SIZE / sizeof(ak_msg_t))	\
-				   , sizeof(ak_msg_t)							\
-				   , mem_write									\
+	log_queue_init(&log_task_dbg_object_queue \
+				   , (uint32_t)task_dbg_active_obj_queue \
+				   , (LOG_QUEUE_OBJECT_SIZE / sizeof(ak_msg_t)) \
+				   , sizeof(ak_msg_t) \
+				   , mem_write \
 				   , mem_read);
 
 	/* init irq log queue */
-	log_queue_init(&log_irq_queue								\
-				   , (uint32_t)irq_queue						\
-				   , (LOG_QUEUE_IRQ_SIZE / sizeof(exception_info_t))	\
-				   , sizeof(exception_info_t)							\
-				   , mem_write									\
+	log_queue_init(&log_irq_queue \
+				   , (uint32_t)irq_queue \
+				   , (LOG_QUEUE_IRQ_SIZE / sizeof(exception_info_t)) \
+				   , sizeof(exception_info_t) \
+				   , mem_write \
 				   , mem_read);
 
 	SYS_PRINT("active objects is ready\n\n");
 
 	for(;;) {
 		task_sheduler();
-
-		/* idle handler */
-		ENTRY_CRITICAL();
-		current_task_id = AK_TASK_IDLE_ID;
-		EXIT_CRITICAL();
-
 		sys_ctr_sleep_wait_for_irq();
 	}
 }
@@ -344,6 +338,8 @@ void task_sheduler() {
 	}
 
 	task_current = t_task_current;
+
+	current_task_id = AK_TASK_IDLE_ID;
 
 	EXIT_CRITICAL();
 }

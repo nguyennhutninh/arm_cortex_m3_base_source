@@ -27,20 +27,27 @@
 
 uint8_t pload_frame_buffer[MAX_PHY_PAYLOAD_LEN];
 
+#define PHY_STATE_HARDWARE_NONE		0
+#define PHY_STATE_HARDWARE_STARTED	1
+
+uint8_t phy_state = PHY_STATE_HARDWARE_NONE;
+
 void sys_irq_nrf24l01() {
+	if (phy_state == PHY_STATE_HARDWARE_NONE) {
+		return;
+	}
+
 	uint8_t nrf24_irq_mask = hal_nrf_get_clear_irq_flags();
 
 	switch(nrf24_irq_mask) {
 	case (1 << HAL_NRF_MAX_RT): { /* Max retries reached */
 		hal_nrf_flush_tx(); /* flush tx fifo, avoid fifo jam */
 		task_post_pure_msg(RF24_PHY_ID, RF24_PHY_IRQ_TX_MAX_RT);
-		hal_nrf_clear_irq_flag(HAL_NRF_MAX_RT);
 	}
 		break;
 
 	case (1 << HAL_NRF_TX_DS): { /* Packet sent */
 		task_post_pure_msg(RF24_PHY_ID, RF24_PHY_IRQ_TX_DS);
-		hal_nrf_clear_irq_flag(HAL_NRF_TX_DS);
 	}
 		break;
 
@@ -55,7 +62,6 @@ void sys_irq_nrf24l01() {
 				FATAL("PHY", 0x01);
 			}
 		}
-		hal_nrf_clear_irq_flag(HAL_NRF_RX_DR);
 		break;
 
 	case ((1 << HAL_NRF_RX_DR) | ( 1 << HAL_NRF_TX_DS)): { /* Ack payload recieved */
@@ -63,8 +69,6 @@ void sys_irq_nrf24l01() {
 			hal_nrf_read_rx_pload(pload_frame_buffer);
 			task_post_common_msg(RF24_PHY_ID, RF24_PHY_IRQ_ACK_PR, pload_frame_buffer, MAX_PHY_PAYLOAD_LEN);
 		}
-		hal_nrf_clear_irq_flag(HAL_NRF_RX_DR);
-		hal_nrf_clear_irq_flag(HAL_NRF_TX_DS);
 	}
 		break;
 
@@ -95,7 +99,7 @@ void task_rf24_phy(ak_msg_t* msg) {
 		hal_nrf_open_pipe(HAL_NRF_PIPE0, true); /* Open pipe0, without/autoack (autoack) */
 
 		hal_nrf_set_crc_mode(HAL_NRF_CRC_16BIT); /* Operates in 16bits CRC mode */
-		hal_nrf_set_auto_retr(15, 250); /* Enable auto retransmit */
+		hal_nrf_set_auto_retr(15, 750); /* Enable auto retransmit */
 
 		hal_nrf_set_address_width(HAL_NRF_AW_5BYTES); /* 5 bytes address width */
 		hal_nrf_set_address(HAL_NRF_TX, (uint8_t*)nrf_get_src_phy_addr()); /* Set device's addresses */
@@ -105,6 +109,8 @@ void task_rf24_phy(ak_msg_t* msg) {
 		hal_nrf_set_rx_pload_width((uint8_t)HAL_NRF_PIPE0, 32);
 
 		hal_nrf_set_rf_channel(NRF_PHY_CHANEL_CFG);
+		hal_nrf_set_output_power(HAL_NRF_0DBM);
+		hal_nrf_set_lna_gain(HAL_NRF_LNA_HCURR);
 		hal_nrf_set_datarate(HAL_NRF_2MBPS);
 
 		hal_nrf_set_power_mode(HAL_NRF_PWR_UP); /* Power up device */
@@ -118,6 +124,10 @@ void task_rf24_phy(ak_msg_t* msg) {
 
 		sys_ctrl_delay_ms(2);
 		CE_HIGH();
+
+		ENTRY_CRITICAL();
+		phy_state = PHY_STATE_HARDWARE_STARTED;
+		EXIT_CRITICAL();
 	}
 		break;
 

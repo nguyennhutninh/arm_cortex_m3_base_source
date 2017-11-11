@@ -8,6 +8,9 @@ NAME_MODULE	= arm_cortex_m3_base_boot
 PROJECT		= $(NAME_MODULE)
 
 APP_ADDR		= -DAPP_START_ADDR=0x08003000
+SYS_CONSOLE_BAUDRATE	= 115200
+CONSOLE_BAUDRATE_DEF	= -DSYS_CONSOLE_BAUDRATE=$(SYS_CONSOLE_BAUDRATE)
+
 OPTIMIZE_OPTION		= -g -Os
 RELEASE_OPTION		= -DRELEASE
 WARNING_OPTION		= -Werror -W
@@ -70,6 +73,7 @@ CFLAGS +=	-mthumb			\
 		-Wall			\
 		-std=c99		\
 		-c			\
+		$(CONSOLE_BAUDRATE_DEF)	\
 		$(OPTIMIZE_OPTION)	\
 		$(WARNING_OPTION)	\
 		$(RELEASE_OPTION)	\
@@ -97,6 +101,7 @@ CPPFLAGS += 	-mthumb			\
 		-Wall			\
 		-std=c++11		\
 		-c			\
+		$(CONSOLE_BAUDRATE_DEF)	\
 		$(OPTIMIZE_OPTION)	\
 		$(WARNING_OPTION)	\
 		$(RELEASE_OPTION)	\
@@ -157,6 +162,9 @@ else
 	$(Print) DBG GDB
 	$(ARM_GDB) --command=stm32l_init.gdb $(TARGET)
 endif
+
+com:
+	sudo minicom -D /dev/ac_mod_com -b $(SYS_CONSOLE_BAUDRATE)
 
 clean:
 	$(Print) CLEAN $(OBJECTS_DIR) folder

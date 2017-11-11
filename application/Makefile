@@ -8,6 +8,9 @@ NAME_MODULE	= arm_cortex_m3_base_application
 PROJECT		= $(NAME_MODULE)
 
 APP_ADDR		= -DAPP_START_ADDR=0x08003000
+SYS_CONSOLE_BAUDRATE	= 115200
+CONSOLE_BAUDRATE_DEF	= -DSYS_CONSOLE_BAUDRATE=$(SYS_CONSOLE_BAUDRATE)
+
 OPTIMIZE_OPTION		= -g -Os
 RELEASE_OPTION		= -DRELEASE
 IRQ_DEBUG_OPTION	= -UAK_IO_IRQ_ANALYZER
@@ -75,6 +78,7 @@ CFLAGS +=	-mthumb			\
 		-Wall			\
 		-std=c99		\
 		-c			\
+		$(CONSOLE_BAUDRATE_DEF)	\
 		$(IRQ_DEBUG_OPTION)	\
 		$(WARNING_OPTION)	\
 		$(RF24_OPTION)		\
@@ -105,6 +109,7 @@ CPPFLAGS += 	-mthumb			\
 		-Wall			\
 		-std=c++11		\
 		-c			\
+		$(CONSOLE_BAUDRATE_DEF)	\
 		$(IRQ_DEBUG_OPTION)	\
 		$(WARNING_OPTION)	\
 		$(RF24_OPTION)		\
@@ -174,7 +179,7 @@ else
 endif
 
 com:
-	sudo minicom -D /dev/ac_mod_com -b 115200
+	sudo minicom -D /dev/ac_mod_com -b $(SYS_CONSOLE_BAUDRATE)
 
 clean:
 	$(Print) CLEAN $(OBJECTS_DIR) folder

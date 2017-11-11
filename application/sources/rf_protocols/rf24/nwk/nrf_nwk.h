@@ -8,8 +8,6 @@
 #include "../../../ak/message.h"
 #include "../../../ak/fsm.h"
 
-#include "nrf_config.h"
-
 extern fsm_t nrf_nwk_fsm;
 extern void nrf_nwk_fsm_init(ak_msg_t*);
 extern void nrf_nwk_fsm_idle(ak_msg_t*);

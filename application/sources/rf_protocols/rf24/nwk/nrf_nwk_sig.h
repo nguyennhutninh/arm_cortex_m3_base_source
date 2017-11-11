@@ -16,11 +16,11 @@ extern "C"
 /* define timer */
 /* define signal */
 enum {
-	RF24_PHY_IRQ_TX_MAX_RT = AK_USER_DEFINE_SIG,
+	RF24_PHY_INIT = AK_USER_DEFINE_SIG,
+	RF24_PHY_IRQ_TX_MAX_RT,
 	RF24_PHY_IRQ_TX_DS,
 	RF24_PHY_IRQ_RX_DR,
 	RF24_PHY_IRQ_ACK_PR,
-	RF24_PHY_INIT,
 	RF24_PHY_SEND_FRAME_REQ,
 	RF24_PHY_IRQ_CLEAR_REQ,
 	RF24_PHY_REV_MODE_REQ,
@@ -33,8 +33,6 @@ enum {
 /*****************************************************************************/
 /* private define */
 /* define timer */
-#define RF24_MAC_REV_FRAME_TO_INTERVAL		100
-
 /* define signal */
 enum {
 	RF24_MAC_INIT = AK_USER_DEFINE_SIG,
@@ -56,6 +54,7 @@ enum {
 /* define signal */
 enum {
 	RF24_NWK_INIT = AK_USER_DEFINE_SIG,
+	RF24_NWK_PDU_FULL,
 	RF24_NWK_PURE_MSG_OUT,
 	RF24_NWK_COMMON_MSG_OUT,
 	RF24_NWK_DYNAMIC_MSG_OUT,

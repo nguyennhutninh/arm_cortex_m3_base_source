@@ -12,8 +12,6 @@ extern "C"
 {
 #endif
 
-#define SYS_CONSOLE_BAUDRATE		(115200)
-
 #define __AK_PACKETED	__attribute__((__packed__))
 #define __AK_WEAK		__attribute__((__weak__))
 

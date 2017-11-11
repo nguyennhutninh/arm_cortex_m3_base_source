@@ -2,6 +2,7 @@
 #define __NRF_DATA_H__
 
 #include <stdint.h>
+#include "nrf_config.h"
 #include "nrf_nwk.h"
 #include "nrf_mac.h"
 
