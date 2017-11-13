@@ -24,22 +24,6 @@ extern "C"
 #define LOG_QUEUE_OBJECT_SIZE			(1024)
 #define LOG_QUEUE_IRQ_SIZE				(256)
 
-#define ENTRY_INTERRUPT(var_temp_pri, isr_pri) \
-	do {\
-	ENTRY_CRITICAL();\
-	var_temp_pri = task_current;\
-	task_current = isr_pri;\
-	EXIT_CRITICAL();\
-} while(0);
-
-#define EXIT_INTERRUPT(var_temp_pri, cmd) \
-	do {\
-	ENTRY_CRITICAL();\
-	task_current = var_temp_pri;\
-	EXIT_CRITICAL();\
-	cmd;\
-} while(0);
-
 typedef uint8_t	task_pri_t;
 typedef uint8_t	task_id_t;
 typedef void	(*pf_task)(ak_msg_t*);
@@ -72,9 +56,6 @@ extern task_id_t task_self(); /* get current task id, except interrupt task */
 extern task_id_t get_current_task_id(); /* get current task id include interrupt task */
 extern task_t* get_current_task_info(); /* get current task info */
 extern ak_msg_t* get_current_active_object(); /* get current active object info (active message) */
-
-extern uint8_t task_mutex_lock(task_pri_t);
-extern void task_mutex_unlock(task_pri_t);
 
 extern void ak_irq_io_entry_trigger(); /* this function MUST-BE redefine */
 extern void ak_irq_io_exit_trigger() ; /* this function MUST-BE redefine */

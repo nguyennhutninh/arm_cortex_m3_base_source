@@ -269,23 +269,21 @@ void systick_handler() {
 	/* increasing millis counter */
 	millis_current++;
 
+	timer_tick(1);
+
 	if (div_counter == 10) {
 		div_counter = 0;
 	}
 
 	switch(div_counter) {
 	case 0:
-		/* trigger heart beat of system */
-		timer_tick(10);
-		break;
-
-	case 1:
 		sys_irq_timer_10ms();
 		break;
 
 	default:
 		break;
 	}
+
 	div_counter++;
 
 	task_exit_interrupt();

@@ -48,16 +48,17 @@ typedef struct {
 static nrf_mac_msg_t sending_nrf_mac_frame;
 
 #define SENDING_MAC_FRAME_RETRY_COUNTER_MAX						3
-#define SENDING_MAC_FRAME_RETRY_INTERVAL						20	/* send mac_frame retry interval 20ms */
+#define SENDING_MAC_FRAME_RETRY_INTERVAL						10	/* send mac_frame retry interval (10ms) */
 
 static uint8_t sending_mac_frame_retry_counter = 0;
 static uint8_t sending_mac_sequence = 0;
 
-#define REV_MAC_FRAME_TO_INTERVAL								100 /* receiving mac_frame interval (MUST_BE > SENDING_MAC_FRAME_RETRY_INTERVAL * SENDING_MAC_FRAME_RETRY_COUNTER_MAX) */
+#define REV_MAC_FRAME_TO_INTERVAL								50 /* (50ms) receiving mac_frame interval (MUST_BE > SENDING_MAC_FRAME_RETRY_INTERVAL * SENDING_MAC_FRAME_RETRY_COUNTER_MAX) */
 static uint8_t receiving_mac_sequence = 0;
 static nrf_nwk_pdu_t* receiving_nrf_nwk_frame;
 
-#define SENDING_NRF_NWK_FRAME_RETRY_COUNTER_MAX					3
+#define SENDING_NRF_NWK_FRAME_RETRY_COUNTER_MAX					9
+#define SENDING_NRF_NWK_FRAME_RETRY_INTERVAL					100 /* (100ms) */
 static uint8_t sending_nrf_nwk_frame_retry_counter = 0;
 static nrf_nwk_pdu_t* sending_nrf_nwk_frame;
 
@@ -194,7 +195,7 @@ void task_rf24_mac(ak_msg_t* msg) {
 					sending_mac_sequence++;
 					sending_nrf_mac_frame.hdr.frame_seq = 0;
 					sending_nrf_mac_frame.hdr.mac_seq = sending_mac_sequence;
-					task_post_pure_msg(RF24_MAC_ID, RF24_MAC_SEND_FRAME);
+					timer_set(RF24_MAC_ID, RF24_MAC_SEND_FRAME, SENDING_NRF_NWK_FRAME_RETRY_INTERVAL, TIMER_ONE_SHOT);
 				}
 				else {
 					sending_nrf_nwk_frame_retry_counter = 0;

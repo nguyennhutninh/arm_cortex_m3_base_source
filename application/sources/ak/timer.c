@@ -158,12 +158,11 @@ void timer_init() {
 }
 
 void timer_tick(int32_t t) {
-	(void)t;
 	/* check available timer */
 	if (timer_list_head != TIMER_MSG_NULL) {
 		/* if previous message is not handled, just only increase counter */
 		if (ak_timer_payload_irq.enable_post_msg == AK_DISABLE) {
-			ak_timer_payload_irq.counter = ak_timer_payload_irq.counter + TIMER_TICK_VALUE;
+			ak_timer_payload_irq.counter = ak_timer_payload_irq.counter + t;
 		}
 		/* if previous message is handled, post new message to timer task */
 		else {
@@ -174,7 +173,7 @@ void timer_tick(int32_t t) {
 			ak_timer_payload_irq.enable_post_msg = AK_DISABLE;
 
 			if (ak_timer_payload_irq.counter == 0) {
-				ak_timer_payload_irq.counter = TIMER_TICK_VALUE;
+				ak_timer_payload_irq.counter = t;
 			}
 
 			/* post new message */

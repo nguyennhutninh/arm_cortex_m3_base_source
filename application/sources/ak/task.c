@@ -59,26 +59,6 @@ __AK_WEAK void ak_irq_io_exit_trigger() {
 #endif
 }
 
-uint8_t task_mutex_lock(task_pri_t cancel_pri) {
-	uint8_t temp_pri = 0;
-	ENTRY_CRITICAL();
-	temp_pri = task_current;
-	if (cancel_pri > task_current) {
-		task_current = cancel_pri;
-	}
-	EXIT_CRITICAL();
-	return temp_pri;
-}
-
-void task_mutex_unlock(task_pri_t pri) {
-	ENTRY_CRITICAL();
-	if (task_current < pri) {
-		task_current = pri;
-		task_sheduler();
-	}
-	EXIT_CRITICAL();
-}
-
 void task_create(task_t* task_tbl) {
 	uint8_t idx = 0;
 	if (task_tbl) {

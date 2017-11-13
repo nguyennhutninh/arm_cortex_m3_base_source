@@ -62,7 +62,6 @@ extern "C"
  *
  *****************************************************************************/
 #define TIMER_POOL_SIZE					(16)
-#define TIMER_TICK_VALUE				(10)
 
 #ifdef __cplusplus
 }

@@ -3,6 +3,6 @@
 
 #define MAX_NWK_MSG_LEN					1024
 
-#define NRF_PHY_CHANEL_CFG				100
+#define NRF_PHY_CHANEL_CFG				120
 
 #endif // __NRF_CONFIG_H__
