@@ -21,4 +21,6 @@
 #define __AK_PACKETED	__attribute__((__packed__))
 #define __AK_WEAK		__attribute__((__weak__))
 
+#define __AK_MALLOC_CTRL_SIZE	8
+
 #endif //__PORT_H__

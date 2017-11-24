@@ -47,18 +47,18 @@ typedef struct {
 
 static nrf_mac_msg_t sending_nrf_mac_frame;
 
-#define SENDING_MAC_FRAME_RETRY_COUNTER_MAX						3
-#define SENDING_MAC_FRAME_RETRY_INTERVAL						10	/* send mac_frame retry interval (10ms) */
+#define SENDING_MAC_FRAME_RETRY_COUNTER_MAX		3
+#define SENDING_MAC_FRAME_RETRY_INTERVAL		10	/* send mac_frame retry interval (10ms) */
 
 static uint8_t sending_mac_frame_retry_counter = 0;
 static uint8_t sending_mac_sequence = 0;
 
-#define REV_MAC_FRAME_TO_INTERVAL								50 /* (50ms) receiving mac_frame interval (MUST_BE > SENDING_MAC_FRAME_RETRY_INTERVAL * SENDING_MAC_FRAME_RETRY_COUNTER_MAX) */
+#define REV_MAC_FRAME_TO_INTERVAL				50 /* (50ms) receiving mac_frame interval (MUST_BE > SENDING_MAC_FRAME_RETRY_INTERVAL * SENDING_MAC_FRAME_RETRY_COUNTER_MAX) */
 static uint8_t receiving_mac_sequence = 0;
 static nrf_nwk_pdu_t* receiving_nrf_nwk_frame;
 
-#define SENDING_NRF_NWK_FRAME_RETRY_COUNTER_MAX					9
-#define SENDING_NRF_NWK_FRAME_RETRY_INTERVAL					100 /* (100ms) */
+#define SENDING_NRF_NWK_FRAME_RETRY_COUNTER_MAX		9
+#define SENDING_NRF_NWK_FRAME_RETRY_INTERVAL		100 /* (100ms) */
 static uint8_t sending_nrf_nwk_frame_retry_counter = 0;
 static nrf_nwk_pdu_t* sending_nrf_nwk_frame;
 
@@ -70,7 +70,6 @@ enum mac_send_state_e {
 static mac_send_state_e mac_send_state;
 static mac_send_state_e get_mac_send_state();
 static void set_mac_send_state(mac_send_state_e);
-
 
 enum mac_rev_state_e {
 	MAC_REV_STATE_IDLE,

@@ -48,23 +48,21 @@ void operator delete[](void *p) {
  * sbrk function for getting space for malloc and friends
  */
 
-/* end of stack region */
-extern int  _ebss;
+/* start heap region */
+extern uint32_t __heap_start__;
 
 extern "C" {
-caddr_t _sbrk ( int incr ) {
-
-	static unsigned char *heap = NULL;
-	unsigned char *prev_heap;
+caddr_t _sbrk (uint32_t incr) {
+	static uint8_t* heap = NULL;
+	uint8_t* prev_heap;
 
 	if (heap == NULL) {
-		heap = (unsigned char *)&_ebss;
+		heap = (uint8_t*)((uint32_t)&__heap_start__);
 	}
-	prev_heap = heap;
-	/* check removed to show basic approach */
 
+	prev_heap = heap;
 	heap += incr;
 
 	return (caddr_t) prev_heap;
 }
-}
+} /* extern "C" */

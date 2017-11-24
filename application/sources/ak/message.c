@@ -117,18 +117,21 @@ uint32_t get_pool_msg_free(ak_msg_t* pool_msg) {
 
 void* ak_malloc(size_t size) {
 	extern uint32_t __heap_end__;
-	void* allocate = malloc(size);
-	if (allocate != NULL) {
-		if (((uint32_t)allocate + size) > ((uint32_t)&__heap_end__)) {
-			FATAL("ML", 0x01);
-			allocate = NULL;
+	static uint8_t* ak_heap = NULL;
+
+	if (ak_heap != NULL) {
+		if (((uint32_t)ak_heap + size + __AK_MALLOC_CTRL_SIZE) > ((uint32_t)&__heap_end__)) {
+			FATAL("ak_malloc", 0x01);
 		}
 	}
-	else {
-		FATAL("ML", 0x21);
+
+	ak_heap = malloc(size);
+
+	if (ak_heap == NULL) {
+		FATAL("ak_malloc", 0x02);
 	}
 
-	return allocate;
+	return ak_heap;
 }
 
 void ak_free(void* ptr) {

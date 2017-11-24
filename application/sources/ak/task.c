@@ -63,7 +63,7 @@ void task_create(task_t* task_tbl) {
 	uint8_t idx = 0;
 	if (task_tbl) {
 		task_table = task_tbl;
-		while(task_tbl[idx].id != AK_TASK_EOT_ID){
+		while (task_tbl[idx].id != AK_TASK_EOT_ID) {
 			idx++;
 		}
 		task_table_size = idx;

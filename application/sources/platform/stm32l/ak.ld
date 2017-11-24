@@ -14,7 +14,7 @@ MEMORY {
 }
 
 /* heap size */
-HEAP_SIZE = 1K;
+HEAP_SIZE = 2K;
 
 SECTIONS {
 	.start_boot_share_data_flash : {

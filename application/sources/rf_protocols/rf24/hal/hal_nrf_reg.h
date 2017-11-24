@@ -150,23 +150,6 @@ typedef enum {
     HAL_NRF_ACK_PLOAD
 } hal_nrf_pload_command_t;
 
-/** Structure containing the radio's address map.
- * Pipe0 contains 5 unique address bytes,
- * while pipe[1..5] share the 4 MSB bytes, set in pipe1.
- * <p><b> - Remember that the LSB byte for all pipes have to be unique! -</b>
- */
-// nRF24L01 Address struct
-
-//typedef struct {
-//   uint8_t p0[5];            /**< Pipe0 address, 5 bytes */
-//    uint8_t p1[5];            /**< Pipe1 address, 5 bytes, 4 MSB bytes shared for pipe1 to pipe5 */
-//    uint8_t p2[1];            /**< Pipe2 address, 1 byte */
-//    uint8_t p3[1];            /**< Pipe3 address, 1 byte */
- //   uint8_t p4[1];            /**< Pipe3 address, 1 byte */
- //   uint8_t p5[1];            /**< Pipe3 address, 1 byte */
- //   uint8_t tx[5];            /**< TX address, 5 byte */
-//} hal_nrf_l01_addr_map;
-
 /** An enum describing the nRF24L01 pipe addresses and TX address.
  *
  */
