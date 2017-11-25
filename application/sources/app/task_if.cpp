@@ -26,14 +26,13 @@ static void if_des_type_uart_handler(ak_msg_t* msg);
 
 void task_if(ak_msg_t* msg) {
 	/* RF24 */
-	if (msg->if_des_type == IF_TYPE_RF24_AC ||
-			msg->if_des_type == IF_TYPE_RF24_GW) {
+	if (msg->if_des_type <= IF_TYPE_RF24_MAX) {
 		if_des_type_rf24_handler(msg);
 	}
 
 	/* UART */
-	else if (msg->if_des_type == IF_TYPE_UART_GW ||
-				msg->if_des_type == IF_TYPE_UART_AC) {
+	else if (msg->if_des_type >= IF_TYPE_UART_GW_MIN &&
+				msg->if_des_type <= IF_TYPE_UART_GW_MAX) {
 		if_des_type_uart_handler(msg);
 	}
 }

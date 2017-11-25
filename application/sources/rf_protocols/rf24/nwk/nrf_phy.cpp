@@ -99,7 +99,7 @@ void task_rf24_phy(ak_msg_t* msg) {
 		hal_nrf_open_pipe(HAL_NRF_PIPE0, true); /* Open pipe0, without/autoack (autoack) */
 
 		hal_nrf_set_crc_mode(HAL_NRF_CRC_16BIT); /* Operates in 16bits CRC mode */
-		hal_nrf_set_auto_retr(15, 750); /* Enable auto retransmit */
+		hal_nrf_set_auto_retr(5, 750); /* Enable auto retransmit */
 
 		hal_nrf_set_address_width(HAL_NRF_AW_5BYTES); /* 5 bytes address width */
 		hal_nrf_set_address(HAL_NRF_TX, (uint8_t*)nrf_get_src_phy_addr()); /* Set device's addresses */

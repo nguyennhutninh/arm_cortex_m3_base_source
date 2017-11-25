@@ -162,10 +162,10 @@ $(OBJECTS_DIR)/%.o: %.s
 
 flash: 	all
 	$(Print) BURNING $(TARGET:.axf=.bin) to target
-ifeq ($(ak_flash),yes)
-	@sudo ak_flash /dev/ac_mod_com $(TARGET:.axf=.bin) 0x08003000
-else
+ifeq ($(st_flash),yes)
 	@st-flash write $(TARGET:.axf=.bin) 0x08003000
+else
+	@ak_flash /dev/ac_mod_com $(TARGET:.axf=.bin) 0x08003000
 endif
 
 debug:	all
