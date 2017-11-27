@@ -14,6 +14,7 @@ CPPFLAGS	+= -I./sources/driver/EmonLib
 CPPFLAGS	+= -I./sources/driver/ds1302
 CPPFLAGS	+= -I./sources/driver/epprom
 CPPFLAGS	+= -I./sources/driver/exor
+CPPFLAGS	+= -I./sources/driver/LTC68032
 
 VPATH += sources/driver/led
 VPATH += sources/driver/button
@@ -30,6 +31,7 @@ VPATH += sources/driver/fuzzy_logic
 VPATH += sources/driver/kalman
 VPATH += sources/driver/hs1101
 VPATH += sources/driver/exor
+VPATH += sources/driver/LTC68032
 
 SOURCES += sources/driver/led/led.c
 SOURCES += sources/driver/rtc/rtc.c
@@ -49,3 +51,4 @@ SOURCES_CPP += sources/driver/EmonLib/EmonLib.cpp
 SOURCES_CPP += sources/driver/ds1302/DS1302.cpp
 SOURCES_CPP += sources/driver/eeprom/eeprom.cpp
 SOURCES_CPP += sources/driver/exor/exor.cpp
+SOURCES_CPP += sources/driver/LTC68032/LTC68032.cpp

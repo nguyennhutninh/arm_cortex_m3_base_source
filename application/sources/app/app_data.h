@@ -18,6 +18,8 @@
 #define IF_TYPE_RF24_AC						(1)
 #define IF_TYPE_RF24_MAX					(99)
 
+#define IF_TYPE_RF24_ME						IF_TYPE_RF24_AC
+
 /** APP interface, communication via socket interface
  *
  */

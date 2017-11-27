@@ -1,11 +1,4 @@
-#ifndef TASK_DISPLAY_H
-#define TASK_DISPLAY_H
+#ifndef __TASK_DISPLAY_H__
+#define __TASK_DISPLAY_H__
 
-
-class task_display
-{
-public:
-	task_display();
-};
-
-#endif // TASK_DISPLAY_H
+#endif // __TASK_DISPLAY_H__

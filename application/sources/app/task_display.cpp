@@ -43,12 +43,12 @@ void task_display(ak_msg_t* msg) {
 		view_render.print("Active Kernel");
 		view_render.update();
 
-		timer_set(AC_TASK_DISPLAY_ID, AC_DISPLAY_SHOW_OFF_LOGO, AC_DISPLAY_LOGO_INTERVAL, TIMER_ONE_SHOT);
+		timer_set(AC_TASK_DISPLAY_ID, AC_DISPLAY_SHOW_OFF, AC_DISPLAY_LOGO_INTERVAL, TIMER_ONE_SHOT);
 	}
 		break;
 
-	case AC_DISPLAY_SHOW_OFF_LOGO: {
-		APP_DBG_SIG("AC_DISPLAY_SHOW_OFF_LOGO\n");
+	case AC_DISPLAY_SHOW_OFF: {
+		APP_DBG_SIG("AC_DISPLAY_SHOW_OFF\n");
 		view_render.display_off();
 	}
 		break;

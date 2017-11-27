@@ -29,7 +29,7 @@ void task_rf24_if(ak_msg_t* msg) {
 		APP_DBG_SIG("AC_RF24_IF_INIT_NETWORK\n");
 
 		/* init network address */
-		nrf_set_static_nwk_addr(IF_TYPE_RF24_AC);
+		nrf_set_static_nwk_addr(IF_TYPE_RF24_ME);
 
 		/* init network state machine */
 		FSM(&nrf_nwk_fsm, nrf_nwk_fsm_init);
