@@ -136,7 +136,8 @@ enum {
 /* define signal */
 enum {
 	AC_DBG_TEST_1 = AK_USER_DEFINE_SIG,
-	AC_DBG_TEST_2
+	AC_DBG_TEST_2,
+	AC_DBG_TEST_3
 };
 
 /*****************************************************************************/

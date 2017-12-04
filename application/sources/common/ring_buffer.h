@@ -12,7 +12,7 @@ extern "C"
 #define RET_RING_BUFFER_OK				(0x01)
 #define RET_RING_BUFFER_NG				(0x00)
 
-typedef void (*memcpy_f)(void *dst,const void *str, size_t size);
+typedef void (*memcpy_f)(void *dst, const void *str, size_t size);
 
 typedef struct {
 	uint8_t tail_index;

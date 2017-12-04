@@ -21,7 +21,7 @@
 #define RF24_SIG_DBG_EN		0
 
 #define IFCPU_SOP_CHAR					(0xEF)
-#define IFCPU_DATA_SIZE					(128)
+#define IFCPU_DATA_SIZE					(254)
 
 #define SOP_STATE						(0x00)
 #define LEN_STATE						(0x01)
@@ -41,9 +41,8 @@ static uint8_t tx_buffer[IFCPU_DATA_SIZE];
 
 uint8_t rx_frame_parser(uint8_t data);
 static void tx_frame_post(uint8_t*, uint32_t);
+static void dync_msg_frame_post(ak_msg_dynamic_if_t*);
 static uint8_t if_uart_calcfcs(uint8_t, uint8_t*);
-
-static uint8_t data_dynamic_if_buffer[IFCPU_DATA_SIZE];
 
 void task_uart_if(ak_msg_t* msg) {
 	switch (msg->sig) {
@@ -102,16 +101,12 @@ void task_uart_if(ak_msg_t* msg) {
 
 		app_if_msg.len = get_data_len_dynamic_msg(msg);
 
-		if (app_if_msg.len > IFCPU_DATA_SIZE) {
-			FATAL("IF_UART", 0x01);
-		}
+		app_if_msg.data = (uint8_t*)ak_malloc(app_if_msg.len);
 
-		get_data_dynamic_msg(msg, (uint8_t*)data_dynamic_if_buffer, app_if_msg.len);
-		app_if_msg.data = data_dynamic_if_buffer;
+		get_data_dynamic_msg(msg, (uint8_t*)app_if_msg.data, app_if_msg.len);
+		dync_msg_frame_post(&app_if_msg);
 
-		uint32_t app_if_msg_len = sizeof(ak_msg_if_header_t) + sizeof(uint32_t) + app_if_msg.len;
-
-		tx_frame_post((uint8_t*)&app_if_msg, app_if_msg_len);
+		ak_free(app_if_msg.data);
 	}
 		break;
 
@@ -225,7 +220,9 @@ uint8_t rx_frame_parser(uint8_t ch) {
 				set_if_src_type(s_msg, if_msg_header->if_src_type);
 				set_if_des_type(s_msg, if_msg_header->if_des_type);
 				set_if_sig(s_msg, if_msg_header->sig);
-				set_if_data_dynamic_msg(s_msg, ((ak_msg_dynamic_if_t*)if_msg_header)->data, ((ak_msg_dynamic_if_t*)if_msg_header)->len);
+
+				uint8_t* data_msg = ((uint8_t*)if_msg_header + sizeof(ak_msg_if_header_t) + sizeof(uint32_t));
+				set_if_data_dynamic_msg(s_msg, data_msg, ((ak_msg_dynamic_if_t*)if_msg_header)->len);
 
 				set_msg_sig(s_msg, AC_IF_DYNAMIC_MSG_IN);
 				task_post(AC_TASK_IF_ID, s_msg);
@@ -258,6 +255,38 @@ void tx_frame_post(uint8_t* data, uint32_t len) {
 	tx_buffer[2 + len] = if_uart_calcfcs(len, data);
 
 	for (uint8_t i = 0; i < len + 3; i++) {
+		sys_ctrl_shell_put_char(tx_buffer[i]);
+	}
+}
+
+void dync_msg_frame_post(ak_msg_dynamic_if_t* ak_msg_dynamic) {
+	uint32_t dynamic_message_len = sizeof(ak_msg_if_header_t) + sizeof(uint32_t) + ak_msg_dynamic->len;
+	uint32_t dynamic_message_header_len = sizeof(ak_msg_if_header_t) + sizeof(uint32_t);
+
+	if (dynamic_message_len > 255) {
+		FATAL("IF_UART", 0x04);
+	}
+
+	/* calculate checksum */
+	uint8_t xor_result = dynamic_message_len;
+	uint8_t* raw_data = (uint8_t*)ak_msg_dynamic;
+	/* checksum header + len */
+	for (uint32_t i = 0; i < dynamic_message_header_len; i++, raw_data++) {
+		xor_result = xor_result ^ *raw_data;
+	}
+	/* checksum data */
+	for (uint32_t i = 0; i < ak_msg_dynamic->len; i++) {
+		xor_result = xor_result ^ ak_msg_dynamic->data[i];
+	}
+
+	tx_buffer[0] = IFCPU_SOP_CHAR; /* start of frame */
+	tx_buffer[1] = dynamic_message_len; /* len of frame */
+	memcpy(&tx_buffer[2], ak_msg_dynamic, dynamic_message_header_len); /* copy header to tx frame */
+	memcpy(&tx_buffer[2 + dynamic_message_header_len], ak_msg_dynamic->data, ak_msg_dynamic->len); /* copy message data */
+	tx_buffer[2 + dynamic_message_len] = xor_result; /* checksum */
+
+	/* put frame through physic layer */
+	for (uint8_t i = 0; i < dynamic_message_len + 3; i++) {
 		sys_ctrl_shell_put_char(tx_buffer[i]);
 	}
 }

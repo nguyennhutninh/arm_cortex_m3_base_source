@@ -64,8 +64,7 @@ enum {
  */
 /*****************************************************************************/
 /* define timer */
-#define GW_TIMER_FIRMWARE_TRANFER_PACKET_PENDING_INTERVAL	(10)		/* 10ms */
-#define GW_TIMER_FIRMWARE_PACKED_TIMEOUT_INTERVAL			(1000)		/* 1s */
+#define GW_TIMER_FIRMWARE_PACKED_TIMEOUT_INTERVAL			(300)		/* 300ms */
 #define GW_TIMER_FIRMWARE_GET_FIRMWARE_INFO_TIMEOUT			(2000)		/* 2s */
 #define GW_TIMER_FIRMWARE_DEV_INTERNAL_UPDATE_TIMEOUT		(180000)	/* 3' */
 
@@ -87,5 +86,15 @@ enum {
 	GW_FW_DEV_INTERNAL_UPDATE_TIMEOUT,
 };
 
+/*****************************************************************************/
+/*  task GW_TASK_DEBUG_MSG define
+ */
+/*****************************************************************************/
+/* define timer */
+/* define signal */
+enum {
+	GW_DEBUG_MSG_1 = AK_USER_DEFINE_SIG,
+	GW_DEBUG_MSG_2
+};
 
 #endif //__APP_IF_H__
