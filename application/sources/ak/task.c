@@ -114,6 +114,64 @@ void task_post(task_id_t des_task_id, ak_msg_t* msg) {
 	EXIT_CRITICAL();
 }
 
+uint8_t task_remove_msg(task_id_t task_id, uint8_t sig) {
+	tcb_t* t_tcb;
+	uint8_t total_rm_msg = 0;
+
+	if (task_id >= AK_TASK_EOT_ID) {
+		FATAL("TK", 0x05);
+	}
+
+	ENTRY_CRITICAL();
+
+	/* get task table control */
+	t_tcb = &task_pri_queue[task_table[task_id].pri - 1];
+
+	/* check task queue available */
+	if (task_ready & t_tcb->mask) {
+
+		ak_msg_t* f_msg = AK_MSG_NULL; /* MUST-BE initialized AK_MSG_NULL */
+		ak_msg_t* t_msg;
+
+		/* get first message of queue */
+		t_msg = t_tcb->qhead;
+
+		while (t_msg != AK_MSG_NULL) {
+
+			/* check message signal */
+			if (t_msg->sig == sig) {
+
+				/* remove message out of queue */
+				t_tcb->qhead = t_msg->next;
+
+				/* last message of queue */
+				if (t_msg->next == AK_MSG_NULL) {
+					t_tcb->qtail = AK_MSG_NULL;
+					/* change status of task to inactive */
+					task_ready &= ~t_tcb->mask;
+				}
+
+				/* assign remove message */
+				f_msg = t_msg;
+
+				total_rm_msg++;
+			}
+
+			/* consider the next message */
+			t_msg = t_msg->next;
+
+			/* free the message if it's found */
+			if (f_msg != AK_MSG_NULL) {
+				msg_free(f_msg);
+				f_msg = AK_MSG_NULL;
+			}
+		}
+	}
+
+	EXIT_CRITICAL();
+	return total_rm_msg;
+}
+
 void task_post_pure_msg(task_id_t des_task_id, uint8_t sig) {
 	ak_msg_t* s_msg = get_pure_msg();
 	set_msg_sig(s_msg, sig);

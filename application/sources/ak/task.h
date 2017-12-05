@@ -46,6 +46,7 @@ extern void task_create(task_t* task_tbl);
 extern void task_post(task_id_t des_task_id, ak_msg_t* msg);
 extern void task_post_pure_msg(task_id_t des_task_id, uint8_t sig);
 extern void task_post_common_msg(task_id_t des_task_id, uint8_t sig, uint8_t* data, uint8_t len);
+extern uint8_t task_remove_msg(task_id_t task_id, uint8_t sig); /* return numbers message's removed */
 extern int task_init();
 extern int task_run();
 

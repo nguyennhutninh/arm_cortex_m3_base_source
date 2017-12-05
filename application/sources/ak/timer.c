@@ -27,6 +27,8 @@ static void         timer_msg_pool_init();
 static ak_timer_t*  get_timer_msg();
 static void         free_timer_msg(ak_timer_t* msg);
 
+static uint8_t timer_remove_msg(task_id_t des_task_id, timer_sig_t sig);
+
 void timer_msg_pool_init() {
 	uint32_t index;
 
@@ -137,7 +139,7 @@ void task_timer_tick(ak_msg_t* msg) {
 
 			/* remove node expired */
 			if (timer_del) {
-				timer_remove_attr(timer_del->des_task_id, timer_del->sig);
+				timer_remove_msg(timer_del->des_task_id, timer_del->sig);
 				timer_del = TIMER_MSG_NULL;
 			}
 		}
@@ -248,7 +250,7 @@ uint8_t timer_set(task_id_t des_task_id, timer_sig_t sig, int32_t duty, timer_ty
 	return TIMER_RET_OK;
 }
 
-uint8_t timer_remove_attr(task_id_t des_task_id, timer_sig_t sig) {
+uint8_t timer_remove_msg(task_id_t des_task_id, timer_sig_t sig) {
 	ak_timer_t* timer_msg = timer_list_head;
 	ak_timer_t* timer_msg_prev = timer_msg;
 
@@ -288,6 +290,14 @@ uint8_t timer_remove_attr(task_id_t des_task_id, timer_sig_t sig) {
 	EXIT_CRITICAL();
 
 	return TIMER_RET_NG;
+}
+
+uint8_t timer_remove_attr(task_id_t des_task_id, timer_sig_t sig) {
+	/* remove timer message in task queue message */
+	task_remove_msg(des_task_id, sig);
+
+	/* remove timer message in timer queue message */
+	return timer_remove_msg(des_task_id, sig);
 }
 
 uint32_t timer_used() {

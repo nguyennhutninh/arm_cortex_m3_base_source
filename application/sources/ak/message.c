@@ -101,7 +101,7 @@ void msg_dec_ref_count(ak_msg_t* msg) {
 		msg->ref_count--;
 	}
 	else {
-		FATAL("MF", 0x22);
+		FATAL("MF", 0x28);
 	}
 }
 

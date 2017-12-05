@@ -18,11 +18,18 @@ void task_dbg(ak_msg_t* msg) {
 	switch (msg->sig) {
 	case AC_DBG_TEST_1: {
 		APP_DBG_SIG("AC_DBG_TEST_1\n");
+		for (uint32_t i = 0; i < 8; i++) {
+			ak_msg_t* s_msg = get_pure_msg();
+			set_msg_sig(s_msg, AC_DBG_TEST_2);
+			task_post(AC_TASK_DBG_ID, s_msg);
+		}
 	}
 		break;
 
 	case AC_DBG_TEST_2: {
 		APP_DBG_SIG("AC_DBG_TEST_2\n");
+		uint8_t number_rm_msg = task_remove_msg(AC_TASK_DBG_ID, AC_DBG_TEST_2);
+		APP_DBG("number_rm_msg: %d\n", number_rm_msg);
 	}
 		break;
 
