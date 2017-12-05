@@ -293,11 +293,13 @@ uint8_t timer_remove_msg(task_id_t des_task_id, timer_sig_t sig) {
 }
 
 uint8_t timer_remove_attr(task_id_t des_task_id, timer_sig_t sig) {
+	/* remove timer message in timer queue message */
+	uint8_t ret = timer_remove_msg(des_task_id, sig);
+
 	/* remove timer message in task queue message */
 	task_remove_msg(des_task_id, sig);
 
-	/* remove timer message in timer queue message */
-	return timer_remove_msg(des_task_id, sig);
+	return ret;
 }
 
 uint32_t timer_used() {

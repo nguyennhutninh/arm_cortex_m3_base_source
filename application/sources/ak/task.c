@@ -391,9 +391,9 @@ task_id_t get_current_task_id() {
 }
 
 task_t*	get_current_task_info() {
-	return &current_task_info;
+	return (task_t*)&current_task_info;
 }
 
 ak_msg_t* get_current_active_object() {
-	return &current_active_object;
+	return (ak_msg_t*)&current_active_object;
 }
