@@ -185,6 +185,13 @@ void task_post_common_msg(task_id_t des_task_id, uint8_t sig, uint8_t* data, uin
 	task_post(des_task_id, s_msg);
 }
 
+void task_post_dynamic_msg(task_id_t des_task_id, uint8_t sig, uint8_t* data, uint32_t len) {
+	ak_msg_t* s_msg = get_dynamic_msg();
+	set_msg_sig(s_msg, sig);
+	set_data_dynamic_msg(s_msg, data, len);
+	task_post(des_task_id, s_msg);
+}
+
 void task_entry_interrupt() {
 	ENTRY_CRITICAL();
 

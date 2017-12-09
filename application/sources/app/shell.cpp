@@ -604,12 +604,6 @@ int32_t shell_dbg(uint8_t* argv) {
 	}
 		break;
 
-	case '5': {
-		uint8_t number_rm_msg = task_remove_msg(AC_TASK_DBG_ID, AC_DBG_TEST_2);
-		APP_DBG("number_rm_msg: %d\n", number_rm_msg);
-	}
-		break;
-
 	default:
 		break;
 	}

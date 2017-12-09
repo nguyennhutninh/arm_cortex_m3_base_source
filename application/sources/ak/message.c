@@ -369,7 +369,7 @@ ak_msg_t* get_dynamic_msg() {
 	}
 
 	if (get_msg_type(allocate_massage) != DYNAMIC_MSG_TYPE) {
-		FATAL("MF", 0x37);
+		FATAL("MF", 0x51);
 	}
 
 	/* increase referrence counter */
@@ -430,7 +430,7 @@ uint8_t get_data_dynamic_msg(ak_msg_t* msg, uint8_t* data, uint32_t size) {
 
 	/* check length */
 	if (msg_dynamic->len != size) {
-		FATAL("MF", 0x46);
+		FATAL("MF", 0x47);
 		return AK_MSG_NG;
 	}
 
@@ -457,7 +457,7 @@ dynamic_pdu_t* get_data_dynamic_pdu_pool(uint32_t size) {
 
 	for (i = 0; i < size_pdu; i++) {
 		if (ptemp->next == NULL) {
-			FATAL("MF", 0x47);
+			FATAL("MF", 0x48);
 			return NULL;
 		}
 		ptemp = ptemp->next;
@@ -477,7 +477,7 @@ uint8_t get_data_dynamic_pdu(dynamic_pdu_t* dynamic_pdu, uint8_t* data, uint32_t
 		/* switch to next pdu */
 		if ((i != 0) && (i % AK_DYNAMIC_PDU_SIZE == 0)) {
 			if (phead->next == NULL) {
-				FATAL("MF", 0x48);
+				FATAL("MF", 0x49);
 				return AK_MSG_NG;
 			}
 
@@ -502,7 +502,7 @@ uint8_t set_data_dynamic_pdu(dynamic_pdu_t* dynamic_pdu, uint8_t* data, uint32_t
 		memcpy(ptemp->data_unit, (uint8_t*)&data[index * AK_DYNAMIC_PDU_SIZE], AK_DYNAMIC_PDU_SIZE);
 
 		if (ptemp->next == NULL) {
-			FATAL("MF", 0x49);
+			FATAL("MF", 0x50);
 			return AK_MSG_NG;
 		}
 

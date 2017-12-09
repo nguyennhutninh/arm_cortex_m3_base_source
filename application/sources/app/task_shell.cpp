@@ -38,21 +38,30 @@ void sys_irq_shell() {
 	c = sys_ctrl_shell_get_char();
 
 	if (rx_frame_parser(c) == APP_FLAG_OFF) {
+
 		if (shell.index < SHELL_BUFFER_LENGHT - 1) {
-			if (c == '\r' || c == '\n') {
+
+			if (c == '\r' || c == '\n') { /* linefeed */
+
+				sys_ctrl_shell_put_char('\r');
+				sys_ctrl_shell_put_char('\n');
+
 				shell.data[shell.index] = c;
 				shell.data[shell.index + 1] = 0;
 				task_post_common_msg(AC_TASK_SHELL_ID, AC_SHELL_LOGIN_CMD, (uint8_t*)&shell.data[0], shell.index + 2);
 
 				shell.index = 0;
 			}
-			else if (c == 8) {
-				if (shell.index) {
+			else {
+
+				sys_ctrl_shell_put_char(c);
+
+				if (c == 8 && shell.index) { /* backspace */
 					shell.index--;
 				}
-			}
-			else {
-				shell.data[shell.index++] = c;
+				else {
+					shell.data[shell.index++] = c;
+				}
 			}
 		}
 		else {
