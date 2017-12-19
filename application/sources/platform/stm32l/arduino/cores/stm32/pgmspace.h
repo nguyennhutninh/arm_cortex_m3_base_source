@@ -24,6 +24,7 @@
 #define __PGMSPACE_H_ 1
 
 #include <inttypes.h>
+#include "Arduino.h"
 
 #define PROGMEM
 #define PGM_P  const char *
@@ -43,6 +44,8 @@ typedef uint32_t prog_uint32_t;
 typedef int64_t prog_int64_t;
 typedef uint64_t prog_uint64_t;
 
+#define malloc_P(size) ak_malloc(size)
+#define free_P(p) ak_free(p)
 #define memchr_P(str, c, len) memchr((str), (c), (len))
 #define memcmp_P(a, b, n) memcmp((a), (b), (n))
 #define memcpy_P(dest, src, num) memcpy((dest), (src), (num))

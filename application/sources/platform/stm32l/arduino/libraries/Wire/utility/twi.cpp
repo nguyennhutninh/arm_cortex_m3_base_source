@@ -262,7 +262,7 @@ uint8_t twi_writeTo(uint8_t address, uint8_t* data, uint8_t length, uint8_t wait
 
 
 	while (length--) {
-		I2C_SendData(I2C1, *data);
+		I2C_SendData(I2C1, *data++);
 		ret = 3;
 		/* Test on EV8 and clear it */
 		while(!I2C_CheckEvent(I2C1, I2C_EVENT_MASTER_BYTE_TRANSMITTED))  {
@@ -293,7 +293,7 @@ uint8_t twi_transmit(const uint8_t* data, uint8_t length)
 	uint32_t timeout = 1000;
 	while (length--) {
 
-		I2C_SendData(I2C1, *data);
+		I2C_SendData(I2C1, *data++);
 		/* Test on EV8 and clear it */
 		while (!I2C_CheckEvent(I2C1, I2C_EVENT_SLAVE_BYTE_TRANSMITTED)) {
 			if (timeout-- == 0) return 2;

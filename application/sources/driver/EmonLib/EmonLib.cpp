@@ -214,7 +214,7 @@ double EnergyMonitor::calcIrms(unsigned int Number_of_Samples)
 
 void EnergyMonitor::serialprint()
 {
-#if (ARDUINO >= 100)
+#if (0)
   Serial.print(realPower);
   Serial.print(' ');
   Serial.print(apparentPower);

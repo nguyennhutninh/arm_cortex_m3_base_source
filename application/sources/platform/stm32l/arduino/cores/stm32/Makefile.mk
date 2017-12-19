@@ -4,6 +4,7 @@ CPPFLAGS	+= -I./sources/platform/stm32l/Libraries/CMSIS/Device/ST/STM32L1xx/Incl
 CPPFLAGS	+= -I./sources/platform/stm32l/Libraries/CMSIS/Include
 
 CFLAGS		+= -I./sources/platform/stm32l/arduino/cores/stm32
+CPPFLAGS	+= -I./sources/platform/stm32l/arduino/cores/stm32
 
 VPATH += sources/platform/stm32l/arduino/cores/stm32
 

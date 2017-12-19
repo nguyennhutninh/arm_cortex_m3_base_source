@@ -8,7 +8,12 @@
 
 #include "../../../sys/sys_ctrl.h"
 #include "../../../sys/sys_io.h"
+
+#include "../../../ak/message.h"
+
 #include "../../sys_cfg.h"
+
+#define ARDUINO 100
 
 #define HIGH 0x1
 #define LOW  0x0
@@ -46,6 +51,20 @@
 #define delayMicroseconds   sys_ctrl_delay_us
 #define delay               sys_ctrl_delay_ms
 #define millis              sys_ctrl_millis
+
+// undefine stdlib's abs if encountered
+#ifdef abs
+#undef abs
+#endif
+
+#define min(a,b) ((a)<(b)?(a):(b))
+#define max(a,b) ((a)>(b)?(a):(b))
+#define abs(x) ((x)>0?(x):-(x))
+#define constrain(amt,low,high) ((amt)<(low)?(low):((amt)>(high)?(high):(amt)))
+#define round(x)     ((x)>=0?(long)((x)+0.5):(long)((x)-0.5))
+#define radians(deg) ((deg)*DEG_TO_RAD)
+#define degrees(rad) ((rad)*RAD_TO_DEG)
+#define sq(x) ((x)*(x))
 
 typedef unsigned int word;
 

@@ -15,6 +15,9 @@ CPPFLAGS	+= -I./sources/driver/ds1302
 CPPFLAGS	+= -I./sources/driver/epprom
 CPPFLAGS	+= -I./sources/driver/exor
 CPPFLAGS	+= -I./sources/driver/LTC68032
+CPPFLAGS	+= -I./sources/driver/I2Cdev
+CPPFLAGS	+= -I./sources/driver/MPU6050
+CPPFLAGS	+= -I./sources/driver/L3G4200D
 
 VPATH += sources/driver/led
 VPATH += sources/driver/button
@@ -32,6 +35,9 @@ VPATH += sources/driver/kalman
 VPATH += sources/driver/hs1101
 VPATH += sources/driver/exor
 VPATH += sources/driver/LTC68032
+VPATH += sources/driver/I2Cdev
+VPATH += sources/driver/MPU6050
+VPATH += sources/driver/L3G4200D
 
 SOURCES += sources/driver/led/led.c
 SOURCES += sources/driver/rtc/rtc.c
@@ -52,3 +58,6 @@ SOURCES_CPP += sources/driver/ds1302/DS1302.cpp
 SOURCES_CPP += sources/driver/eeprom/eeprom.cpp
 SOURCES_CPP += sources/driver/exor/exor.cpp
 SOURCES_CPP += sources/driver/LTC68032/LTC68032.cpp
+SOURCES_CPP += sources/driver/I2Cdev/I2Cdev.cpp
+SOURCES_CPP += sources/driver/MPU6050/MPU6050.cpp
+SOURCES_CPP += sources/driver/L3G4200D/L3G4200D.cpp
