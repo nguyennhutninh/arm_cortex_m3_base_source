@@ -25,6 +25,11 @@ extern "C"
 #define TIMER_RET_OK				(1)
 #define TIMER_RET_NG				(0)
 
+/* sizeof timer pool */
+#ifndef AK_TIMER_POOL_SIZE
+#define AK_TIMER_POOL_SIZE			(16)
+#endif
+
 typedef uint8_t						timer_sig_t;
 
 typedef enum {

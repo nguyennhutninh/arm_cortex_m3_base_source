@@ -8,7 +8,7 @@
 
 #include "../../../sys/sys_ctrl.h"
 #include "../../../sys/sys_io.h"
-#include "../sys_cfg.h"
+#include "../../sys_cfg.h"
 
 #define HIGH 0x1
 #define LOW  0x0
@@ -46,9 +46,6 @@
 #define delayMicroseconds   sys_ctrl_delay_us
 #define delay               sys_ctrl_delay_ms
 #define millis              sys_ctrl_millis
-
-#define strlen_P strlen
-#define strcpy_P strcpy
 
 typedef unsigned int word;
 

@@ -5,7 +5,6 @@
 /*
  * The default pulls in 70K of garbage
  */
-
 namespace __gnu_cxx {
 
 void __verbose_terminate_handler() {
@@ -14,19 +13,20 @@ void __verbose_terminate_handler() {
 
 }
 
-
 /*
  * The default pulls in about 12K of garbage
  */
-
 extern "C" void __cxa_pure_virtual() {
 	FATAL("C++", 0x01);
+}
+
+extern "C" void __cxa_deleted_virtual() {
+	FATAL("C++", 0x02);
 }
 
 /*
  * Implement C++ new/delete operators using the heap
  */
-
 void *operator new(size_t size) {
 	return malloc(size);
 }

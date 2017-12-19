@@ -20,3 +20,4 @@ SOURCES += ./sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/src/st
 SOURCES += ./sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/src/stm32l1xx_iwdg.c
 SOURCES += ./sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/src/stm32l1xx_comp.c
 SOURCES += ./sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/src/stm32l1xx_dac.c
+SOURCES += ./sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/src/stm32l1xx_i2c.c

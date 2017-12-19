@@ -11,7 +11,7 @@
 
 #include "io_cfg.h"
 #include "stm32l.h"
-#include "arduino/Arduino.h"
+#include "arduino/cores/Arduino.h"
 
 #include "../sys/sys_dbg.h"
 

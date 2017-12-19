@@ -23,14 +23,35 @@ extern "C"
 #define AK_MSG_NG					(0)
 #define AK_MSG_OK					(1)
 
+/* sizeof common message pool */
+#ifndef AK_COMMON_MSG_POOL_SIZE
 #define AK_COMMON_MSG_POOL_SIZE		(8)
+#endif
+
+/* sizeof data common message */
+#ifndef AK_COMMON_MSG_DATA_SIZE
 #define AK_COMMON_MSG_DATA_SIZE		(64)
+#endif
 
+/* sizeof pure message pool */
+#ifndef AK_PURE_MSG_POOL_SIZE
 #define AK_PURE_MSG_POOL_SIZE		(32)
+#endif
 
+/* sizeof dynamic message pool */
+#ifndef AK_DYNAMIC_MSG_POOL_SIZE
 #define AK_DYNAMIC_MSG_POOL_SIZE	(8)
+#endif
+
+/* numbers of dynamic pool data unit */
+#ifndef AK_DYNAMIC_DATA_POOL_SIZE
 #define AK_DYNAMIC_DATA_POOL_SIZE	(128)
+#endif
+
+/* sizeof dynamic pool data unit */
+#ifndef AK_DYNAMIC_PDU_SIZE
 #define AK_DYNAMIC_PDU_SIZE			(4)
+#endif
 
 #define AK_MSG_TYPE_MASK			(0xC0)
 #define AK_MSG_REF_COUNT_MASK		(0x3F)

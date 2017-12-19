@@ -18,7 +18,7 @@ struct ak_timer_payload_irq_t {
 } ak_timer_payload_irq;
 
 /* data to manage memory of timer message */
-static ak_timer_t timer_pool[TIMER_POOL_SIZE];
+static ak_timer_t timer_pool[AK_TIMER_POOL_SIZE];
 static ak_timer_t* free_list_timer_pool;
 static ak_timer_t* timer_list_head;
 
@@ -35,8 +35,8 @@ void timer_msg_pool_init() {
 	timer_list_head       = TIMER_MSG_NULL;
 	free_list_timer_pool = (ak_timer_t*)timer_pool;
 
-	for (index = 0; index < TIMER_POOL_SIZE; index++) {
-		if (index == (TIMER_POOL_SIZE - 1)) {
+	for (index = 0; index < AK_TIMER_POOL_SIZE; index++) {
+		if (index == (AK_TIMER_POOL_SIZE - 1)) {
 			timer_pool[index].next = TIMER_MSG_NULL;
 		}
 		else {

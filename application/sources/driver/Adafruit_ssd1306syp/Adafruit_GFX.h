@@ -1,7 +1,8 @@
 #ifndef __ADAFRUIT_GFX_H__
 #define __ADAFRUIT_GFX_H__
 
-#include "../platform/stm32l/arduino/Print.h"
+#include "Arduino.h"
+#include "Print.h"
 
 #define abs(x) ((x)>0?(x):-(x))
 #define swap(a, b) { int16_t t = a; a = b; b = t; }

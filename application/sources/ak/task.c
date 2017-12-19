@@ -31,11 +31,15 @@ static task_id_t current_task_id;
 static task_t	current_task_info;
 static ak_msg_t	current_active_object;
 
+#if defined(AK_TASK_OBJ_LOG_ENABLE)
 log_queue_t log_task_dbg_object_queue;
-log_queue_t log_irq_queue;
-
 static uint8_t task_dbg_active_obj_queue[LOG_QUEUE_OBJECT_SIZE];
+#endif
+
+#if defined(AK_IRQ_OBJ_LOG_ENABLE)
+log_queue_t log_irq_queue;
 static uint8_t irq_queue[LOG_QUEUE_IRQ_SIZE];
+#endif
 
 static tcb_t	task_pri_queue[TASK_PRI_MAX_SIZE];
 static task_t*	task_table = (task_t*)0;
@@ -194,27 +198,23 @@ void task_post_dynamic_msg(task_id_t des_task_id, uint8_t sig, uint8_t* data, ui
 
 void task_entry_interrupt() {
 	ENTRY_CRITICAL();
-
 	ak_irq_io_entry_trigger();
+	current_task_id = AK_TASK_INTERRUPT_ID;
 
+#if defined(AK_IRQ_OBJ_LOG_ENABLE)
 	exception_info_t exception_info;
 	exception_info.except_number = sys_ctr_get_exception_number();
 	exception_info.timestamp = sys_ctrl_millis();
 
 	log_queue_put(&log_irq_queue, &exception_info);
-
-	current_task_id = AK_TASK_INTERRUPT_ID;
-
+#endif
 	EXIT_CRITICAL();
 }
 
 void task_exit_interrupt() {
 	ENTRY_CRITICAL();
-
 	current_task_id = current_task_info.id;
-
 	ak_irq_io_exit_trigger();
-
 	EXIT_CRITICAL();
 }
 
@@ -245,20 +245,24 @@ int task_init() {
 
 int task_run() {
 	/* init active object log queue */
+#if defined(AK_TASK_OBJ_LOG_ENABLE)
 	log_queue_init(&log_task_dbg_object_queue \
 				   , (uint32_t)task_dbg_active_obj_queue \
 				   , (LOG_QUEUE_OBJECT_SIZE / sizeof(ak_msg_t)) \
 				   , sizeof(ak_msg_t) \
 				   , mem_write \
 				   , mem_read);
+#endif
 
 	/* init irq log queue */
+#if defined(AK_IRQ_OBJ_LOG_ENABLE)
 	log_queue_init(&log_irq_queue \
 				   , (uint32_t)irq_queue \
 				   , (LOG_QUEUE_IRQ_SIZE / sizeof(exception_info_t)) \
 				   , sizeof(exception_info_t) \
 				   , mem_write \
 				   , mem_read);
+#endif
 
 	SYS_PRINT("active objects is ready\n\n");
 
@@ -336,7 +340,9 @@ void task_sheduler() {
 			current_active_object.dbg_handler.stop_exe = sys_ctrl_millis();
 
 			/* put current object to log queue */
+#if defined(AK_TASK_OBJ_LOG_ENABLE)
 			log_queue_put(&log_task_dbg_object_queue, &current_active_object);
+#endif
 
 #if defined(AK_TASK_LOG_ENABLE)
 			{

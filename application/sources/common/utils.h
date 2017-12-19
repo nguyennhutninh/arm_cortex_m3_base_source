@@ -16,7 +16,6 @@ extern "C"
 #include <stdint.h>
 #include <string.h>
 
-extern int8_t* itoa(int32_t num, int8_t* str, uint32_t base);
 extern uint32_t str_len(const int8_t *str);
 
 extern void* mem_set(void *str, int c,size_t size);

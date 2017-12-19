@@ -1,7 +1,7 @@
 #include "Adafruit_ssd1306syp.h"
 
 #if defined (STM32L_PLATFORM)
-#include "../../platform/stm32l/arduino/Arduino.h"
+#include "../../platform/stm32l/arduino/cores/Arduino.h"
 #include "../../platform/stm32l/io_cfg.h"
 #include "../../common/utils.h"
 #endif

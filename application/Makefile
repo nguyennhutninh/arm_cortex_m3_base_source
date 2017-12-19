@@ -122,10 +122,10 @@ CPPFLAGS += 	-mthumb			\
 		-DSTM32L_PLATFORM	\
 		-DLOGIN_PRINT_EN	\
 		-DSYS_PRINT_EN		\
-		-DSYS_DBG_EN		\
-		-DAPP_DBG_EN		\
-		-DAPP_PRINT_EN		\
-		-DAPP_DBG_SIG_EN	\
+		-USYS_DBG_EN		\
+		-UAPP_DBG_EN		\
+		-UAPP_PRINT_EN		\
+		-UAPP_DBG_SIG_EN	\
 
 # linker flags
 LDFLAGS	=	-Map=$(OBJECTS_DIR)/$(PROJECT).map	\

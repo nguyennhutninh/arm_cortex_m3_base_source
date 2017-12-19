@@ -1,3 +1,5 @@
+-include sources/ak/ak.cfg.mk
+
 CFLAGS += -I./sources/ak
 
 VPATH += sources/ak

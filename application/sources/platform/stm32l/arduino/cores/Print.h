@@ -25,6 +25,7 @@
 #include <string.h> // for size_t
 #include <stdint.h>
 #include "Printable.h"
+#include "WString.h"
 
 
 #define DEC 10

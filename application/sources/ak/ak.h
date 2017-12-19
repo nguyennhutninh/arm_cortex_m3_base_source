@@ -22,7 +22,7 @@ extern "C"
  * DEFINITION: active kernel
  *
  *****************************************************************************/
-#define AK_VERSION						"1.2"
+#define AK_VERSION						"1.3"
 #define AK_ENABLE						(0x01)
 #define AK_DISABLE						(0x00)
 
@@ -59,12 +59,6 @@ extern "C"
 
 #define AK_TASK_INTERRUPT_ID			(0xEE)
 #define AK_TASK_IDLE_ID					(0xEF)
-
-/*****************************************************************************
- * DEFINITION: timer
- *
- *****************************************************************************/
-#define TIMER_POOL_SIZE					(16)
 
 #ifdef __cplusplus
 }

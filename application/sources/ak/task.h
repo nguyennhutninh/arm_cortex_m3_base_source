@@ -39,8 +39,15 @@ typedef struct {
 	uint32_t timestamp;
 } exception_info_t;
 
-extern log_queue_t log_task_dbg_object_queue; /* active object queue */
-extern log_queue_t log_irq_queue; /* exception log queue */
+/* active object queue */
+#if defined(AK_TASK_OBJ_LOG_ENABLE)
+extern log_queue_t log_task_dbg_object_queue;
+#endif
+
+/* exception log queue */
+#if defined(AK_IRQ_OBJ_LOG_ENABLE)
+extern log_queue_t log_irq_queue;
+#endif
 
 extern void task_create(task_t* task_tbl);
 extern void task_post(task_id_t des_task_id, ak_msg_t* msg);

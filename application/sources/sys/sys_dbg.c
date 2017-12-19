@@ -49,8 +49,6 @@ void sys_dbg_fatal(const int8_t* s, uint8_t c) {
 	ak_msg_t*	ptemp_current_active_object;
 	ak_msg_t	t_msg;
 	exception_info_t t_exception_info;
-	uint32_t	flash_sys_log_address = APP_FLASH_AK_DBG_MSG_SECTOR_1;
-	uint32_t	flash_irq_log_address = APP_FLASH_AK_DBG_IRQ_LOG_SECTOR;
 
 #if defined(TIVA_PLATFORM)
 	UARTprintf("%s\t%x\n", s, c);
@@ -92,14 +90,16 @@ void sys_dbg_fatal(const int8_t* s, uint8_t c) {
 	/************************
 	 *  trace irq info    *
 	 ************************/
+#if defined(AK_IRQ_OBJ_LOG_ENABLE)
+	uint32_t flash_irq_log_address = APP_FLASH_AK_DBG_IRQ_LOG_SECTOR;
 	SYS_PRINT("start write irq info\n");
 	flash_erase_sector(flash_irq_log_address);
-
 	while(log_queue_len(&log_irq_queue)) {
 		log_queue_get(&log_irq_queue, &t_exception_info);
 		flash_write(flash_irq_log_address, (uint8_t*)&t_exception_info, sizeof(exception_info_t));
 		flash_irq_log_address += sizeof(exception_info_t);
 	}
+#endif
 
 	/************************
 	 *  trace fatal info    *
@@ -111,14 +111,16 @@ void sys_dbg_fatal(const int8_t* s, uint8_t c) {
 	/************************
 	 *  trace fatal message *
 	 ************************/
+#if defined(AK_TASK_OBJ_LOG_ENABLE)
+	uint32_t flash_sys_log_address = APP_FLASH_AK_DBG_MSG_SECTOR_1;
 	SYS_PRINT("start write message log to flash\n");
 	flash_erase_sector(flash_sys_log_address);
-
 	while(log_queue_len(&log_task_dbg_object_queue)) {
 		log_queue_get(&log_task_dbg_object_queue, &t_msg);
 		flash_write(flash_sys_log_address, (uint8_t*)&t_msg, sizeof(ak_msg_t));
 		flash_sys_log_address += sizeof(ak_msg_t);
 	}
+#endif
 
 	/************************
 	 *  dump RAM to flash   *

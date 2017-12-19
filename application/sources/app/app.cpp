@@ -36,7 +36,9 @@
 #include "../sys/sys_io.h"
 #include "../sys/sys_ctrl.h"
 #include "../sys/sys_dbg.h"
-#include "../sys/sys_arduino.h"
+
+/* arduino include */
+#include "SPI.h"
 
 /* common include */
 #include "../common/utils.h"
