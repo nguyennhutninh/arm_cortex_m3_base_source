@@ -16,3 +16,4 @@
 -include sources/driver/rtc/Makefile.mk
 -include sources/driver/SHT1x/Makefile.mk
 -include sources/driver/thermistor/Makefile.mk
+-include sources/driver/Ethernet/Makefile.mk

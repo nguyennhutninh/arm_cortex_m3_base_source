@@ -8,9 +8,7 @@
 
 #include "../../../sys/sys_ctrl.h"
 #include "../../../sys/sys_io.h"
-
 #include "../../../ak/message.h"
-
 #include "../../sys_cfg.h"
 
 #define ARDUINO 100
@@ -73,12 +71,25 @@ typedef unsigned int word;
 typedef bool boolean;
 typedef uint8_t byte;
 
+extern uint16_t makeWord(uint16_t w);
+extern uint16_t makeWord(byte h, byte l);
+
+#define word(...) makeWord(__VA_ARGS__)
+
+// WMath prototypes
+extern long random(long);
+extern long random(long, long);
+extern void randomSeed(unsigned long);
+extern long map(long, long, long, long, long);
+
 extern void pinMode(uint8_t, uint8_t);
 extern void digitalWrite(uint8_t, uint8_t);
 extern int digitalRead(uint8_t);
 
 extern uint8_t shiftIn(uint8_t dataPin, uint8_t clockPin, uint8_t bitOrder);
 extern void shiftOut(uint8_t dataPin, uint8_t clockPin, uint8_t bitOrder, uint8_t val);
+
+extern "C" { void yield(void); }
 
 #endif // __ARDUINO_H__
 

@@ -91,7 +91,7 @@ uint8_t TwoWire::requestFrom(uint8_t address, uint8_t quantity, uint32_t iaddres
   // some devices' internal registers. This function is executed by the hardware
   // TWI module on other processors (for example Due's TWI_IADR and TWI_MMR registers)
 
-  beginTransmission(address);
+  beginTransmission(address << 1);
 
   // the maximum size of internal address is 3 bytes
   if (isize > 3){
@@ -109,7 +109,7 @@ uint8_t TwoWire::requestFrom(uint8_t address, uint8_t quantity, uint32_t iaddres
     quantity = BUFFER_LENGTH;
   }
   // perform blocking read into buffer
-  uint8_t read = twi_readFrom(address, rxBuffer, quantity, sendStop);
+  uint8_t read = twi_readFrom(address << 1, rxBuffer, quantity, sendStop);
   // set rx buffer iterator vars
   rxBufferIndex = 0;
   rxBufferLength = read;

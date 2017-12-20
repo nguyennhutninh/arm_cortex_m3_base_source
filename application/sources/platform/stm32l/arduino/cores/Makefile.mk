@@ -12,4 +12,6 @@ SOURCES_CPP += sources/platform/stm32l/arduino/cores/wiring_shift.cpp
 SOURCES_CPP += sources/platform/stm32l/arduino/cores/Print.cpp
 SOURCES_CPP += sources/platform/stm32l/arduino/cores/Stream.cpp
 SOURCES_CPP += sources/platform/stm32l/arduino/cores/WString.cpp
+SOURCES_CPP += sources/platform/stm32l/arduino/cores/WMath.cpp
 SOURCES_CPP += sources/platform/stm32l/arduino/cores/itoa.cpp
+SOURCES_CPP += sources/platform/stm32l/arduino/cores/IPAddress.cpp

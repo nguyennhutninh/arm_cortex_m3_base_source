@@ -2,25 +2,24 @@
 #include "stm32l1xx_gpio.h"
 #include "stm32l1xx_rcc.h"
 
-#define NOT_ACTIVE      (0xFF)
-
 SPIClass::SPIClass(void) {
-	SSIModule = NOT_ACTIVE;
-	SSIBitOrder = MSBFIRST;
+	spi_clock = 1000000;
+	spi_bitorder = MSBFIRST;
+	spi_datamode = SPI_MODE0;
 }
 
 SPIClass::SPIClass(uint8_t module) {
-	SSIModule = module;
-	SSIBitOrder = MSBFIRST;
+	(void)module;
+	spi_clock = 1000000;
+	spi_bitorder = MSBFIRST;
+	spi_datamode = SPI_MODE0;
 }
 
-void SPIClass::begin() {
+void SPIClass::io_config() {
 	GPIO_InitTypeDef  GPIO_InitStructure;
-	SPI_InitTypeDef   SPI_InitStructure;
 
 	/*!< SPI GPIO Periph clock enable */
 	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA, ENABLE);
-
 	/*!< SPI Periph clock enable */
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_SPI1, ENABLE);
 
@@ -48,35 +47,184 @@ void SPIClass::begin() {
 
 	/* Connect PXx to SPI_MOSI */
 	GPIO_PinAFConfig(GPIOA, GPIO_PinSource7, GPIO_AF_SPI1);
+}
+
+void SPIClass::begin() {
+
+	io_config();
 
 	/*!< SPI Config */
 	SPI_DeInit(SPI1);
-	SPI_InitStructure.SPI_Direction = SPI_Direction_2Lines_FullDuplex;
-	SPI_InitStructure.SPI_Mode = SPI_Mode_Master;
-	SPI_InitStructure.SPI_DataSize = SPI_DataSize_8b;
-	SPI_InitStructure.SPI_CPOL = SPI_CPOL_Low;
-	SPI_InitStructure.SPI_CPHA = SPI_CPHA_1Edge;
-	SPI_InitStructure.SPI_NSS = SPI_NSS_Soft;
-	SPI_InitStructure.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_8;
+	spi_init.SPI_Direction = SPI_Direction_2Lines_FullDuplex;
+	spi_init.SPI_Mode = SPI_Mode_Master;
+	spi_init.SPI_DataSize = SPI_DataSize_8b;
+	spi_init.SPI_NSS = SPI_NSS_Soft;
+	spi_init.SPI_CRCPolynomial = 7;
 
-	SPI_InitStructure.SPI_FirstBit = SPI_FirstBit_MSB;
-	SPI_InitStructure.SPI_CRCPolynomial = 7;
-	SPI_Init(SPI1, &SPI_InitStructure);
+	switch (spi_datamode) {
+	case SPI_MODE0:
+		spi_init.SPI_CPOL = SPI_CPOL_Low;
+		spi_init.SPI_CPHA = SPI_CPHA_1Edge;
+		break;
 
+	case SPI_MODE1:
+		spi_init.SPI_CPOL = SPI_CPOL_Low;
+		spi_init.SPI_CPHA = SPI_CPHA_2Edge;
+		break;
+
+	case SPI_MODE2:
+		spi_init.SPI_CPOL = SPI_CPOL_High;
+		spi_init.SPI_CPHA = SPI_CPHA_1Edge;
+		break;
+
+	case SPI_MODE3:
+		spi_init.SPI_CPOL = SPI_CPOL_High;
+		spi_init.SPI_CPHA = SPI_CPHA_2Edge;
+		break;
+
+	default:
+		spi_init.SPI_CPOL = SPI_CPOL_Low;
+		spi_init.SPI_CPHA = SPI_CPHA_1Edge;
+		break;
+	}
+
+	if (spi_bitorder == MSBFIRST) {
+		spi_init.SPI_FirstBit = SPI_FirstBit_MSB;
+	}
+	else {
+		spi_init.SPI_FirstBit = SPI_FirstBit_LSB;
+	}
+
+	switch (spi_clock) {
+	case 125000:
+		spi_init.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_256;
+		break;
+	case 250000:
+		spi_init.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_128;
+		break;
+	case 500000:
+		spi_init.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_64;
+		break;
+	case 1000000:
+		spi_init.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_32;
+		break;
+	case 2000000:
+		spi_init.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_16;
+		break;
+	case 4000000:
+		spi_init.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_8;
+		break;
+	case 8000000:
+		spi_init.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_4;
+		break;
+	case 16000000:
+		spi_init.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_2;
+		break;
+	default:
+		spi_init.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_32;
+		break;
+	}
+
+
+	SPI_Init(SPI1, &spi_init);
 	SPI_Cmd(SPI1, ENABLE); /*!< SPI enable */
 }
 
 void SPIClass::end() {
 	/* disable SPI module */
+	SPI_Cmd(SPI1, DISABLE);
+}
+
+void SPIClass::beginTransaction(SPISettings settings) {
+	spi_clock = settings.setting_clock;
+	spi_bitorder = settings.setting_bitorder;
+	spi_datamode = settings.setting_datamode;
+
+	switch (spi_datamode) {
+	case SPI_MODE0:
+		spi_init.SPI_CPOL = SPI_CPOL_Low;
+		spi_init.SPI_CPHA = SPI_CPHA_1Edge;
+		break;
+
+	case SPI_MODE1:
+		spi_init.SPI_CPOL = SPI_CPOL_Low;
+		spi_init.SPI_CPHA = SPI_CPHA_2Edge;
+		break;
+
+	case SPI_MODE2:
+		spi_init.SPI_CPOL = SPI_CPOL_High;
+		spi_init.SPI_CPHA = SPI_CPHA_1Edge;
+		break;
+
+	case SPI_MODE3:
+		spi_init.SPI_CPOL = SPI_CPOL_High;
+		spi_init.SPI_CPHA = SPI_CPHA_2Edge;
+		break;
+
+	default:
+		spi_init.SPI_CPOL = SPI_CPOL_Low;
+		spi_init.SPI_CPHA = SPI_CPHA_1Edge;
+		break;
+	}
+
+	if (spi_bitorder == MSBFIRST) {
+		spi_init.SPI_FirstBit = SPI_FirstBit_MSB;
+	}
+	else {
+		spi_init.SPI_FirstBit = SPI_FirstBit_LSB;
+	}
+
+	switch (spi_clock) {
+	case 125000:
+		spi_init.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_256;
+		break;
+	case 250000:
+		spi_init.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_128;
+		break;
+	case 500000:
+		spi_init.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_64;
+		break;
+	case 1000000:
+		spi_init.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_32;
+		break;
+	case 2000000:
+		spi_init.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_16;
+		break;
+	case 4000000:
+		spi_init.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_8;
+		break;
+	case 8000000:
+		spi_init.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_4;
+		break;
+	case 16000000:
+		spi_init.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_2;
+		break;
+	default:
+		spi_init.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_32;
+		break;
+	}
+
+	SPI_Init(SPI1, &spi_init);
+}
+
+void SPIClass::endTransaction(void) {
+
 }
 
 void SPIClass::setBitOrder(uint8_t ssPin, uint8_t bitOrder) {
 	(void)ssPin;
-	SSIBitOrder = bitOrder;
+	setBitOrder(bitOrder);
 }
 
 void SPIClass::setBitOrder(uint8_t bitOrder) {
-	SSIBitOrder = bitOrder;
+	spi_bitorder = bitOrder;
+	if (spi_bitorder == MSBFIRST) {
+		spi_init.SPI_FirstBit = SPI_FirstBit_MSB;
+	}
+	else {
+		spi_init.SPI_FirstBit = SPI_FirstBit_LSB;
+	}
+	SPI_Init(SPI1, &spi_init);
 }
 
 void SPIClass::setDataMode(uint8_t mode) {
@@ -86,9 +234,10 @@ void SPIClass::setDataMode(uint8_t mode) {
 	SPI_MODE2	1	0	Rising	Falling
 	SPI_MODE3	1	1	Falling	Rising
 	*/
-	SPI_InitTypeDef   spi_init;
 
-	switch(mode) {
+	spi_datamode = mode;
+
+	switch (spi_datamode) {
 	case SPI_MODE0:
 		spi_init.SPI_CPOL = SPI_CPOL_Low;
 		spi_init.SPI_CPHA = SPI_CPHA_1Edge;
@@ -119,7 +268,6 @@ void SPIClass::setDataMode(uint8_t mode) {
 }
 
 void SPIClass::setClockDivider(uint8_t divider){
-	SPI_InitTypeDef   spi_init;
 	spi_init.SPI_BaudRatePrescaler = (uint16_t)divider;
 	SPI_Init(SPI1, &spi_init);
 }
@@ -127,7 +275,7 @@ void SPIClass::setClockDivider(uint8_t divider){
 uint8_t SPIClass::transfer(uint8_t data) {
 	unsigned long rxtxData = data;
 
-	if(SSIBitOrder == LSBFIRST) {
+	if (spi_bitorder == LSBFIRST) {
 		asm("rbit %0, %1" : "=r" (rxtxData) : "r" (rxtxData));	// reverse order of 32 bits
 		asm("rev %0, %1" : "=r" (rxtxData) : "r" (rxtxData));	// reverse order of bytes to get original bits into lowest byte
 	}
@@ -140,7 +288,7 @@ uint8_t SPIClass::transfer(uint8_t data) {
 	while (SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_RXNE) == RESET);
 	rxtxData = (uint8_t)SPI_I2S_ReceiveData(SPI1);
 
-	if (SSIBitOrder == LSBFIRST) {
+	if (spi_bitorder == LSBFIRST) {
 		asm("rbit %0, %1" : "=r" (rxtxData) : "r" (rxtxData));	// reverse order of 32 bits
 		asm("rev %0, %1" : "=r" (rxtxData) : "r" (rxtxData));	// reverse order of bytes to get original bits into lowest byte
 	}
@@ -148,8 +296,27 @@ uint8_t SPIClass::transfer(uint8_t data) {
 	return (uint8_t)rxtxData;
 }
 
+uint16_t SPIClass::transfer16(uint16_t data) {
+	uint16_t ret = 0;
+	if (spi_bitorder == LSBFIRST) {
+		ret = transfer((uint8_t)(data&0xFF)) & 0xFF;
+		ret = (transfer((uint8_t)(data>>8)) << 8) | ret;
+	}
+	else {
+		ret = (transfer((uint8_t)(data>>8)) << 8);
+		ret = (transfer((uint8_t)(data&0xFF)) & 0xFF) | ret;
+	}
+	return ret;
+}
+
+void SPIClass::transfer(void *buf, uint32_t count) {
+	for (uint32_t i = 0; i<count; i++) {
+		transfer(*((uint8_t*)buf+i));
+	}
+}
+
 void SPIClass::setModule(uint8_t module) {
-	SSIModule = module;
+	(void)module;
 	begin();
 }
 
