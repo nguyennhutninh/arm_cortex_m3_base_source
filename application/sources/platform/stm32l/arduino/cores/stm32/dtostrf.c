@@ -22,12 +22,84 @@
 #include <stdlib.h>
 #include <string.h>
 #include "sys_dbg.h"
+#include "utils.h"
+#include "message.h"
+
+char* strdup (const char *s) {
+	size_t len = strlen (s) + 1;
+	void *_new = ak_malloc (len);
+	if (_new == NULL)
+		return NULL;
+	return (char*)memcpy(_new, s, len);
+}
 
 char *dtostrf (double val, signed char width, unsigned char prec, char *sout) {
+#if 0
 	(void)val;
 	(void)width;
 	(void)prec;
 	(void)sout;
 	FATAL("arduino", 0x01);
 	return NULL;
+#else
+	// Handle negative numbers
+	unsigned int negative = 0;
+	if (val < 0.0)
+	{
+		negative = 1;
+		val = -val;
+	}
+
+	// Round correctly so that print(1.999, 2) prints as "2.00"
+	double rounding = 0.5;
+	for (int i=0; i<prec; ++i)
+		rounding /= 10.0;
+
+	val += rounding;
+
+	// Extract the integer part of the number
+	unsigned long int_part = (unsigned long)val;
+	double remainder = val - (double)int_part;
+
+	if(negative)
+		int_part = -int_part;
+
+	// Extract digits from the remainder
+	unsigned long dec_part = 0;
+	double decade = 1.0;
+	for(int i=0; i < prec; i++)
+		decade *= 10.0;
+	remainder *= decade;
+	dec_part = (int)remainder;
+
+	xsprintf(sout, "%d.%d", int_part, dec_part);
+
+	// Handle minimum field width of the output string
+	// width is signed value, negative for left adjustment.
+	// Range -128,127
+	char fmt[129] = "";
+	unsigned int w = width;
+	if (width < 0) {
+		negative = 1;
+		w = -width;
+	} else {
+		negative = 0;
+	}
+
+	if(strlen(sout) < w) {
+		memset(fmt, ' ', 128);
+		fmt[w-strlen(sout)] = '\0';
+		if(negative == 0) {
+			char *tmp = strdup(sout);
+			strcpy(sout,fmt);
+			strcat(sout, tmp);
+			ak_free(tmp);
+		} else {
+			// left adjustment
+			strcat(sout, fmt);
+		}
+	}
+
+	return sout;
+#endif
 }
