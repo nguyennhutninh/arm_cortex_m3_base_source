@@ -2,36 +2,63 @@
 # @author: ThanNT
 # @date:   05/2/2017
 ##############################################################################
-#direction define
-Print		= @echo "~"
-NAME_MODULE	= arm_cortex_m3_base_application
-PROJECT		= $(NAME_MODULE)
+# Utilitis define
+Print = @echo "~"
 
-APP_ADDR		= -DAPP_START_ADDR=0x08003000
-SYS_CONSOLE_BAUDRATE	= 115200
-CONSOLE_BAUDRATE_DEF	= -DSYS_CONSOLE_BAUDRATE=$(SYS_CONSOLE_BAUDRATE)
-
-OPTIMIZE_OPTION		= -g -Os
-RELEASE_OPTION		= -DRELEASE
-IRQ_DEBUG_OPTION	= -UAK_IO_IRQ_ANALYZER
-RF24_OPTION		= -URF24_USED_POLLING
-LOG_AK_KERNEL_ENABLE	= -UAK_TASK_LOG_ENABLE
-WARNING_OPTION		= -Werror -W
+# Name of build target ex: arm_cortex_m3_base_application.bin
+NAME_MODULE = arm_cortex_m3_base_application
+PROJECT = $(NAME_MODULE)
 
 GCC_PATH	= /home/thannt/workspace/tools/gcc-arm-none-eabi-5_4-2016q3
 OPENOCD_PATH	= /home/thannt/workspace/tools/openocd
 
-OBJECTS_DIR = build_$(NAME_MODULE)_stm32l
-TARGET = $(OBJECTS_DIR)/$(NAME_MODULE).axf
-
-#Include sources file
+# Include sources file
 -include sources/ak/Makefile.mk
 -include sources/app/Makefile.mk
 -include sources/common/Makefile.mk
 -include sources/driver/Makefile.mk
 -include sources/sys/Makefile.mk
--include sources/rf_protocols/Makefile.mk
+-include sources/networks/Makefile.mk
 -include sources/platform/stm32l/Makefile.mk
+
+# App start address, that need sync with declare in linker file and interrupt vector table.
+APP_ADDR = -DAPP_START_ADDR=0x08003000
+
+# Define console baudrate, that is used to configure UART.
+SYS_CONSOLE_BAUDRATE = 115200
+CONSOLE_BAUDRATE_DEF = -DSYS_CONSOLE_BAUDRATE=$(SYS_CONSOLE_BAUDRATE)
+
+#|---------------------------------------------------------------------------------------------------|
+#| OPTIMIZE LEVELS                                                                                   |
+#|------------|----------------------------------|--------------|---------|------------|-------------|
+#|   option   | optimization levels              |execution time|code size|memory usage|complile time|
+#|------------|----------------------------------|--------------|---------|------------|-------------|
+#|   -O0      | compilation time                 |     (+)      |   (+)   |     (-)    |    (-)      |
+#| -O1 || -O  | code size && execution time      |     (-)      |   (-)   |     (+)    |    (+)      |
+#|   -O2      | more code size && execution time |     (--)     |         |     (+)    |    (++)     |
+#|   -O3      | more code size && execution time |     (---)    |         |     (+)    |    (+++)    |
+#|   -Os      | code size                        |              |   (--)  |            |    (++)     |
+#|  -Ofast    | O3 with none math cals           |     (---)    |         |     (+)    |    (+++)    |
+#|------------|----------------------------------|--------------|---------|------------|-------------|
+OPTIMIZE_OPTION = -g -Os
+
+# Release build option, that is used in fatal function, restart system when fatal, and debug levels.
+RELEASE_OPTION = -DRELEASE
+
+# Enable PIN (using led life) interrupt analyzer function [entry IRQ -> led life ON] and [exit IRQ -> led life OFF].
+IRQ_DEBUG_OPTION = -UAK_IO_IRQ_ANALYZER
+
+# Enable ak message log (via UART console).
+LOG_AK_KERNEL_ENABLE = -UAK_TASK_LOG_ENABLE
+
+# Enable to using USB hareware configuration.
+USB_OPTION = -DUSING_USB_MOD
+
+# warning compile option.
+WARNING_OPTION = -Werror -W
+
+OBJECTS_DIR = build_$(NAME_MODULE)_stm32l
+TARGET = $(OBJECTS_DIR)/$(NAME_MODULE).axf
 
 SOURCES		+=
 SOURCES_	 = $(shell find $(SOURCES) -type f -printf "%f\n")
@@ -81,11 +108,11 @@ CFLAGS +=	-mthumb			\
 		$(CONSOLE_BAUDRATE_DEF)	\
 		$(IRQ_DEBUG_OPTION)	\
 		$(WARNING_OPTION)	\
-		$(RF24_OPTION)		\
 		$(OPTIMIZE_OPTION)	\
 		$(RELEASE_OPTION)	\
 		$(LOG_AK_KERNEL_ENABLE)	\
 		$(APP_ADDR)		\
+		$(USB_OPTION)		\
 		-DUSE_STDPERIPH_DRIVER	\
 		-DSTM32L1XX_MD		\
 		-DSTM32L_PLATFORM	\
@@ -112,11 +139,11 @@ CPPFLAGS += 	-mthumb			\
 		$(CONSOLE_BAUDRATE_DEF)	\
 		$(IRQ_DEBUG_OPTION)	\
 		$(WARNING_OPTION)	\
-		$(RF24_OPTION)		\
 		$(OPTIMIZE_OPTION)	\
 		$(RELEASE_OPTION)	\
 		$(LOG_AK_KERNEL_ENABLE)	\
 		$(APP_ADDR)		\
+		$(USB_OPTION)		\
 		-DUSE_STDPERIPH_DRIVER	\
 		-DSTM32L1XX_MD		\
 		-DSTM32L_PLATFORM	\

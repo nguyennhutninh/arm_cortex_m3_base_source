@@ -1,10 +1,10 @@
 /**
   ******************************************************************************
-  * @file    usb_type.h
+  * @file    usb_endp.c
   * @author  MCD Application Team
   * @version V4.1.0
   * @date    26-May-2017
-  * @brief   Type definitions used by the USB Library
+  * @brief   Endpoint routines
   ******************************************************************************
   * @attention
   *
@@ -36,35 +36,59 @@
   */
 
 
-/* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __USB_TYPE_H
-#define __USB_TYPE_H
-
 /* Includes ------------------------------------------------------------------*/
-#include <stdbool.h>
-#include "usb_conf.h"
+#include "usb_lib.h"
+#include "usb_desc.h"
+#include "usb_mem.h"
+#include "hw_config.h"
+#include "usb_istr.h"
+#include "usb_pwr.h"
 
-/* Exported types ------------------------------------------------------------*/
-/* Exported constants --------------------------------------------------------*/
-#ifndef NULL
-#define NULL ((void *)0)
-#endif
+#include "../sys/sys_dbg.h"
+#include "../sys/sys_irq.h"
 
-#if 0
-typedef enum
+/* Private typedef -----------------------------------------------------------*/
+/* Private define ------------------------------------------------------------*/
+
+/* Interval between sending IN packets in frame number (1 frame = 1ms) */
+#define VCOMPORT_IN_FRAME_INTERVAL             5
+/* Private macro -------------------------------------------------------------*/
+/* Private variables ---------------------------------------------------------*/
+__IO uint32_t usb_packet_sent_flag;
+extern __IO uint8_t usb_recv_buffer[VIRTUAL_COM_PORT_DATA_SIZE];
+uint32_t usb_recv_len;
+/* Private function prototypes -----------------------------------------------*/
+/* Private functions ---------------------------------------------------------*/
+
+/*******************************************************************************
+* Function Name  : EP1_IN_Callback
+* Description    :
+* Input          : None.
+* Output         : None.
+* Return         : None.
+*******************************************************************************/
+
+void EP1_IN_Callback (void)
 {
-  FALSE = 0, TRUE  = !FALSE
+	usb_packet_sent_flag = 1;
 }
-bool;
-#else
-#define FALSE false
-#define TRUE true
-#endif
 
-/* Exported macro ------------------------------------------------------------*/
-/* Exported functions ------------------------------------------------------- */
-/* External variables --------------------------------------------------------*/
+/*******************************************************************************
+* Function Name  : EP3_OUT_Callback
+* Description    :
+* Input          : None.
+* Output         : None.
+* Return         : None.
+*******************************************************************************/
+void EP3_OUT_Callback(void)
+{
+	usb_recv_len = GetEPRxCount(ENDP3);
+	PMAToUserBufferCopy((unsigned char*)usb_recv_buffer, ENDP3_RXADDR, usb_recv_len);
 
-#endif /* __USB_TYPE_H */
+	if(bDeviceState == CONFIGURED) {
+		CDC_Receive_DATA();
+		sys_irq_usb_recv((uint8_t*)usb_recv_buffer, usb_recv_len);
+	}
+}
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

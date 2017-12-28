@@ -104,11 +104,9 @@ void led_life_off() {
 void nrf24l01_io_ctrl_init() {
 	/* CE / CSN / IRQ */
 	GPIO_InitTypeDef        GPIO_InitStructure;
-#if defined(RF24_USED_POLLING)
-#else
 	EXTI_InitTypeDef        EXTI_InitStruct;
 	NVIC_InitTypeDef        NVIC_InitStruct;
-#endif
+
 	/* GPIOA Periph clock enable */
 	RCC_AHBPeriphClockCmd(NRF_CE_IO_CLOCK, ENABLE);
 	RCC_AHBPeriphClockCmd(NRF_CSN_IO_CLOCK, ENABLE);
@@ -132,8 +130,6 @@ void nrf24l01_io_ctrl_init() {
 	GPIO_Init(NRF_CSN_IO_PORT, &GPIO_InitStructure);
 
 	/* IRQ -> PB1 */
-#if defined(RF24_USED_POLLING)
-#else
 	GPIO_InitStructure.GPIO_Pin = NRF_IRQ_IO_PIN;
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;
 	GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
@@ -154,7 +150,6 @@ void nrf24l01_io_ctrl_init() {
 	NVIC_InitStruct.NVIC_IRQChannelSubPriority = 0;
 	NVIC_InitStruct.NVIC_IRQChannelCmd = ENABLE;
 	NVIC_Init(&NVIC_InitStruct);
-#endif
 }
 
 void nrf24l01_spi_ctrl_init() {
@@ -1120,3 +1115,34 @@ uint8_t internal_flash_write_cal(uint32_t address, uint8_t* data, uint32_t len) 
 
 	return 1;
 }
+
+#if defined(USING_USB_MOD)
+void usb_cfg() {
+	Set_System();
+	Set_USBClock();
+	USB_Interrupts_Config();
+	USB_Init();
+}
+
+void usb_fake_plug() {
+	GPIO_InitTypeDef  GPIO_InitStructure;
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_11 | GPIO_Pin_12;
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_40MHz;
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
+	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
+	GPIO_Init(GPIOA, &GPIO_InitStructure);
+
+	GPIO_ResetBits(GPIOA, GPIO_Pin_11 | GPIO_Pin_12);
+
+	sys_ctrl_delay_ms(200);
+
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;
+	GPIO_Init(GPIOA, &GPIO_InitStructure);
+}
+
+void usb_send(uint8_t* buf, uint8_t len) {
+	if (bDeviceState == CONFIGURED){
+		CDC_Send_DATA (buf, len);
+	}
+}
+#endif

@@ -1,10 +1,10 @@
 /**
   ******************************************************************************
-  * @file    usb_type.h
+  * @file    hw_config.h
   * @author  MCD Application Team
   * @version V4.1.0
   * @date    26-May-2017
-  * @brief   Type definitions used by the USB Library
+  * @brief   Hardware Configuration & Setup
   ******************************************************************************
   * @attention
   *
@@ -37,34 +37,45 @@
 
 
 /* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __USB_TYPE_H
-#define __USB_TYPE_H
+#ifndef __HW_CONFIG_H
+#define __HW_CONFIG_H
+
+#ifdef __cplusplus
+extern "C"
+{
+#endif
 
 /* Includes ------------------------------------------------------------------*/
-#include <stdbool.h>
-#include "usb_conf.h"
+#include "stm32l1xx.h"
+
+#include "platform_config.h"
+#include "usb_type.h"
 
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
-#ifndef NULL
-#define NULL ((void *)0)
-#endif
-
-#if 0
-typedef enum
-{
-  FALSE = 0, TRUE  = !FALSE
-}
-bool;
-#else
-#define FALSE false
-#define TRUE true
-#endif
-
 /* Exported macro ------------------------------------------------------------*/
+/* Exported define -----------------------------------------------------------*/
+#define MASS_MEMORY_START     0x04002000
+#define BULK_MAX_PACKET_SIZE  0x00000040
+#define LED_ON                0xF0
+#define LED_OFF               0xFF
+
 /* Exported functions ------------------------------------------------------- */
+void Set_System(void);
+void Set_USBClock(void);
+void Enter_LowPowerMode(void);
+void Leave_LowPowerMode(void);
+void USB_Interrupts_Config(void);
+void USB_Cable_Config (FunctionalState NewState);
+void Get_SerialNum(void);
+void LCD_Control(void);
+uint32_t CDC_Send_DATA (uint8_t *ptrBuffer, uint8_t Send_length);
+uint32_t CDC_Receive_DATA(void);
 /* External variables --------------------------------------------------------*/
 
-#endif /* __USB_TYPE_H */
+#ifdef __cplusplus
+}
+#endif
 
+#endif  /*__HW_CONFIG_H*/
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

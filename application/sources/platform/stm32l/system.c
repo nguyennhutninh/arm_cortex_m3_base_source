@@ -16,6 +16,10 @@
 #include "stm32l1xx_conf.h"
 #include "core_cm3.h"
 
+#if defined(USING_USB_MOD)
+#include "usb_istr.h"
+#endif
+
 #include "../../sys/sys_dbg.h"
 #include "../../sys/sys_ctrl.h"
 #include "../../sys/sys_irq.h"
@@ -61,6 +65,7 @@ void exti_line15_irq();
 void timer6_irq();
 void timer4_irq();
 void timer7_irq();
+void usb_lp_irq();
 
 /* cortex-M processor fault exceptions */
 void nmi_handler()          __attribute__ ((weak));
@@ -128,7 +133,7 @@ void (* const isr_vector[])() = {
 		default_handler,						//	DMA1 Channel 7
 		default_handler,						//	ADC1
 		default_handler,						//	USB High Priority
-		default_handler,						//	USB Low  Priority
+		usb_lp_irq,								//	USB Low  Priority
 		default_handler,						//	DAC
 		default_handler,						//	COMP through EXTI Line
 		default_handler,						//	EXTI Line 9..5
@@ -150,7 +155,7 @@ void (* const isr_vector[])() = {
 		default_handler,						//	USART3
 		default_handler,						//	EXTI Line 15..10
 		default_handler,						//	RTC Alarm through EXTI Line
-		default_handler,						//	USB FS Wakeup from suspend
+		sys_irq_usb_recv,						//	USB FS Wakeup from suspend
 		default_handler,						//	TIM6
 		timer7_irq,								//	TIM7
 		};
@@ -400,5 +405,13 @@ void timer4_irq() {
 		TIM_ClearITPendingBit(TIM4, TIM_IT_CC4);
 	}
 
+	task_exit_interrupt();
+}
+
+void usb_lp_irq() {
+	task_entry_interrupt();
+#if defined(USING_USB_MOD)
+	USB_Istr();
+#endif
 	task_exit_interrupt();
 }

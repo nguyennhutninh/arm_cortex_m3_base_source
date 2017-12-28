@@ -538,7 +538,7 @@ int32_t shell_lcd(uint8_t* argv) {
 	return 0;
 }
 
-#include "../rf_protocols/rf24/hal/hal_nrf.h"
+#include "../networks/rf_protocols/rf24/hal/hal_nrf.h"
 
 int32_t shell_dbg(uint8_t* argv) {
 	(void)(argv);

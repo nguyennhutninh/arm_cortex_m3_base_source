@@ -200,6 +200,11 @@ void sys_irq_timer_hs1101() {
 void sys_irq_ir_io_rev() {
 }
 
+void sys_irq_usb_recv(uint8_t* data, uint32_t len) {
+	(void)data;
+	(void)len;
+}
+
 /* init non-clear RAM objects
  */
 void app_power_on_reset() {

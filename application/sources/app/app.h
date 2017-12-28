@@ -14,7 +14,7 @@ extern "C"
 #endif
 #include "../ak/ak.h"
 
-#include "../rf_protocols/rf24/nwk/nrf_nwk_sig.h"
+#include "../networks/rf_protocols/rf24/nwk/nrf_nwk_sig.h"
 
 #include "app_if.h"
 #include "app_eeprom.h"

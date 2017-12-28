@@ -1,7 +1,6 @@
 #ifndef __APP_DBG_H__
 #define __APP_DBG_H__
 
-#if defined(STM32L_PLATFORM)
 #include "../common/xprintf.h"
 
 #if defined(APP_DBG_EN)
@@ -26,7 +25,6 @@
 #define APP_DBG_SIG(fmt, ...)       xprintf("-SIG-> " fmt, ##__VA_ARGS__)
 #else
 #define APP_DBG_SIG(fmt, ...)
-#endif
 #endif
 
 #endif //__APP_DBG_H__

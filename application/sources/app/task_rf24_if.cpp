@@ -20,8 +20,8 @@
 #include "../driver/eeprom/eeprom.h"
 #include "../driver/exor/exor.h"
 
-#include "../rf_protocols/rf24/hal/hal_nrf.h"
-#include "../rf_protocols/rf24/nwk/nrf_data.h"
+#include "../networks/rf_protocols/rf24/hal/hal_nrf.h"
+#include "../networks/rf_protocols/rf24/nwk/nrf_data.h"
 
 void task_rf24_if(ak_msg_t* msg) {
 	switch (msg->sig) {

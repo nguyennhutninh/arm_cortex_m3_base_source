@@ -1,10 +1,10 @@
 /**
   ******************************************************************************
-  * @file    usb_type.h
+  * @file    stm32_it.h
   * @author  MCD Application Team
   * @version V4.1.0
   * @date    26-May-2017
-  * @brief   Type definitions used by the USB Library
+  * @brief   This file contains the headers of the interrupt handlers.
   ******************************************************************************
   * @attention
   *
@@ -37,34 +37,29 @@
 
 
 /* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __USB_TYPE_H
-#define __USB_TYPE_H
+#ifndef __STM32_IT_H
+#define __STM32_IT_H
 
 /* Includes ------------------------------------------------------------------*/
-#include <stdbool.h>
-#include "usb_conf.h"
+#include "platform_config.h"
 
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
-#ifndef NULL
-#define NULL ((void *)0)
-#endif
-
-#if 0
-typedef enum
-{
-  FALSE = 0, TRUE  = !FALSE
-}
-bool;
-#else
-#define FALSE false
-#define TRUE true
-#endif
-
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
-/* External variables --------------------------------------------------------*/
 
-#endif /* __USB_TYPE_H */
+void NMI_Handler(void);
+void HardFault_Handler(void);
+void MemManage_Handler(void);
+void BusFault_Handler(void);
+void UsageFault_Handler(void);
+void SVC_Handler(void);
+void DebugMon_Handler(void);
+void PendSV_Handler(void);
+void SysTick_Handler(void);
+void USBWakeUp_IRQHandler(void);
+void USB_FS_WKUP_IRQHandler(void);
+
+#endif /* __STM32_IT_H */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

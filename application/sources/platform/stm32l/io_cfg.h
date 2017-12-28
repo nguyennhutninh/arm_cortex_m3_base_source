@@ -24,6 +24,14 @@ extern "C"
 #include "../driver/rtc/rtc.h"
 #include "../driver/eeprom/eeprom.h"
 
+#if defined(USING_USB_MOD)
+#include "hw_config.h"
+#include "usb_lib.h"
+#include "usb_desc.h"
+#include "usb_pwr.h"
+#include "usb_istr.h"
+#endif
+
 /*
  * define pin for arduino pinMode/digitalWrite/digitalRead
  * NOTE: define value MUST be deferrent
@@ -307,6 +315,13 @@ extern void internal_flash_unlock();
 extern void internal_flash_lock();
 extern void internal_flash_erase_pages_cal(uint32_t address, uint32_t len);
 extern uint8_t internal_flash_write_cal(uint32_t address, uint8_t* data, uint32_t len);
+
+/******************************************************************************
+* usb function
+*******************************************************************************/
+extern void usb_cfg();
+extern void usb_fake_plug();
+extern void usb_send(uint8_t* buf, uint8_t len);
 
 #ifdef __cplusplus
 }
