@@ -1,4 +1,5 @@
 CFLAGS	+= -I./sources/networks/rf_protocols/rf24/hal
+CPPFLAGS	+= -I./sources/networks/rf_protocols/rf24/hal
 
 VPATH += sources/networks/rf_protocols/rf24/hal
 

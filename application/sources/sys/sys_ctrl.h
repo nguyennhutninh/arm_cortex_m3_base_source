@@ -13,7 +13,8 @@ extern "C"
 #endif
 
 #include <stdint.h>
-#include "../app/app_data.h"
+#include "app_data.h"
+#include "system.h"
 
 #define SYS_POWER_ON_RESET			0x00
 #define SYS_NON_POWER_ON_RESET		0x01

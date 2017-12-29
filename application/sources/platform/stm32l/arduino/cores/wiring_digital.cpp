@@ -1,6 +1,6 @@
 #include "Arduino.h"
-#include "../../io_cfg.h"
-#include "../../../sys/sys_dbg.h"
+#include "io_cfg.h"
+#include "sys_dbg.h"
 
 void pinMode(uint8_t pin, uint8_t mode) {
 	switch (pin) {

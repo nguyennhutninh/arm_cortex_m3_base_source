@@ -1,8 +1,8 @@
 #include <stdbool.h>
 #include "flash.h"
-#include "../sys/sys_ctrl.h"
-#include "../sys/sys_io.h"
-#include "../sys/sys_dbg.h"
+#include "sys_ctrl.h"
+#include "sys_io.h"
+#include "sys_dbg.h"
 
 /* WINBOND commands */
 #define WINBOND_W_EN						0x06	//write enable

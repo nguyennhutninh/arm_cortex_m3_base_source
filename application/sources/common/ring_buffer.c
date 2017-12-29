@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 #include "ring_buffer.h"
-#include "../sys/sys_dbg.h"
+#include "sys_dbg.h"
 
 
 void ring_buffer_init(ring_buffer_t* ring_buffer, memcpy_f memcpy, void* buffer, uint8_t buffer_size, uint8_t element_size) {

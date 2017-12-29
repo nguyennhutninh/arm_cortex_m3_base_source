@@ -7,23 +7,21 @@
 
 #include <stdint.h>
 
-#include "../ak/ak.h"
-#include "../ak/task.h"
-#include "../ak/timer.h"
-#include "../ak/message.h"
+#include "ak.h"
+#include "task.h"
+#include "timer.h"
+#include "message.h"
 
-#include "../common/cmd_line.h"
-#include "../common/utils.h"
-#include "../common/xprintf.h"
+#include "cmd_line.h"
+#include "utils.h"
+#include "xprintf.h"
 
-#include "../sys/sys_ctrl.h"
-#include "../sys/sys_io.h"
-#include "../sys/sys_dbg.h"
+#include "sys_ctrl.h"
+#include "sys_io.h"
+#include "sys_dbg.h"
 
 #include "app.h"
 #include "app_data.h"
-
-#include "task_rf24_if.h"
 
 void rf_printf(uint8_t* buf, uint32_t len) {
 	(void)buf;

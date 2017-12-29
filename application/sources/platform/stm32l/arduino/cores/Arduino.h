@@ -6,10 +6,10 @@
 #include <string.h>
 #include <math.h>
 
-#include "../../../sys/sys_ctrl.h"
-#include "../../../sys/sys_io.h"
-#include "../../../ak/message.h"
-#include "../../sys_cfg.h"
+#include "sys_ctrl.h"
+#include "sys_io.h"
+#include "message.h"
+#include "sys_cfg.h"
 
 #define ARDUINO 100
 

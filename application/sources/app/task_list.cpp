@@ -1,5 +1,5 @@
 #include "task_list.h"
-#include "../ak/timer.h"
+#include "timer.h"
 
 task_t app_task_table[] = {
 	/*************************************************************************/

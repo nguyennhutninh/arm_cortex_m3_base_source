@@ -1,8 +1,8 @@
 #ifndef __TASK_LIST_H__
 #define __TASK_LIST_H__
 
-#include "../ak/ak.h"
-#include "../ak/task.h"
+#include "ak.h"
+#include "task.h"
 
 extern task_t app_task_table[];
 

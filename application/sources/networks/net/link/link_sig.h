@@ -11,7 +11,13 @@
 /* define timer */
 /* define signal */
 enum {
+	/* public */
 	LINK_PHY_INIT = AK_USER_DEFINE_SIG,
+	LINK_PHY_FRAME_SEND_REQ,
+
+	/* private */
+	LINK_PHY_FRAME_SEND,
+	LINK_PHY_FRAME_SEND_TO,
 };
 
 /*****************************************************************************/

@@ -9,19 +9,19 @@
 #include "task_if.h"
 #include "task_list.h"
 
-#include "../ak/fsm.h"
-#include "../ak/port.h"
-#include "../ak/message.h"
-#include "../ak/timer.h"
+#include "fsm.h"
+#include "port.h"
+#include "message.h"
+#include "timer.h"
 
-#include "../common/utils.h"
-#include "../common/fifo.h"
+#include "utils.h"
+#include "fifo.h"
 
-#include "../driver/eeprom/eeprom.h"
-#include "../driver/exor/exor.h"
+#include "eeprom.h"
+#include "exor.h"
 
-#include "../networks/rf_protocols/rf24/hal/hal_nrf.h"
-#include "../networks/rf_protocols/rf24/nwk/nrf_data.h"
+#include "hal_nrf.h"
+#include "nrf_data.h"
 
 void task_rf24_if(ak_msg_t* msg) {
 	switch (msg->sig) {

@@ -1,7 +1,7 @@
 #ifndef __APP_DBG_H__
 #define __APP_DBG_H__
 
-#include "../common/xprintf.h"
+#include "xprintf.h"
 
 #if defined(APP_DBG_EN)
 #define APP_DBG(fmt, ...)       xprintf("[DBG] " fmt, ##__VA_ARGS__)

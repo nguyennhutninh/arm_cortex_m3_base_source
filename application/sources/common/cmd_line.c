@@ -7,8 +7,8 @@
 
 #include <string.h>
 #include "cmd_line.h"
-#include "../common/utils.h"
-#include "../common/xprintf.h"
+#include "utils.h"
+#include "xprintf.h"
 
 uint8_t cmd_line_parser(cmd_line_t* cmd_table, uint8_t* command){
 	uint8_t     cmd[MAX_CMD_SIZE];

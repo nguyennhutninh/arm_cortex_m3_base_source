@@ -45,7 +45,7 @@ THE SOFTWARE.
 
 #include "Wire.h"
 #include "I2Cdev.h"
-#include "../sys/sys_arduino.h"
+#include "sys_arduino.h"
 
 #if I2CDEV_IMPLEMENTATION == I2CDEV_ARDUINO_WIRE
 

@@ -8,7 +8,7 @@
 #ifndef __TASK_SHELL_H__
 #define __TASK_SHELL_H__
 
-#include "../common/cmd_line.h"
+#include "cmd_line.h"
 
 #define SHELL_BUFFER_LENGHT				(32)
 

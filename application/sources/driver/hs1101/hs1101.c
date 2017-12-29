@@ -1,10 +1,10 @@
 #include "hs1101.h"
 
-#include "../ak/port.h"
-#include "../app/app_dbg.h"
+#include "port.h"
+#include "app_dbg.h"
 
-#include "../sys/sys_io.h"
-#include "../sys/sys_ctrl.h"
+#include "sys_io.h"
+#include "sys_ctrl.h"
 
 void hs1101_init(hs1101_t * hs1101, uint16_t sample) {
 	hs1101->trigger_time	= 0;

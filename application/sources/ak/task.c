@@ -12,13 +12,13 @@
 #include "timer.h"
 #include "message.h"
 
-#include "../sys/sys_dbg.h"
-#include "../sys/sys_ctrl.h"
+#include "sys_dbg.h"
+#include "sys_ctrl.h"
 
-#include "../common/utils.h"
-#include "../common/log_queue.h"
+#include "utils.h"
+#include "log_queue.h"
 
-#include "../app/task_list.h"
+#include "task_list.h"
 
 typedef struct {
 	task_pri_t  pri;

@@ -9,8 +9,8 @@
 #define __SCREEN_MANAGER_H__
 
 #include <stdint.h>
-#include "../ak/ak.h"
-#include "../ak/message.h"
+#include "ak.h"
+#include "message.h"
 
 #include "view_render.h"
 

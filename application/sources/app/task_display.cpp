@@ -1,12 +1,12 @@
-#include "../ak/fsm.h"
-#include "../ak/port.h"
-#include "../ak/message.h"
-#include "../ak/timer.h"
+#include "fsm.h"
+#include "port.h"
+#include "message.h"
+#include "timer.h"
 
-#include "../sys/sys_ctrl.h"
-#include "../sys/sys_dbg.h"
+#include "sys_ctrl.h"
+#include "sys_dbg.h"
 
-#include "../common/view_render.h"
+#include "view_render.h"
 
 #include "app.h"
 #include "app_dbg.h"

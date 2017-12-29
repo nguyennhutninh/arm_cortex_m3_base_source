@@ -1,4 +1,5 @@
 CFLAGS += -I./sources/driver/hs1101
+CPPFLAGS += -I./sources/driver/hs1101
 
 VPATH += sources/driver/hs1101
 

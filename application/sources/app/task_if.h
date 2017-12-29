@@ -4,7 +4,7 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-#include "../ak/ak.h"
-#include "../ak/message.h"
+#include "ak.h"
+#include "message.h"
 
 #endif // __TASK_IF_H__

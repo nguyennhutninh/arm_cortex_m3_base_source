@@ -15,8 +15,8 @@
 #if (ARDUINO >= 100)
 #include <Arduino.h>
 #elif defined (STM32L_PLATFORM)
-#include "../platform/stm32l/arduino/cores/Arduino.h"
-#include "../platform/stm32l/io_cfg.h"
+#include "Arduino.h"
+#include "io_cfg.h"
 #else
 #include <WProgram.h>
 #endif

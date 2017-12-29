@@ -6,7 +6,7 @@
 **/
 
 #include "log_queue.h"
-#include "../app/app_dbg.h"
+#include "app_dbg.h"
 
 uint8_t log_queue_init(log_queue_t* q, uint32_t b, uint32_t q_l, uint32_t e_l, q_ctrl f_w, q_ctrl f_r) {
 	q->base		= b;

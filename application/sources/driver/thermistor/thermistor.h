@@ -4,7 +4,7 @@
 #if (ARDUINO >= 100)
 #include <Arduino.h>
 #elif defined (STM32L_PLATFORM)
-#include "../sys/sys_io.h"
+#include "sys_io.h"
 #else
 #include <WProgram.h>
 #endif

@@ -1,10 +1,10 @@
 #include "kalman.h"
 
-#include "../common/utils.h"
+#include "utils.h"
 
-#include "../sys/sys_dbg.h"
+#include "sys_dbg.h"
 
-#include "../app/app_dbg.h"
+#include "app_dbg.h"
 
 uint16_t kalman_filter(uint16_t signal_in) {
 	static uint8_t counter = 0;

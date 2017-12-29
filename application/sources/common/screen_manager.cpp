@@ -5,14 +5,13 @@
  ******************************************************************************
 **/
 
+#include "ak.h"
+#include "message.h"
+
+#include "utils.h"
 #include "screen_manager.h"
 
-#include "../ak/ak.h"
-#include "../ak/message.h"
-
-#include "../common/utils.h"
-
-#include "../sys/sys_dbg.h"
+#include "sys_dbg.h"
 
 static ak_msg_t screen_msg_entry;
 

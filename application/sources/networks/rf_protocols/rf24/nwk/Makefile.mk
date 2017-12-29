@@ -1,4 +1,5 @@
 CPPFLAGS	+= -I./sources/networks/rf_protocols/rf24/nwk
+CFLAGS	+= -I./sources/networks/rf_protocols/rf24/nwk
 
 VPATH += sources/networks/rf_protocols/rf24/nwk
 

@@ -1,5 +1,5 @@
 #include "view_render.h"
-#include "../common/utils.h"
+#include "utils.h"
 
 Adafruit_ssd1306syp view_render;
 

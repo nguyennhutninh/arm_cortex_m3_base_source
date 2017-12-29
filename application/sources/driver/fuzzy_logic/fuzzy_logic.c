@@ -1,10 +1,10 @@
 #include "fuzzy_logic.h"
 
-#include "../common/utils.h"
+#include "utils.h"
 
-#include "../sys/sys_dbg.h"
+#include "sys_dbg.h"
 
-#include "../app/app_dbg.h"
+#include "app_dbg.h"
 
 fuzzy_logic_temperature_t temp_fuzzy_logic;
 

@@ -1,9 +1,9 @@
 #include "Adafruit_ssd1306syp.h"
 
 #if defined (STM32L_PLATFORM)
-#include "../../platform/stm32l/arduino/cores/Arduino.h"
-#include "../../platform/stm32l/io_cfg.h"
-#include "../../common/utils.h"
+#include "Arduino.h"
+#include "io_cfg.h"
+#include "utils.h"
 #endif
 
 static unsigned char frame_buffer[SSD1306_FBSIZE];

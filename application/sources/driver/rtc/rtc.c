@@ -1,6 +1,6 @@
 #include "rtc.h"
-#include "../../ak/port.h"
-#include "../sys/sys_dbg.h"
+#include "port.h"
+#include "sys_dbg.h"
 
 uint8_t rtc_init(rtc_t* rtc, pf_rtc_ctrl init, \
 				 pf_rtc_time_ctrl set_time,\

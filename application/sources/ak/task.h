@@ -19,7 +19,7 @@ extern "C"
 #include "port.h"
 #include "message.h"
 
-#include "../common/log_queue.h"
+#include "log_queue.h"
 
 #define LOG_QUEUE_OBJECT_SIZE			(1024)
 #define LOG_QUEUE_IRQ_SIZE				(256)

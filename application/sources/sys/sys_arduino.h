@@ -7,7 +7,7 @@ extern "C"
 #endif
 
 #if defined(STM32L_PLATFORM)
-#include "../platform/stm32l/arduino/cores/Arduino.h"
+#include "Arduino.h"
 #else
 #error Please choose platform for app.
 #endif

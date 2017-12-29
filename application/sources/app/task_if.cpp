@@ -10,16 +10,16 @@
 #include "task_list.h"
 #include "task_list_if.h"
 
-#include "../ak/fsm.h"
-#include "../ak/port.h"
-#include "../ak/message.h"
-#include "../ak/timer.h"
+#include "fsm.h"
+#include "port.h"
+#include "message.h"
+#include "timer.h"
 
-#include "../common/utils.h"
+#include "utils.h"
 
-#include "../sys/sys_dbg.h"
-#include "../sys/sys_irq.h"
-#include "../sys/sys_io.h"
+#include "sys_dbg.h"
+#include "sys_irq.h"
+#include "sys_io.h"
 
 static void if_des_type_rf24_handler(ak_msg_t* msg);
 static void if_des_type_uart_handler(ak_msg_t* msg);

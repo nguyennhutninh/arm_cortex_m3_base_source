@@ -7,19 +7,19 @@
 
 #include <stdbool.h>
 
-#include "../ak/fsm.h"
-#include "../ak/port.h"
-#include "../ak/message.h"
+#include "fsm.h"
+#include "port.h"
+#include "message.h"
 
-#include "../common/cmd_line.h"
-#include "../common/utils.h"
-#include "../common/xprintf.h"
+#include "cmd_line.h"
+#include "utils.h"
+#include "xprintf.h"
 
-#include "../sys/sys_dbg.h"
-#include "../sys/sys_ctrl.h"
-#include "../sys/sys_irq.h"
-#include "../sys/sys_svc.h"
-#include "../sys/sys_io.h"
+#include "sys_dbg.h"
+#include "sys_ctrl.h"
+#include "sys_irq.h"
+#include "sys_svc.h"
+#include "sys_io.h"
 
 #include "app.h"
 #include "app_dbg.h"

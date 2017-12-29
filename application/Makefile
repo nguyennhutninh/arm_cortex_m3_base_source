@@ -24,6 +24,9 @@ OPENOCD_PATH	= /home/thannt/workspace/tools/openocd
 # App start address, that need sync with declare in linker file and interrupt vector table.
 APP_ADDR = -DAPP_START_ADDR=0x08003000
 
+# App maximum stack size
+APP_STACK_SIZE = 256
+
 # Define console baudrate, that is used to configure UART.
 SYS_CONSOLE_BAUDRATE = 115200
 CONSOLE_BAUDRATE_DEF = -DSYS_CONSOLE_BAUDRATE=$(SYS_CONSOLE_BAUDRATE)
@@ -55,7 +58,7 @@ LOG_AK_KERNEL_ENABLE = -UAK_TASK_LOG_ENABLE
 USB_OPTION = -DUSING_USB_MOD
 
 # warning compile option.
-WARNING_OPTION = -Werror -W
+WARNING_OPTION = -Werror -W -Wstack-usage=$(APP_STACK_SIZE)
 
 OBJECTS_DIR = build_$(NAME_MODULE)_stm32l
 TARGET = $(OBJECTS_DIR)/$(NAME_MODULE).axf
@@ -101,6 +104,7 @@ CFLAGS +=	-mthumb			\
 		$(FPU)			\
 		-ffunction-sections	\
 		-fdata-sections		\
+		-fstack-usage		\
 		-MD			\
 		-Wall			\
 		-std=c99		\
@@ -129,6 +133,7 @@ CPPFLAGS += 	-mthumb			\
 		$(FPU)			\
 		-ffunction-sections	\
 		-fdata-sections		\
+		-fstack-usage		\
 		-fno-rtti		\
 		-fno-exceptions		\
 		-fno-use-cxa-atexit	\

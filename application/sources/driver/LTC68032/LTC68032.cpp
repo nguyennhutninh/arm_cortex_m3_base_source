@@ -68,8 +68,8 @@ Copyright 2015 Linear Technology Corp. (LTC)
 
 #include <stdint.h>
 #include "LTC68032.h"
-#include "../../ak/ak.h"
-#include "../../sys/sys_ctrl.h"
+#include "ak.h"
+#include "sys_ctrl.h"
 #include "Arduino.h"
 #include "SPI.h"
 

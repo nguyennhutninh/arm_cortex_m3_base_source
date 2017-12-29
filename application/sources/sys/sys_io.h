@@ -7,9 +7,9 @@ extern "C"
 #endif
 
 #if defined(STM32L_PLATFORM)
-#include "../platform/stm32l/io_cfg.h"
+#include "io_cfg.h"
 #elif defined(STM32F10X_PLATFORM)
-#include "../platform/stm32f10x/io_cfg.h"
+#include "io_cfg.h"
 #else
 #error Please choose platform for app.
 #endif

@@ -1,19 +1,19 @@
 #include <string.h>
 
-#include "../ak/ak.h"
-#include "../ak/port.h"
-#include "../ak/message.h"
-#include "../ak/timer.h"
+#include "ak.h"
+#include "port.h"
+#include "message.h"
+#include "timer.h"
 
-#include "../sys/sys_dbg.h"
-#include "../sys/sys_ctrl.h"
-#include "../sys/sys_boot.h"
-#include "../sys/sys_io.h"
+#include "sys_dbg.h"
+#include "sys_ctrl.h"
+#include "sys_boot.h"
+#include "sys_io.h"
 
-#include "../driver/flash/flash.h"
-#include "../driver/led/led.h"
+#include "flash.h"
+#include "led.h"
 
-#include "../common/utils.h"
+#include "utils.h"
 
 #include "app.h"
 #include "app_if.h"

@@ -6,9 +6,6 @@ extern "C"
 {
 #endif
 
-#include <stdarg.h>
-#include "ak.h"
-
 #ifdef __cplusplus
 }
 #endif

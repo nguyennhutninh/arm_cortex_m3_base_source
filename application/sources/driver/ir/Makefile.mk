@@ -1,4 +1,5 @@
 CFLAGS += -I./sources/driver/ir
+CPPFLAGS += -I./sources/driver/ir
 
 VPATH += sources/driver/ir
 

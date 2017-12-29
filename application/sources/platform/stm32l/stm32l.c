@@ -8,7 +8,7 @@
 
 #include "stm32l.h"
 
-#include "../../sys/sys_dbg.h"
+#include "sys_dbg.h"
 
 #include "stm32l1xx.h"
 #include "core_cm3.h"

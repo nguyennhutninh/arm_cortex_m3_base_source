@@ -1,12 +1,12 @@
 #include "ir.h"
 
-#include "../ak/port.h"
+#include "port.h"
 
-#include "../sys/sys_io.h"
-#include "../sys/sys_ctrl.h"
-#include "../app/app_dbg.h"
+#include "sys_io.h"
+#include "sys_ctrl.h"
+#include "app_dbg.h"
 
-#include "../common/utils.h"
+#include "utils.h"
 
 #define IR_SEND_TIMEOUT			(100)	/* 100ms */
 

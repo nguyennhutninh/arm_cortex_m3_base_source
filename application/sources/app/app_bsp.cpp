@@ -1,6 +1,6 @@
-#include "../driver/button/button.h"
+#include "button.h"
 
-#include "../sys/sys_dbg.h"
+#include "sys_dbg.h"
 
 #include "app.h"
 #include "app_bsp.h"

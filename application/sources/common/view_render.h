@@ -2,7 +2,7 @@
 #define __VIEW_RENDER_H__
 
 #include "view_item.h"
-#include "../driver/Adafruit_ssd1306syp/Adafruit_ssd1306syp.h"
+#include "Adafruit_ssd1306syp.h"
 
 
 #define	X_SIZE_FONT						(5)

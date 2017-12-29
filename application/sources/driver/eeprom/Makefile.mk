@@ -1,4 +1,5 @@
-CPPFLAGS += -I./sources/driver/epprom
+CFLAGS += -I./sources/driver/eeprom
+CPPFLAGS += -I./sources/driver/eeprom
 
 VPATH += sources/driver/eeprom
 

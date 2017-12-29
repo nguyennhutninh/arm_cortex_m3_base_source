@@ -44,8 +44,8 @@
 #include "usb_istr.h"
 #include "usb_pwr.h"
 
-#include "../sys/sys_dbg.h"
-#include "../sys/sys_irq.h"
+#include "sys_dbg.h"
+#include "sys_irq.h"
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/

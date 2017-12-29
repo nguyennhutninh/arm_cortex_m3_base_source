@@ -8,22 +8,22 @@
 #include <stdint.h>
 #include <stdlib.h>
 
-#include "../ak/ak.h"
-#include "../ak/task.h"
-#include "../ak/timer.h"
-#include "../ak/message.h"
+#include "ak.h"
+#include "task.h"
+#include "timer.h"
+#include "message.h"
 
-#include "../common/cmd_line.h"
-#include "../common/utils.h"
-#include "../common/xprintf.h"
-#include "../common/view_render.h"
+#include "cmd_line.h"
+#include "utils.h"
+#include "xprintf.h"
+#include "view_render.h"
 
-#include "../sys/sys_ctrl.h"
-#include "../sys/sys_io.h"
-#include "../sys/sys_dbg.h"
-#include "../sys/sys_irq.h"
-#include "../sys/sys_svc.h"
-#include "../sys/sys_arduino.h"
+#include "sys_ctrl.h"
+#include "sys_io.h"
+#include "sys_dbg.h"
+#include "sys_irq.h"
+#include "sys_svc.h"
+#include "sys_arduino.h"
 
 #include "app.h"
 #include "app_if.h"
@@ -39,15 +39,15 @@
 #include "task_if.h"
 #include "task_life.h"
 
-#include "../driver/rtc/rtc.h"
-#include "../driver/led/led.h"
-#include "../driver/eeprom/eeprom.h"
-#include "../driver/Adafruit_ssd1306syp/Adafruit_ssd1306syp.h"
-#include "../driver/EmonLib/EmonLib.h"
-#include "../driver/ds1302/DS1302.h"
-#include "../driver/flash/flash.h"
-#include "../driver/hs1101/hs1101.h"
-#include "../driver/exor/exor.h"
+#include "rtc.h"
+#include "led.h"
+#include "eeprom.h"
+#include "Adafruit_ssd1306syp.h"
+#include "EmonLib.h"
+#include "DS1302.h"
+#include "flash.h"
+#include "hs1101.h"
+#include "exor.h"
 
 /*****************************************************************************/
 /*  local declare
@@ -167,11 +167,24 @@ int32_t shell_ver(uint8_t* argv) {
 	firmware_header_t firmware_header;
 	sys_ctrl_get_firmware_info(&firmware_header);
 
-	LOGIN_PRINT("kernel version: %s\n", AK_VERSION);
-	LOGIN_PRINT("app version: %s\n", app_version);
-	LOGIN_PRINT("firmware checksum: %04x\n", firmware_header.checksum);
-	LOGIN_PRINT("firmware length: %d\n", firmware_header.bin_len);
+	LOGIN_PRINT("Kernel version: %s\n", AK_VERSION);
+	LOGIN_PRINT("App version: %s\n", app_version);
+	LOGIN_PRINT("Firmware checksum: %04x\n", firmware_header.checksum);
+	LOGIN_PRINT("Firmware length: %d\n", firmware_header.bin_len);
 
+	LOGIN_PRINT("\nSystem information:\n");
+	LOGIN_PRINT("\tFLASH used:\t%d bytes\n", system_info.flash_used);
+	LOGIN_PRINT("\tSRAM used:\t%d bytes\n", system_info.ram_used);
+	LOGIN_PRINT("\t\tdata init size:\t\t%d bytes\n", system_info.data_init_size);
+	LOGIN_PRINT("\t\tdata non_init size:\t%d bytes\n", system_info.data_non_init_size);
+	LOGIN_PRINT("\t\tstack avail:\t\t%d bytes\n", system_info.stack_avail);
+	LOGIN_PRINT("\t\theap avail:\t\t%d bytes\n", system_info.heap_avail);
+	LOGIN_PRINT("\t\tother:\t\t\t%d bytes\n", system_info.ram_other);
+	LOGIN_PRINT("\n");
+	LOGIN_PRINT("\tcpu clock:\t%d Hz\n", system_info.cpu_clock);
+	LOGIN_PRINT("\ttime tick:\t%d ms\n", system_info.tick);
+	LOGIN_PRINT("\tconsole:\t%d bps\n", system_info.console_baudrate);
+	LOGIN_PRINT("\n\n");
 	return 0;
 }
 
@@ -538,7 +551,7 @@ int32_t shell_lcd(uint8_t* argv) {
 	return 0;
 }
 
-#include "../networks/rf_protocols/rf24/hal/hal_nrf.h"
+#include "hal_nrf.h"
 
 int32_t shell_dbg(uint8_t* argv) {
 	(void)(argv);
@@ -665,7 +678,7 @@ int32_t shell_ram(uint8_t* argv) {
 	}
 		break;
 
-	case 'd': {
+	case 'd': { /* ram d 0x20000000 0x20004000 */
 		if (len == 4) {
 			str_start_addr	= str_parser_get_attr(2);
 			str_stop_addr	= str_parser_get_attr(3);

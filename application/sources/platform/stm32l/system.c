@@ -20,17 +20,17 @@
 #include "usb_istr.h"
 #endif
 
-#include "../../sys/sys_dbg.h"
-#include "../../sys/sys_ctrl.h"
-#include "../../sys/sys_irq.h"
-#include "../../sys/sys_boot.h"
-#include "../../sys/sys_svc.h"
+#include "sys_dbg.h"
+#include "sys_ctrl.h"
+#include "sys_irq.h"
+#include "sys_boot.h"
+#include "sys_svc.h"
 
-#include "../../ak/ak.h"
-#include "../../ak/message.h"
-#include "../../ak/timer.h"
+#include "ak.h"
+#include "message.h"
+#include "timer.h"
 
-#include "../../app/app.h"
+#include "app.h"
 
 /*****************************************************************************/
 /* linker variable                                                           */

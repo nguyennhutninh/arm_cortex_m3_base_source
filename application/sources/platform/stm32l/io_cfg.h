@@ -21,8 +21,7 @@ extern "C"
 #include "core_cm3.h"
 #include "core_cmFunc.h"
 
-#include "../driver/rtc/rtc.h"
-#include "../driver/eeprom/eeprom.h"
+#include "rtc.h"
 
 #if defined(USING_USB_MOD)
 #include "hw_config.h"

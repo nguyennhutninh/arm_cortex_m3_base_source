@@ -7,27 +7,26 @@
 #include "sys_dbg.h"
 #include "sys_ctrl.h"
 
-#include "../ak/ak.h"
+#include "ak.h"
 
-#include "../driver/eeprom/eeprom.h"
-#include "../driver/flash/flash.h"
+#include "flash.h"
 
-#include "../app/app_eeprom.h"
-#include "../app/app_flash.h"
+#include "app_eeprom.h"
+#include "app_flash.h"
 
-#include "../common/utils.h"
+#include "utils.h"
 
 #include "sys_irq.h"
 #include "sys_svc.h"
 
 #if defined(STM32L_PLATFORM)
-#include "../common/xprintf.h"
-#include "../platform/stm32l/io_cfg.h"
-#include "../platform/stm32l/sys_cfg.h"
+#include "xprintf.h"
+#include "io_cfg.h"
+#include "sys_cfg.h"
 #elif defined(STM32F10X_PLATFORM)
-#include "../common/xprintf.h"
-#include "../platform/stm32f10x/io_cfg.h"
-#include "../platform/stm32f10x/sys_cfg.h"
+#include "xprintf.h"
+#include "io_cfg.h"
+#include "sys_cfg.h"
 #else
 #error Please choose platform for kernel.
 #endif

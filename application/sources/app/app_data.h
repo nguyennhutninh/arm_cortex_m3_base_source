@@ -2,7 +2,7 @@
 #define __APP_DATA_H__
 #include <stdint.h>
 
-#include "../sys/sys_boot.h"
+#include "sys_boot.h"
 
 #include "app.h"
 

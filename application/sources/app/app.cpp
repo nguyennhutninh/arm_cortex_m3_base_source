@@ -6,16 +6,16 @@
 **/
 
 /* kernel include */
-#include "../ak/ak.h"
-#include "../ak/message.h"
-#include "../ak/timer.h"
-#include "../ak/fsm.h"
+#include "ak.h"
+#include "message.h"
+#include "timer.h"
+#include "fsm.h"
 
 /* driver include */
-#include "../driver/led/led.h"
-#include "../driver/button/button.h"
-#include "../driver/flash/flash.h"
-#include "../driver/hs1101/hs1101.h"
+#include "led.h"
+#include "button.h"
+#include "flash.h"
+#include "hs1101.h"
 
 /* app include */
 #include "app.h"
@@ -31,18 +31,19 @@
 #include "task_rf24_if.h"
 
 /* sys include */
-#include "../sys/sys_boot.h"
-#include "../sys/sys_irq.h"
-#include "../sys/sys_io.h"
-#include "../sys/sys_ctrl.h"
-#include "../sys/sys_dbg.h"
+#include "sys_boot.h"
+#include "sys_irq.h"
+#include "sys_io.h"
+#include "sys_ctrl.h"
+#include "sys_dbg.h"
 
 /* arduino include */
 #include "SPI.h"
+#include "WString.h"
 
 /* common include */
-#include "../common/utils.h"
-#include "../common/screen_manager.h"
+#include "utils.h"
+#include "screen_manager.h"
 
 const char* app_version = APP_VER;
 

@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 #include "fifo.h"
-#include "../sys/sys_dbg.h"
+#include "sys_dbg.h"
 
 
 void fifo_init(fifo_t* fifo, memcpy_f memcpy, void* buffer, uint32_t buffer_size, uint32_t element_size) {

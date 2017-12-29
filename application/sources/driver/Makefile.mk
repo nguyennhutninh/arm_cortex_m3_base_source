@@ -17,3 +17,5 @@
 -include sources/driver/SHT1x/Makefile.mk
 -include sources/driver/thermistor/Makefile.mk
 -include sources/driver/Ethernet/Makefile.mk
+-include sources/driver/hs1101/Makefile.mk
+-include sources/driver/eeprom/Makefile.mk

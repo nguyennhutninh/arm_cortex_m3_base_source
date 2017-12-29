@@ -22,8 +22,9 @@ typedef struct {
 	uint32_t ram_used;
 	uint32_t data_init_size;
 	uint32_t data_non_init_size;
-	uint32_t stack_size;
-	uint32_t heap_size;
+	uint32_t stack_avail;
+	uint32_t heap_avail;
+	uint32_t ram_other;
 } system_info_t;
 
 extern system_info_t system_info;

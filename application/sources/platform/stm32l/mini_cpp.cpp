@@ -1,6 +1,6 @@
 #include <cstdlib>
 #include <sys/types.h>
-#include "../../sys/sys_dbg.h"
+#include "sys_dbg.h"
 
 /*
  * The default pulls in 70K of garbage

@@ -1,8 +1,9 @@
 #ifndef __HS1101_H__
 #define __HS1101_H__
 
-#if defined (__cplusplus)
-extern "C" {
+#ifdef __cplusplus
+extern "C"
+{
 #endif
 
 #include <stdint.h>

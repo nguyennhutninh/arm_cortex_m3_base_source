@@ -1,4 +1,5 @@
 CFLAGS += -I./sources/driver/fuzzy_logic
+CPPFLAGS += -I./sources/driver/fuzzy_logic
 
 VPATH += sources/driver/fuzzy_logic
 

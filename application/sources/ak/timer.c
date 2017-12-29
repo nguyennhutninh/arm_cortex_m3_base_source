@@ -8,8 +8,8 @@
 
 #include "timer.h"
 
-#include "../sys/sys_dbg.h"
-#include "../app/task_list.h"
+#include "sys_dbg.h"
+#include "task_list.h"
 
 /* define message data is transfered between interrupt heart beat and timer task */
 struct ak_timer_payload_irq_t {

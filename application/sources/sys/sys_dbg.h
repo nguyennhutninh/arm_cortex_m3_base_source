@@ -14,30 +14,12 @@ extern "C"
 
 #include <stdint.h>
 
-#include "../ak/task.h"
-#include "../ak/message.h"
+#include "task.h"
+#include "message.h"
 #include "sys_svc.h"
 
-#if defined(TIVA_PLATFORM)
-#include <stdbool.h>
-#include <stdint.h>
-#include "../platform/tiva/utils/uartstdio.h"
-
-#if defined(SYS_DBG_EN)
-#define SYS_DBG(fmt, ...)       UARTprintf((const char*)fmt, ##__VA_ARGS__)
-#else
-#define SYS_DBG(fmt, ...)
-#endif
-
-#if defined(SYS_PRINT_EN)
-#define SYS_PRINT(fmt, ...)       UARTprintf((const char*)fmt, ##__VA_ARGS__)
-#else
-#define SYS_PRINT(fmt, ...)
-#endif
-#endif
-
 #if defined(STM32L_PLATFORM)
-#include "../common/xprintf.h"
+#include "xprintf.h"
 
 #if defined(SYS_DBG_EN)
 #define SYS_DBG(fmt, ...)       xprintf((const char*)fmt, ##__VA_ARGS__)
@@ -53,7 +35,7 @@ extern "C"
 #endif
 
 #if defined(STM32F10X_PLATFORM)
-#include "../common/xprintf.h"
+#include "xprintf.h"
 
 #if defined(SYS_DBG_EN)
 #define SYS_DBG(fmt, ...)       xprintf((const char*)fmt, ##__VA_ARGS__)

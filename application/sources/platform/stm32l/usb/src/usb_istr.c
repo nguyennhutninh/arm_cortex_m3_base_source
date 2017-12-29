@@ -37,9 +37,9 @@
 
 
 /* Includes ------------------------------------------------------------------*/
-#include "../sys/sys_ctrl.h"
-#include "../sys/sys_dbg.h"
-#include "../sys/sys_io.h"
+#include "sys_ctrl.h"
+#include "sys_dbg.h"
+#include "sys_io.h"
 
 #include "usb_lib.h"
 #include "usb_prop.h"

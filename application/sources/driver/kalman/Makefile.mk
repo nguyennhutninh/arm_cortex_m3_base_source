@@ -1,4 +1,5 @@
 CFLAGS += -I./sources/driver/kalman
+CPPFLAGS += -I./sources/driver/kalman
 
 VPATH += sources/driver/kalman
 

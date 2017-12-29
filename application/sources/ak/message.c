@@ -10,8 +10,8 @@
 #include "message.h"
 #include "task.h"
 
-#include "../common/utils.h"
-#include "../sys/sys_dbg.h"
+#include "utils.h"
+#include "sys_dbg.h"
 
 /* common pool memory */
 static ak_msg_common_t    msg_common_pool[AK_COMMON_MSG_POOL_SIZE];

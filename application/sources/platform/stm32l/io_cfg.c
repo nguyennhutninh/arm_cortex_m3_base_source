@@ -12,11 +12,13 @@
 #include "io_cfg.h"
 #include "stm32l.h"
 
-#include "../sys/sys_dbg.h"
-#include "../sys/sys_ctrl.h"
+#include "sys_dbg.h"
+#include "sys_ctrl.h"
 
-#include "../common/utils.h"
-#include "../app/app_dbg.h"
+#include "utils.h"
+#include "app_dbg.h"
+
+#include "eeprom.h"
 
 #include "system.h"
 

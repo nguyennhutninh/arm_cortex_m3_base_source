@@ -1,17 +1,17 @@
 #if (ARDUINO >= 100)
 #include <Arduino.h>
 #elif defined (STM32L_PLATFORM)
-#include "../platform/stm32l/arduino/cores/Arduino.h"
-#include "../platform/stm32l/io_cfg.h"
+#include "Arduino.h"
+#include "io_cfg.h"
 #else
 #include <WProgram.h>
 #endif
 
 #include "thermistor.h"
-#include "../driver/kalman/kalman.h"
+#include "kalman.h"
 
 #if defined(THERMISTOR_DEBUG_EN)
-#include "../../app/app_dbg.h"
+#include "app_dbg.h"
 #endif
 
 // Temperature for nominal resistance (almost always 25 C)

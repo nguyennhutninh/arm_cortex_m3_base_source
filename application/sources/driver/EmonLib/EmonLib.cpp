@@ -11,7 +11,7 @@
 
 //#include "WProgram.h" un-comment for use on older versions of Arduino IDE
 #include "EmonLib.h"
-#include "../sys/sys_dbg.h"
+#include "sys_dbg.h"
 
 //--------------------------------------------------------------------------------------
 // Sets the pins to be used for voltage and current sensors

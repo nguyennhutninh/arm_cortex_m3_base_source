@@ -1,7 +1,7 @@
 #ifndef __TASK_LIFE__
 #define __TASK_LIFE__
 
-#include "../driver/led/led.h"
+#include "led.h"
 
 extern led_t led_life;
 

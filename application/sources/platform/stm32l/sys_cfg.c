@@ -17,14 +17,14 @@
 #include "core_cm3.h"
 #include "core_cmFunc.h"
 
-#include "../../common/xprintf.h"
+#include "xprintf.h"
 
-#include "../../sys/sys_dbg.h"
-#include "../../sys/sys_def.h"
-#include "../../sys/sys_ctrl.h"
-#include "../../sys/sys_io.h"
-#include "../../sys/sys_dbg.h"
-#include "../../ak/ak.h"
+#include "sys_dbg.h"
+#include "sys_def.h"
+#include "sys_ctrl.h"
+#include "sys_io.h"
+#include "sys_dbg.h"
+#include "ak.h"
 
 /* Private define */
 static uint32_t delay_coeficient = 0;
@@ -155,11 +155,12 @@ void sys_cfg_update_info() {
 	system_info.tick      = 1;
 	system_info.console_baudrate = SYS_CONSOLE_BAUDRATE;
 	system_info.flash_used = ((uint32_t)&_end_flash - (uint32_t)&_start_flash) + ((uint32_t)&_edata - (uint32_t)&_data);
-	system_info.ram_used = (uint32_t)&_end_ram - (uint32_t)&_start_ram;
+	system_info.ram_used = (uint32_t)&_estack - (uint32_t)&_start_ram;
 	system_info.data_init_size = (uint32_t)&_edata - (uint32_t)&_data;
 	system_info.data_non_init_size = (uint32_t)&_ebss - (uint32_t)&_bss;
-	system_info.stack_size = (uint32_t)&_estack - (uint32_t)&_end_ram;
-	system_info.heap_size = (uint32_t)&__heap_end__ - (uint32_t)&__heap_start__;
+	system_info.stack_avail = (uint32_t)&_estack - (uint32_t)&_end_ram;
+	system_info.heap_avail = (uint32_t)&__heap_end__ - (uint32_t)&__heap_start__;
+	system_info.ram_other = system_info.ram_used - (system_info.heap_avail + system_info.stack_avail + system_info.data_non_init_size + system_info.data_init_size);
 
 	delay_coeficient = system_info.cpu_clock /1000000;
 
@@ -179,8 +180,9 @@ void sys_cfg_update_info() {
 	SYS_PRINT("\tSRAM used:\t%d bytes\n", system_info.ram_used);
 	SYS_PRINT("\t\tdata init size:\t\t%d bytes\n", system_info.data_init_size);
 	SYS_PRINT("\t\tdata non_init size:\t%d bytes\n", system_info.data_non_init_size);
-	SYS_PRINT("\t\tstack size:\t\t%d bytes\n", system_info.stack_size);
-	SYS_PRINT("\t\theap size:\t\t%d bytes\n", system_info.heap_size);
+	SYS_PRINT("\t\tstack avail:\t\t%d bytes\n", system_info.stack_avail);
+	SYS_PRINT("\t\theap avail:\t\t%d bytes\n", system_info.heap_avail);
+	SYS_PRINT("\t\tother:\t\t\t%d bytes\n", system_info.ram_other);
 	SYS_PRINT("\n");
 	SYS_PRINT("\tcpu clock:\t%d Hz\n", system_info.cpu_clock);
 	SYS_PRINT("\ttime tick:\t%d ms\n", system_info.tick);
