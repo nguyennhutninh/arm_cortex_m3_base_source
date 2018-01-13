@@ -13,19 +13,20 @@ GCC_PATH	= /home/thannt/workspace/tools/gcc-arm-none-eabi-5_4-2016q3
 OPENOCD_PATH	= /home/thannt/workspace/tools/openocd
 
 # Include sources file
--include sources/ak/Makefile.mk
--include sources/app/Makefile.mk
--include sources/common/Makefile.mk
--include sources/driver/Makefile.mk
--include sources/sys/Makefile.mk
--include sources/networks/Makefile.mk
--include sources/platform/stm32l/Makefile.mk
+include sources/ak/Makefile.mk
+include sources/app/Makefile.mk
+include sources/common/Makefile.mk
+include sources/driver/Makefile.mk
+include sources/sys/Makefile.mk
+include sources/networks/Makefile.mk
+include sources/platform/stm32l/Makefile.mk
 
 # App start address, that need sync with declare in linker file and interrupt vector table.
-APP_ADDR = -DAPP_START_ADDR=0x08003000
+APP_START_ADDR_VAL = 0x08003000
+APP_ADDR_OPTION = -DAPP_START_ADDR=$(APP_START_ADDR_VAL)
 
 # App maximum stack size
-APP_STACK_SIZE = 256
+APP_STACK_SIZE = 720
 
 # Define console baudrate, that is used to configure UART.
 SYS_CONSOLE_BAUDRATE = 115200
@@ -115,7 +116,7 @@ CFLAGS +=	-mthumb			\
 		$(OPTIMIZE_OPTION)	\
 		$(RELEASE_OPTION)	\
 		$(LOG_AK_KERNEL_ENABLE)	\
-		$(APP_ADDR)		\
+		$(APP_ADDR_OPTION)	\
 		$(USB_OPTION)		\
 		-DUSE_STDPERIPH_DRIVER	\
 		-DSTM32L1XX_MD		\
@@ -123,9 +124,9 @@ CFLAGS +=	-mthumb			\
 		-DLOGIN_PRINT_EN	\
 		-DSYS_PRINT_EN		\
 		-DSYS_DBG_EN		\
-		-DAPP_DBG_EN		\
-		-DAPP_PRINT_EN		\
-		-DAPP_DBG_SIG_EN	\
+		-UAPP_DBG_EN		\
+		-UAPP_PRINT_EN		\
+		-UAPP_DBG_SIG_EN	\
 
 # C++ compiler flags
 CPPFLAGS += 	-mthumb			\
@@ -147,13 +148,13 @@ CPPFLAGS += 	-mthumb			\
 		$(OPTIMIZE_OPTION)	\
 		$(RELEASE_OPTION)	\
 		$(LOG_AK_KERNEL_ENABLE)	\
-		$(APP_ADDR)		\
+		$(APP_ADDR_OPTION)	\
 		$(USB_OPTION)		\
 		-DUSE_STDPERIPH_DRIVER	\
 		-DSTM32L1XX_MD		\
 		-DSTM32L_PLATFORM	\
 		-DLOGIN_PRINT_EN	\
-		-DSYS_PRINT_EN		\
+		-USYS_PRINT_EN		\
 		-USYS_DBG_EN		\
 		-UAPP_DBG_EN		\
 		-UAPP_PRINT_EN		\
@@ -192,14 +193,16 @@ $(OBJECTS_DIR)/%.o: %.s
 	$(Print) CC $@
 	@$(CC) $(AFLAGS) -o $@ -c $<
 
+.PHONY: flash
 flash: 	all
 	$(Print) BURNING $(TARGET:.axf=.bin) to target
 ifeq ($(st_flash),yes)
-	@st-flash write $(TARGET:.axf=.bin) 0x08003000
+	st-flash write $(TARGET:.axf=.bin) $(APP_START_ADDR_VAL)
 else
-	@ak_flash /dev/ac_mod_com $(TARGET:.axf=.bin) 0x08003000
+	ak_flash /dev/ac_mod_com $(TARGET:.axf=.bin) $(APP_START_ADDR_VAL)
 endif
 
+.PHONY: debug
 debug:	all
 	xterm -e openocd -f $(OPENOCD_PATH)/tcl/board/stm32ldiscovery.cfg &
 ifeq ($(gdb),ddd)
@@ -210,9 +213,11 @@ else
 	$(ARM_GDB) --command=stm32l_init.gdb $(TARGET)
 endif
 
+.PHONY: com
 com:
 	minicom -D /dev/ac_mod_com -b $(SYS_CONSOLE_BAUDRATE)
 
+.PHONY: clean
 clean:
 	$(Print) CLEAN $(OBJECTS_DIR) folder
 	@rm -rf $(OBJECTS_DIR)

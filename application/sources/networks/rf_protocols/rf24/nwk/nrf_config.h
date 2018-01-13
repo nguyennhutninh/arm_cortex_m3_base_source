@@ -1,7 +1,8 @@
 #ifndef __NRF_CONFIG_H__
 #define __NRF_CONFIG_H__
 
-#define MAX_NWK_MSG_LEN					256
+#define NRF_NWK_MSG_POOL_SIZE			3
+#define NRF_NWK_MSG_MAX_LEN				256
 
 #define NRF_PHY_CHANEL_CFG				120
 

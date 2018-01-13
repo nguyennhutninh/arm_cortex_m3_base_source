@@ -15,7 +15,7 @@ VPATH += sources/platform/stm32l
 VPATH += sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/src
 
 # C source files
-SOURCES += sources/platform/stm32l/stm32l.c
+SOURCES += sources/platform/stm32l/platform.c
 SOURCES += sources/platform/stm32l/system.c
 SOURCES += sources/platform/stm32l/sys_cfg.c
 SOURCES += sources/platform/stm32l/io_cfg.c

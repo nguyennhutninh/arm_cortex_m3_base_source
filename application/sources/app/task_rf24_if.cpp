@@ -35,7 +35,7 @@ void task_rf24_if(ak_msg_t* msg) {
 		FSM(&nrf_nwk_fsm, nrf_nwk_fsm_init);
 
 		/* post message init network request */
-		task_post_pure_msg(RF24_NWK_ID, RF24_NWK_INIT);
+		task_post_pure_msg(AC_RF24_NWK_ID, AC_RF24_NWK_INIT);
 	}
 		break;
 
@@ -45,8 +45,8 @@ void task_rf24_if(ak_msg_t* msg) {
 
 		/* forward message to nwk layer */
 		msg_inc_ref_count(msg);
-		set_msg_sig(msg, RF24_NWK_PURE_MSG_OUT);
-		task_post(RF24_NWK_ID, msg);
+		set_msg_sig(msg, AC_RF24_NWK_PURE_MSG_OUT);
+		task_post(AC_RF24_NWK_ID, msg);
 	}
 		break;
 
@@ -56,8 +56,8 @@ void task_rf24_if(ak_msg_t* msg) {
 
 		/* forward message to nwk layer */
 		msg_inc_ref_count(msg);
-		set_msg_sig(msg, RF24_NWK_COMMON_MSG_OUT);
-		task_post(RF24_NWK_ID, msg);
+		set_msg_sig(msg, AC_RF24_NWK_COMMON_MSG_OUT);
+		task_post(AC_RF24_NWK_ID, msg);
 	}
 		break;
 

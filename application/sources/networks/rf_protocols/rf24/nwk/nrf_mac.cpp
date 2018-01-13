@@ -88,8 +88,8 @@ static uint8_t calc_frame_cs(uint8_t*, uint16_t);
 void task_rf24_mac(ak_msg_t* msg) {
 	switch (msg->sig) {
 
-	case RF24_MAC_INIT: {
-		APP_DBG_SIG("RF24_MAC_INIT\n");
+	case AC_RF24_MAC_INIT: {
+		APP_DBG_SIG("AC_RF24_MAC_INIT\n");
 
 		/* init sending nwk_frame FIFO */
 		fifo_init(&nwk_pdu_id_fifo, memcpy, nwk_pdu_id_buf, NWK_PDU_ID_FIFO_SIZE, sizeof(uint32_t));
@@ -104,15 +104,15 @@ void task_rf24_mac(ak_msg_t* msg) {
 	}
 		break;
 
-	case RF24_MAC_HANDLE_MSG_OUT: {
-		APP_DBG_SIG("RF24_MAC_HANDLE_MSG_OUT\n");
+	case AC_RF24_MAC_HANDLE_MSG_OUT: {
+		APP_DBG_SIG("AC_RF24_MAC_HANDLE_MSG_OUT\n");
 		uint32_t st_nwk_pdu_id;
 		memcpy(&st_nwk_pdu_id, get_data_common_msg(msg), sizeof(uint32_t));
 
 		if (get_mac_send_state() == MAC_SEND_STATE_SENDING ||
 				get_mac_rev_state() == MAC_REV_STATE_RECEIVING) {
 			if (fifo_is_full(&nwk_pdu_id_fifo)) {
-				task_post_common_msg(RF24_NWK_ID, RF24_NWK_SEND_MSG_ERR_BUSY, (uint8_t*)&st_nwk_pdu_id, sizeof(uint32_t));
+				task_post_common_msg(AC_RF24_NWK_ID, AC_RF24_NWK_SEND_MSG_ERR_BUSY, (uint8_t*)&st_nwk_pdu_id, sizeof(uint32_t));
 			}
 			else {
 				fifo_put(&nwk_pdu_id_fifo, (uint8_t*)&st_nwk_pdu_id);
@@ -132,13 +132,13 @@ void task_rf24_mac(ak_msg_t* msg) {
 			sending_nrf_nwk_frame_retry_counter = 0;
 			sending_mac_frame_retry_counter = 0;
 			set_mac_send_state(MAC_SEND_STATE_SENDING);
-			task_post_pure_msg(RF24_MAC_ID, RF24_MAC_SEND_FRAME);
+			task_post_pure_msg(AC_RF24_MAC_ID, AC_RF24_MAC_SEND_FRAME);
 		}
 	}
 		break;
 
-	case RF24_MAC_SEND_FRAME: {
-		APP_DBG_SIG("RF24_MAC_SEND_FRAME\n");
+	case AC_RF24_MAC_SEND_FRAME: {
+		APP_DBG_SIG("AC_RF24_MAC_SEND_FRAME\n");
 		if (get_mac_send_state() == MAC_SEND_STATE_SENDING) {
 			APP_DBG("[MAC] [SF] sma:0x%X ms:%d fn:%d fs:%d\n", sending_nrf_mac_frame.hdr.src_mac_addr, \
 					sending_nrf_mac_frame.hdr.mac_seq, \
@@ -148,43 +148,43 @@ void task_rf24_mac(ak_msg_t* msg) {
 			/* div nwk_frame and post mac frame to physic layer */
 			memcpy(sending_nrf_mac_frame.payload, (sending_nrf_nwk_frame->payload + (sending_nrf_mac_frame.hdr.frame_seq * MAX_MAC_PAYLOAD_LEN)), MAX_MAC_PAYLOAD_LEN);
 			sending_nrf_mac_frame.frame_cs = calc_frame_cs(sending_nrf_mac_frame.payload, MAX_MAC_PAYLOAD_LEN);
-			task_post_common_msg(RF24_PHY_ID, RF24_PHY_SEND_FRAME_REQ, (uint8_t*)&sending_nrf_mac_frame, sizeof(nrf_mac_msg_t));
+			task_post_common_msg(AC_RF24_PHY_ID, AC_RF24_PHY_SEND_FRAME_REQ, (uint8_t*)&sending_nrf_mac_frame, sizeof(nrf_mac_msg_t));
 		}
 	}
 		break;
 
-	case RF24_MAC_SEND_FRAME_DONE: {
-		APP_DBG_SIG("RF24_MAC_SEND_FRAME_DONE\n");
+	case AC_RF24_MAC_SEND_FRAME_DONE: {
+		APP_DBG_SIG("AC_RF24_MAC_SEND_FRAME_DONE\n");
 		if (get_mac_send_state() == MAC_SEND_STATE_SENDING) {
 			/* reset mac_frame retry counter */
 			sending_mac_frame_retry_counter = 0;
 
 			if (sending_nrf_mac_frame.hdr.frame_seq == (sending_nrf_mac_frame.hdr.frame_num - 1)) { /* send completed */
 				uint32_t nwk_pdu_id = sending_nrf_nwk_frame->id;
-				task_post_common_msg(RF24_NWK_ID, RF24_NWK_SEND_MSG_DONE, (uint8_t*)&nwk_pdu_id, sizeof(uint32_t));
+				task_post_common_msg(AC_RF24_NWK_ID, AC_RF24_NWK_SEND_MSG_DONE, (uint8_t*)&nwk_pdu_id, sizeof(uint32_t));
 
 				set_mac_send_state(MAC_SEND_STATE_IDLE);
 
 				if (fifo_availble(&nwk_pdu_id_fifo)) {
 					uint32_t get_pdu_id;
 					fifo_get(&nwk_pdu_id_fifo, &get_pdu_id);
-					task_post_common_msg(RF24_MAC_ID, RF24_MAC_HANDLE_MSG_OUT, (uint8_t*)&get_pdu_id, sizeof(uint32_t));
+					task_post_common_msg(AC_RF24_MAC_ID, AC_RF24_MAC_HANDLE_MSG_OUT, (uint8_t*)&get_pdu_id, sizeof(uint32_t));
 				}
 			}
 			else { /* send next frame */
 				sending_nrf_mac_frame.hdr.frame_seq++;
-				task_post_pure_msg(RF24_MAC_ID, RF24_MAC_SEND_FRAME);
+				task_post_pure_msg(AC_RF24_MAC_ID, AC_RF24_MAC_SEND_FRAME);
 			}
 		}
 	}
 		break;
 
-	case RF24_MAC_SEND_FRAME_ERR: {
-		APP_DBG_SIG("RF24_MAC_SEND_FRAME_ERR\n");
+	case AC_RF24_MAC_SEND_FRAME_ERR: {
+		APP_DBG_SIG("AC_RF24_MAC_SEND_FRAME_ERR\n");
 		if (get_mac_send_state() == MAC_SEND_STATE_SENDING) {
 			if (sending_mac_frame_retry_counter++ < SENDING_MAC_FRAME_RETRY_COUNTER_MAX) {
 				/* mac frame retry */
-				timer_set(RF24_MAC_ID, RF24_MAC_SEND_FRAME, SENDING_MAC_FRAME_RETRY_INTERVAL, TIMER_ONE_SHOT);
+				timer_set(AC_RF24_MAC_ID, AC_RF24_MAC_SEND_FRAME, SENDING_MAC_FRAME_RETRY_INTERVAL, TIMER_ONE_SHOT);
 			}
 			else {
 				sending_mac_frame_retry_counter = 0;
@@ -194,19 +194,19 @@ void task_rf24_mac(ak_msg_t* msg) {
 					sending_mac_sequence++;
 					sending_nrf_mac_frame.hdr.frame_seq = 0;
 					sending_nrf_mac_frame.hdr.mac_seq = sending_mac_sequence;
-					timer_set(RF24_MAC_ID, RF24_MAC_SEND_FRAME, SENDING_NRF_NWK_FRAME_RETRY_INTERVAL, TIMER_ONE_SHOT);
+					timer_set(AC_RF24_MAC_ID, AC_RF24_MAC_SEND_FRAME, SENDING_NRF_NWK_FRAME_RETRY_INTERVAL, TIMER_ONE_SHOT);
 				}
 				else {
 					sending_nrf_nwk_frame_retry_counter = 0;
 					set_mac_send_state(MAC_SEND_STATE_IDLE);
 
 					uint32_t nwk_pdu_id = sending_nrf_nwk_frame->id;
-					task_post_common_msg(RF24_NWK_ID, RF24_NWK_SEND_MSG_ERR_SDF, (uint8_t*)&nwk_pdu_id, sizeof(uint32_t));
+					task_post_common_msg(AC_RF24_NWK_ID, AC_RF24_NWK_SEND_MSG_ERR_SDF, (uint8_t*)&nwk_pdu_id, sizeof(uint32_t));
 
 					if (fifo_availble(&nwk_pdu_id_fifo)) {
 						uint32_t get_pdu_id;
 						fifo_get(&nwk_pdu_id_fifo, &get_pdu_id);
-						task_post_common_msg(RF24_MAC_ID, RF24_MAC_HANDLE_MSG_OUT, (uint8_t*)&get_pdu_id, sizeof(uint32_t));
+						task_post_common_msg(AC_RF24_MAC_ID, AC_RF24_MAC_HANDLE_MSG_OUT, (uint8_t*)&get_pdu_id, sizeof(uint32_t));
 					}
 				}
 			}
@@ -214,8 +214,8 @@ void task_rf24_mac(ak_msg_t* msg) {
 	}
 		break;
 
-	case RF24_MAC_RECV_FRAME: {
-		APP_DBG_SIG("RF24_MAC_RECV_FRAME\n");
+	case AC_RF24_MAC_RECV_FRAME: {
+		APP_DBG_SIG("AC_RF24_MAC_RECV_FRAME\n");
 		nrf_mac_msg_t* st_nrf_mac_msg = (nrf_mac_msg_t*)get_data_common_msg(msg);
 		APP_DBG("[MAC] [RF] sma:0x%X ms:%d fn:%d fs:%d\trms:%d\n", st_nrf_mac_msg->hdr.src_mac_addr, \
 				st_nrf_mac_msg->hdr.mac_seq, \
@@ -243,24 +243,24 @@ void task_rf24_mac(ak_msg_t* msg) {
 				if (st_nrf_mac_msg->hdr.frame_seq < st_nrf_mac_msg->hdr.frame_num) {
 					if (st_nrf_mac_msg->hdr.frame_seq == (st_nrf_mac_msg->hdr.frame_num - 1)) { /* receive last mac_frame */
 						/* clear receiving mac_frame TO and switch rev_state to idle in order to allready receiving new mac_frame */
-						timer_remove_attr(RF24_MAC_ID, RF24_MAC_RECV_FRAME_TO);
+						timer_remove_attr(AC_RF24_MAC_ID, AC_RF24_MAC_RECV_FRAME_TO);
 						set_mac_rev_state(MAC_REV_STATE_IDLE);
 					}
 					else {
-						timer_set(RF24_MAC_ID, RF24_MAC_RECV_FRAME_TO, REV_MAC_FRAME_TO_INTERVAL, TIMER_ONE_SHOT);
+						timer_set(AC_RF24_MAC_ID, AC_RF24_MAC_RECV_FRAME_TO, REV_MAC_FRAME_TO_INTERVAL, TIMER_ONE_SHOT);
 					}
 
 					msg_inc_ref_count(msg);
-					set_msg_sig(msg, RF24_MAC_HANDLE_MSG_IN);
-					task_post(RF24_MAC_ID, msg);
+					set_msg_sig(msg, AC_RF24_MAC_HANDLE_MSG_IN);
+					task_post(AC_RF24_MAC_ID, msg);
 				}
 			}
 		}
 	}
 		break;
 
-	case RF24_MAC_RECV_FRAME_TO: {
-		APP_DBG_SIG("RF24_MAC_RECV_FRAME_TO\n");
+	case AC_RF24_MAC_RECV_FRAME_TO: {
+		APP_DBG_SIG("AC_RF24_MAC_RECV_FRAME_TO\n");
 		if (get_mac_rev_state() == MAC_REV_STATE_RECEIVING) {
 			nrf_nwk_pdu_free(receiving_nrf_nwk_frame);
 			set_mac_rev_state(MAC_REV_STATE_IDLE);
@@ -268,14 +268,14 @@ void task_rf24_mac(ak_msg_t* msg) {
 	}
 		break;
 
-	case RF24_MAC_HANDLE_MSG_IN: {
-		APP_DBG_SIG("RF24_MAC_HANDLE_MSG_IN\n");
+	case AC_RF24_MAC_HANDLE_MSG_IN: {
+		APP_DBG_SIG("AC_RF24_MAC_HANDLE_MSG_IN\n");
 		nrf_mac_msg_t* receiving_nrf_mac_frame = (nrf_mac_msg_t*)get_data_common_msg(msg);
 		memcpy((receiving_nrf_nwk_frame->payload + (receiving_nrf_mac_frame->hdr.frame_seq * MAX_MAC_PAYLOAD_LEN)), receiving_nrf_mac_frame->payload, MAX_MAC_PAYLOAD_LEN);
 
 		if (receiving_nrf_mac_frame->hdr.frame_seq == (receiving_nrf_mac_frame->hdr.frame_num - 1)) {
 			uint32_t nwk_pdu_id = receiving_nrf_nwk_frame->id;
-			task_post_common_msg(RF24_NWK_ID, RF24_NWK_RECV_MSG, (uint8_t*)&nwk_pdu_id, sizeof(uint32_t));
+			task_post_common_msg(AC_RF24_NWK_ID, AC_RF24_NWK_RECV_MSG, (uint8_t*)&nwk_pdu_id, sizeof(uint32_t));
 		}
 	}
 		break;

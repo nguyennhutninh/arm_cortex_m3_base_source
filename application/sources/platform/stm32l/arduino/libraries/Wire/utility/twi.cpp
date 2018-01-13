@@ -180,7 +180,7 @@ uint8_t twi_readFrom(uint8_t address, uint8_t* data, uint8_t length, uint8_t sen
 	}
 
 	/* Send address for read */
-	I2C_Send7bitAddress(I2C1, address, I2C_Direction_Receiver);
+	I2C_Send7bitAddress(I2C1, address << 1, I2C_Direction_Receiver);
 	/* Test on EV6 and clear it */
 	while (!I2C_CheckEvent(I2C1, I2C_EVENT_MASTER_RECEIVER_MODE_SELECTED)) {
 		if(timeout-- == 0) return read;
@@ -252,7 +252,7 @@ uint8_t twi_writeTo(uint8_t address, uint8_t* data, uint8_t length, uint8_t wait
 	}
 
 	/* Send address for write */
-	I2C_Send7bitAddress(I2C1, address, I2C_Direction_Transmitter);
+	I2C_Send7bitAddress(I2C1, address << 1, I2C_Direction_Transmitter);
 	ret = 2;
 
 	/* Test on EV6 and clear it */

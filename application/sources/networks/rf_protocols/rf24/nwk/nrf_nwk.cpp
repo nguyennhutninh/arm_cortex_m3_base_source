@@ -19,7 +19,7 @@
 #include "nrf_mac.h"
 
 #define NWK_HDR_LEN						(sizeof(nrf_nwk_hdr_t))
-#define MAX_NWK_PAYLOAD_LEN				(MAX_NWK_MSG_LEN - NWK_HDR_LEN)
+#define MAX_NWK_PAYLOAD_LEN				(NRF_NWK_MSG_MAX_LEN - NWK_HDR_LEN)
 
 typedef struct {
 	uint16_t src_addr;
@@ -41,17 +41,17 @@ void task_rf24_nwk(ak_msg_t* msg) {
 
 void nrf_nwk_fsm_init(ak_msg_t* msg) {
 	switch (msg->sig) {
-	case RF24_NWK_INIT: {
-		APP_DBG_SIG("RF24_NWK_INIT\n");
+	case AC_RF24_NWK_INIT: {
+		APP_DBG_SIG("AC_RF24_NWK_INIT\n");
 
 		/* init network message pool */
 		nrf_nwk_pdu_init();
 
 		/* init physic layer */
-		task_post_pure_msg(RF24_PHY_ID, RF24_PHY_INIT);
+		task_post_pure_msg(AC_RF24_PHY_ID, AC_RF24_PHY_INIT);
 
 		/* init mac layer */
-		task_post_pure_msg(RF24_MAC_ID, RF24_MAC_INIT);
+		task_post_pure_msg(AC_RF24_MAC_ID, AC_RF24_MAC_INIT);
 
 		/* switch to idle state */
 		FSM_TRAN(&nrf_nwk_fsm, nrf_nwk_fsm_idle);
@@ -65,8 +65,8 @@ void nrf_nwk_fsm_init(ak_msg_t* msg) {
 
 void nrf_nwk_fsm_idle(ak_msg_t* msg) {
 	switch (msg->sig) {
-	case RF24_NWK_PURE_MSG_OUT: {
-		APP_DBG_SIG("RF24_NWK_PURE_MSG_OUT\n");
+	case AC_RF24_NWK_PURE_MSG_OUT: {
+		APP_DBG_SIG("AC_RF24_NWK_PURE_MSG_OUT\n");
 		ak_msg_pure_if_t if_msg;
 		if_msg.header.src_task_id = msg->if_src_task_id;
 		if_msg.header.des_task_id = msg->if_des_task_id;
@@ -81,14 +81,14 @@ void nrf_nwk_fsm_idle(ak_msg_t* msg) {
 			nrf_nwk_msg_t* st_nrf_nwk_msg = (nrf_nwk_msg_t*)(st_nrf_nwk_pdu->payload);
 			st_nrf_nwk_msg->hdr.src_addr = nrf_get_static_nwk_addr();
 			st_nrf_nwk_msg->hdr.des_addr = nrf_get_des_nwk_addr();
-			st_nrf_nwk_msg->hdr.type = RF24_PURE_MSG_TYPE;
+			st_nrf_nwk_msg->hdr.type = RF24_MSG_TYPE_PURE;
 			st_nrf_nwk_msg->hdr.payload_len = sizeof(ak_msg_pure_if_t);
 
 			memcpy(st_nrf_nwk_msg->payload, (uint8_t*)&if_msg, sizeof(ak_msg_pure_if_t));
 			st_nrf_nwk_pdu->len = sizeof(ak_msg_pure_if_t) + NWK_HDR_LEN;
 
 			uint32_t nwk_pdu_id = st_nrf_nwk_pdu->id;
-			task_post_common_msg(RF24_MAC_ID, RF24_MAC_HANDLE_MSG_OUT, (uint8_t*)&nwk_pdu_id, sizeof(uint32_t));
+			task_post_common_msg(AC_RF24_MAC_ID, AC_RF24_MAC_HANDLE_MSG_OUT, (uint8_t*)&nwk_pdu_id, sizeof(uint32_t));
 		}
 		else {
 			FATAL("NWK", 0x01);
@@ -96,8 +96,8 @@ void nrf_nwk_fsm_idle(ak_msg_t* msg) {
 	}
 		break;
 
-	case RF24_NWK_COMMON_MSG_OUT: {
-		APP_DBG_SIG("RF24_NWK_COMMON_MSG_OUT\n");
+	case AC_RF24_NWK_COMMON_MSG_OUT: {
+		APP_DBG_SIG("AC_RF24_NWK_COMMON_MSG_OUT\n");
 		ak_msg_common_if_t if_msg;
 		if_msg.header.src_task_id = msg->if_src_task_id;
 		if_msg.header.des_task_id = msg->if_des_task_id;
@@ -115,7 +115,7 @@ void nrf_nwk_fsm_idle(ak_msg_t* msg) {
 			nrf_nwk_msg_t* st_nrf_nwk_msg = (nrf_nwk_msg_t*)(st_nrf_nwk_pdu->payload);
 			st_nrf_nwk_msg->hdr.src_addr = nrf_get_static_nwk_addr();
 			st_nrf_nwk_msg->hdr.des_addr = nrf_get_des_nwk_addr();
-			st_nrf_nwk_msg->hdr.type = RF24_COMMON_MSG_TYPE;
+			st_nrf_nwk_msg->hdr.type = RF24_MSG_TYPE_COMMON;
 			st_nrf_nwk_msg->hdr.payload_len = sizeof(ak_msg_pure_if_t);
 			memcpy(st_nrf_nwk_msg->payload, (uint8_t*)&if_msg, sizeof(ak_msg_common_if_t));
 
@@ -123,7 +123,7 @@ void nrf_nwk_fsm_idle(ak_msg_t* msg) {
 			st_nrf_nwk_pdu->len = sizeof(ak_msg_common_if_t) + NWK_HDR_LEN;
 
 			uint32_t nwk_pdu_id = st_nrf_nwk_pdu->id;
-			task_post_common_msg(RF24_MAC_ID, RF24_MAC_HANDLE_MSG_OUT, (uint8_t*)&nwk_pdu_id, sizeof(uint32_t));
+			task_post_common_msg(AC_RF24_MAC_ID, AC_RF24_MAC_HANDLE_MSG_OUT, (uint8_t*)&nwk_pdu_id, sizeof(uint32_t));
 		}
 		else {
 			FATAL("NWK", 0x02);
@@ -131,18 +131,18 @@ void nrf_nwk_fsm_idle(ak_msg_t* msg) {
 	}
 		break;
 
-	case RF24_NWK_DYNAMIC_MSG_OUT: {
-		APP_DBG_SIG("RF24_NWK_DYNAMIC_MSG_OUT\n");
+	case AC_RF24_NWK_DYNAMIC_MSG_OUT: {
+		APP_DBG_SIG("AC_RF24_NWK_DYNAMIC_MSG_OUT\n");
 	}
 		break;
 
-	case RF24_NWK_DATA_MSG_OUT: {
-		APP_DBG_SIG("RF24_NWK_DATA_MSG_OUT\n");
+	case AC_RF24_NWK_DATA_MSG_OUT: {
+		APP_DBG_SIG("AC_RF24_NWK_DATA_MSG_OUT\n");
 	}
 		break;
 
-	case RF24_NWK_RECV_MSG: {
-		APP_DBG_SIG("RF24_NWK_RECV_MSG\n");
+	case AC_RF24_NWK_RECV_MSG: {
+		APP_DBG_SIG("AC_RF24_NWK_RECV_MSG\n");
 
 		uint32_t nwk_pdu_id;
 		memcpy(&nwk_pdu_id, (uint8_t*)get_data_common_msg(msg), sizeof(uint32_t));
@@ -156,7 +156,7 @@ void nrf_nwk_fsm_idle(ak_msg_t* msg) {
 		APP_DBG("nrf_nwk_hdr.payload_len: %d\n", st_nrf_nwk_msg->hdr.payload_len);
 
 		switch (st_nrf_nwk_msg->hdr.type) {
-		case RF24_PURE_MSG_TYPE: {
+		case RF24_MSG_TYPE_PURE: {
 			ak_msg_pure_if_t* if_msg = (ak_msg_pure_if_t*)st_nrf_nwk_msg->payload;
 
 			ak_msg_t* s_msg = get_pure_msg();
@@ -171,7 +171,7 @@ void nrf_nwk_fsm_idle(ak_msg_t* msg) {
 		}
 			break;
 
-		case RF24_COMMON_MSG_TYPE: {
+		case RF24_MSG_TYPE_COMMON: {
 			ak_msg_common_if_t* if_msg = (ak_msg_common_if_t*)st_nrf_nwk_msg->payload;
 
 			ak_msg_t* s_msg = get_common_msg();
@@ -187,11 +187,11 @@ void nrf_nwk_fsm_idle(ak_msg_t* msg) {
 		}
 			break;
 
-		case RF24_DYNAMIC_MSG_TYPE: {
+		case RF24_MSG_TYPE_DYNAMIC: {
 		}
 			break;
 
-		case RF24_DATA_MSG_TYPE: {
+		case RF24_MSG_TYPE_DATA: {
 		}
 			break;
 
@@ -204,8 +204,8 @@ void nrf_nwk_fsm_idle(ak_msg_t* msg) {
 	}
 		break;
 
-	case RF24_NWK_SEND_MSG_DONE: {
-		APP_DBG_SIG("RF24_NWK_SEND_MSG_DONE\n");
+	case AC_RF24_NWK_SEND_MSG_DONE: {
+		APP_DBG_SIG("AC_RF24_NWK_SEND_MSG_DONE\n");
 
 		/* free receive nwk pdu */
 		uint32_t nwk_pdu_id;
@@ -214,8 +214,8 @@ void nrf_nwk_fsm_idle(ak_msg_t* msg) {
 	}
 		break;
 
-	case RF24_NWK_SEND_MSG_ERR_SDF: {
-		APP_DBG_SIG("RF24_NWK_SEND_MSG_ERR_SDF\n");
+	case AC_RF24_NWK_SEND_MSG_ERR_SDF: {
+		APP_DBG_SIG("AC_RF24_NWK_SEND_MSG_ERR_SDF\n");
 		/* free error nwk pdu */
 		uint32_t nwk_pdu_id;
 		memcpy(&nwk_pdu_id, (uint8_t*)get_data_common_msg(msg), sizeof(uint32_t));
@@ -223,8 +223,8 @@ void nrf_nwk_fsm_idle(ak_msg_t* msg) {
 	}
 		break;
 
-	case RF24_NWK_SEND_MSG_ERR_BUSY: {
-		APP_DBG_SIG("RF24_NWK_SEND_MSG_ERR_BUSY\n");
+	case AC_RF24_NWK_SEND_MSG_ERR_BUSY: {
+		APP_DBG_SIG("AC_RF24_NWK_SEND_MSG_ERR_BUSY\n");
 
 		/* free error nwk pdu */
 		uint32_t nwk_pdu_id;

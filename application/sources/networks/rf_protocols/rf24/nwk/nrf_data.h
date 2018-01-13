@@ -6,12 +6,11 @@
 #include "nrf_nwk.h"
 #include "nrf_mac.h"
 
-#define RF24_PURE_MSG_TYPE				(1)
-#define RF24_COMMON_MSG_TYPE			(2)
-#define RF24_DYNAMIC_MSG_TYPE			(3)
-#define RF24_DATA_MSG_TYPE				(4)
+#define RF24_MSG_TYPE_PURE				(1)
+#define RF24_MSG_TYPE_COMMON			(2)
+#define RF24_MSG_TYPE_DYNAMIC			(3)
+#define RF24_MSG_TYPE_DATA				(4)
 
-#define NRF_NWK_MSG_POOL_SIZE			3
 #define NRF_NWK_PDU_NULL				((nrf_nwk_pdu_t*)0)
 
 typedef struct nrf_nwk_pdu_t {
@@ -19,7 +18,7 @@ typedef struct nrf_nwk_pdu_t {
 	uint32_t id;
 	uint32_t len;
 	uint32_t is_used;
-	uint8_t payload[MAX_NWK_MSG_LEN];
+	uint8_t payload[NRF_NWK_MSG_MAX_LEN];
 } nrf_nwk_pdu_t;
 
 extern void nrf_nwk_pdu_init();

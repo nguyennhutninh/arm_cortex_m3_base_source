@@ -9,7 +9,7 @@
 
 #include "sys_cfg.h"
 #include "system.h"
-#include "stm32l.h"
+#include "platform.h"
 
 #include "system_stm32l1xx.h"
 #include "stm32l1xx.h"

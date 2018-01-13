@@ -27,6 +27,9 @@
 #include "task_uart_if.h"
 #include "task_list.h"
 
+#include "link_phy.h"
+#include "link_hal.h"
+
 struct shell_t {
 	uint8_t index;
 	uint8_t data[SHELL_BUFFER_LENGHT];
@@ -37,7 +40,7 @@ void sys_irq_shell() {
 
 	c = sys_ctrl_shell_get_char();
 
-	if (rx_frame_parser(c) == APP_FLAG_OFF) {
+	if (plink_hal_rev_byte(c) == LINK_HAL_IGNORED) {
 
 		if (shell.index < SHELL_BUFFER_LENGHT - 1) {
 

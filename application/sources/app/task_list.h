@@ -26,13 +26,14 @@ enum {
 	AC_TASK_DISPLAY_ID,
 
 	/* NRF24 NETWORKS */
-	RF24_PHY_ID,
-	RF24_MAC_ID,
-	RF24_NWK_ID,
+	AC_RF24_PHY_ID,
+	AC_RF24_MAC_ID,
+	AC_RF24_NWK_ID,
 
 	/* LINK */
-	LINK_PHY_ID,
-	LINK_MAC_ID,
+	AC_LINK_PHY_ID,
+	AC_LINK_MAC_ID,
+	AC_LINK_ID,
 
 	/* EOT task ID */
 	AK_TASK_EOT_ID,
@@ -60,5 +61,6 @@ extern void task_rf24_nwk(ak_msg_t*);
 /* LINK TASK */
 extern void task_link_phy(ak_msg_t*);
 extern void task_link_mac(ak_msg_t*);
+extern void task_link(ak_msg_t*);
 
 #endif //__TASK_LIST_H__

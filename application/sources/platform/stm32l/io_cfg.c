@@ -10,7 +10,7 @@
 #include <stdbool.h>
 
 #include "io_cfg.h"
-#include "stm32l.h"
+#include "platform.h"
 
 #include "sys_dbg.h"
 #include "sys_ctrl.h"

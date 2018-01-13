@@ -45,6 +45,10 @@
 #include "utils.h"
 #include "screen_manager.h"
 
+/* net link include */
+#include "link.h"
+#include "link_sig.h"
+
 const char* app_version = APP_VER;
 
 static boot_app_share_data_t boot_app_share_data;
@@ -158,6 +162,7 @@ void app_start_timer() {
  * used for app tasks
  */
 void app_init_state_machine() {
+	link_init_state_machine();
 }
 
 /* send first message to trigger start tasks
@@ -167,6 +172,7 @@ void app_task_init() {
 	task_post_pure_msg(AC_TASK_FW_ID, FW_CHECKING_REQ);
 	task_post_pure_msg(AC_TASK_RF24_IF_ID, AC_RF24_IF_INIT_NETWORK);
 	task_post_pure_msg(AC_TASK_DISPLAY_ID, AC_DISPLAY_INITIAL);
+	task_post_pure_msg(AC_LINK_ID, AC_LINK_INIT);
 }
 
 /*****************************************************************************/

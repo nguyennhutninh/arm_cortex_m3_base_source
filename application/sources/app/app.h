@@ -111,7 +111,9 @@ enum {
 	AC_UART_IF_PURE_MSG_OUT = AK_USER_DEFINE_SIG,
 	AC_UART_IF_COMMON_MSG_OUT,
 	AC_UART_IF_DYNAMIC_MSG_OUT,
-	AC_UART_IF_FRAME_TO,
+	AC_UART_IF_PURE_MSG_IN,
+	AC_UART_IF_COMMON_MSG_IN,
+	AC_UART_IF_DYNAMIC_MSG_IN,
 };
 
 /*****************************************************************************/

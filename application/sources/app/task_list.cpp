@@ -22,15 +22,16 @@ task_t app_task_table[] = {
 	/*************************************************************************/
 	/* RF24 NETWORK TASK */
 	/*************************************************************************/
-	{RF24_PHY_ID			,	TASK_PRI_LEVEL_3	,	task_rf24_phy		},
-	{RF24_MAC_ID			,	TASK_PRI_LEVEL_4	,	task_rf24_mac		},
-	{RF24_NWK_ID			,	TASK_PRI_LEVEL_5	,	task_rf24_nwk		},
+	{AC_RF24_PHY_ID			,	TASK_PRI_LEVEL_3	,	task_rf24_phy		},
+	{AC_RF24_MAC_ID			,	TASK_PRI_LEVEL_4	,	task_rf24_mac		},
+	{AC_RF24_NWK_ID			,	TASK_PRI_LEVEL_5	,	task_rf24_nwk		},
 
 	/*************************************************************************/
 	/* LINK TASK */
 	/*************************************************************************/
-	{LINK_PHY_ID			,	TASK_PRI_LEVEL_3	,	task_link_phy		},
-	{LINK_MAC_ID			,	TASK_PRI_LEVEL_4	,	task_link_mac		},
+	{AC_LINK_PHY_ID			,	TASK_PRI_LEVEL_3	,	task_link_phy		},
+	{AC_LINK_MAC_ID			,	TASK_PRI_LEVEL_4	,	task_link_mac		},
+	{AC_LINK_ID				,	TASK_PRI_LEVEL_5	,	task_link			},
 
 	/*************************************************************************/
 	/* END OF TABLE */

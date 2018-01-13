@@ -6,7 +6,7 @@
 **/
 #include <stdint.h>
 
-#include "stm32l.h"
+#include "platform.h"
 
 #include "sys_dbg.h"
 
