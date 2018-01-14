@@ -56,7 +56,7 @@ IRQ_DEBUG_OPTION = -UAK_IO_IRQ_ANALYZER
 LOG_AK_KERNEL_ENABLE = -UAK_TASK_LOG_ENABLE
 
 # Enable to using USB hareware configuration.
-USB_OPTION = -DUSING_USB_MOD
+USB_OPTION = -UUSING_USB_MOD
 
 # warning compile option.
 WARNING_OPTION = -Werror -W -Wstack-usage=$(APP_STACK_SIZE)

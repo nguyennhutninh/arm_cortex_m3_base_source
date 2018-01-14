@@ -13,13 +13,11 @@ pf_link_hal_rev_byte plink_hal_rev_byte = link_hal_rev_byte;
 
 uint8_t link_hal_write_byte(uint8_t byte) {
 	(void)byte;
-	FATAL("link_hal", 0x01);
 	return byte;
 }
 
 uint8_t link_hal_rev_byte(uint8_t byte) {
 	(void)byte;
-	FATAL("link_hal", 0x02);
 	return LINK_HAL_IGNORED;
 }
 
