@@ -201,14 +201,13 @@ uint8_t timer_set(task_id_t des_task_id, timer_sig_t sig, int32_t duty, timer_ty
 			timer_msg->counter = duty;
 
 			EXIT_CRITICAL();
+
 			return TIMER_RET_OK;
 		}
 		else {
 			timer_msg = timer_msg->next;
 		}
 	}
-
-	EXIT_CRITICAL();
 
 	/* if timer does not exist, create new timer */
 
@@ -227,15 +226,14 @@ uint8_t timer_set(task_id_t des_task_id, timer_sig_t sig, int32_t duty, timer_ty
 	case TIMER_PERIODIC:
 		timer_msg->period       = (int32_t)duty;
 		break;
-	default:
+	default: {
+		EXIT_CRITICAL();
 		FATAL("MT", 0x32);
+	}
 		break;
 	}
 
 	/* insert node to timer list */
-
-	ENTRY_CRITICAL();
-
 	if (timer_list_head == TIMER_MSG_NULL) {
 		timer_msg->next = TIMER_MSG_NULL;
 		timer_list_head = timer_msg;
