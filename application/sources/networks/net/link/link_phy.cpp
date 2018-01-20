@@ -461,7 +461,4 @@ void link_phy_frame_send() {
 		link_phy_frame_write(&send_link_phy_frame);
 		timer_set(AC_LINK_PHY_ID, AC_LINK_PHY_FRAME_SEND_TO, LINK_PHY_FRAME_SEND_TO_INTERVAL, TIMER_ONE_SHOT);
 	}
-	else {
-		FATAL("LK_PHY", 0x03);
-	}
 }

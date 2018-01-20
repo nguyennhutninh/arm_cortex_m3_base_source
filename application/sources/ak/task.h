@@ -21,8 +21,8 @@ extern "C"
 
 #include "log_queue.h"
 
-#define LOG_QUEUE_OBJECT_SIZE			(1024)
-#define LOG_QUEUE_IRQ_SIZE				(256)
+#define LOG_QUEUE_OBJECT_SIZE			(512)
+#define LOG_QUEUE_IRQ_SIZE				(128)
 
 typedef uint8_t	task_pri_t;
 typedef uint8_t	task_id_t;

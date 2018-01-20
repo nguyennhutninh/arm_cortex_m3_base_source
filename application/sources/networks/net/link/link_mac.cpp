@@ -113,8 +113,8 @@ void fsm_link_mac_state_init(ak_msg_t* msg) {
 
 		uint32_t link_phy_get_send_frame = link_phy_get_send_frame_to();
 
-		link_mac_frame_send_to_interval = link_phy_get_send_frame + ((link_phy_get_send_frame * 3) / 10);
-		link_mac_frame_rev_to_interval = link_phy_get_send_frame + ((link_phy_get_send_frame * 3) / 10);
+		link_mac_frame_send_to_interval = 2 * link_phy_get_send_frame;
+		link_mac_frame_rev_to_interval = 2 * link_phy_get_send_frame;
 
 		/* notify complete init to higher layer */
 		task_post_pure_msg(AC_LINK_ID, AC_LINK_MAC_LAYER_STARTED);
@@ -251,8 +251,9 @@ void fsm_link_mac_state_handle(ak_msg_t* msg) {
 		memcpy(&link_mac_frame_rev, get_data_common_msg(msg), sizeof(link_mac_frame_t));
 
 		if (link_mac_rev_state_get() == LINK_MAC_REV_STATE_IDLE) {
-			link_mac_rev_state_set(LINK_MAC_REV_STATE_RECEIVING);
 			if (link_mac_pdu_receiving_sequence != link_mac_frame_rev.header.seq_num) {
+				link_mac_rev_state_set(LINK_MAC_REV_STATE_RECEIVING);
+
 				/* update receive pdu sequence number */
 				link_mac_pdu_receiving_sequence = link_mac_frame_rev.header.seq_num;
 
