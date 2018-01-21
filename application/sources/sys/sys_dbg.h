@@ -34,22 +34,6 @@ extern "C"
 #endif
 #endif
 
-#if defined(STM32F10X_PLATFORM)
-#include "xprintf.h"
-
-#if defined(SYS_DBG_EN)
-#define SYS_DBG(fmt, ...)       xprintf((const char*)fmt, ##__VA_ARGS__)
-#else
-#define SYS_DBG(fmt, ...)
-#endif
-
-#if defined(SYS_PRINT_EN)
-#define SYS_PRINT(fmt, ...)       xprintf((const char*)fmt, ##__VA_ARGS__)
-#else
-#define SYS_PRINT(fmt, ...)
-#endif
-#endif
-
 typedef struct {
 	uint32_t ipsr;
 	uint32_t primask;

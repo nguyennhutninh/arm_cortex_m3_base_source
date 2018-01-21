@@ -262,7 +262,9 @@ void sys_ctrl_delay_ms(volatile uint32_t count) {
 }
 
 void sys_ctr_sleep_wait_for_irq() {
-	__WFI();
+	do {
+		__WFI();
+	} while (0);
 }
 
 uint32_t sys_ctr_get_exception_number() {

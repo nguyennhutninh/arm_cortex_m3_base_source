@@ -22,7 +22,7 @@
 #include "link_mac.h"
 #include "link_data.h"
 
-#define LINK_PDU_ID_BUF_SIZE (LINK_PDU_POOL_SIZE * 3)
+#define LINK_PDU_ID_BUF_SIZE	LINK_PDU_POOL_SIZE
 
 typedef enum {
 	/* private */
