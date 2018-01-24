@@ -15,7 +15,9 @@
 struct ak_timer_payload_irq_t {
 	uint32_t counter;
 	uint32_t enable_post_msg;
-} ak_timer_payload_irq;
+};
+
+static volatile struct ak_timer_payload_irq_t ak_timer_payload_irq = {0, AK_DISABLE};
 
 /* data to manage memory of timer message */
 static ak_timer_t timer_pool[AK_TIMER_POOL_SIZE];
@@ -32,6 +34,8 @@ static uint8_t timer_remove_msg(task_id_t des_task_id, timer_sig_t sig);
 void timer_msg_pool_init() {
 	uint32_t index;
 
+	ENTRY_CRITICAL();
+
 	timer_list_head       = TIMER_MSG_NULL;
 	free_list_timer_pool = (ak_timer_t*)timer_pool;
 
@@ -43,10 +47,12 @@ void timer_msg_pool_init() {
 			timer_pool[index].next = (ak_timer_t*)&timer_pool[index + 1];
 		}
 	}
+
+	EXIT_CRITICAL();
 }
 
 ak_timer_t* get_timer_msg() {
-	ak_timer_t* allocate_timer = TIMER_MSG_NULL;
+	ak_timer_t* allocate_timer;
 
 	ENTRY_CRITICAL();
 
@@ -54,7 +60,6 @@ ak_timer_t* get_timer_msg() {
 
 	if (allocate_timer == TIMER_MSG_NULL) {
 		FATAL("MT", 0x30);
-		return (TIMER_MSG_NULL);
 	}
 	else {
 		free_list_timer_pool = allocate_timer->next;
@@ -76,10 +81,10 @@ void free_timer_msg(ak_timer_t* msg) {
 }
 
 void task_timer_tick(ak_msg_t* msg) {
-	ak_msg_t* timer_msg = AK_MSG_NULL;
+	ak_msg_t* timer_msg;
 
-	ak_timer_t* timer_list = timer_list_head;
-	ak_timer_t* timer_del = TIMER_MSG_NULL;
+	ak_timer_t* timer_list;
+	ak_timer_t* timer_del = TIMER_MSG_NULL; /* MUST-BE assign TIMER_MSG_NULL when entry function */
 
 	int32_t temp_counter = 0;   /* keep this variable for preemtive kernel mode */
 	int32_t irq_counter = 0;
@@ -87,6 +92,8 @@ void task_timer_tick(ak_msg_t* msg) {
 	/* permit receive message from interrupt heart beat */
 
 	ENTRY_CRITICAL();
+
+	timer_list = timer_list_head;
 
 	/* save current interrupt counter value */
 	irq_counter = ak_timer_payload_irq.counter;
@@ -131,7 +138,6 @@ void task_timer_tick(ak_msg_t* msg) {
 				}
 
 				EXIT_CRITICAL();
-
 			}
 
 			/* next node */
@@ -155,8 +161,12 @@ void timer_init() {
 	timer_msg_pool_init();
 
 	/* init data transfer between interrupt heart beat and timer task */
+	ENTRY_CRITICAL();
+
 	ak_timer_payload_irq.counter = 0;
 	ak_timer_payload_irq.enable_post_msg = AK_ENABLE;
+
+	EXIT_CRITICAL();
 }
 
 void timer_tick(int32_t t) {
@@ -186,12 +196,11 @@ void timer_tick(int32_t t) {
 }
 
 uint8_t timer_set(task_id_t des_task_id, timer_sig_t sig, int32_t duty, timer_type_t type) {
-	/* get timer mesage from timer message pool */
-	ak_timer_t* timer_msg = timer_list_head;
-
-	/* if timer existed, reset timer counter */
+	ak_timer_t* timer_msg;
 
 	ENTRY_CRITICAL();
+
+	timer_msg = timer_list_head;
 
 	while (timer_msg != TIMER_MSG_NULL) {
 		/* check timer node */
@@ -223,11 +232,12 @@ uint8_t timer_set(task_id_t des_task_id, timer_sig_t sig, int32_t duty, timer_ty
 	case TIMER_ONE_SHOT:
 		timer_msg->period       = (int32_t)0;
 		break;
+
 	case TIMER_PERIODIC:
 		timer_msg->period       = (int32_t)duty;
 		break;
+
 	default: {
-		EXIT_CRITICAL();
 		FATAL("MT", 0x32);
 	}
 		break;
@@ -249,10 +259,13 @@ uint8_t timer_set(task_id_t des_task_id, timer_sig_t sig, int32_t duty, timer_ty
 }
 
 uint8_t timer_remove_msg(task_id_t des_task_id, timer_sig_t sig) {
-	ak_timer_t* timer_msg = timer_list_head;
-	ak_timer_t* timer_msg_prev = timer_msg;
+	ak_timer_t* timer_msg;
+	ak_timer_t* timer_msg_prev;
 
 	ENTRY_CRITICAL();
+
+	timer_msg = timer_list_head;
+	timer_msg_prev = timer_msg;
 
 	while (timer_msg != TIMER_MSG_NULL) {
 

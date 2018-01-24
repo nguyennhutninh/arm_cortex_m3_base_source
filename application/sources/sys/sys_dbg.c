@@ -292,6 +292,7 @@ void sys_dbg_func_stack_dump(uint32_t* args) {
 	- Stacked PC	<-> args[6]
 	- Stacked xPSR	<-> args[7]
 	*/
+	(void)args;
 	SYS_DBG("[st]R0\t0x%08X\n",		args[0]);
 	SYS_DBG("[st]R1\t0x%08X\n",		args[1]);
 	SYS_DBG("[st]R2\t0x%08X\n",		args[2]);

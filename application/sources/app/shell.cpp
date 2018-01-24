@@ -38,6 +38,9 @@
 #include "task_list_if.h"
 #include "task_if.h"
 #include "task_life.h"
+#include "link_phy.h"
+#include "link_hal.h"
+#include "link_sig.h"
 
 #include "rtc.h"
 #include "led.h"
@@ -569,12 +572,47 @@ int32_t shell_dbg(uint8_t* argv) {
 		set_if_des_task_id(s_msg, AC_TASK_DBG_ID);
 		set_if_sig(s_msg, AC_DBG_TEST_2);
 
-		set_msg_sig(s_msg, AC_IF_PURE_MSG_OUT);
-		task_post(AC_TASK_IF_ID, s_msg);
+		set_msg_sig(s_msg, AC_LINK_SEND_PURE_MSG);
+		task_post(AC_LINK_ID, s_msg);
 	}
 		break;
 
 	case '2': {
+		uint8_t test_buf[64];
+		for (int i = 0; i < 64; i++) {
+			test_buf[i] = 0xAA;
+		}
+
+		ak_msg_t* s_msg = get_common_msg();
+		set_if_des_type(s_msg, IF_TYPE_RF24_GW);
+		set_if_src_type(s_msg, IF_TYPE_RF24_AC);
+		set_if_des_task_id(s_msg, AC_TASK_DBG_ID);
+		set_if_sig(s_msg, AC_DBG_TEST_2);
+		set_if_data_common_msg(s_msg, test_buf, 64);
+
+		set_msg_sig(s_msg, AC_LINK_SEND_COMMON_MSG);
+		task_post(AC_LINK_ID, s_msg);
+	}
+		break;
+
+	case '3': {
+		ak_msg_t* s_msg = get_dynamic_msg();
+		set_if_des_type(s_msg, IF_TYPE_UART_GW);
+		set_if_src_type(s_msg, IF_TYPE_UART_AC);
+		set_if_des_task_id(s_msg, GW_TASK_DEBUG_MSG_ID);
+		set_if_sig(s_msg, GW_DEBUG_MSG_1);
+		uint8_t* send_data = (uint8_t*)ak_malloc(254);
+		for (uint8_t i = 0; i < 254; i++) {
+			*(send_data + i) = i;
+		}
+		set_if_data_dynamic_msg(s_msg, send_data, 254);
+		set_msg_sig(s_msg, AC_LINK_SEND_DYNAMIC_MSG);
+		task_post(AC_LINK_ID, s_msg);
+		ak_free(send_data);
+	}
+		break;
+
+	case '4': {
 		uint8_t test_buf[64];
 		for (int i = 0; i < 64; i++) {
 			test_buf[i] = i;
@@ -587,35 +625,19 @@ int32_t shell_dbg(uint8_t* argv) {
 		set_if_sig(s_msg, AC_DBG_TEST_2);
 		set_if_data_common_msg(s_msg, test_buf, 64);
 
-		set_msg_sig(s_msg, AC_IF_COMMON_MSG_OUT);
-		task_post(AC_TASK_IF_ID, s_msg);
+		set_msg_sig(s_msg, AC_LINK_SEND_DATA);
+		task_post(AC_LINK_ID, s_msg);
 	}
 		break;
 
-	case '3': {
-		ak_msg_t* s_msg = get_dynamic_msg();
-		set_if_des_type(s_msg, IF_TYPE_UART_GW);
-		set_if_src_type(s_msg, IF_TYPE_UART_AC);
-		set_if_des_task_id(s_msg, GW_TASK_DEBUG_MSG_ID);
-		set_if_sig(s_msg, GW_DEBUG_MSG_1);
-		uint8_t* send_data = (uint8_t*)ak_malloc(150);
-		for (uint8_t i = 0; i < 150; i++) {
-			*(send_data + i) = i;
+	case '5': {
+		uint8_t data[32];
+		for (uint32_t i = 0; i < 32; i++) {
+			data[i] = i;
 		}
-		set_if_data_dynamic_msg(s_msg, send_data, 150);
-
-		set_msg_sig(s_msg, AC_IF_DYNAMIC_MSG_OUT);
-		task_post(AC_TASK_IF_ID, s_msg);
-		ak_free(send_data);
+#include "link_sig.h"
+		task_post_common_msg(AC_LINK_PHY_ID, AC_LINK_PHY_FRAME_SEND_REQ, data, 32);
 	}
-		break;
-
-	case '4': {
-		ak_msg_t* s_msg = get_pure_msg();
-		set_msg_sig(s_msg, AC_DBG_TEST_1);
-		task_post(AC_TASK_DBG_ID, s_msg);
-	}
-		break;
 
 	default:
 		break;

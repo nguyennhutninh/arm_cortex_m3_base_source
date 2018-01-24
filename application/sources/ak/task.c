@@ -122,6 +122,9 @@ uint8_t task_remove_msg(task_id_t task_id, uint8_t sig) {
 	tcb_t* t_tcb;
 	uint8_t total_rm_msg = 0;
 
+	ak_msg_t* f_msg = AK_MSG_NULL; /* MUST-BE initialized AK_MSG_NULL */
+	ak_msg_t* t_msg;
+
 	if (task_id >= AK_TASK_EOT_ID) {
 		FATAL("TK", 0x05);
 	}
@@ -133,9 +136,6 @@ uint8_t task_remove_msg(task_id_t task_id, uint8_t sig) {
 
 	/* check task queue available */
 	if (task_ready & t_tcb->mask) {
-
-		ak_msg_t* f_msg = AK_MSG_NULL; /* MUST-BE initialized AK_MSG_NULL */
-		ak_msg_t* t_msg;
 
 		/* get first message of queue */
 		t_msg = t_tcb->qhead;
@@ -197,7 +197,9 @@ void task_post_dynamic_msg(task_id_t des_task_id, uint8_t sig, uint8_t* data, ui
 }
 
 void task_entry_interrupt() {
+
 	ENTRY_CRITICAL();
+
 	ak_irq_io_entry_trigger();
 	current_task_id = AK_TASK_INTERRUPT_ID;
 
@@ -208,19 +210,23 @@ void task_entry_interrupt() {
 
 	log_queue_put(&log_irq_queue, &exception_info);
 #endif
+
 	EXIT_CRITICAL();
 }
 
 void task_exit_interrupt() {
+
 	ENTRY_CRITICAL();
+
 	current_task_id = current_task_info.id;
 	ak_irq_io_exit_trigger();
+
 	EXIT_CRITICAL();
 }
 
 int task_init() {
-	uint8_t pri = 1;
-	tcb_t* t_tcb = (tcb_t*)0;
+	uint8_t pri;
+	tcb_t* t_tcb;
 
 	/* init task manager variable */
 	task_current = 0;

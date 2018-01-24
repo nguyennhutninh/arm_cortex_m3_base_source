@@ -162,9 +162,10 @@ uint32_t get_common_msg_pool_used() {
 }
 
 ak_msg_t* get_common_msg() {
-	ak_msg_t* allocate_massage = AK_MSG_NULL;
+	ak_msg_t* allocate_massage;
 
 	ENTRY_CRITICAL();
+
 	allocate_massage = free_list_common_msg_pool;
 
 	if (allocate_massage == AK_MSG_NULL) {
@@ -188,9 +189,12 @@ ak_msg_t* get_common_msg() {
 }
 
 void free_common_msg(ak_msg_t* msg) {
+
 	ENTRY_CRITICAL();
+
 	msg->next = free_list_common_msg_pool;
 	free_list_common_msg_pool = msg;
+
 	EXIT_CRITICAL();
 }
 
@@ -255,7 +259,7 @@ uint8_t get_data_len_common_msg(ak_msg_t* msg) {
  * pure message function define.
  *****************************************************************************/
 void pure_msg_pool_init() {
-	uint32_t index = 0;
+	uint32_t index;
 
 	free_list_pure_msg_pool = (ak_msg_t*)msg_pure_pool;
 
@@ -275,9 +279,10 @@ uint32_t get_pure_msg_pool_used() {
 }
 
 ak_msg_t* get_pure_msg() {
-	ak_msg_t* allocate_massage = AK_MSG_NULL;
+	ak_msg_t* allocate_massage;
 
 	ENTRY_CRITICAL();
+
 	allocate_massage = free_list_pure_msg_pool;
 
 	if (allocate_massage == AK_MSG_NULL) {
@@ -301,9 +306,12 @@ ak_msg_t* get_pure_msg() {
 }
 
 void free_pure_msg(ak_msg_t* msg) {
+
 	ENTRY_CRITICAL();
+
 	msg->next = free_list_pure_msg_pool;
 	free_list_pure_msg_pool = msg;
+
 	EXIT_CRITICAL();
 }
 
@@ -311,7 +319,7 @@ void free_pure_msg(ak_msg_t* msg) {
  * dynamic message function define.
  *****************************************************************************/
 void dynamic_msg_pool_init() {
-	uint32_t index = 0;
+	uint32_t index;
 
 	/* init dynamic pool message */
 	free_list_dynamic_msg_pool = (ak_msg_t*)msg_dynamic_pool;
@@ -343,6 +351,7 @@ void free_dynamic_msg(ak_msg_t* msg) {
 	ak_msg_dynamic_t* ak_msg_dynamic = (ak_msg_dynamic_t*)msg;
 
 	ENTRY_CRITICAL();
+
 	/* free dynmic message pool */
 	msg->next = free_list_dynamic_msg_pool;
 	free_list_dynamic_msg_pool = msg;
@@ -356,9 +365,10 @@ void free_dynamic_msg(ak_msg_t* msg) {
 }
 
 ak_msg_t* get_dynamic_msg() {
-	ak_msg_t* allocate_massage = AK_MSG_NULL;
+	ak_msg_t* allocate_massage;
 
 	ENTRY_CRITICAL();
+
 	allocate_massage = free_list_dynamic_msg_pool;
 
 	if (allocate_massage == AK_MSG_NULL) {
@@ -518,6 +528,7 @@ uint8_t set_data_dynamic_pdu(dynamic_pdu_t* dynamic_pdu, uint8_t* data, uint32_t
 }
 
 void free_data_dynamic_pdu_pool(dynamic_pdu_t* dynamic_pdu) {
+
 	ENTRY_CRITICAL();
 
 	tail_data_msg_dynamic_pool->next = dynamic_pdu;
