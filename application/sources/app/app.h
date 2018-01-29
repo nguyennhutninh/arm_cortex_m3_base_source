@@ -139,7 +139,11 @@ enum {
 enum {
 	AC_DBG_TEST_1 = AK_USER_DEFINE_SIG,
 	AC_DBG_TEST_2,
-	AC_DBG_TEST_3
+	AC_DBG_TEST_3,
+	AC_DBG_TEST_4,
+	AC_DBG_TEST_5,
+	AC_DBG_TEST_6,
+	AC_DBG_TEST_7,
 };
 
 /*****************************************************************************/

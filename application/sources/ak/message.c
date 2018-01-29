@@ -82,7 +82,6 @@ void msg_free(ak_msg_t* msg) {
 		default:
 			FATAL("MF", 0x20);
 			break;
-
 		}
 	}
 }
@@ -142,7 +141,9 @@ void ak_free(void* ptr) {
  * common message function define.
  *****************************************************************************/
 void common_msg_pool_init() {
-	uint32_t index = 0;
+	uint32_t index;
+
+	ENTRY_CRITICAL();
 
 	free_list_common_msg_pool = (ak_msg_t*)msg_common_pool;
 
@@ -155,6 +156,8 @@ void common_msg_pool_init() {
 			msg_common_pool[index].msg_header.next = (ak_msg_t*)&msg_common_pool[index + 1];
 		}
 	}
+
+	EXIT_CRITICAL();
 }
 
 uint32_t get_common_msg_pool_used() {
@@ -204,19 +207,16 @@ uint8_t set_data_common_msg(ak_msg_t* msg, uint8_t* data, uint8_t size) {
 	/* check messge null */
 	if ((ak_msg_t*)msg_common == AK_MSG_NULL) {
 		FATAL("MF", 0x22);
-		return AK_MSG_NG;
 	}
 
 	/* check message type */
 	if ((msg_common->msg_header.ref_count & AK_MSG_TYPE_MASK) != COMMON_MSG_TYPE) {
 		FATAL("MF", 0x23);
-		return AK_MSG_NG;
 	}
 
 	/* check data lenght */
 	if (size > AK_COMMON_MSG_DATA_SIZE) {
 		FATAL("MF", 0x24);
-		return AK_MSG_NG;
 	}
 
 	/* set data message */
@@ -231,13 +231,11 @@ uint8_t* get_data_common_msg(ak_msg_t* msg) {
 	/* check messge null */
 	if ((ak_msg_t*)msg_common == AK_MSG_NULL) {
 		FATAL("MF", 0x25);
-		return (uint8_t*)0;
 	}
 
 	/* check message type */
 	if ((msg_common->msg_header.ref_count & AK_MSG_TYPE_MASK) != COMMON_MSG_TYPE) {
 		FATAL("MF", 0x26);
-		return (uint8_t*)0;
 	}
 
 	return (uint8_t*)msg_common->data;
@@ -249,7 +247,6 @@ uint8_t get_data_len_common_msg(ak_msg_t* msg) {
 	/* check messge null */
 	if ((ak_msg_t*)msg_common == AK_MSG_NULL) {
 		FATAL("MF", 0x38);
-		return ((uint8_t)0);
 	}
 
 	return ((uint8_t)msg_common->len);
@@ -260,6 +257,8 @@ uint8_t get_data_len_common_msg(ak_msg_t* msg) {
  *****************************************************************************/
 void pure_msg_pool_init() {
 	uint32_t index;
+
+	ENTRY_CRITICAL();
 
 	free_list_pure_msg_pool = (ak_msg_t*)msg_pure_pool;
 
@@ -272,6 +271,8 @@ void pure_msg_pool_init() {
 			msg_pure_pool[index].msg_header.next = (ak_msg_t*)&msg_pure_pool[index + 1];
 		}
 	}
+
+	EXIT_CRITICAL();
 }
 
 uint32_t get_pure_msg_pool_used() {
@@ -321,6 +322,8 @@ void free_pure_msg(ak_msg_t* msg) {
 void dynamic_msg_pool_init() {
 	uint32_t index;
 
+	ENTRY_CRITICAL();
+
 	/* init dynamic pool message */
 	free_list_dynamic_msg_pool = (ak_msg_t*)msg_dynamic_pool;
 
@@ -345,6 +348,8 @@ void dynamic_msg_pool_init() {
 			data_msg_dynamic_pool[index].next = (dynamic_pdu_t*)&data_msg_dynamic_pool[index + 1];
 		}
 	}
+
+	EXIT_CRITICAL();
 }
 
 void free_dynamic_msg(ak_msg_t* msg) {
@@ -406,13 +411,11 @@ uint8_t set_data_dynamic_msg(ak_msg_t* msg, uint8_t* data, uint32_t size) {
 	/* check messge null */
 	if ((ak_msg_t*)msg_dynamic == AK_MSG_NULL) {
 		FATAL("MF", 0x42);
-		return AK_MSG_NG;
 	}
 
 	/* check message type */
 	if ((msg_dynamic->msg_header.ref_count & AK_MSG_TYPE_MASK) != DYNAMIC_MSG_TYPE) {
 		FATAL("MF", 0x43);
-		return AK_MSG_NG;
 	}
 
 	/* set data message */
@@ -429,19 +432,16 @@ uint8_t get_data_dynamic_msg(ak_msg_t* msg, uint8_t* data, uint32_t size) {
 	/* check messge null */
 	if ((ak_msg_t*)msg_dynamic == AK_MSG_NULL) {
 		FATAL("MF", 0x45);
-		return AK_MSG_NG;
 	}
 
 	/* check message type */
 	if ((msg_dynamic->msg_header.ref_count & AK_MSG_TYPE_MASK) != DYNAMIC_MSG_TYPE) {
 		FATAL("MF", 0x46);
-		return AK_MSG_NG;
 	}
 
 	/* check length */
 	if (msg_dynamic->len != size) {
 		FATAL("MF", 0x47);
-		return AK_MSG_NG;
 	}
 
 	get_data_dynamic_pdu(msg_dynamic->data, data, size);
@@ -457,24 +457,27 @@ dynamic_pdu_t* get_data_dynamic_pdu_pool(uint32_t size) {
 	uint32_t i, size_pdu;
 	dynamic_pdu_t *ptemp, *phead;
 
-	phead = head_data_msg_dynamic_pool;
-	ptemp = head_data_msg_dynamic_pool;
-
 	size_pdu = size / AK_DYNAMIC_PDU_SIZE;
 	if ((size % AK_DYNAMIC_PDU_SIZE) != 0) {
 		size_pdu++;
 	}
 
+	ENTRY_CRITICAL();
+
+	phead = head_data_msg_dynamic_pool;
+	ptemp = head_data_msg_dynamic_pool;
+
 	for (i = 0; i < size_pdu; i++) {
 		if (ptemp->next == NULL) {
 			FATAL("MF", 0x48);
-			return NULL;
 		}
 		ptemp = ptemp->next;
 	}
 
 	head_data_msg_dynamic_pool = ptemp->next;
 	ptemp->next = NULL;
+
+	EXIT_CRITICAL();
 
 	return phead;
 }
@@ -488,7 +491,6 @@ uint8_t get_data_dynamic_pdu(dynamic_pdu_t* dynamic_pdu, uint8_t* data, uint32_t
 		if ((i != 0) && (i % AK_DYNAMIC_PDU_SIZE == 0)) {
 			if (phead->next == NULL) {
 				FATAL("MF", 0x49);
-				return AK_MSG_NG;
 			}
 
 			phead = phead->next;
@@ -513,7 +515,6 @@ uint8_t set_data_dynamic_pdu(dynamic_pdu_t* dynamic_pdu, uint8_t* data, uint32_t
 
 		if (ptemp->next == NULL) {
 			FATAL("MF", 0x50);
-			return AK_MSG_NG;
 		}
 
 		ptemp = ptemp->next;

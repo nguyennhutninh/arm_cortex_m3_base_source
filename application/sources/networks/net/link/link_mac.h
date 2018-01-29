@@ -4,6 +4,7 @@
 #include "fsm.h"
 #include "message.h"
 
+#include "link_phy.h"
 #include "link_config.h"
 
 #define LINK_MAC_FRAME_HEADER_SIZE	(sizeof(link_mac_frame_header_t))

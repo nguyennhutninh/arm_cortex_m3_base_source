@@ -16,7 +16,7 @@ static void link_pdu_fatal(const char* s, uint8_t c);
 
 /* link pdu function */
 void link_pdu_init() {
-	SYS_DBG("[LINK_DATA] link_pdu_init()\n");
+	LINK_DBG_DATA("[LINK_DATA] link_pdu_init()\n");
 	ENTRY_CRITICAL();
 	free_link_pdu_pool = (link_pdu_t*)link_pdu_pool;
 	for (uint32_t i = 0; i < LINK_PDU_POOL_SIZE; i++) {
@@ -44,12 +44,12 @@ link_pdu_t* link_pdu_malloc() {
 		free_link_pdu_pool = free_link_pdu_pool->next;
 	}
 	EXIT_CRITICAL();
-	SYS_DBG("[LINK_DATA] link_pdu_malloc(%d)\n", allocate_msg->id);
+	LINK_DBG_DATA("[LINK_DATA] link_pdu_malloc(%d)\n", allocate_msg->id);
 	return allocate_msg;
 }
 
 void link_pdu_free(link_pdu_t* link_pdu) {
-	SYS_DBG("[LINK_DATA] link_pdu_free(%d)\n", link_pdu->id);
+	LINK_DBG_DATA("[LINK_DATA] link_pdu_free(%d)\n", link_pdu->id);
 	ENTRY_CRITICAL();
 	if ((link_pdu != LINK_PDU_NULL) && \
 			(link_pdu->id < LINK_PDU_POOL_SIZE) && \
@@ -65,7 +65,7 @@ void link_pdu_free(link_pdu_t* link_pdu) {
 }
 
 link_pdu_t* link_pdu_get(uint32_t pdu_id) {
-	SYS_DBG("[LINK_DATA] link_pdu_get(%d)\n", pdu_id);
+	LINK_DBG_DATA("[LINK_DATA] link_pdu_get(%d)\n", pdu_id);
 	link_pdu_t* link_pdu = LINK_PDU_NULL;
 	ENTRY_CRITICAL();
 	if ((pdu_id < LINK_PDU_POOL_SIZE) && \
@@ -80,7 +80,7 @@ link_pdu_t* link_pdu_get(uint32_t pdu_id) {
 }
 
 void link_pdu_free(uint32_t pdu_id) {
-	SYS_DBG("[LINK_DATA] link_pdu_free(%d)\n", pdu_id);
+	LINK_DBG_DATA("[LINK_DATA] link_pdu_free(%d)\n", pdu_id);
 	ENTRY_CRITICAL();
 	if (pdu_id < LINK_PDU_POOL_SIZE && link_pdu_pool[pdu_id].is_used) {
 		link_pdu_pool[pdu_id].is_used = 0;
@@ -95,7 +95,7 @@ void link_pdu_free(uint32_t pdu_id) {
 
 /* link address utilities */
 void link_set_src_addr(uint32_t addr) {
-	SYS_DBG("[LINK_DATA] link_set_src_addr(%d)\n", addr);
+	LINK_DBG_DATA("[LINK_DATA] link_set_src_addr(%d)\n", addr);
 	ENTRY_CRITICAL();
 	mac_src_add = addr;
 	EXIT_CRITICAL();
@@ -110,7 +110,7 @@ uint32_t link_get_src_addr() {
 }
 
 void link_set_des_addr(uint32_t addr) {
-	SYS_DBG("[LINK_DATA] link_set_des_addr(%d)\n", addr);
+	LINK_DBG_DATA("[LINK_DATA] link_set_des_addr(%d)\n", addr);
 	ENTRY_CRITICAL();
 	mac_des_add = addr;
 	EXIT_CRITICAL();
@@ -126,11 +126,11 @@ uint32_t link_get_des_addr() {
 
 void link_pdu_fatal(const char* s, uint8_t c) {
 	for (uint32_t i = 0; i < LINK_PDU_POOL_SIZE; i++) {
-		SYS_DBG("id: %d, is_used: %d, len: %d, data:", link_pdu_pool[i].id, link_pdu_pool[i].is_used, link_pdu_pool[i].len);
+		LINK_DBG_DATA("id: %d, is_used: %d, len: %d, data:", link_pdu_pool[i].id, link_pdu_pool[i].is_used, link_pdu_pool[i].len);
 		for (uint32_t i = 0; i < link_pdu_pool[i].len; i++) {
-			SYS_DBG("%d ", link_pdu_pool[i].payload[i]);
+			LINK_DBG_DATA("%d ", link_pdu_pool[i].payload[i]);
 		}
-		SYS_DBG("\n");
+		LINK_DBG_DATA("\n");
 	}
 	FATAL((const int8_t*)s, c);
 }

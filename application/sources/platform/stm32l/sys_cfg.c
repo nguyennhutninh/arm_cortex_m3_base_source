@@ -263,7 +263,15 @@ void sys_ctrl_delay_ms(volatile uint32_t count) {
 
 void sys_ctr_sleep_wait_for_irq() {
 	do {
+		/* low-power mode = sleep mode */
+		SCB->SCR &= ~( SCB_SCR_SLEEPDEEP_Msk );
+
+		/* ensure Flash memory stays on */
+		FLASH->ACR &= ~FLASH_ACR_SLEEP_PD;
+
+		/* enter low-power mode */
 		__WFI();
+
 	} while (0);
 }
 

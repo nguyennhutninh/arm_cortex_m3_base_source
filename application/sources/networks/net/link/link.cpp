@@ -39,7 +39,7 @@ void link_init_state_machine() {
 void fsm_link_state_init(ak_msg_t* msg) {
 	switch (msg->sig) {
 	case AC_LINK_INIT: {
-		APP_DBG_SIG("AC_LINK_INIT\n");
+		LINK_DBG_SIG("AC_LINK_INIT\n");
 
 		/* link protocol data unit pool initial */
 		link_pdu_init();
@@ -50,7 +50,7 @@ void fsm_link_state_init(ak_msg_t* msg) {
 		break;
 
 	case AC_LINK_MAC_LAYER_STARTED: {
-		APP_DBG_SIG("AC_LINK_MAC_LAYER_STARTED\n");
+		LINK_DBG_SIG("AC_LINK_MAC_LAYER_STARTED\n");
 		FSM_TRAN(&fsm_link, fsm_link_state_handle);
 	}
 		break;
@@ -63,7 +63,7 @@ void fsm_link_state_init(ak_msg_t* msg) {
 void fsm_link_state_handle(ak_msg_t* msg) {
 	switch (msg->sig) {
 	case AC_LINK_SEND_PURE_MSG: {
-		APP_DBG_SIG("AC_LINK_SEND_PURE_MSG\n");
+		LINK_DBG_SIG("AC_LINK_SEND_PURE_MSG\n");
 		ak_msg_pure_if_t if_msg;
 		if_msg.header.src_task_id = msg->if_src_task_id;
 		if_msg.header.des_task_id = msg->if_des_task_id;
@@ -91,7 +91,7 @@ void fsm_link_state_handle(ak_msg_t* msg) {
 		break;
 
 	case AC_LINK_SEND_COMMON_MSG: {
-		APP_DBG_SIG("AC_LINK_SEND_COMMON_MSG\n");
+		LINK_DBG_SIG("AC_LINK_SEND_COMMON_MSG\n");
 		ak_msg_common_if_t if_msg;
 		if_msg.header.src_task_id = msg->if_src_task_id;
 		if_msg.header.des_task_id = msg->if_des_task_id;
@@ -121,7 +121,7 @@ void fsm_link_state_handle(ak_msg_t* msg) {
 		break;
 
 	case AC_LINK_SEND_DYNAMIC_MSG: {
-		APP_DBG_SIG("AC_LINK_SEND_DYNAMIC_MSG\n");
+		LINK_DBG_SIG("AC_LINK_SEND_DYNAMIC_MSG\n");
 		ak_msg_dynamic_if_t if_msg;
 		if_msg.header.src_task_id = msg->if_src_task_id;
 		if_msg.header.des_task_id = msg->if_des_task_id;
@@ -151,7 +151,7 @@ void fsm_link_state_handle(ak_msg_t* msg) {
 		break;
 
 	case AC_LINK_SEND_DATA: {
-		APP_DBG_SIG("AC_LINK_SEND_DATA\n");
+		LINK_DBG_SIG("AC_LINK_SEND_DATA\n");
 		link_pdu_t* link_pdu = link_pdu_malloc();
 
 		link_frame_t link_frame;
@@ -170,14 +170,14 @@ void fsm_link_state_handle(ak_msg_t* msg) {
 		break;
 
 	case AC_LINK_SEND_DONE: {
-		APP_DBG_SIG("AC_LINK_SEND_DONE\n");
+		LINK_DBG_SIG("AC_LINK_SEND_DONE\n");
 		uint32_t* link_pdu_send_done = (uint32_t*)get_data_common_msg(msg);
 		link_pdu_free(*link_pdu_send_done);
 	}
 		break;
 
 	case AC_LINK_REV_MSG: {
-		APP_DBG_SIG("AC_LINK_REV_MSG\n");
+		LINK_DBG_SIG("AC_LINK_REV_MSG\n");
 		uint32_t* rev_pdu_id = (uint32_t*)get_data_common_msg(msg);
 		link_pdu_t* link_pdu = link_pdu_get(*rev_pdu_id);
 		link_frame_t* link_frame = (link_frame_t*)link_pdu->payload;
@@ -244,7 +244,7 @@ void fsm_link_state_handle(ak_msg_t* msg) {
 		break;
 
 	case AC_LINK_SEND_ERR: {
-		APP_DBG_SIG("AC_LINK_SEND_ERR\n");
+		LINK_DBG_SIG("AC_LINK_SEND_ERR\n");
 		uint32_t* link_pdu_send_err = (uint32_t*)get_data_common_msg(msg);
 		link_pdu_free(*link_pdu_send_err);
 

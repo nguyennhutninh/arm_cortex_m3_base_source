@@ -193,10 +193,20 @@ $(OBJECTS_DIR)/%.o: %.s
 	$(Print) CC $@
 	@$(CC) $(AFLAGS) -o $@ -c $<
 
+.PHONY: help
+help:
+	$(Print) "[make flash dev=st-link] burn firmware via st-link"
+	$(Print) "[make flash] burn firmware via uart"
+	$(Print) "             NOTE: This option is needed install ak_flash, github: https://github.com/thannt92/ak_flash.git"
+	$(Print) "[make debug gdb=ddd] gdb debug using ddd"
+	$(Print) "[make debug] gdb debug"
+	$(Print) "[make com] open minicom using device /dev/ac_mod_com"
+	$(Print) "[make clean] clean build project folder"
+
 .PHONY: flash
 flash: 	all
 	$(Print) BURNING $(TARGET:.axf=.bin) to target
-ifeq ($(st_flash),yes)
+ifeq ($(dev),st-link)
 	st-flash write $(TARGET:.axf=.bin) $(APP_START_ADDR_VAL)
 else
 	ak_flash /dev/ac_mod_com $(TARGET:.axf=.bin) $(APP_START_ADDR_VAL)
