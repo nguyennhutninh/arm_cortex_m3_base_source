@@ -1,26 +1,26 @@
 Quick Start
 
-1. install stlink
+1.. install stlink
 
 https://github.com/texane/stlink.git
 
 
-2. install gcc-arm-none-eabi
+2.. install gcc-arm-none-eabi
 
 https://developer.arm.com/open-source/gnu-toolchain/gnu-rm/downloads
 
 
-3. install openocd (if you want to debug using openocd)
+3.. install openocd (if you want to debug using openocd)
 
 https://github.com/gnu-mcu-eclipse/openocd.git
 
 
-4. install ddd for dbg UI debug (if you want to debug using openocd and ddd)
+4.. install ddd for dbg UI debug (if you want to debug using openocd and ddd)
 
 sudo apt-get install ddd
 
 
-5. install ak_flash (flash firmware using bootloader via UART)
+5.. install ak_flash (flash firmware using bootloader via UART)
 
 https://github.com/thannt92/ak_flash.git
 
@@ -39,7 +39,7 @@ make flash
 NOTE: make flash using stflash (st-link debugger)
 
 
-6. redirect tools path.
+6.. redirect tools path.
 
 https://github.com/thannt92/arm_cortex_m3_base_source/blob/master/application/Makefile
 
