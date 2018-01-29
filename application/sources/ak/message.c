@@ -107,7 +107,7 @@ void msg_dec_ref_count(ak_msg_t* msg) {
 uint32_t get_pool_msg_free(ak_msg_t* pool_msg) {
 	uint32_t used = 0;
 	ak_msg_t* head_pool = pool_msg;
-	while(head_pool != AK_MSG_NULL) {
+	while (head_pool != AK_MSG_NULL) {
 		used++;
 		head_pool = head_pool->next;
 	}

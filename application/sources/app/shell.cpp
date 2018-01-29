@@ -340,7 +340,7 @@ int32_t shell_fatal(uint8_t* argv) {
 			uint32_t colum = (uint32_t)strtol(str_parser_get_attr(2), NULL, 0);
 
 			LOGIN_PRINT("\n");
-			for(uint32_t i = 0; i < len_of_ram; i++) {
+			for (uint32_t i = 0; i < len_of_ram; i++) {
 				if (!(i % colum)) {
 					/* reset watchdog */
 					sys_ctrl_independent_watchdog_reset();
@@ -386,7 +386,7 @@ int32_t shell_eps(uint8_t* argv) {
 	switch (*(argv + 4)) {
 	case 'd': {					/* data DEC format */
 		LOGIN_PRINT("\n");
-		for(uint32_t i = 0; i < EEPROM_END_ADDR; i++) {
+		for (uint32_t i = 0; i < EEPROM_END_ADDR; i++) {
 			if (!(i%16)) {
 				/* reset watchdog */
 				sys_ctrl_independent_watchdog_reset();
@@ -403,7 +403,7 @@ int32_t shell_eps(uint8_t* argv) {
 
 	case 'h': {					/* data HEX format */
 		LOGIN_PRINT("\n");
-		for(uint32_t i = 0; i < EEPROM_END_ADDR; i++) {
+		for (uint32_t i = 0; i < EEPROM_END_ADDR; i++) {
 			if (!(i%16)) {
 				/* reset watchdog */
 				sys_ctrl_independent_watchdog_reset();
@@ -454,7 +454,7 @@ int32_t shell_flash(uint8_t* argv) {
 			LOGIN_PRINT("stop_addr: 0x%x\n", stop_addr);
 
 			LOGIN_PRINT("\n");
-			for(uint32_t i = start_addr; i < stop_addr; i++) {
+			for (uint32_t i = start_addr; i < stop_addr; i++) {
 				if (!(i%16)) {
 					/* reset watchdog */
 					sys_ctrl_independent_watchdog_reset();
@@ -482,7 +482,7 @@ int32_t shell_flash(uint8_t* argv) {
 			LOGIN_PRINT("stop_addr: 0x%x\n", stop_addr);
 
 			LOGIN_PRINT("\n");
-			for(uint32_t i = start_addr; i < stop_addr; i++) {
+			for (uint32_t i = start_addr; i < stop_addr; i++) {
 				if (!(i%16)) {
 					/* reset watchdog */
 					sys_ctrl_independent_watchdog_reset();

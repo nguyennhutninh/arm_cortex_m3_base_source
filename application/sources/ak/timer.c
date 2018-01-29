@@ -107,7 +107,7 @@ void task_timer_tick(ak_msg_t* msg) {
 	switch (msg->sig) {
 	case TIMER_TICK:
 		/* query timer node */
-		while(timer_list != TIMER_MSG_NULL) {
+		while (timer_list != TIMER_MSG_NULL) {
 
 			ENTRY_CRITICAL();
 
@@ -311,18 +311,4 @@ uint8_t timer_remove_attr(task_id_t des_task_id, timer_sig_t sig) {
 	task_remove_msg(des_task_id, sig);
 
 	return ret;
-}
-
-uint32_t timer_used() {
-	uint32_t used = 0;
-	ak_timer_t* head_pool = timer_list_head;
-	while(head_pool != TIMER_MSG_NULL) {
-		used++;
-		head_pool = head_pool->next;
-	}
-	return used;
-}
-
-ak_timer_t* timer_get_list() {
-	return timer_list_head;
 }

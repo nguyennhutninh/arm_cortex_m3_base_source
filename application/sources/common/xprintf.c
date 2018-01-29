@@ -110,7 +110,7 @@ int xstream(x_stream_t* stream, const char *fmt, va_list va_args) {
 
 				case 's':
 					ps = va_arg(va_args, uint8_t*);
-					while(*ps) {
+					while (*ps) {
 						stream->xputc(stream, *ps++);
 					}
 					goto next_loop;

@@ -109,7 +109,7 @@ uint8_t flash_read(uint32_t address, uint8_t* pbuf, uint32_t len) {
 	flash_transfer(address >> 8);
 	flash_transfer(address);
 
-	for(i = 0; i < len; i++) {
+	for (i = 0; i < len; i++) {
 		pbuf[i] = flash_transfer(0x00);
 	}
 

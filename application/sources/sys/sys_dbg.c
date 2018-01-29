@@ -164,7 +164,7 @@ void sys_dbg_fatal(const int8_t* s, uint8_t c) {
 			case 'R': {
 				index = 0;
 				SYS_PRINT("\n[dump RAM]\n");
-				for(uint32_t i = 0; i < len_of_ram; i++) {
+				for (uint32_t i = 0; i < len_of_ram; i++) {
 					if (!(i % 8)) {
 						/* reset watchdog */
 						sys_ctrl_independent_watchdog_reset();

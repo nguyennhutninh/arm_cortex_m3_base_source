@@ -53,8 +53,6 @@ extern void task_timer_tick(ak_msg_t* msg);
 
 extern uint8_t timer_set(task_id_t des_task_id, timer_sig_t sig, int32_t duty, timer_type_t type);
 extern uint8_t timer_remove_attr(task_id_t des_task_id, timer_sig_t sig);
-extern uint32_t timer_used();
-extern ak_timer_t* timer_get_list();
 
 #ifdef __cplusplus
 }

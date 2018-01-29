@@ -40,7 +40,7 @@ void sys_irq_nrf24l01() {
 
 	uint8_t nrf24_irq_mask = hal_nrf_get_clear_irq_flags();
 
-	switch(nrf24_irq_mask) {
+	switch (nrf24_irq_mask) {
 	case (1 << HAL_NRF_MAX_RT): { /* Max retries reached */
 		hal_nrf_flush_tx(); /* flush tx fifo, avoid fifo jam */
 		task_post_pure_msg(AC_RF24_PHY_ID, AC_RF24_PHY_IRQ_TX_MAX_RT);

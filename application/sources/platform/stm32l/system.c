@@ -280,7 +280,7 @@ void systick_handler() {
 		div_counter = 0;
 	}
 
-	switch(div_counter) {
+	switch (div_counter) {
 	case 0:
 		sys_irq_timer_10ms();
 		break;

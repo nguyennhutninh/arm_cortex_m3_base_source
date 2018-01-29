@@ -272,7 +272,7 @@ int task_run() {
 
 	SYS_PRINT("active objects is ready\n\n");
 
-	for(;;) {
+	for (;;) {
 		task_sheduler();
 		sys_ctr_sleep_wait_for_irq();
 	}
@@ -304,7 +304,7 @@ void task_sheduler() {
 
 	uint8_t t_task_current = task_current;
 
-	while((t_task_new = log2lkup[task_ready]) > t_task_current) {
+	while ((t_task_new = log2lkup[task_ready]) > t_task_current) {
 		/* get task */
 		tcb_t* t_tcb = &task_pri_queue[t_task_new - 1];
 
