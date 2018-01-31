@@ -89,7 +89,7 @@ void task_rf24_mac(ak_msg_t* msg) {
 	switch (msg->sig) {
 
 	case AC_RF24_MAC_INIT: {
-		APP_DBG_SIG("AC_RF24_MAC_INIT\n");
+		NRF_DBG_SIG("AC_RF24_MAC_INIT\n");
 
 		/* init sending nwk_frame FIFO */
 		fifo_init(&nwk_pdu_id_fifo, memcpy, nwk_pdu_id_buf, NWK_PDU_ID_FIFO_SIZE, sizeof(uint32_t));
@@ -105,7 +105,7 @@ void task_rf24_mac(ak_msg_t* msg) {
 		break;
 
 	case AC_RF24_MAC_HANDLE_MSG_OUT: {
-		APP_DBG_SIG("AC_RF24_MAC_HANDLE_MSG_OUT\n");
+		NRF_DBG_SIG("AC_RF24_MAC_HANDLE_MSG_OUT\n");
 		uint32_t st_nwk_pdu_id;
 		memcpy(&st_nwk_pdu_id, get_data_common_msg(msg), sizeof(uint32_t));
 
@@ -138,9 +138,9 @@ void task_rf24_mac(ak_msg_t* msg) {
 		break;
 
 	case AC_RF24_MAC_SEND_FRAME: {
-		APP_DBG_SIG("AC_RF24_MAC_SEND_FRAME\n");
+		NRF_DBG_SIG("AC_RF24_MAC_SEND_FRAME\n");
 		if (get_mac_send_state() == MAC_SEND_STATE_SENDING) {
-			APP_DBG("[MAC] [SF] sma:0x%X ms:%d fn:%d fs:%d\n", sending_nrf_mac_frame.hdr.src_mac_addr, \
+			NRF_DBG("[MAC] [SF] sma:0x%X ms:%d fn:%d fs:%d\n", sending_nrf_mac_frame.hdr.src_mac_addr, \
 					sending_nrf_mac_frame.hdr.mac_seq, \
 					sending_nrf_mac_frame.hdr.frame_num, \
 					sending_nrf_mac_frame.hdr.frame_seq);
@@ -154,7 +154,7 @@ void task_rf24_mac(ak_msg_t* msg) {
 		break;
 
 	case AC_RF24_MAC_SEND_FRAME_DONE: {
-		APP_DBG_SIG("AC_RF24_MAC_SEND_FRAME_DONE\n");
+		NRF_DBG_SIG("AC_RF24_MAC_SEND_FRAME_DONE\n");
 		if (get_mac_send_state() == MAC_SEND_STATE_SENDING) {
 			/* reset mac_frame retry counter */
 			sending_mac_frame_retry_counter = 0;
@@ -180,7 +180,7 @@ void task_rf24_mac(ak_msg_t* msg) {
 		break;
 
 	case AC_RF24_MAC_SEND_FRAME_ERR: {
-		APP_DBG_SIG("AC_RF24_MAC_SEND_FRAME_ERR\n");
+		NRF_DBG_SIG("AC_RF24_MAC_SEND_FRAME_ERR\n");
 		if (get_mac_send_state() == MAC_SEND_STATE_SENDING) {
 			if (sending_mac_frame_retry_counter++ < SENDING_MAC_FRAME_RETRY_COUNTER_MAX) {
 				/* mac frame retry */
@@ -215,9 +215,9 @@ void task_rf24_mac(ak_msg_t* msg) {
 		break;
 
 	case AC_RF24_MAC_RECV_FRAME: {
-		APP_DBG_SIG("AC_RF24_MAC_RECV_FRAME\n");
+		NRF_DBG_SIG("AC_RF24_MAC_RECV_FRAME\n");
 		nrf_mac_msg_t* st_nrf_mac_msg = (nrf_mac_msg_t*)get_data_common_msg(msg);
-		APP_DBG("[MAC] [RF] sma:0x%X ms:%d fn:%d fs:%d\trms:%d\n", st_nrf_mac_msg->hdr.src_mac_addr, \
+		NRF_DBG("[MAC] [RF] sma:0x%X ms:%d fn:%d fs:%d\trms:%d\n", st_nrf_mac_msg->hdr.src_mac_addr, \
 				st_nrf_mac_msg->hdr.mac_seq, \
 				st_nrf_mac_msg->hdr.frame_num, \
 				st_nrf_mac_msg->hdr.frame_seq, \
@@ -260,7 +260,7 @@ void task_rf24_mac(ak_msg_t* msg) {
 		break;
 
 	case AC_RF24_MAC_RECV_FRAME_TO: {
-		APP_DBG_SIG("AC_RF24_MAC_RECV_FRAME_TO\n");
+		NRF_DBG_SIG("AC_RF24_MAC_RECV_FRAME_TO\n");
 		if (get_mac_rev_state() == MAC_REV_STATE_RECEIVING) {
 			nrf_nwk_pdu_free(receiving_nrf_nwk_frame);
 			set_mac_rev_state(MAC_REV_STATE_IDLE);
@@ -269,7 +269,7 @@ void task_rf24_mac(ak_msg_t* msg) {
 		break;
 
 	case AC_RF24_MAC_HANDLE_MSG_IN: {
-		APP_DBG_SIG("AC_RF24_MAC_HANDLE_MSG_IN\n");
+		NRF_DBG_SIG("AC_RF24_MAC_HANDLE_MSG_IN\n");
 		nrf_mac_msg_t* receiving_nrf_mac_frame = (nrf_mac_msg_t*)get_data_common_msg(msg);
 		memcpy((receiving_nrf_nwk_frame->payload + (receiving_nrf_mac_frame->hdr.frame_seq * MAX_MAC_PAYLOAD_LEN)), receiving_nrf_mac_frame->payload, MAX_MAC_PAYLOAD_LEN);
 
@@ -291,7 +291,7 @@ mac_send_state_e get_mac_send_state() {
 
 void set_mac_send_state(mac_send_state_e state) {
 	mac_send_state = state;
-	APP_DBG("[MAC] set_mac_send_state -> %d\n", mac_send_state);
+	NRF_DBG("[MAC] set_mac_send_state -> %d\n", mac_send_state);
 	if (mac_send_state != MAC_SEND_STATE_SENDING) {
 		nrf_phy_switch_prx_mode();
 	}
@@ -306,7 +306,7 @@ mac_rev_state_e get_mac_rev_state() {
 
 void set_mac_rev_state(mac_rev_state_e state) {
 	mac_rev_state = state;
-	APP_DBG("[MAC] set_mac_rev_state -> %d\n", mac_rev_state);
+	NRF_DBG("[MAC] set_mac_rev_state -> %d\n", mac_rev_state);
 }
 
 uint8_t calc_frame_cs(uint8_t* data, uint16_t len) {

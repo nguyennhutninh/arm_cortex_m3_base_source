@@ -7,11 +7,11 @@
 #include <string.h>
 
 /* driver include */
-#include "../driver/led/led.h"
-#include "../driver/flash/flash.h"
+#include "led.h"
+#include "flash.h"
 
 /* common include */
-#include "../common/utils.h"
+#include "utils.h"
 
 /* app include */
 #include "app.h"
@@ -20,12 +20,12 @@
 #include "app_flash.h"
 
 /* sys include */
-#include "../sys/sys_irq.h"
-#include "../sys/sys_io.h"
-#include "../sys/sys_ctrl.h"
-#include "../sys/sys_dbg.h"
-#include "../sys/sys_boot.h"
-#include "../sys/sys_arduino.h"
+#include "sys_irq.h"
+#include "sys_io.h"
+#include "sys_ctrl.h"
+#include "sys_dbg.h"
+#include "sys_boot.h"
+#include "sys_arduino.h"
 
 #include "uart_boot.h"
 

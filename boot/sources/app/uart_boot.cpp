@@ -1,6 +1,6 @@
 #include "uart_boot.h"
-#include "../sys/sys_ctrl.h"
-#include "../sys/sys_io.h"
+#include "sys_ctrl.h"
+#include "sys_io.h"
 
 static uart_boot_frame_t uart_boot_frame;
 

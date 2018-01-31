@@ -83,7 +83,7 @@ void sys_irq_nrf24l01() {
 void task_rf24_phy(ak_msg_t* msg) {
 	switch (msg->sig) {
 	case AC_RF24_PHY_INIT: {
-		APP_DBG_SIG("AC_RF24_PHY_INIT\n");
+		NRF_DBG_SIG("AC_RF24_PHY_INIT\n");
 
 		/* init io control of nrf24 (CE, NCS, IRQ) */
 		nrf24l01_io_ctrl_init();
@@ -133,19 +133,19 @@ void task_rf24_phy(ak_msg_t* msg) {
 		break;
 
 	case AC_RF24_PHY_IRQ_TX_MAX_RT: {
-		APP_DBG_SIG("AC_RF24_PHY_IRQ_TX_MAX_RT\n");
+		NRF_DBG_SIG("AC_RF24_PHY_IRQ_TX_MAX_RT\n");
 		task_post_pure_msg(AC_RF24_MAC_ID, AC_RF24_MAC_SEND_FRAME_ERR);
 	}
 		break;
 
 	case AC_RF24_PHY_IRQ_TX_DS: {
-		APP_DBG_SIG("AC_RF24_PHY_IRQ_TX_DS\n");
+		NRF_DBG_SIG("AC_RF24_PHY_IRQ_TX_DS\n");
 		task_post_pure_msg(AC_RF24_MAC_ID, AC_RF24_MAC_SEND_FRAME_DONE);
 	}
 		break;
 
 	case AC_RF24_PHY_IRQ_RX_DR: {
-		APP_DBG_SIG("AC_RF24_PHY_IRQ_RX_DR\n");
+		NRF_DBG_SIG("AC_RF24_PHY_IRQ_RX_DR\n");
 		msg_inc_ref_count(msg);
 		set_msg_sig(msg, AC_RF24_MAC_RECV_FRAME);
 		task_post(AC_RF24_MAC_ID, msg);
@@ -153,18 +153,18 @@ void task_rf24_phy(ak_msg_t* msg) {
 		break;
 
 	case AC_RF24_PHY_IRQ_ACK_PR: {
-		APP_DBG_SIG("AC_RF24_PHY_IRQ_ACK_PR\n");
+		NRF_DBG_SIG("AC_RF24_PHY_IRQ_ACK_PR\n");
 	}
 		break;
 
 	case AC_RF24_PHY_IRQ_CLEAR_REQ: {
-		APP_DBG_SIG("AC_RF24_PHY_IRQ_CLEAR_REQ\n");
+		NRF_DBG_SIG("AC_RF24_PHY_IRQ_CLEAR_REQ\n");
 		hal_nrf_get_clear_irq_flags();
 	}
 		break;
 
 	case AC_RF24_PHY_SEND_FRAME_REQ: {
-		APP_DBG_SIG("AC_RF24_PHY_SEND_FRAME_REQ\n");
+		NRF_DBG_SIG("AC_RF24_PHY_SEND_FRAME_REQ\n");
 		uint8_t* payload = get_data_common_msg(msg);
 		hal_nrf_set_address(HAL_NRF_TX, (uint8_t*)nrf_get_des_phy_addr()); /* Set device's addresses */
 		hal_nrf_set_address(HAL_NRF_PIPE0, (uint8_t*)nrf_get_des_phy_addr()); /* Sets recieving address on pipe0 */
@@ -173,13 +173,13 @@ void task_rf24_phy(ak_msg_t* msg) {
 		break;
 
 	case AC_RF24_PHY_REV_MODE_REQ: {
-		APP_DBG_SIG("AC_RF24_PHY_REV_MODE_REQ\n");
+		NRF_DBG_SIG("AC_RF24_PHY_REV_MODE_REQ\n");
 		nrf_phy_switch_prx_mode();
 	}
 		break;
 
 	case AC_RF24_PHY_SEND_MODE_REQ: {
-		APP_DBG_SIG("AC_RF24_PHY_SEND_MODE_REQ\n");
+		NRF_DBG_SIG("AC_RF24_PHY_SEND_MODE_REQ\n");
 		nrf_phy_switch_ptx_mode();
 	}
 		break;
@@ -190,7 +190,7 @@ void task_rf24_phy(ak_msg_t* msg) {
 }
 
 void nrf_phy_switch_ptx_mode() {
-	APP_DBG("[PHY] nrf_phy_switch_ptx_mode()\n");
+	NRF_DBG("[PHY] nrf_phy_switch_ptx_mode()\n");
 	CE_LOW();
 	hal_nrf_set_operation_mode(HAL_NRF_PTX);
 	sys_ctrl_delay_us(150);
@@ -198,7 +198,7 @@ void nrf_phy_switch_ptx_mode() {
 }
 
 void nrf_phy_switch_prx_mode() {
-	APP_DBG("[PHY] nrf_phy_switch_prx_mode()\n");
+	NRF_DBG("[PHY] nrf_phy_switch_prx_mode()\n");
 	CE_LOW();
 	hal_nrf_set_operation_mode(HAL_NRF_PRX);
 	hal_nrf_set_address(HAL_NRF_PIPE0, (uint8_t*)nrf_get_src_phy_addr()); /* Sets recieving address on pipe0 */

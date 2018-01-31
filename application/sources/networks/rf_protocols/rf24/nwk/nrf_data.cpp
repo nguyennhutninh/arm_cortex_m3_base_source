@@ -40,12 +40,12 @@ nrf_nwk_pdu_t* nrf_nwk_pdu_malloc() {
 		free_nrf_nwk_pdu_list = free_nrf_nwk_pdu_list->next;
 	}
 	EXIT_CRITICAL();
-	SYS_DBG("nrf_nwk_pdu_malloc(%d)\n", allocate_msg->id);
+	NRF_DBG_DATA("nrf_nwk_pdu_malloc(%d)\n", allocate_msg->id);
 	return allocate_msg;
 }
 
 void nrf_nwk_pdu_free(nrf_nwk_pdu_t* nwk_msg) {
-	SYS_DBG("nrf_nwk_pdu_free(%d)\n", nwk_msg->id);
+	NRF_DBG_DATA("nrf_nwk_pdu_free(%d)\n", nwk_msg->id);
 	ENTRY_CRITICAL();
 	nwk_msg->is_used = 0;
 	nwk_msg->next = free_nrf_nwk_pdu_list;
@@ -54,12 +54,12 @@ void nrf_nwk_pdu_free(nrf_nwk_pdu_t* nwk_msg) {
 }
 
 nrf_nwk_pdu_t* nrf_nwk_pdu_get(uint32_t id) {
-	SYS_DBG("nrf_nwk_pdu_get(%d)\n", id);
+	NRF_DBG_DATA("nrf_nwk_pdu_get(%d)\n", id);
 	return (nrf_nwk_pdu_t*)&nrf_nwk_msg_pool[id];
 }
 
 void nrf_nwk_pdu_free(uint32_t id) {
-	SYS_DBG("nrf_nwk_pdu_free(%d)\n", id);
+	NRF_DBG_DATA("nrf_nwk_pdu_free(%d)\n", id);
 	ENTRY_CRITICAL();
 	if (id < NRF_NWK_MSG_POOL_SIZE) {
 		nrf_nwk_msg_pool[id].is_used = 0;
@@ -75,7 +75,7 @@ void nrf_nwk_pdu_free(uint32_t id) {
 void nrf_set_static_nwk_addr(uint16_t addr) {
 	mac_src_addr[3] = ((addr << 8) & 0xFF);
 	mac_src_addr[4] = (addr& 0xFF);
-	SYS_DBG("[NRF_DATA] nrf_set_static_nwk_addr(%02X %02X %02X %02X %02X)\n", \
+	NRF_DBG_DATA("[NRF_DATA] nrf_set_static_nwk_addr(%02X %02X %02X %02X %02X)\n", \
 			mac_src_addr[0],
 			mac_src_addr[1],
 			mac_src_addr[2],
@@ -87,7 +87,7 @@ uint16_t nrf_get_static_nwk_addr() {
 	uint16_t ret;
 	*((uint8_t*)&ret) = mac_src_addr[3];
 	*((uint8_t*)&ret + 1) = mac_src_addr[4];
-	SYS_DBG("[NRF_DATA] nrf_get_static_nwk_addr(%02X %02X %02X %02X %02X)\n", \
+	NRF_DBG_DATA("[NRF_DATA] nrf_get_static_nwk_addr(%02X %02X %02X %02X %02X)\n", \
 			mac_src_addr[0],
 			mac_src_addr[1],
 			mac_src_addr[2],
@@ -99,7 +99,7 @@ uint16_t nrf_get_static_nwk_addr() {
 void nrf_set_des_nwk_addr(uint16_t addr) {
 	mac_des_addr[3] = ((addr << 8) & 0xFF);
 	mac_des_addr[4] = (addr& 0xFF);
-	SYS_DBG("[NRF_DATA] nrf_set_des_nwk_addr(%02X %02X %02X %02X %02X)\n", \
+	NRF_DBG_DATA("[NRF_DATA] nrf_set_des_nwk_addr(%02X %02X %02X %02X %02X)\n", \
 			mac_des_addr[0],
 			mac_des_addr[1],
 			mac_des_addr[2],
@@ -111,7 +111,7 @@ uint16_t nrf_get_des_nwk_addr() {
 	uint16_t ret;
 	*((uint8_t*)&ret) = mac_des_addr[3];
 	*((uint8_t*)&ret + 1) = mac_des_addr[4];
-	SYS_DBG("[NRF_DATA] nrf_get_des_nwk_addr(%02X %02X %02X %02X %02X)\n", \
+	NRF_DBG_DATA("[NRF_DATA] nrf_get_des_nwk_addr(%02X %02X %02X %02X %02X)\n", \
 			mac_des_addr[0],
 			mac_des_addr[1],
 			mac_des_addr[2],
@@ -121,7 +121,7 @@ uint16_t nrf_get_des_nwk_addr() {
 }
 
 uint8_t* nrf_get_des_phy_addr() {
-	SYS_DBG("[NRF_DATA] nrf_get_des_phy_addr(%02X %02X %02X %02X %02X)\n", \
+	NRF_DBG_DATA("[NRF_DATA] nrf_get_des_phy_addr(%02X %02X %02X %02X %02X)\n", \
 			mac_des_addr[0],
 			mac_des_addr[1],
 			mac_des_addr[2],
@@ -131,7 +131,7 @@ uint8_t* nrf_get_des_phy_addr() {
 }
 
 uint8_t* nrf_get_src_phy_addr() {
-	SYS_DBG("[NRF_DATA] nrf_get_src_phy_addr(%02X %02X %02X %02X %02X)\n", \
+	NRF_DBG_DATA("[NRF_DATA] nrf_get_src_phy_addr(%02X %02X %02X %02X %02X)\n", \
 			mac_src_addr[0],
 			mac_src_addr[1],
 			mac_src_addr[2],

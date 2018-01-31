@@ -32,6 +32,10 @@
 
 #include "app.h"
 
+#include "sys_cfg.h"
+
+#pragma GCC optimize ("O3")
+
 /*****************************************************************************/
 /* linker variable                                                           */
 /*****************************************************************************/
@@ -194,8 +198,8 @@ void reset_handler() {
 	/* MUST BE disable interrupt */
 	__disable_irq();
 
-	uint32_t *pSrc	= &_ldata;
-	uint32_t *pDest	= &_data;
+	volatile uint32_t *pSrc	= &_ldata;
+	volatile uint32_t *pDest	= &_data;
 	volatile unsigned i, cnt;
 
 	/* init system */
@@ -295,7 +299,7 @@ void systick_handler() {
 }
 
 void svc_exe(uint32_t* svc_args) {
-	uint8_t svc_number;
+	volatile uint8_t svc_number;
 
 	sys_dbg_func_stack_dump(svc_args);
 	sys_dbg_cpu_dump();
@@ -352,6 +356,18 @@ void shell_handler() {
 	if (USART_GetITStatus(USARTx, USART_IT_RXNE) == SET) {
 		/* DO NOT clear pending interrupt right here ! */
 		sys_irq_shell();
+	}
+
+	if (USART_GetITStatus(USARTx, USART_IT_TXE) == SET) {
+		USART_ClearITPendingBit(USARTx, USART_IT_TXE);
+		USART_SendData(USARTx, ring_buffer_char_get(&ring_buffer_char_shell_send));
+		if (ring_buffer_char_is_empty(&ring_buffer_char_shell_send)) {
+			ring_buffer_char_shell_sending_flag = 0;
+			USART_ITConfig(USARTx, USART_IT_TXE, DISABLE);
+		}
+		else {
+			ring_buffer_char_shell_sending_flag = 1;
+		}
 	}
 
 	task_exit_interrupt();

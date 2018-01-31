@@ -14,6 +14,7 @@ extern "C"
 
 #include <stdint.h>
 #include "stm32l1xx_conf.h"
+#include "ring_buffer.h"
 
 /* USART Communication boards Interface */
 #define USARTx                           USART1
@@ -32,6 +33,9 @@ extern "C"
 #define USARTx_RX_GPIO_CLK               RCC_AHBPeriph_GPIOA
 #define USARTx_RX_SOURCE                 GPIO_PinSource10
 #define USARTx_RX_AF                     GPIO_AF_USART1
+
+extern volatile uint8_t ring_buffer_char_shell_sending_flag;
+extern ring_buffer_char_t ring_buffer_char_shell_send;
 
 extern void sys_cfg_clock();
 extern void sys_cfg_tick();

@@ -30,10 +30,14 @@
 #include "link_phy.h"
 #include "link_hal.h"
 
+#pragma GCC optimize ("O3")
+
 struct shell_t {
 	uint8_t index;
 	uint8_t data[SHELL_BUFFER_LENGHT];
-} shell;
+};
+
+volatile struct shell_t shell;
 
 void sys_irq_shell() {
 	volatile uint8_t c = 0;

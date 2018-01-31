@@ -14,7 +14,7 @@ void ir_init(ir_t* ir) {
 	ir->bit_len            = 0;
 	ir->state              = IR_STATE_IDLE;
 
-	memset(ir->buf, 0, MAX_RAW_LEN);
+	memset(ir->buf, 0, MAX_RAW_LEN * sizeof(uint16_t));
 
 	/* disable timer polling interrupt && receiver io interrupt */
 	timer_50us_disable();

@@ -18,6 +18,7 @@
 #include "core_cmFunc.h"
 
 #include "xprintf.h"
+#include "ring_buffer.h"
 
 #include "sys_dbg.h"
 #include "sys_def.h"
@@ -26,9 +27,17 @@
 #include "sys_dbg.h"
 #include "ak.h"
 
+#pragma GCC optimize ("O3")
+
+#define RING_BUFFER_CHAR_SHELL_SEND_BUFFER_SIZE	256
+
 /* Private define */
-static uint32_t delay_coeficient = 0;
+static volatile uint32_t delay_coeficient = 0;
 static void xputchar(uint8_t c);
+
+static uint8_t ring_buffer_char_shell_send_buffer[RING_BUFFER_CHAR_SHELL_SEND_BUFFER_SIZE];
+volatile uint8_t ring_buffer_char_shell_sending_flag;
+ring_buffer_char_t ring_buffer_char_shell_send;
 
 /******************************************************************************
 * system configure function
@@ -68,6 +77,8 @@ void sys_cfg_console() {
 	GPIO_InitTypeDef GPIO_InitStructure;
 	NVIC_InitTypeDef NVIC_InitStructure;
 
+	ring_buffer_char_init(&ring_buffer_char_shell_send, ring_buffer_char_shell_send_buffer, RING_BUFFER_CHAR_SHELL_SEND_BUFFER_SIZE);
+
 	/* Enable GPIO clock */
 	RCC_AHBPeriphClockCmd(USARTx_TX_GPIO_CLK | USARTx_RX_GPIO_CLK, ENABLE);
 
@@ -82,7 +93,7 @@ void sys_cfg_console() {
 
 	/* Configure USART Tx and Rx as alternate function push-pull */
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;
-	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_400KHz;
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
 	GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
 	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
 	GPIO_InitStructure.GPIO_Pin = USARTx_TX_PIN;
@@ -107,8 +118,9 @@ void sys_cfg_console() {
 	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
 	NVIC_Init(&NVIC_InitStructure);
 
-	USART_ClearITPendingBit(USARTx,USART_IT_RXNE);
+	USART_ClearITPendingBit(USARTx, USART_IT_RXNE | USART_IT_TXE);
 	USART_ITConfig(USARTx, USART_IT_RXNE, ENABLE);
+	USART_ITConfig(USARTx, USART_IT_TXE, DISABLE);
 
 	/* Enable USART */
 	USART_Cmd(USARTx, ENABLE);
@@ -195,25 +207,25 @@ void sys_cfg_update_info() {
 * system utilities function
 *******************************************************************************/
 void xputchar(uint8_t c) {
-	/* wait last transmission completed */
-	while (USART_GetFlagStatus(USARTx, USART_FLAG_TXE) == RESET);
+	ENTRY_CRITICAL();
+	ring_buffer_char_put(&ring_buffer_char_shell_send, c);
+	EXIT_CRITICAL();
 
-	/* put transnission data */
-	USART_SendData(USARTx, (uint8_t)c);
-
-	/* wait transmission completed */
-	while (USART_GetFlagStatus(USARTx, USART_FLAG_TC) == RESET);
+	if (ring_buffer_char_shell_sending_flag == 0) {
+		while (USART_GetFlagStatus(USARTx, USART_FLAG_TXE) == RESET);
+		USART_ITConfig(USARTx, USART_IT_TXE, ENABLE);
+	}
 }
 
 void sys_ctrl_shell_put_char(uint8_t c) {
-	/* wait last transmission completed */
-	while (USART_GetFlagStatus(USARTx, USART_FLAG_TXE) == RESET);
+	ENTRY_CRITICAL();
+	ring_buffer_char_put(&ring_buffer_char_shell_send, c);
+	EXIT_CRITICAL();
 
-	/* put transnission data */
-	USART_SendData(USARTx, (uint8_t)c);
-
-	/* wait transmission completed */
-	while (USART_GetFlagStatus(USARTx, USART_FLAG_TC) == RESET);
+	if (ring_buffer_char_shell_sending_flag == 0) {
+		while (USART_GetFlagStatus(USARTx, USART_FLAG_TXE) == RESET);
+		USART_ITConfig(USARTx, USART_IT_TXE, ENABLE);
+	}
 }
 
 uint8_t sys_ctrl_shell_get_char() {

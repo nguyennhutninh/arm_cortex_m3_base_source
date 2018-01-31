@@ -44,7 +44,7 @@ CONSOLE_BAUDRATE_DEF = -DSYS_CONSOLE_BAUDRATE=$(SYS_CONSOLE_BAUDRATE)
 #|   -Os      | code size                        |              |   (--)  |            |    (++)     |
 #|  -Ofast    | O3 with none math cals           |     (---)    |         |     (+)    |    (+++)    |
 #|------------|----------------------------------|--------------|---------|------------|-------------|
-OPTIMIZE_OPTION = -g -Os
+OPTIMIZE_OPTION = -g -O2
 
 # Release build option, that is used in fatal function, restart system when fatal, and debug levels.
 RELEASE_OPTION = -DRELEASE

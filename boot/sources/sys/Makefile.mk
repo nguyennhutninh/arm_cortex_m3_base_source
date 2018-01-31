@@ -1,4 +1,5 @@
-CFLAGS	+= -I./sources/sys
+CFLAGS += -I./sources/sys
+CPPFLAGS += -I./sources/sys
 
 VPATH += sources/sys
 

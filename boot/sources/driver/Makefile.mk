@@ -13,6 +13,8 @@ CFLAGS		+= -I./sources/driver/flash
 #CPPFLAGS	+= -I./sources/driver/EmonLib
 #CPPFLAGS	+= -I./sources/driver/ds1302
 CPPFLAGS	+= -I./sources/driver/epprom
+CPPFLAGS	+= -I./sources/driver/flash
+CPPFLAGS	+= -I./sources/driver/led
 
 VPATH += sources/driver/led
 #VPATH += sources/driver/button
