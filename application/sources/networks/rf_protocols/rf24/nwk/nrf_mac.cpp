@@ -92,7 +92,7 @@ void task_rf24_mac(ak_msg_t* msg) {
 		NRF_DBG_SIG("AC_RF24_MAC_INIT\n");
 
 		/* init sending nwk_frame FIFO */
-		fifo_init(&nwk_pdu_id_fifo, memcpy, nwk_pdu_id_buf, NWK_PDU_ID_FIFO_SIZE, sizeof(uint32_t));
+		fifo_init(&nwk_pdu_id_fifo, nwk_pdu_id_buf, NWK_PDU_ID_FIFO_SIZE, sizeof(uint32_t));
 
 		/* init MAC sequence */
 		sending_mac_sequence = (uint8_t)rand();

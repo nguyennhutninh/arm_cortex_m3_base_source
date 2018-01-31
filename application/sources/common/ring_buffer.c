@@ -5,7 +5,7 @@
 #include "sys_dbg.h"
 
 
-void ring_buffer_init(ring_buffer_t* ring_buffer, void* buffer, uint8_t buffer_size, uint8_t element_size) {
+void ring_buffer_init(ring_buffer_t* ring_buffer, void* buffer, uint16_t buffer_size, uint16_t element_size) {
 	ring_buffer->tail_index = 0;
 	ring_buffer->head_index = 0;
 	ring_buffer->fill_size = 0;
@@ -15,7 +15,7 @@ void ring_buffer_init(ring_buffer_t* ring_buffer, void* buffer, uint8_t buffer_s
 	ring_buffer->element_size = element_size;
 }
 
-uint8_t ring_buffer_availble(ring_buffer_t* ring_buffer) {
+uint16_t ring_buffer_availble(ring_buffer_t* ring_buffer) {
 	return ring_buffer->fill_size;
 }
 
@@ -28,8 +28,8 @@ bool ring_buffer_is_full(ring_buffer_t* ring_buffer) {
 }
 
 uint8_t ring_buffer_put(ring_buffer_t* ring_buffer, void* data) {
-	uint8_t next_tail_index;
-	uint8_t next_head_index;
+	uint16_t next_tail_index;
+	uint16_t next_head_index;
 
 	if (data != NULL) {
 		memcpy((uint8_t*)(ring_buffer->buffer + ring_buffer->tail_index * ring_buffer->element_size), (uint8_t*)data, ring_buffer->element_size);
@@ -53,7 +53,7 @@ uint8_t ring_buffer_put(ring_buffer_t* ring_buffer, void* data) {
 }
 
 uint8_t ring_buffer_get(ring_buffer_t* ring_buffer, void* data) {
-	uint8_t next_head_index;
+	uint16_t next_head_index;
 
 	if (ring_buffer_is_empty(ring_buffer)) {
 		return RET_RING_BUFFER_NG;
@@ -96,8 +96,8 @@ bool ring_buffer_char_is_full(ring_buffer_char_t* ring_buffer) {
 }
 
 void ring_buffer_char_put(ring_buffer_char_t* ring_buffer, uint8_t c) {
-	uint8_t next_tail_index;
-	uint8_t next_head_index;
+	uint16_t next_tail_index;
+	uint16_t next_head_index;
 
 	ring_buffer->buffer[ring_buffer->tail_index] = c;
 
@@ -114,8 +114,8 @@ void ring_buffer_char_put(ring_buffer_char_t* ring_buffer, uint8_t c) {
 }
 
 uint8_t	ring_buffer_char_get(ring_buffer_char_t* ring_buffer) {
-	uint8_t ret = 0;
-	uint8_t next_head_index;
+	uint16_t ret = 0;
+	uint16_t next_head_index;
 
 	if (ring_buffer->fill_size) {
 		ret = ring_buffer->buffer[ring_buffer->head_index];

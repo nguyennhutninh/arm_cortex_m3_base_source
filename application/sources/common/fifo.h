@@ -13,21 +13,17 @@ extern "C"
 #define RET_FIFO_OK				(0x01)
 #define RET_FIFO_NG				(0x00)
 
-typedef void* (*memcpy_f)(void *dst,const void *str, size_t size);
-
 typedef struct {
-	uint8_t tail_index;
-	uint8_t head_index;
-	uint8_t fill_size;
+	uint32_t tail_index;
+	uint32_t head_index;
+	uint32_t fill_size;
 	uint32_t buffer_size;
 	uint32_t element_size;
 	uint8_t* buffer;
-
-	memcpy_f memcpy;
 } fifo_t;
 
-extern void		fifo_init(fifo_t* fifo, memcpy_f memcpy, void* buffer, uint32_t buffer_size, uint32_t element_size);
-extern uint8_t	fifo_availble(fifo_t* fifo);
+extern void		fifo_init(fifo_t* fifo, void* buffer, uint32_t buffer_size, uint32_t element_size);
+extern uint32_t	fifo_availble(fifo_t* fifo);
 extern bool		fifo_is_empty(fifo_t* fifo);
 extern bool		fifo_is_full(fifo_t* fifo);
 extern uint8_t	fifo_put(fifo_t* fifo, void* data);

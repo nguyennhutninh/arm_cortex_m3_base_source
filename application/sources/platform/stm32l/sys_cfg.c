@@ -29,7 +29,7 @@
 
 #pragma GCC optimize ("O3")
 
-#define RING_BUFFER_CHAR_SHELL_SEND_BUFFER_SIZE	256
+#define RING_BUFFER_CHAR_SHELL_SEND_BUFFER_SIZE		512
 
 /* Private define */
 static volatile uint32_t delay_coeficient = 0;

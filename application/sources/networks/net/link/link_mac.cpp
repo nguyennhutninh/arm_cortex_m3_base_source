@@ -101,7 +101,7 @@ void fsm_link_mac_state_init(ak_msg_t* msg) {
 	case AC_LINK_MAC_PHY_LAYER_STARTED: {
 		LINK_DBG_SIG("AC_LINK_MAC_PHY_LAYER_STARTED\n");
 		/* init mac layer */
-		fifo_init(&link_pdu_id_fifo, memcpy, link_pdu_id_buf, LINK_PDU_ID_BUF_SIZE, sizeof(uint32_t));
+		fifo_init(&link_pdu_id_fifo, link_pdu_id_buf, LINK_PDU_ID_BUF_SIZE, sizeof(uint32_t));
 
 		/* init mac sequence */
 		link_mac_pdu_sending_sequence = (uint8_t)rand();

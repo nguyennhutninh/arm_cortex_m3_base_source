@@ -14,11 +14,11 @@ extern "C"
 #define RET_RING_BUFFER_NG				(0x00)
 
 typedef struct {
-	uint8_t tail_index;
-	uint8_t head_index;
-	uint8_t fill_size;
-	uint8_t buffer_size;
-	uint8_t element_size;
+	uint16_t tail_index;
+	uint16_t head_index;
+	uint16_t fill_size;
+	uint16_t buffer_size;
+	uint16_t element_size;
 	uint8_t* buffer;
 } ring_buffer_t;
 
@@ -30,8 +30,8 @@ typedef struct {
 	uint8_t* buffer;
 } ring_buffer_char_t;
 
-extern void		ring_buffer_init(ring_buffer_t* ring_buffer, void* buffer, uint8_t buffer_size, uint8_t element_size);
-extern uint8_t	ring_buffer_availble(ring_buffer_t* ring_buffer);
+extern void		ring_buffer_init(ring_buffer_t* ring_buffer, void* buffer, uint16_t buffer_size, uint16_t element_size);
+extern uint16_t	ring_buffer_availble(ring_buffer_t* ring_buffer);
 extern bool		ring_buffer_is_empty(ring_buffer_t* ring_buffer);
 extern bool		ring_buffer_is_full(ring_buffer_t* ring_buffer);
 extern uint8_t	ring_buffer_put(ring_buffer_t* ring_buffer, void* data);
