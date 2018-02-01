@@ -84,21 +84,17 @@ void task_timer_tick(ak_msg_t* msg) {
 	ak_msg_t* timer_msg;
 
 	ak_timer_t* timer_list;
-	ak_timer_t* timer_del = TIMER_MSG_NULL; /* MUST-BE assign TIMER_MSG_NULL when entry function */
+	ak_timer_t* timer_del = TIMER_MSG_NULL; /* MUST-BE assign TIMER_MSG_NULL */
 
-	int32_t temp_counter = 0;   /* keep this variable for preemtive kernel mode */
-	int32_t irq_counter = 0;
-
-	/* permit receive message from interrupt heart beat */
+	int32_t temp_counter;
+	int32_t irq_counter;
 
 	ENTRY_CRITICAL();
 
 	timer_list = timer_list_head;
 
-	/* save current interrupt counter value */
 	irq_counter = ak_timer_payload_irq.counter;
 
-	/* reset interrupt counter && enable interrupt post message to timer task */
 	ak_timer_payload_irq.counter = 0;
 	ak_timer_payload_irq.enable_post_msg = AK_ENABLE;
 
@@ -106,7 +102,6 @@ void task_timer_tick(ak_msg_t* msg) {
 
 	switch (msg->sig) {
 	case TIMER_TICK:
-		/* query timer node */
 		while (timer_list != TIMER_MSG_NULL) {
 
 			ENTRY_CRITICAL();
@@ -116,34 +111,26 @@ void task_timer_tick(ak_msg_t* msg) {
 
 			EXIT_CRITICAL();
 
-			/* time-out counter */
 			if (temp_counter <= 0) {
 
-				/* send timer message to owner task */
 				timer_msg = get_pure_msg();
 				set_msg_sig(timer_msg, timer_list->sig);
 				task_post(timer_list->des_task_id, timer_msg);
 
 				ENTRY_CRITICAL();
 
-				/* periodic timer */
 				if (timer_list->period) {
-					/* update timer counter */
 					timer_list->counter = timer_list->period;
 				}
-				/* one-shot timer, remove timer node from timer list */
 				else {
-					/* mask timer node to delete */
 					timer_del = timer_list;
 				}
 
 				EXIT_CRITICAL();
 			}
 
-			/* next node */
 			timer_list = timer_list->next;
 
-			/* remove node expired */
 			if (timer_del) {
 				timer_remove_msg(timer_del->des_task_id, timer_del->sig);
 				timer_del = TIMER_MSG_NULL;
@@ -157,10 +144,8 @@ void task_timer_tick(ak_msg_t* msg) {
 }
 
 void timer_init() {
-	/* init timer message pool */
 	timer_msg_pool_init();
 
-	/* init data transfer between interrupt heart beat and timer task */
 	ENTRY_CRITICAL();
 
 	ak_timer_payload_irq.counter = 0;
@@ -170,27 +155,15 @@ void timer_init() {
 }
 
 void timer_tick(int32_t t) {
-	/* check available timer */
 	if (timer_list_head != TIMER_MSG_NULL) {
-		/* if previous message is not handled, just only increase counter */
-		if (ak_timer_payload_irq.enable_post_msg == AK_DISABLE) {
-			ak_timer_payload_irq.counter = ak_timer_payload_irq.counter + t;
-		}
-		/* if previous message is handled, post new message to timer task */
-		else {
-			/* get a pure message */
-			ak_msg_t* msg = get_pure_msg();
+		ak_timer_payload_irq.counter += t;
 
-			/* disable post message until this message is handled */
+		if (ak_timer_payload_irq.enable_post_msg == AK_ENABLE) {
 			ak_timer_payload_irq.enable_post_msg = AK_DISABLE;
 
-			if (ak_timer_payload_irq.counter == 0) {
-				ak_timer_payload_irq.counter = t;
-			}
-
-			/* post new message */
-			set_msg_sig(msg, TIMER_TICK);
-			task_post(TASK_TIMER_TICK_ID, msg);
+			ak_msg_t* s_msg = get_pure_msg();
+			set_msg_sig(s_msg, TIMER_TICK);
+			task_post(TASK_TIMER_TICK_ID, s_msg);
 		}
 	}
 }
@@ -203,7 +176,6 @@ uint8_t timer_set(task_id_t des_task_id, timer_sig_t sig, int32_t duty, timer_ty
 	timer_msg = timer_list_head;
 
 	while (timer_msg != TIMER_MSG_NULL) {
-		/* check timer node */
 		if (timer_msg->des_task_id == des_task_id &&
 				timer_msg->sig == sig) {
 
@@ -218,32 +190,19 @@ uint8_t timer_set(task_id_t des_task_id, timer_sig_t sig, int32_t duty, timer_ty
 		}
 	}
 
-	/* if timer does not exist, create new timer */
-
-	/* get timer mesage from timer message pool */
 	timer_msg = get_timer_msg();
 
-	/* assign properties of timer node */
-	timer_msg->des_task_id  = des_task_id;
-	timer_msg->sig      = sig;
-	timer_msg->counter  = (int32_t)duty;
+	timer_msg->des_task_id = des_task_id;
+	timer_msg->sig = sig;
+	timer_msg->counter = (int32_t)duty;
 
-	switch (type) {
-	case TIMER_ONE_SHOT:
-		timer_msg->period       = (int32_t)0;
-		break;
-
-	case TIMER_PERIODIC:
-		timer_msg->period       = (int32_t)duty;
-		break;
-
-	default: {
-		FATAL("MT", 0x32);
+	if (type == TIMER_PERIODIC) {
+		timer_msg->period = (int32_t)duty;
 	}
-		break;
+	else {
+		timer_msg->period = (int32_t)0;
 	}
 
-	/* insert node to timer list */
 	if (timer_list_head == TIMER_MSG_NULL) {
 		timer_msg->next = TIMER_MSG_NULL;
 		timer_list_head = timer_msg;
@@ -269,22 +228,16 @@ uint8_t timer_remove_msg(task_id_t des_task_id, timer_sig_t sig) {
 
 	while (timer_msg != TIMER_MSG_NULL) {
 
-		/* check timer node */
 		if (timer_msg->des_task_id == des_task_id &&
 				timer_msg->sig == sig) {
 
-			/* the head node */
 			if (timer_msg == timer_list_head) {
-
-				/* remove node */
 				timer_list_head = timer_msg->next;
 			}
 			else {
-				/* remove node */
 				timer_msg_prev->next = timer_msg->next;
 			}
 
-			/* free node memory */
 			free_timer_msg(timer_msg);
 
 			EXIT_CRITICAL();
@@ -292,7 +245,6 @@ uint8_t timer_remove_msg(task_id_t des_task_id, timer_sig_t sig) {
 			return TIMER_RET_OK;
 		}
 		else {
-			/* move on next node */
 			timer_msg_prev = timer_msg;
 			timer_msg = timer_msg->next;
 		}
@@ -304,10 +256,9 @@ uint8_t timer_remove_msg(task_id_t des_task_id, timer_sig_t sig) {
 }
 
 uint8_t timer_remove_attr(task_id_t des_task_id, timer_sig_t sig) {
-	/* remove timer message in timer queue message */
+
 	uint8_t ret = timer_remove_msg(des_task_id, sig);
 
-	/* remove timer message in task queue message */
 	task_remove_msg(des_task_id, sig);
 
 	return ret;

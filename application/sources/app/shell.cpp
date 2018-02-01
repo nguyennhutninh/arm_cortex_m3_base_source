@@ -207,6 +207,7 @@ int32_t shell_help(uint8_t* argv) {
 
 int32_t shell_reboot(uint8_t* argv) {
 	(void)argv;
+	sys_ctrl_delay_ms(10);
 	sys_ctrl_reset();
 	return 0;
 }

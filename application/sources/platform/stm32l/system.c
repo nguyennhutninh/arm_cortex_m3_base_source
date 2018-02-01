@@ -360,13 +360,13 @@ void shell_handler() {
 
 	if (USART_GetITStatus(USARTx, USART_IT_TXE) == SET) {
 		USART_ClearITPendingBit(USARTx, USART_IT_TXE);
-		USART_SendData(USARTx, ring_buffer_char_get(&ring_buffer_char_shell_send));
 		if (ring_buffer_char_is_empty(&ring_buffer_char_shell_send)) {
 			ring_buffer_char_shell_sending_flag = 0;
 			USART_ITConfig(USARTx, USART_IT_TXE, DISABLE);
 		}
 		else {
 			ring_buffer_char_shell_sending_flag = 1;
+			USART_SendData(USARTx, ring_buffer_char_get(&ring_buffer_char_shell_send));
 		}
 	}
 

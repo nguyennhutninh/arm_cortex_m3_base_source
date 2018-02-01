@@ -93,7 +93,7 @@ void task_post(task_id_t des_task_id, ak_msg_t* msg) {
 	msg->next = AK_MSG_NULL;
 	msg->des_task_id = des_task_id;
 
-#if (AK_TASK_DEBUG == AK_ENABLE)
+#if defined(AK_TASK_OBJ_LOG_ENABLE)
 	if (get_msg_ref_count(msg) <= 1) {
 		msg->dbg_handler.start_exe = 0;
 		msg->dbg_handler.stop_exe = 0;
@@ -323,7 +323,7 @@ void task_sheduler() {
 		task_current = t_task_new;
 
 		/* start task debug */
-#if (AK_TASK_DEBUG == AK_ENABLE)
+#if defined(AK_IRQ_OBJ_LOG_ENABLE)
 		t_msg->dbg_handler.start_exe = sys_ctrl_millis();
 #endif
 		/* update current ak object */
@@ -340,17 +340,15 @@ void task_sheduler() {
 
 		ENTRY_CRITICAL();
 
-#if (AK_TASK_DEBUG == AK_ENABLE)
+#if defined(AK_TASK_OBJ_LOG_ENABLE)
 		/* reject msg of timer task */
 		if (current_active_object.des_task_id > 0) {
 			current_active_object.dbg_handler.stop_exe = sys_ctrl_millis();
 
 			/* put current object to log queue */
-#if defined(AK_TASK_OBJ_LOG_ENABLE)
 			log_queue_put(&log_task_dbg_object_queue, &current_active_object);
-#endif
 
-#if defined(AK_TASK_LOG_ENABLE)
+#if defined(AK_TASK_LOG_CONSOLE_ENABLE)
 			{
 				uint32_t exe_time;
 				uint32_t wait_time;

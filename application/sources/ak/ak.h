@@ -32,9 +32,6 @@ extern "C"
 #define AK_RET_OK						(0x01)
 #define AK_RET_NG						(0x00)
 
-/* debug option */
-#define AK_TASK_DEBUG					AK_ENABLE
-
 /*****************************************************************************
  * DEFINITION: signals
  *
