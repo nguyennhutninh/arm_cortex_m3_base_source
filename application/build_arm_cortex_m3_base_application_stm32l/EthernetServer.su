@@ -1,0 +1,7 @@
+EthernetServer.cpp:71:8:virtual size_t EthernetServer::write(uint8_t)	16	static
+EthernetServer.cpp:16:6:virtual void EthernetServer::begin()	40	static
+EthernetServer.cpp:11:1:EthernetServer::EthernetServer(uint16_t)	4	static
+EthernetServer.cpp:29:6:void EthernetServer::accept()	48	static
+EthernetServer.cpp:76:8:virtual size_t EthernetServer::write(const uint8_t*, size_t)	56	static
+EthernetServer.cpp:51:16:EthernetClient EthernetServer::available()	48	static
+EthernetServer.cpp:92:1:cpp)	16	static

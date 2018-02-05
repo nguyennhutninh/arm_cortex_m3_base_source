@@ -1,0 +1,5 @@
+link_mac.cpp:346:6:void link_mac_frame_send_req()	8	static
+link_mac.cpp:356:6:void link_mac_frame_send_end()	16	static
+link_mac.cpp:130:6:void fsm_link_mac_state_handle(ak_msg_t*)	80	static
+link_mac.cpp:88:6:void task_link_mac(ak_msg_t*)	0	static
+link_mac.cpp:92:6:void fsm_link_mac_state_init(ak_msg_t*)	16	static

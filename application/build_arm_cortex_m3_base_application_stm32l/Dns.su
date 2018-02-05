@@ -1,0 +1,6 @@
+Dns.cpp:51:6:void DNSClient::begin(const IPAddress&)	0	static
+Dns.cpp:58:5:int DNSClient::inet_aton(const char*, IPAddress&)	16	static
+Dns.cpp:403:1:cpp)	16	static
+Dns.cpp:155:10:uint16_t DNSClient::BuildRequest(const char*)	40	static
+Dns.cpp:236:10:uint16_t DNSClient::ProcessResponse(uint16_t, IPAddress&)	56	static
+Dns.cpp:98:5:int DNSClient::getHostByName(const char*, IPAddress&)	32	static

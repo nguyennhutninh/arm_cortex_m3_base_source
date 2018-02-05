@@ -1,0 +1,2 @@
+dtostrf.c:28:7:strdup	16	static
+dtostrf.c:36:7:dtostrf	176	static

@@ -1,0 +1,3 @@
+sys_boot.c:9:6:sys_boot_init	8	static
+sys_boot.c:14:6:sys_boot_get	0	static
+sys_boot.c:18:9:sys_boot_set	16	static

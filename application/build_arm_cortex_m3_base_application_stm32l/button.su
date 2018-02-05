@@ -1,0 +1,4 @@
+button.c:3:9:button_init	16	static
+button.c:32:6:button_enable	0	static
+button.c:36:6:button_disable	0	static
+button.c:40:6:button_timer_polling	16	static

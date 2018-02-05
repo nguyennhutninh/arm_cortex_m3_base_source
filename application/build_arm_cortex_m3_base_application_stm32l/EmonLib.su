@@ -1,0 +1,9 @@
+EmonLib.cpp:19:6:void EnergyMonitor::voltage(unsigned int, double, double)	16	static
+EmonLib.cpp:27:6:void EnergyMonitor::current(unsigned int, double)	8	static
+EmonLib.cpp:34:6:void EnergyMonitor::begin()	0	static
+EmonLib.cpp:42:6:void EnergyMonitor::voltageTX(double, double)	16	static
+EmonLib.cpp:50:6:void EnergyMonitor::currentTX(unsigned int, double)	8	static
+EmonLib.cpp:65:6:void EnergyMonitor::calcVI(unsigned int, unsigned int)	72	static
+EmonLib.cpp:176:8:double EnergyMonitor::calcIrms(unsigned int)	32	static
+EmonLib.cpp:215:6:void EnergyMonitor::serialprint()	56	static
+EmonLib.cpp:237:6:long int EnergyMonitor::readVcc()	0	static

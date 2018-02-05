@@ -1,0 +1,4 @@
+fuzzy_logic.c:11:9:temp_fuzzy_logic_set	40	static
+fuzzy_logic.c:63:28:temp_fuzzy_logic_get	0	static
+fuzzy_logic.c:67:6:temp_fuzzy_logic_update	16	static
+fuzzy_logic.c:71:9:temp_fuzzy_logic_cal	32	static

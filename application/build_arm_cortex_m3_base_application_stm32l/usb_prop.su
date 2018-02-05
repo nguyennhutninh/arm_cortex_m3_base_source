@@ -1,0 +1,14 @@
+usb_prop.c:210:6:Virtual_Com_Port_SetConfiguration	0	static
+usb_prop.c:228:6:Virtual_Com_Port_SetDeviceAddress	0	static
+usb_prop.c:240:6:Virtual_Com_Port_Status_In	0	static
+usb_prop.c:255:6:Virtual_Com_Port_Status_Out	0	static
+usb_prop.c:265:8:Virtual_Com_Port_Data_Setup	8	static
+usb_prop.c:305:8:Virtual_Com_Port_NoData_Setup	0	static
+usb_prop.c:376:8:Virtual_Com_Port_Get_Interface_Setting	0	static
+usb_prop.c:396:10:Virtual_Com_Port_GetLineCoding	0	static
+usb_prop.c:413:10:Virtual_Com_Port_SetLineCoding	0	static
+usb_prop.c:131:6:Virtual_Com_Port_init	8	static
+usb_prop.c:156:6:Virtual_Com_Port_Reset	8	static
+usb_prop.c:330:10:Virtual_Com_Port_GetDeviceDescriptor	0	static
+usb_prop.c:342:10:Virtual_Com_Port_GetConfigDescriptor	0	static
+usb_prop.c:354:10:Virtual_Com_Port_GetStringDescriptor	0	static

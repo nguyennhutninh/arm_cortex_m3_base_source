@@ -1,0 +1,8 @@
+utils.c:11:10:str_len	0	static
+utils.c:19:7:mem_set	0	static
+utils.c:27:7:mem_cpy	4	static
+utils.c:35:5:mem_cmp	12	static
+utils.c:58:10:mem_read	0	static
+utils.c:69:10:mem_write	0	static
+utils.c:80:9:str_cmp	0	static
+utils.c:94:10:str_cpy	4	static

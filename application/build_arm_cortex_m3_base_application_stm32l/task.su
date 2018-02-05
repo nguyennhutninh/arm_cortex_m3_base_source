@@ -1,0 +1,16 @@
+task.c:53:16:ak_irq_io_entry_trigger	0	static
+task.c:60:16:ak_irq_io_exit_trigger	0	static
+task.c:66:6:task_create	8	static
+task.c:80:6:task_post	16	static
+task.c:121:9:task_remove_msg	24	static
+task.c:179:6:task_post_pure_msg	16	static
+task.c:185:6:task_post_common_msg	24	static
+task.c:192:6:task_post_dynamic_msg	24	static
+task.c:199:6:task_entry_interrupt	8	static
+task.c:217:6:task_exit_interrupt	8	static
+task.c:227:5:task_init	16	static
+task.c:252:5:task_run	16	static
+task.c:402:11:task_self	0	static
+task.c:406:11:get_current_task_id	0	static
+task.c:410:9:get_current_task_info	0	static
+task.c:414:11:get_current_active_object	0	static

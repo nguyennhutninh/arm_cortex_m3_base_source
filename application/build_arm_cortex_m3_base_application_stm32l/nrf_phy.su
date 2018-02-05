@@ -1,0 +1,4 @@
+nrf_phy.cpp:36:6:void sys_irq_nrf24l01()	8	static
+nrf_phy.cpp:192:6:void nrf_phy_switch_ptx_mode()	8	static
+nrf_phy.cpp:200:6:void nrf_phy_switch_prx_mode()	8	static
+nrf_phy.cpp:83:6:void task_rf24_phy(ak_msg_t*)	8	static

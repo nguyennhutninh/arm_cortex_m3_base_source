@@ -51,7 +51,7 @@ int xstream(x_stream_t* stream, const char *fmt, va_list va_args) {
 
 	while (*fmt) {
 		switch (*fmt) {
-		case '%':
+		case '%': {
 			zero_padding = 0;
 			if (fmt[1] == '0') {
 				zero_padding = 1;
@@ -124,9 +124,11 @@ int xstream(x_stream_t* stream, const char *fmt, va_list va_args) {
 				}
 
 			}
+		}
 			if (*fmt == 0) {
 				goto exit;
 			}
+			break;
 
 		default:
 			stream->xputc(stream, *fmt);

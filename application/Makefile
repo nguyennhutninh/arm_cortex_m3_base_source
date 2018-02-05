@@ -9,8 +9,8 @@ Print = @echo "~"
 NAME_MODULE = arm_cortex_m3_base_application
 PROJECT = $(NAME_MODULE)
 
-GCC_PATH	= /home/thannt/workspace/tools/gcc-arm-none-eabi-5_4-2016q3
-OPENOCD_PATH	= /home/thannt/workspace/tools/openocd
+GCC_PATH	= /home/fanning/workspace/tools/gcc-arm-none-eabi-7-2017q4
+OPENOCD_PATH	= /home/fanning/workspace/tools/openocd
 
 # Include sources file
 include sources/ak/Makefile.mk
@@ -72,13 +72,13 @@ SOURCES_CPP	+=
 SOURCES_CPP_	 = $(shell find $(SOURCES_CPP) -type f -printf "%f\n")
 OBJECTS		+= $(patsubst %.cpp, $(OBJECTS_DIR)/%.o, $(SOURCES_CPP_))
 
-LIBC		= $(GCC_PATH)/arm-none-eabi/lib/armv7-m/libc.a
-LIBM		= $(GCC_PATH)/arm-none-eabi/lib/armv7-m/libm.a
-LIBFPU		= $(GCC_PATH)/arm-none-eabi/lib/armv7-m/libg.a
-LIBGCC		= $(GCC_PATH)/lib/gcc/arm-none-eabi/5.4.1/armv7-m/libgcc.a
+LIBC		= $(GCC_PATH)/arm-none-eabi/lib/libc.a
+LIBM		= $(GCC_PATH)/arm-none-eabi/lib/libm.a
+LIBFPU		= $(GCC_PATH)/arm-none-eabi/lib/libg.a
+LIBGCC		= $(GCC_PATH)/lib/gcc/arm-none-eabi/7.2.1/libgcc.a
 
-LIB_PATH += -L$(GCC_PATH)/arm-none-eabi/lib/armv7-m
-LIB_PATH += -L$(GCC_PATH)/lib/gcc/arm-none-eabi/5.4.1/armv7-m
+LIB_PATH += -L$(GCC_PATH)/arm-none-eabi/lib
+LIB_PATH += -L$(GCC_PATH)/lib/gcc/arm-none-eabi/7.2.1
 
 # The command for calling the compiler.
 CC		=	$(GCC_PATH)/bin/arm-none-eabi-gcc

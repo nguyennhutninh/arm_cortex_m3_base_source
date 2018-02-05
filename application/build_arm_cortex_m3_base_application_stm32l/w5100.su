@@ -1,0 +1,12 @@
+w5100.cpp:137:9:static uint8_t W5100Class::write(uint16_t, uint8_t)	16	static
+w5100.cpp:25:6:void W5100Class::init()	32	static
+w5100.cpp:155:10:static uint16_t W5100Class::write(uint16_t, const uint8_t*, uint16_t)	24	static
+w5100.cpp:178:9:static uint8_t W5100Class::read(uint16_t)	16	static
+w5100.cpp:81:6:void W5100Class::send_data_processing_offset(SOCKET, uint16_t, const uint8_t*, uint16_t)	40	static
+w5100.cpp:75:6:void W5100Class::send_data_processing(SOCKET, const uint8_t*, uint16_t)	16	static
+w5100.cpp:50:10:uint16_t W5100Class::getTXFreeSize(SOCKET)	24	static
+w5100.cpp:62:10:uint16_t W5100Class::getRXReceivedSize(SOCKET)	24	static
+w5100.cpp:196:10:static uint16_t W5100Class::read(uint16_t, uint8_t*, uint16_t)	24	static
+w5100.cpp:116:6:void W5100Class::read_data(SOCKET, uint16_t, volatile uint8_t*, uint16_t)	32	static
+w5100.cpp:104:6:void W5100Class::recv_data_processing(SOCKET, uint8_t*, uint16_t, uint8_t)	56	static
+w5100.cpp:219:6:void W5100Class::execCmdSn(SOCKET, SockCMD)	8	static

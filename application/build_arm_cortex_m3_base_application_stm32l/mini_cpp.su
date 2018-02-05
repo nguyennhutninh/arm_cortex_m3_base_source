@@ -1,0 +1,8 @@
+mini_cpp.cpp:10:6:void __gnu_cxx::__verbose_terminate_handler()	0	static
+mini_cpp.cpp:19:17:void __cxa_pure_virtual()	8	static
+mini_cpp.cpp:23:17:void __cxa_deleted_virtual()	8	static
+mini_cpp.cpp:30:7:void* operator new(size_t)	0	static
+mini_cpp.cpp:34:7:void* operator new [](size_t)	0	static
+mini_cpp.cpp:38:6:void operator delete(void*)	0	static
+mini_cpp.cpp:42:6:void operator delete [](void*)	0	static
+mini_cpp.cpp:55:9:char* _sbrk(uint32_t)	0	static

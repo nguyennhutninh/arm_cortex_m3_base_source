@@ -1,0 +1,8 @@
+view_render.cpp:83:5:int view_render_dynamic(void*)	8	static
+view_render.cpp:118:6:void view_render_display_on()	0	static
+view_render.cpp:122:6:void view_render_display_off()	0	static
+view_render.cpp:124:1:cpp)	0	static
+view_render.cpp:124:1:cpp)	0	static
+view_render.cpp:16:6:void view_render_init()	0	static
+view_render.cpp:88:5:int view_render_screen(view_screen_t*)	24	static
+view_render.cpp:21:5:int view_render_rectangle(void*)	32	static

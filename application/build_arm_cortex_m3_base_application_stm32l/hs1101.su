@@ -1,0 +1,3 @@
+hs1101.c:9:6:hs1101_init	0	static
+hs1101.c:21:9:hs1101_read	8	static
+hs1101.c:40:6:hs1101_irq_timer_polling	8	static

@@ -1,0 +1,5 @@
+thermistor.cpp:34:1:THERMISTOR::THERMISTOR(uint8_t, uint16_t, uint16_t, uint16_t)	8	static
+thermistor.cpp:49:6:void THERMISTOR::begin()	0	static
+thermistor.cpp:60:5:int THERMISTOR::read()	16	static
+thermistor.cpp:100:5:int THERMISTOR::read_kalman()	8	static
+thermistor.cpp:112:5:int THERMISTOR::read_f()	8	static

@@ -1,0 +1,7 @@
+ir.c:13:6:ir_init	8	static
+ir.c:24:9:ir_decode_callback_register	0	static
+ir.c:32:9:ir_decode_start	16	static
+ir.c:52:7:ir_decode_exit	8	static
+ir.c:58:6:ir_decode_irq_timer_polling	8	static
+ir.c:90:6:ir_decode_irq_rev_io_polling	8	static
+ir.c:141:9:ir_send_rawdata	48	static

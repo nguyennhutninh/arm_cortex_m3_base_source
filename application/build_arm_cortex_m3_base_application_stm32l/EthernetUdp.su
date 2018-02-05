@@ -1,0 +1,19 @@
+EthernetUdp.h:91:15:virtual int EthernetUDP::read(char*, size_t)	0	static
+EthernetUdp.h:97:21:virtual IPAddress EthernetUDP::remoteIP()	0	static
+EthernetUdp.h:99:20:virtual uint16_t EthernetUDP::remotePort()	0	static
+EthernetUdp.cpp:63:5:virtual int EthernetUDP::available()	0	static
+EthernetUdp.cpp:106:8:virtual size_t EthernetUDP::write(uint8_t)	16	static
+EthernetUdp.cpp:212:6:virtual void EthernetUDP::flush()	0	static
+EthernetUdp.cpp:68:6:virtual void EthernetUDP::stop()	8	static
+EthernetUdp.cpp:79:5:virtual int EthernetUDP::beginPacket(const char*, uint16_t)	88	static
+EthernetUdp.cpp:95:5:virtual int EthernetUDP::beginPacket(IPAddress, uint16_t)	0	static
+EthernetUdp.cpp:101:5:virtual int EthernetUDP::endPacket()	0	static
+EthernetUdp.cpp:111:8:virtual size_t EthernetUDP::write(const uint8_t*, size_t)	8	static
+EthernetUdp.cpp:152:5:virtual int EthernetUDP::read()	16	static
+EthernetUdp.cpp:167:5:virtual int EthernetUDP::read(unsigned char*, size_t)	8	static
+EthernetUdp.cpp:200:5:virtual int EthernetUDP::peek()	16	static
+EthernetUdp.cpp:39:9:virtual uint8_t EthernetUDP::begin(uint16_t)	24	static
+EthernetUdp.cpp:118:5:virtual int EthernetUDP::parsePacket()	16	static
+EthernetUdp.cpp:218:9:virtual uint8_t EthernetUDP::beginMulticast(IPAddress, uint16_t)	32	static
+EthernetUdp.cpp:36:1:EthernetUDP::EthernetUDP()	8	static
+EthernetUdp.cpp:248:1:cpp)	16	static

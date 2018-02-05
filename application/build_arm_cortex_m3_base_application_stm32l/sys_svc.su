@@ -1,0 +1,2 @@
+sys_svc.c:4:6:sys_svc_restart_app	0	static
+sys_svc.c:8:6:sys_svc_unprivileged_state	0	static

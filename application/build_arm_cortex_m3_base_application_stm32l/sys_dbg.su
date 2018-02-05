@@ -1,0 +1,4 @@
+sys_dbg.c:38:6:sys_dbg_fatal	96	static
+sys_dbg.c:282:6:sys_dbg_func_stack_dump	8	static
+sys_dbg.c:306:6:sys_dbg_cpu_dump	8	static
+sys_dbg.c:314:6:sys_dbg_stack_space_dump	16	static

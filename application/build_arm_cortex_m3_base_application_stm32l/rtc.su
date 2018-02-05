@@ -1,0 +1,5 @@
+rtc.c:5:9:rtc_init	16	static
+rtc.c:49:6:rtc_set_time	0	static
+rtc.c:55:6:rtc_get_time	0	static
+rtc.c:61:6:rtc_set_alarm	0	static
+rtc.c:67:6:rtc_get_alarm	0	static

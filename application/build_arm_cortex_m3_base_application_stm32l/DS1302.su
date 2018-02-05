@@ -1,0 +1,14 @@
+DS1302.cpp:85:1:Time::Time(uint16_t, uint8_t, uint8_t, uint8_t, uint8_t, uint8_t, Time::Day)	8	static
+DS1302.cpp:97:1:DS1302::DS1302()	8	static
+DS1302.cpp:106:6:void DS1302::writeOut(uint8_t)	16	static
+DS1302.cpp:115:9:uint8_t DS1302::readIn()	16	static
+DS1302.cpp:136:9:uint8_t DS1302::readRegister(uint8_t)	16	static
+DS1302.cpp:144:6:void DS1302::writeRegister(uint8_t, uint8_t)	24	static
+DS1302.cpp:152:6:void DS1302::writeProtect(bool)	0	static
+DS1302.cpp:156:6:void DS1302::halt(bool)	16	static
+DS1302.cpp:163:6:Time DS1302::time()	16	static
+DS1302.cpp:178:6:void DS1302::time(Time)	32	static
+DS1302.cpp:197:6:void DS1302::writeRam(uint8_t, uint8_t)	0	static
+DS1302.cpp:205:9:uint8_t DS1302::readRam(uint8_t)	0	static
+DS1302.cpp:213:6:void DS1302::writeRamBulk(const uint8_t*, int)	24	static
+DS1302.cpp:229:6:void DS1302::readRamBulk(uint8_t*, int)	24	static

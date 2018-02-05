@@ -1,0 +1,21 @@
+EthernetClient.h:27:16:virtual bool EthernetClient::operator==(bool)	0	static
+EthernetClient.h:28:16:virtual bool EthernetClient::operator!=(bool)	0	static
+EthernetClient.cpp:73:8:virtual size_t EthernetClient::write(uint8_t)	16	static
+EthernetClient.cpp:167:1:virtual EthernetClient::operator bool()	0	static
+EthernetClient.cpp:171:6:virtual bool EthernetClient::operator==(const EthernetClient&)	0	static
+EthernetClient.h:30:16:virtual bool EthernetClient::operator!=(const EthernetClient&)	8	static
+EthernetClient.cpp:23:5:virtual int EthernetClient::connect(const char*, uint16_t)	88	static
+EthernetClient.cpp:151:9:virtual uint8_t EthernetClient::connected()	8	static
+EthernetClient.cpp:77:8:virtual size_t EthernetClient::write(const uint8_t*, size_t)	16	static
+EthernetClient.cpp:89:5:virtual int EthernetClient::available()	8	static
+EthernetClient.cpp:95:5:virtual int EthernetClient::read()	16	static
+EthernetClient.cpp:109:5:virtual int EthernetClient::read(uint8_t*, size_t)	8	static
+EthernetClient.cpp:113:5:virtual int EthernetClient::peek()	16	static
+EthernetClient.cpp:122:6:virtual void EthernetClient::flush()	0	static
+EthernetClient.cpp:126:6:virtual void EthernetClient::stop()	16	static
+EthernetClient.cpp:38:5:virtual int EthernetClient::connect(IPAddress, uint16_t)	24	static
+EthernetClient.cpp:17:1:EthernetClient::EthernetClient()	8	static
+EthernetClient.cpp:20:1:EthernetClient::EthernetClient(uint8_t)	8	static
+EthernetClient.cpp:159:9:uint8_t EthernetClient::status()	0	static
+EthernetClient.cpp:175:9:uint8_t EthernetClient::getSocketNumber()	0	static
+EthernetClient.cpp:177:1:cpp)	16	static

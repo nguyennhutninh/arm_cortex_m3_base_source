@@ -1,0 +1,17 @@
+socket.cpp:34:9:uint8_t socketStatus(SOCKET)	24	static
+socket.cpp:46:6:void close(SOCKET)	24	static
+socket.cpp:10:9:uint8_t socket(SOCKET, uint8_t, uint16_t, uint8_t)	32	static
+socket.cpp:59:9:uint8_t listen(SOCKET)	24	static
+socket.cpp:78:9:uint8_t connect(SOCKET, uint8_t*, uint16_t)	32	static
+socket.cpp:104:6:void disconnect(SOCKET)	24	static
+socket.cpp:116:10:uint16_t send(SOCKET, const uint8_t*, uint16_t)	56	static
+socket.cpp:175:9:int16_t recv(SOCKET, uint8_t*, int16_t)	40	static
+socket.cpp:210:9:int16_t recvAvailable(SOCKET)	24	static
+socket.cpp:224:10:uint16_t peek(SOCKET, uint8_t*)	40	static
+socket.cpp:239:10:uint16_t sendto(SOCKET, const uint8_t*, uint16_t, uint8_t*, uint16_t)	56	static
+socket.cpp:294:10:uint16_t recvfrom(SOCKET, uint8_t*, uint16_t, uint8_t*, uint16_t*)	56	static
+socket.cpp:365:6:void flush(SOCKET)	0	static
+socket.cpp:370:10:uint16_t igmpsend(SOCKET, const uint8_t*, uint16_t)	48	static
+socket.cpp:406:10:uint16_t bufferData(SOCKET, uint16_t, const uint8_t*, uint16_t)	40	static
+socket.cpp:423:5:int startUDP(SOCKET, uint8_t*, uint16_t)	32	static
+socket.cpp:443:5:int sendUDP(SOCKET)	40	static

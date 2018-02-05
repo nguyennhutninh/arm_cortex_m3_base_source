@@ -1,0 +1,8 @@
+flash.c:67:9:flash_wait_to_idle	16	static
+flash.c:52:6:flash_set_write_enable.constprop	8	static
+flash.c:95:9:flash_read	24	static
+flash.c:121:9:flash_write	32	static
+flash.c:163:9:flash_erase_sector	8	static
+flash.c:191:9:flash_erase_block_32k	8	static
+flash.c:218:9:flash_erase_block_64k	8	static
+flash.c:245:10:flash_erase_full	8	static

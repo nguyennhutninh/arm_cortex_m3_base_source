@@ -1,0 +1,6 @@
+timer.c:220:9:timer_remove_msg	16	static
+timer.c:83:6:task_timer_tick	16	static
+timer.c:146:6:timer_init	8	static
+timer.c:157:6:timer_tick	16	static
+timer.c:171:9:timer_set	32	static
+timer.c:258:9:timer_remove_attr	16	static

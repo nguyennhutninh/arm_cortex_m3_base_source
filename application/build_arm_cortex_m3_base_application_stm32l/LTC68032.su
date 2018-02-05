@@ -1,0 +1,10 @@
+LTC68032.cpp:108:6:void LTC6803_initialize()	0	static
+LTC68032.cpp:114:6:void LTC6803_wrcfg(uint8_t, uint8_t (*)[6])	56	static
+LTC68032.cpp:205:6:void LTC6803_stcvad()	8	static
+LTC68032.cpp:215:6:void LTC6803_sttmpad()	8	static
+LTC68032.cpp:319:9:uint8_t pec8_calc(uint8_t, uint8_t*)	4	static
+LTC68032.cpp:363:6:void spi_write_array(uint8_t, uint8_t*)	16	static
+LTC68032.cpp:375:6:void spi_write_read(uint8_t*, uint8_t, uint8_t*, uint8_t)	24	static
+LTC68032.cpp:154:8:int8_t LTC6803_rdcfg(uint8_t, uint8_t (*)[7])	56	static
+LTC68032.cpp:226:8:int8_t LTC6803_rdtmp(uint8_t, uint16_t (*)[3])	48	static
+LTC68032.cpp:272:9:uint8_t LTC6803_rdcv(uint8_t, uint16_t (*)[12])	56	static

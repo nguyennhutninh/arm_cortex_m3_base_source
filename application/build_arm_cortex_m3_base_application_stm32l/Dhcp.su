@@ -1,0 +1,14 @@
+Dhcp.cpp:29:6:void DhcpClass::reset_DHCP_lease()	0	static
+Dhcp.cpp:131:6:void DhcpClass::presend_DHCP()	0	static
+Dhcp.cpp:437:11:IPAddress DhcpClass::getLocalIp()	8	static
+Dhcp.cpp:442:11:IPAddress DhcpClass::getSubnetMask()	8	static
+Dhcp.cpp:447:11:IPAddress DhcpClass::getGatewayIp()	8	static
+Dhcp.cpp:452:11:IPAddress DhcpClass::getDhcpServerIp()	8	static
+Dhcp.cpp:457:11:IPAddress DhcpClass::getDnsServerIp()	8	static
+Dhcp.cpp:462:6:void DhcpClass::printByte(char*, uint8_t)	0	static
+Dhcp.cpp:471:1:cpp)	16	static
+Dhcp.cpp:135:6:void DhcpClass::send_DHCP_MESSAGE(uint8_t, uint16_t)	88	static
+Dhcp.cpp:253:9:uint8_t DhcpClass::parseDHCPResponse(long unsigned int, uint32_t&)	80	static
+Dhcp.cpp:35:5:int DhcpClass::request_DHCP_lease()	40	static
+Dhcp.cpp:12:5:int DhcpClass::beginWithDHCP(uint8_t*, long unsigned int, long unsigned int)	12	static
+Dhcp.cpp:394:5:int DhcpClass::checkLease()	16	static

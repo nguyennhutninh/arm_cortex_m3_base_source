@@ -1,0 +1,3 @@
+tsm.c:6:6:tsm_init	24	static
+tsm.c:18:6:tsm_dispatch	16	static
+tsm.c:43:6:tsm_tran	0	static

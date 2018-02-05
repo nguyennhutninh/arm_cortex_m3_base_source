@@ -1,0 +1,3 @@
+usb_sil.c:68:10:USB_SIL_Init	4	static
+usb_sil.c:89:10:USB_SIL_Write	16	static
+usb_sil.c:109:10:USB_SIL_Read	16	static

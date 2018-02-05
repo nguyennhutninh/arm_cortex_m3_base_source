@@ -1,0 +1,10 @@
+SHT1x.cpp:27:1:SHT1x::SHT1x()	0	static
+SHT1x.cpp:139:5:int SHT1x::shiftIn(int, int, int)	24	static
+SHT1x.cpp:157:6:void SHT1x::sendCommandSHT(int, int, int)	16	static
+SHT1x.cpp:191:6:void SHT1x::waitForResultSHT(int)	16	static
+SHT1x.cpp:215:5:int SHT1x::getData16SHT(int, int)	32	static
+SHT1x.cpp:241:6:void SHT1x::skipCrcSHT(int, int)	16	static
+SHT1x.cpp:122:7:float SHT1x::readTemperatureRaw()	16	static
+SHT1x.cpp:39:7:float SHT1x::readTemperatureC()	8	static
+SHT1x.cpp:60:7:float SHT1x::readTemperatureF()	8	static
+SHT1x.cpp:81:7:float SHT1x::readHumidity()	24	static
