@@ -55,7 +55,7 @@ static boot_app_share_data_t boot_app_share_data;
 
 static void app_power_on_reset();
 static void app_start_timer();
-static void app_init_state_machine();
+//static void app_init_state_machine();
 static void app_task_init();
 
 /*****************************************************************************/
@@ -88,11 +88,11 @@ int main_app() {
 	SPI.begin();
 
 	/* adc peripheral configure */
-	io_cfg_adc1();			/* configure adc for thermistor and CT sensor */
-	adc_thermistor_io_cfg();
+	//io_cfg_adc1();			/* configure adc for thermistor and CT sensor */
+	//adc_thermistor_io_cfg();
 
 	/* adc configure for ct sensor */
-	adc_ct_io_cfg();
+	//adc_ct_io_cfg();
 
 	/* flash io init */
 	flash_io_ctrl_init();
@@ -131,7 +131,7 @@ int main_app() {
 	EXIT_CRITICAL();
 
 	/* start timer for application */
-	app_init_state_machine();
+	//app_init_state_machine();
 	app_start_timer();
 
 	/******************************************************************************
@@ -161,18 +161,18 @@ void app_start_timer() {
 /* init state machine for tasks
  * used for app tasks
  */
-void app_init_state_machine() {
-	link_init_state_machine();
-}
+//void app_init_state_machine() {
+//	link_init_state_machine();
+//}
 
 /* send first message to trigger start tasks
  * used for app tasks
  */
 void app_task_init() {
 	task_post_pure_msg(AC_TASK_FW_ID, FW_CHECKING_REQ);
-	task_post_pure_msg(AC_TASK_RF24_IF_ID, AC_RF24_IF_INIT_NETWORK);
+	//task_post_pure_msg(AC_TASK_RF24_IF_ID, AC_RF24_IF_INIT_NETWORK);
 	task_post_pure_msg(AC_TASK_DISPLAY_ID, AC_DISPLAY_INITIAL);
-	task_post_pure_msg(AC_LINK_ID, AC_LINK_INIT);
+	//task_post_pure_msg(AC_LINK_ID, AC_LINK_INIT);
 }
 
 /*****************************************************************************/

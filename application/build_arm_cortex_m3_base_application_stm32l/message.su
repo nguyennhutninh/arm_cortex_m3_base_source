@@ -1,4 +1,4 @@
-message.c:47:6:msg_init	8	static
+message.c:47:6:msg_init	16	static
 message.c:53:6:msg_free	16	static
 message.c:82:6:msg_inc_ref_count	8	static
 message.c:91:6:msg_dec_ref_count	8	static

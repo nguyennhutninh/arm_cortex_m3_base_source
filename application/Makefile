@@ -9,7 +9,7 @@ Print = @echo "~"
 NAME_MODULE = arm_cortex_m3_base_application
 PROJECT = $(NAME_MODULE)
 
-GCC_PATH	= /home/fanning/workspace/tools/gcc-arm-none-eabi-7-2017q4
+GCC_PATH	= /home/fanning/workspace/tools/gcc-arm-none-eabi-7-2017-q4-major
 OPENOCD_PATH	= /home/fanning/workspace/tools/openocd
 
 # Include sources file
@@ -24,9 +24,6 @@ include sources/platform/stm32l/Makefile.mk
 # App start address, that need sync with declare in linker file and interrupt vector table.
 APP_START_ADDR_VAL = 0x08003000
 APP_ADDR_OPTION = -DAPP_START_ADDR=$(APP_START_ADDR_VAL)
-
-# App maximum stack size
-APP_STACK_SIZE = 720
 
 # Define console baudrate, that is used to configure UART.
 SYS_CONSOLE_BAUDRATE = 115200
@@ -58,7 +55,10 @@ LOG_AK_KERNEL_ENABLE = -UAK_TASK_LOG_CONSOLE_ENABLE
 # Enable to using USB hareware configuration.
 USB_OPTION = -UUSING_USB_MOD
 
-# warning compile option.
+# App maximum stack size
+APP_STACK_SIZE = 720
+
+# Warning compile option.
 WARNING_OPTION = -Werror -W -Wstack-usage=$(APP_STACK_SIZE)
 
 OBJECTS_DIR = build_$(NAME_MODULE)_stm32l
@@ -72,13 +72,13 @@ SOURCES_CPP	+=
 SOURCES_CPP_	 = $(shell find $(SOURCES_CPP) -type f -printf "%f\n")
 OBJECTS		+= $(patsubst %.cpp, $(OBJECTS_DIR)/%.o, $(SOURCES_CPP_))
 
-LIBC		= $(GCC_PATH)/arm-none-eabi/lib/libc.a
-LIBM		= $(GCC_PATH)/arm-none-eabi/lib/libm.a
-LIBFPU		= $(GCC_PATH)/arm-none-eabi/lib/libg.a
-LIBGCC		= $(GCC_PATH)/lib/gcc/arm-none-eabi/7.2.1/libgcc.a
+LIBC		= $(GCC_PATH)/arm-none-eabi/lib/thumb/v7-m/libc.a
+LIBM		= $(GCC_PATH)/arm-none-eabi/lib/thumb/v7-m/libm.a
+LIBFPU		= $(GCC_PATH)/arm-none-eabi/lib/thumb/v7-m/libg.a
+LIBGCC		= $(GCC_PATH)/lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m/libgcc.a
 
-LIB_PATH += -L$(GCC_PATH)/arm-none-eabi/lib
-LIB_PATH += -L$(GCC_PATH)/lib/gcc/arm-none-eabi/7.2.1
+LIB_PATH += -L$(GCC_PATH)/arm-none-eabi/lib/thumb/v7-m
+LIB_PATH += -L$(GCC_PATH)/lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m
 
 # The command for calling the compiler.
 CC		=	$(GCC_PATH)/bin/arm-none-eabi-gcc
@@ -99,6 +99,15 @@ AFLAGS +=	-mthumb	\
 		$(FPU)	\
 		-MD
 
+# Console log compile option
+CONSOLE_OPTION +=			\
+		-DLOGIN_PRINT_EN	\
+		-DSYS_PRINT_EN		\
+		-DSYS_DBG_EN		\
+		-UAPP_DBG_EN		\
+		-UAPP_PRINT_EN		\
+		-UAPP_DBG_SIG_EN	\
+
 # C compiler flags
 CFLAGS +=	-mthumb			\
 		$(CPU)			\
@@ -111,6 +120,7 @@ CFLAGS +=	-mthumb			\
 		-std=c99		\
 		-c			\
 		$(CONSOLE_BAUDRATE_DEF)	\
+		$(CONSOLE_OPTION)	\
 		$(IRQ_DEBUG_OPTION)	\
 		$(WARNING_OPTION)	\
 		$(OPTIMIZE_OPTION)	\
@@ -121,12 +131,7 @@ CFLAGS +=	-mthumb			\
 		-DUSE_STDPERIPH_DRIVER	\
 		-DSTM32L1XX_MD		\
 		-DSTM32L_PLATFORM	\
-		-DLOGIN_PRINT_EN	\
-		-DSYS_PRINT_EN		\
-		-DSYS_DBG_EN		\
-		-UAPP_DBG_EN		\
-		-UAPP_PRINT_EN		\
-		-UAPP_DBG_SIG_EN	\
+
 
 # C++ compiler flags
 CPPFLAGS += 	-mthumb			\
@@ -143,6 +148,7 @@ CPPFLAGS += 	-mthumb			\
 		-std=c++11		\
 		-c			\
 		$(CONSOLE_BAUDRATE_DEF)	\
+		$(CONSOLE_OPTION)	\
 		$(IRQ_DEBUG_OPTION)	\
 		$(WARNING_OPTION)	\
 		$(OPTIMIZE_OPTION)	\
@@ -153,12 +159,6 @@ CPPFLAGS += 	-mthumb			\
 		-DUSE_STDPERIPH_DRIVER	\
 		-DSTM32L1XX_MD		\
 		-DSTM32L_PLATFORM	\
-		-DLOGIN_PRINT_EN	\
-		-DSYS_PRINT_EN		\
-		-DSYS_DBG_EN		\
-		-UAPP_DBG_EN		\
-		-UAPP_PRINT_EN		\
-		-UAPP_DBG_SIG_EN	\
 
 # linker flags
 LDFLAGS	=	-Map=$(OBJECTS_DIR)/$(PROJECT).map	\

@@ -57,7 +57,7 @@
  */
 /*****************************************************************************/
 #define STR_LIST_MAX_SIZE		50
-#define STR_BUFFER_SIZE			500
+#define STR_BUFFER_SIZE			250
 
 static char cmd_buffer[STR_BUFFER_SIZE];
 static char* str_list[STR_LIST_MAX_SIZE];
