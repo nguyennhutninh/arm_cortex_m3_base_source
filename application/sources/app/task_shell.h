@@ -10,7 +10,7 @@
 
 #include "cmd_line.h"
 
-#define SHELL_BUFFER_LENGHT				(32)
+#define SHELL_BUFFER_LENGHT				(25)
 
 extern cmd_line_t lgn_cmd_table[];
 

@@ -3,8 +3,8 @@
 
 #include "ak.h"
 
-#define LINK_PDU_BUF_SIZE			384
-#define LINK_PDU_POOL_SIZE			4
+#define LINK_PDU_BUF_SIZE			120
+#define LINK_PDU_POOL_SIZE			2
 
 #define LINK_PHY_FRAME_SEND_TO_INTERVAL		50 /* 50 ms */
 

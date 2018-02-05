@@ -226,7 +226,6 @@ endif
 .PHONY: com
 com:
 	minicom -D /dev/ac_mod_com -b $(SYS_CONSOLE_BAUDRATE)
-
 .PHONY: clean
 clean:
 	$(Print) CLEAN $(OBJECTS_DIR) folder

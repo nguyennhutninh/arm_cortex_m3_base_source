@@ -15,10 +15,10 @@
 #define SPI_CLOCK_DIV256    SPI_BaudRatePrescaler_256
 
 /*
-    SPI_MODE0	0	0	Falling	Rising
-    SPI_MODE1	0	1	Rising	Falling
-    SPI_MODE2	1	0	Rising	Falling
-    SPI_MODE3	1	1	Falling	Rising
+	SPI_MODE0	0	0	Falling	Rising
+	SPI_MODE1	0	1	Rising	Falling
+	SPI_MODE2	1	0	Rising	Falling
+	SPI_MODE3	1	1	Falling	Rising
 */
 #define SPI_MODE0           0x00
 #define SPI_MODE1           0x80
@@ -35,25 +35,25 @@
 
 class SPISettings {
 public:
-  SPISettings(uint32_t clock, uint8_t bitOrder, uint8_t dataMode) {
-	  spi_config(clock, bitOrder, dataMode);
-  }
+	SPISettings(uint32_t clock, uint8_t bitOrder, uint8_t dataMode) {
+		spi_config(clock, bitOrder, dataMode);
+	}
 
-  SPISettings() {
-	spi_config(4000000, MSBFIRST, SPI_MODE0);
-  }
+	SPISettings() {
+		spi_config(4000000, MSBFIRST, SPI_MODE0);
+	}
 private:
-  uint32_t setting_clock;
-  uint8_t setting_bitorder;
-  uint8_t setting_datamode;
+	uint32_t setting_clock;
+	uint8_t setting_bitorder;
+	uint8_t setting_datamode;
 
-  void spi_config(uint32_t clock, uint8_t bitOrder, uint8_t dataMode) {
-	setting_clock = clock;
-	setting_bitorder = bitOrder;
-	setting_datamode = dataMode;
-  }
+	void spi_config(uint32_t clock, uint8_t bitOrder, uint8_t dataMode) {
+		setting_clock = clock;
+		setting_bitorder = bitOrder;
+		setting_datamode = dataMode;
+	}
 
-  friend class SPIClass;
+	friend class SPIClass;
 };
 
 
@@ -68,26 +68,26 @@ private:
 	void io_config();
 
 public:
-    SPIClass(void);
-    SPIClass(uint8_t);
+	SPIClass(void);
+	SPIClass(uint8_t);
 
-    void begin();
-    void end();
+	void begin();
+	void end();
 
 	void beginTransaction(SPISettings settings);
 	void endTransaction(void);
 
-    void setBitOrder(uint8_t);
-    void setBitOrder(uint8_t, uint8_t);
+	void setBitOrder(uint8_t);
+	void setBitOrder(uint8_t, uint8_t);
 
-    void setDataMode(uint8_t);
-    void setClockDivider(uint8_t);
+	void setDataMode(uint8_t);
+	void setClockDivider(uint8_t);
 
-    uint8_t transfer(uint8_t);
+	uint8_t transfer(uint8_t);
 	uint16_t transfer16(uint16_t data);
 	void transfer(void *buf, uint32_t count);
 
-    void setModule(uint8_t);
+	void setModule(uint8_t);
 };
 
 extern SPIClass SPI;
