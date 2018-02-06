@@ -39,3 +39,9 @@ sources/platform/stm32l/Libraries/STM32_USB-FS-Device_Driver/inc
 sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/inc
 sources/platform/stm32l/usb/inc
 sources/sys
+sources/platform/stm32l/Libraries/STM32_USB-FS-Device_Driver/src
+sources/platform/stm32l/Libraries/CMSIS/Device/ST/STM32L1xx/Source/Templates
+sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/src
+sources/platform/stm32l/Libraries/NNN_library
+sources/platform/stm32l/Libraries/NNN_library/spi
+sources/platform/stm32l/Libraries/NNN_library/gpio

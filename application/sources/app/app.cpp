@@ -49,6 +49,8 @@
 #include "link.h"
 #include "link_sig.h"
 
+#include "tm_stm32f4_gpio.h"
+
 const char* app_version = APP_VER;
 
 static boot_app_share_data_t boot_app_share_data;
@@ -102,7 +104,8 @@ int main_app() {
 	**********************/
 	/* initial boot object */
 	sys_boot_init();
-
+	/* testing NNN library */
+	TM_GPIO_INT_EnableClock(GPIOA);
 	/* life led init */
 	led_init(&led_life, led_life_init, led_life_on, led_life_off);
 

@@ -1,0 +1,2141 @@
+Archive member included to satisfy reference by file (symbol)
+
+/home/fanning/workspace/tools/gcc-arm-none-eabi-5_4-2016q3/arm-none-eabi/lib/armv7-m/libc.a(lib_a-memcmp.o)
+                              build_arm_cortex_m3_base_boot_stm32l/app.o (memcmp)
+/home/fanning/workspace/tools/gcc-arm-none-eabi-5_4-2016q3/arm-none-eabi/lib/armv7-m/libc.a(lib_a-memcpy.o)
+                              build_arm_cortex_m3_base_boot_stm32l/sys_boot.o (memcpy)
+/home/fanning/workspace/tools/gcc-arm-none-eabi-5_4-2016q3/arm-none-eabi/lib/armv7-m/libc.a(lib_a-memset.o)
+                              build_arm_cortex_m3_base_boot_stm32l/app.o (memset)
+/home/fanning/workspace/tools/gcc-arm-none-eabi-5_4-2016q3/arm-none-eabi/lib/armv7-m/libc.a(lib_a-strlen-stub.o)
+                              build_arm_cortex_m3_base_boot_stm32l/Print.o (strlen)
+/home/fanning/workspace/tools/gcc-arm-none-eabi-5_4-2016q3/lib/gcc/arm-none-eabi/5.4.1/armv7-m/libgcc.a(_arm_addsubdf3.o)
+                              build_arm_cortex_m3_base_boot_stm32l/Print.o (__aeabi_dsub)
+/home/fanning/workspace/tools/gcc-arm-none-eabi-5_4-2016q3/lib/gcc/arm-none-eabi/5.4.1/armv7-m/libgcc.a(_arm_muldivdf3.o)
+                              build_arm_cortex_m3_base_boot_stm32l/Print.o (__aeabi_dmul)
+/home/fanning/workspace/tools/gcc-arm-none-eabi-5_4-2016q3/lib/gcc/arm-none-eabi/5.4.1/armv7-m/libgcc.a(_arm_cmpdf2.o)
+                              build_arm_cortex_m3_base_boot_stm32l/Print.o (__aeabi_dcmplt)
+/home/fanning/workspace/tools/gcc-arm-none-eabi-5_4-2016q3/lib/gcc/arm-none-eabi/5.4.1/armv7-m/libgcc.a(_arm_unorddf2.o)
+                              build_arm_cortex_m3_base_boot_stm32l/Print.o (__aeabi_dcmpun)
+/home/fanning/workspace/tools/gcc-arm-none-eabi-5_4-2016q3/lib/gcc/arm-none-eabi/5.4.1/armv7-m/libgcc.a(_arm_fixdfsi.o)
+                              build_arm_cortex_m3_base_boot_stm32l/Print.o (__aeabi_d2iz)
+/home/fanning/workspace/tools/gcc-arm-none-eabi-5_4-2016q3/lib/gcc/arm-none-eabi/5.4.1/armv7-m/libgcc.a(_arm_fixunsdfsi.o)
+                              build_arm_cortex_m3_base_boot_stm32l/Print.o (__aeabi_d2uiz)
+
+Allocating common symbols
+Common symbol       size              file
+
+xfunc_out           0x4               build_arm_cortex_m3_base_boot_stm32l/xprintf.o
+
+Discarded input sections
+
+ .text          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/utils.o
+ .data          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/utils.o
+ .bss           0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/utils.o
+ .text.str_len  0x00000000       0x18 build_arm_cortex_m3_base_boot_stm32l/utils.o
+ .text.itoa     0x00000000       0x80 build_arm_cortex_m3_base_boot_stm32l/utils.o
+ .text.mem_set  0x00000000       0x14 build_arm_cortex_m3_base_boot_stm32l/utils.o
+ .text.mem_cpy  0x00000000       0x14 build_arm_cortex_m3_base_boot_stm32l/utils.o
+ .text.mem_read
+                0x00000000       0x18 build_arm_cortex_m3_base_boot_stm32l/utils.o
+ .text.mem_write
+                0x00000000       0x18 build_arm_cortex_m3_base_boot_stm32l/utils.o
+ .text.str_cmp  0x00000000       0x30 build_arm_cortex_m3_base_boot_stm32l/utils.o
+ .text.str_cpy  0x00000000       0x3c build_arm_cortex_m3_base_boot_stm32l/utils.o
+ .debug_info    0x00000000      0x42e build_arm_cortex_m3_base_boot_stm32l/utils.o
+ .debug_abbrev  0x00000000      0x17e build_arm_cortex_m3_base_boot_stm32l/utils.o
+ .debug_loc     0x00000000      0x688 build_arm_cortex_m3_base_boot_stm32l/utils.o
+ .debug_aranges
+                0x00000000       0x58 build_arm_cortex_m3_base_boot_stm32l/utils.o
+ .debug_ranges  0x00000000       0x48 build_arm_cortex_m3_base_boot_stm32l/utils.o
+ .debug_line    0x00000000      0x273 build_arm_cortex_m3_base_boot_stm32l/utils.o
+ .debug_str     0x00000000      0x270 build_arm_cortex_m3_base_boot_stm32l/utils.o
+ .comment       0x00000000       0x6f build_arm_cortex_m3_base_boot_stm32l/utils.o
+ .debug_frame   0x00000000       0xc0 build_arm_cortex_m3_base_boot_stm32l/utils.o
+ .ARM.attributes
+                0x00000000       0x33 build_arm_cortex_m3_base_boot_stm32l/utils.o
+ .text          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/xprintf.o
+ .data          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/xprintf.o
+ .bss           0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/xprintf.o
+ .text.xputc    0x00000000       0x24 build_arm_cortex_m3_base_boot_stm32l/xprintf.o
+ .text          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/led.o
+ .data          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/led.o
+ .bss           0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/led.o
+ .text.led_on   0x00000000        0xc build_arm_cortex_m3_base_boot_stm32l/led.o
+ .text.led_toggle
+                0x00000000       0x20 build_arm_cortex_m3_base_boot_stm32l/led.o
+ .text          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/flash.o
+ .data          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/flash.o
+ .bss           0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/flash.o
+ .text.flash_set_write_enable.constprop.0
+                0x00000000       0x1c build_arm_cortex_m3_base_boot_stm32l/flash.o
+ .text.flash_write
+                0x00000000       0x60 build_arm_cortex_m3_base_boot_stm32l/flash.o
+ .text.flash_erase_sector
+                0x00000000       0x48 build_arm_cortex_m3_base_boot_stm32l/flash.o
+ .text.flash_erase_block_32k
+                0x00000000       0x48 build_arm_cortex_m3_base_boot_stm32l/flash.o
+ .text.flash_erase_block_64k
+                0x00000000       0x48 build_arm_cortex_m3_base_boot_stm32l/flash.o
+ .text.flash_erase_full
+                0x00000000       0x28 build_arm_cortex_m3_base_boot_stm32l/flash.o
+ .text          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/sys_dbg.o
+ .data          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/sys_dbg.o
+ .bss           0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/sys_dbg.o
+ .text.sys_dbg_fatal
+                0x00000000       0x18 build_arm_cortex_m3_base_boot_stm32l/sys_dbg.o
+ .rodata.str1.4
+                0x00000000        0x7 build_arm_cortex_m3_base_boot_stm32l/sys_dbg.o
+ .debug_info    0x00000000      0x145 build_arm_cortex_m3_base_boot_stm32l/sys_dbg.o
+ .debug_abbrev  0x00000000       0xc0 build_arm_cortex_m3_base_boot_stm32l/sys_dbg.o
+ .debug_loc     0x00000000       0x4d build_arm_cortex_m3_base_boot_stm32l/sys_dbg.o
+ .debug_aranges
+                0x00000000       0x20 build_arm_cortex_m3_base_boot_stm32l/sys_dbg.o
+ .debug_ranges  0x00000000       0x10 build_arm_cortex_m3_base_boot_stm32l/sys_dbg.o
+ .debug_line    0x00000000      0x188 build_arm_cortex_m3_base_boot_stm32l/sys_dbg.o
+ .debug_str     0x00000000      0x1ef build_arm_cortex_m3_base_boot_stm32l/sys_dbg.o
+ .comment       0x00000000       0x6f build_arm_cortex_m3_base_boot_stm32l/sys_dbg.o
+ .debug_frame   0x00000000       0x2c build_arm_cortex_m3_base_boot_stm32l/sys_dbg.o
+ .ARM.attributes
+                0x00000000       0x33 build_arm_cortex_m3_base_boot_stm32l/sys_dbg.o
+ .text          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/sys_boot.o
+ .data          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/sys_boot.o
+ .bss           0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/sys_boot.o
+ .text          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_gpio.o
+ .data          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_gpio.o
+ .bss           0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_gpio.o
+ .text.GPIO_DeInit
+                0x00000000       0xf4 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_gpio.o
+ .text.GPIO_StructInit
+                0x00000000       0x14 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_gpio.o
+ .text.GPIO_PinLockConfig
+                0x00000000       0x24 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_gpio.o
+ .text.GPIO_ReadInputData
+                0x00000000        0x8 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_gpio.o
+ .text.GPIO_ReadOutputDataBit
+                0x00000000        0xc build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_gpio.o
+ .text.GPIO_ReadOutputData
+                0x00000000        0x8 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_gpio.o
+ .text.GPIO_WriteBit
+                0x00000000        0xc build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_gpio.o
+ .text.GPIO_Write
+                0x00000000        0x4 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_gpio.o
+ .text.GPIO_ToggleBits
+                0x00000000        0xc build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_gpio.o
+ .text          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rcc.o
+ .data          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rcc.o
+ .bss           0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rcc.o
+ .text.RCC_DeInit
+                0x00000000       0x3c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rcc.o
+ .text.RCC_HSEConfig
+                0x00000000       0x10 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rcc.o
+ .text.RCC_WaitForHSEStartUp
+                0x00000000       0x34 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rcc.o
+ .text.RCC_AdjustMSICalibrationValue
+                0x00000000        0xc build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rcc.o
+ .text.RCC_MSIRangeConfig
+                0x00000000       0x14 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rcc.o
+ .text.RCC_MSICmd
+                0x00000000        0xc build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rcc.o
+ .text.RCC_AdjustHSICalibrationValue
+                0x00000000       0x14 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rcc.o
+ .text.RCC_HSICmd
+                0x00000000        0xc build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rcc.o
+ .text.RCC_LSEConfig
+                0x00000000       0x10 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rcc.o
+ .text.RCC_LSICmd
+                0x00000000        0xc build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rcc.o
+ .text.RCC_PLLConfig
+                0x00000000       0x10 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rcc.o
+ .text.RCC_PLLCmd
+                0x00000000        0xc build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rcc.o
+ .text.RCC_ClockSecuritySystemCmd
+                0x00000000        0xc build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rcc.o
+ .text.RCC_LSEClockSecuritySystemCmd
+                0x00000000        0xc build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rcc.o
+ .text.RCC_MCOConfig
+                0x00000000        0xc build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rcc.o
+ .text.RCC_SYSCLKConfig
+                0x00000000       0x14 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rcc.o
+ .text.RCC_GetSYSCLKSource
+                0x00000000       0x10 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rcc.o
+ .text.RCC_HCLKConfig
+                0x00000000       0x14 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rcc.o
+ .text.RCC_PCLK1Config
+                0x00000000       0x14 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rcc.o
+ .text.RCC_PCLK2Config
+                0x00000000       0x14 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rcc.o
+ .text.RCC_RTCCLKConfig
+                0x00000000       0x34 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rcc.o
+ .text.RCC_RTCCLKCmd
+                0x00000000        0xc build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rcc.o
+ .text.RCC_RTCResetCmd
+                0x00000000        0xc build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rcc.o
+ .text.RCC_AHBPeriphResetCmd
+                0x00000000       0x1c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rcc.o
+ .text.RCC_APB2PeriphResetCmd
+                0x00000000       0x1c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rcc.o
+ .text.RCC_APB1PeriphResetCmd
+                0x00000000       0x1c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rcc.o
+ .text.RCC_AHBPeriphClockLPModeCmd
+                0x00000000       0x1c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rcc.o
+ .text.RCC_APB2PeriphClockLPModeCmd
+                0x00000000       0x1c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rcc.o
+ .text.RCC_APB1PeriphClockLPModeCmd
+                0x00000000       0x1c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rcc.o
+ .text.RCC_ITConfig
+                0x00000000       0x1c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rcc.o
+ .text.RCC_GetITStatus
+                0x00000000       0x14 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rcc.o
+ .text.RCC_ClearITPendingBit
+                0x00000000        0xc build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rcc.o
+ .text          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_usart.o
+ .data          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_usart.o
+ .bss           0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_usart.o
+ .text.USART_DeInit
+                0x00000000       0xb0 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_usart.o
+ .text.USART_StructInit
+                0x00000000       0x18 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_usart.o
+ .text.USART_ClockInit
+                0x00000000       0x24 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_usart.o
+ .text.USART_ClockStructInit
+                0x00000000        0xc build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_usart.o
+ .text.USART_SetPrescaler
+                0x00000000       0x14 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_usart.o
+ .text.USART_OverSampling8Cmd
+                0x00000000       0x1c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_usart.o
+ .text.USART_OneBitMethodCmd
+                0x00000000       0x1c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_usart.o
+ .text.USART_SetAddress
+                0x00000000       0x18 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_usart.o
+ .text.USART_ReceiverWakeUpCmd
+                0x00000000       0x1c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_usart.o
+ .text.USART_WakeUpConfig
+                0x00000000       0x18 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_usart.o
+ .text.USART_LINBreakDetectLengthConfig
+                0x00000000       0x18 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_usart.o
+ .text.USART_LINCmd
+                0x00000000       0x1c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_usart.o
+ .text.USART_SendBreak
+                0x00000000        0xc build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_usart.o
+ .text.USART_HalfDuplexCmd
+                0x00000000       0x1c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_usart.o
+ .text.USART_SetGuardTime
+                0x00000000       0x14 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_usart.o
+ .text.USART_SmartCardCmd
+                0x00000000       0x1c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_usart.o
+ .text.USART_SmartCardNACKCmd
+                0x00000000       0x1c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_usart.o
+ .text.USART_IrDAConfig
+                0x00000000       0x18 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_usart.o
+ .text.USART_IrDACmd
+                0x00000000       0x1c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_usart.o
+ .text.USART_DMACmd
+                0x00000000       0x14 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_usart.o
+ .text.USART_ClearFlag
+                0x00000000        0x8 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_usart.o
+ .text          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_spi.o
+ .data          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_spi.o
+ .bss           0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_spi.o
+ .text.SPI_I2S_DeInit
+                0x00000000       0x6c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_spi.o
+ .text.I2S_Init
+                0x00000000       0xb0 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_spi.o
+ .text.SPI_StructInit
+                0x00000000       0x18 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_spi.o
+ .text.I2S_StructInit
+                0x00000000       0x14 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_spi.o
+ .text.I2S_Cmd  0x00000000       0x1c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_spi.o
+ .text.SPI_DataSizeConfig
+                0x00000000       0x18 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_spi.o
+ .text.SPI_BiDirectionalLineConfig
+                0x00000000       0x20 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_spi.o
+ .text.SPI_NSSInternalSoftwareConfig
+                0x00000000       0x20 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_spi.o
+ .text.SPI_SSOutputCmd
+                0x00000000       0x1c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_spi.o
+ .text.SPI_CalculateCRC
+                0x00000000       0x1c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_spi.o
+ .text.SPI_TransmitCRC
+                0x00000000        0xc build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_spi.o
+ .text.SPI_GetCRC
+                0x00000000        0xc build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_spi.o
+ .text.SPI_GetCRCPolynomial
+                0x00000000        0x8 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_spi.o
+ .text.SPI_I2S_DMACmd
+                0x00000000       0x14 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_spi.o
+ .text.SPI_I2S_ITConfig
+                0x00000000       0x20 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_spi.o
+ .text.SPI_I2S_ClearFlag
+                0x00000000        0x8 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_spi.o
+ .text.SPI_I2S_GetITStatus
+                0x00000000       0x28 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_spi.o
+ .text.SPI_I2S_ClearITPendingBit
+                0x00000000       0x14 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_spi.o
+ .text          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/misc.o
+ .data          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/misc.o
+ .bss           0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/misc.o
+ .text.NVIC_PriorityGroupConfig
+                0x00000000       0x14 build_arm_cortex_m3_base_boot_stm32l/misc.o
+ .text.NVIC_SetVectorTable
+                0x00000000       0x14 build_arm_cortex_m3_base_boot_stm32l/misc.o
+ .text.NVIC_SystemLPConfig
+                0x00000000       0x18 build_arm_cortex_m3_base_boot_stm32l/misc.o
+ .text.SysTick_CLKSourceConfig
+                0x00000000       0x18 build_arm_cortex_m3_base_boot_stm32l/misc.o
+ .text          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_exti.o
+ .data          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_exti.o
+ .bss           0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_exti.o
+ .text.EXTI_DeInit
+                0x00000000       0x18 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_exti.o
+ .text.EXTI_Init
+                0x00000000       0x7c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_exti.o
+ .text.EXTI_StructInit
+                0x00000000       0x10 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_exti.o
+ .text.EXTI_GenerateSWInterrupt
+                0x00000000       0x10 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_exti.o
+ .text.EXTI_ClearFlag
+                0x00000000        0xc build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_exti.o
+ .text.EXTI_GetITStatus
+                0x00000000       0x14 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_exti.o
+ .text.EXTI_GetFlagStatus
+                0x00000000        0x4 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_exti.o
+ .text.EXTI_ClearITPendingBit
+                0x00000000        0xc build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_exti.o
+ .debug_info    0x00000000      0x305 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_exti.o
+ .debug_abbrev  0x00000000      0x1b0 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_exti.o
+ .debug_loc     0x00000000      0x12d build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_exti.o
+ .debug_aranges
+                0x00000000       0x48 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_exti.o
+ .debug_ranges  0x00000000       0x38 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_exti.o
+ .debug_line    0x00000000      0x2c5 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_exti.o
+ .debug_str     0x00000000      0x397 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_exti.o
+ .comment       0x00000000       0x6f build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_exti.o
+ .debug_frame   0x00000000       0xb0 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_exti.o
+ .ARM.attributes
+                0x00000000       0x33 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_exti.o
+ .text          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_syscfg.o
+ .data          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_syscfg.o
+ .bss           0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_syscfg.o
+ .text.SYSCFG_DeInit
+                0x00000000       0x18 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_syscfg.o
+ .text.SYSCFG_RIDeInit
+                0x00000000       0x18 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_syscfg.o
+ .text.SYSCFG_MemoryRemapConfig
+                0x00000000        0xc build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_syscfg.o
+ .text.SYSCFG_GetBootMode
+                0x00000000       0x10 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_syscfg.o
+ .text.SYSCFG_USBPuCmd
+                0x00000000       0x1c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_syscfg.o
+ .text.SYSCFG_EXTILineConfig
+                0x00000000       0x2c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_syscfg.o
+ .text.SYSCFG_RITIMSelect
+                0x00000000       0x14 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_syscfg.o
+ .text.SYSCFG_RITIMInputCaptureConfig
+                0x00000000       0x44 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_syscfg.o
+ .text.SYSCFG_RIResistorConfig
+                0x00000000       0x1c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_syscfg.o
+ .text.SYSCFG_RIChannelSpeedConfig
+                0x00000000       0x18 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_syscfg.o
+ .text.SYSCFG_RIIOSwitchConfig
+                0x00000000       0x38 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_syscfg.o
+ .text.SYSCFG_RISwitchControlModeCmd
+                0x00000000       0x1c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_syscfg.o
+ .text.SYSCFG_RIHysteresisConfig
+                0x00000000       0xd4 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_syscfg.o
+ .debug_info    0x00000000      0x53d build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_syscfg.o
+ .debug_abbrev  0x00000000      0x1b8 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_syscfg.o
+ .debug_loc     0x00000000      0x538 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_syscfg.o
+ .debug_aranges
+                0x00000000       0x80 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_syscfg.o
+ .debug_ranges  0x00000000       0x70 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_syscfg.o
+ .debug_line    0x00000000      0x38b build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_syscfg.o
+ .debug_str     0x00000000      0x4f2 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_syscfg.o
+ .comment       0x00000000       0x6f build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_syscfg.o
+ .debug_frame   0x00000000       0xf8 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_syscfg.o
+ .ARM.attributes
+                0x00000000       0x33 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_syscfg.o
+ .text          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .data          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .bss           0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_DeInit
+                0x00000000      0x110 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_TimeBaseInit
+                0x00000000       0x60 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_TimeBaseStructInit
+                0x00000000       0x10 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_PrescalerConfig
+                0x00000000        0x8 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_CounterModeConfig
+                0x00000000       0x10 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_SetCounter
+                0x00000000        0x4 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_SetAutoreload
+                0x00000000        0x4 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_GetCounter
+                0x00000000        0x4 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_GetPrescaler
+                0x00000000        0x8 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_UpdateDisableConfig
+                0x00000000       0x1c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_UpdateRequestConfig
+                0x00000000       0x1c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_ARRPreloadConfig
+                0x00000000       0x1c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_SelectOnePulseMode
+                0x00000000       0x18 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_SetClockDivision
+                0x00000000       0x18 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_Cmd  0x00000000       0x1c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_OC1Init
+                0x00000000       0x3c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_OC2Init
+                0x00000000       0x44 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_OC3Init
+                0x00000000       0x40 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_OC4Init
+                0x00000000       0x44 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_OCStructInit
+                0x00000000        0xc build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_SelectOCxM
+                0x00000000       0x48 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_SetCompare1
+                0x00000000        0x4 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_SetCompare2
+                0x00000000        0x4 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_SetCompare3
+                0x00000000        0x4 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_SetCompare4
+                0x00000000        0x4 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_ForcedOC1Config
+                0x00000000       0x10 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_ForcedOC2Config
+                0x00000000       0x14 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_ForcedOC3Config
+                0x00000000       0x10 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_ForcedOC4Config
+                0x00000000       0x14 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_OC1PreloadConfig
+                0x00000000       0x10 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_OC2PreloadConfig
+                0x00000000       0x14 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_OC3PreloadConfig
+                0x00000000       0x10 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_OC4PreloadConfig
+                0x00000000       0x14 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_OC1FastConfig
+                0x00000000       0x10 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_OC2FastConfig
+                0x00000000       0x14 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_OC3FastConfig
+                0x00000000       0x10 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_OC4FastConfig
+                0x00000000       0x14 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_ClearOC1Ref
+                0x00000000       0x10 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_ClearOC2Ref
+                0x00000000       0x10 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_ClearOC3Ref
+                0x00000000       0x10 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_ClearOC4Ref
+                0x00000000       0x10 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_OC1PolarityConfig
+                0x00000000       0x10 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_OC2PolarityConfig
+                0x00000000       0x14 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_OC3PolarityConfig
+                0x00000000       0x14 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_OC4PolarityConfig
+                0x00000000       0x14 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_SelectOCREFClear
+                0x00000000       0x18 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_CCxCmd
+                0x00000000       0x20 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_ICInit
+                0x00000000      0x168 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_ICStructInit
+                0x00000000       0x10 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_PWMIConfig
+                0x00000000      0x154 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_GetCapture1
+                0x00000000        0x4 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_GetCapture2
+                0x00000000        0x4 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_GetCapture3
+                0x00000000        0x4 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_GetCapture4
+                0x00000000        0x4 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_SetIC1Prescaler
+                0x00000000       0x18 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_SetIC2Prescaler
+                0x00000000       0x1c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_SetIC3Prescaler
+                0x00000000       0x18 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_SetIC4Prescaler
+                0x00000000       0x1c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_GenerateEvent
+                0x00000000        0x4 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_GetFlagStatus
+                0x00000000        0xc build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_ClearFlag
+                0x00000000        0x8 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_GetITStatus
+                0x00000000       0x18 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_ClearITPendingBit
+                0x00000000        0x8 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_DMAConfig
+                0x00000000        0x8 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_DMACmd
+                0x00000000       0x14 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_ITConfig
+                0x00000000        0x4 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_SelectCCDMA
+                0x00000000       0x1c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_InternalClockConfig
+                0x00000000       0x10 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_ITRxExternalClockConfig
+                0x00000000       0x1c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_TIxExternalClockConfig
+                0x00000000       0x88 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_ETRClockMode1Config
+                0x00000000       0x28 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_ETRClockMode2Config
+                0x00000000       0x20 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_SelectInputTrigger
+                0x00000000       0x10 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_SelectOutputTrigger
+                0x00000000       0x18 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_SelectSlaveMode
+                0x00000000       0x18 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_SelectMasterSlaveMode
+                0x00000000       0x18 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_ETRConfig
+                0x00000000       0x18 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_EncoderInterfaceConfig
+                0x00000000       0x40 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_SelectHallSensor
+                0x00000000       0x1c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text.TIM_RemapConfig
+                0x00000000       0x1c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .debug_info    0x00000000     0x2090 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .debug_abbrev  0x00000000      0x2ae build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .debug_loc     0x00000000     0x1e32 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .debug_aranges
+                0x00000000      0x288 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .debug_ranges  0x00000000      0x3e8 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .debug_line    0x00000000      0xaed build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .debug_str     0x00000000      0xcc5 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .comment       0x00000000       0x6f build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .debug_frame   0x00000000      0x624 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .ARM.attributes
+                0x00000000       0x33 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+ .text          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_adc.o
+ .data          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_adc.o
+ .bss           0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_adc.o
+ .text.ADC_DeInit
+                0x00000000       0x28 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_adc.o
+ .text.ADC_Init
+                0x00000000       0x4c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_adc.o
+ .text.ADC_StructInit
+                0x00000000       0x18 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_adc.o
+ .text.ADC_CommonInit
+                0x00000000       0x14 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_adc.o
+ .text.ADC_CommonStructInit
+                0x00000000        0x8 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_adc.o
+ .text.ADC_Cmd  0x00000000       0x14 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_adc.o
+ .text.ADC_BankSelection
+                0x00000000       0x14 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_adc.o
+ .text.ADC_PowerDownCmd
+                0x00000000       0x14 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_adc.o
+ .text.ADC_DelaySelectionConfig
+                0x00000000        0xc build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_adc.o
+ .text.ADC_AnalogWatchdogCmd
+                0x00000000       0x10 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_adc.o
+ .text.ADC_AnalogWatchdogThresholdsConfig
+                0x00000000        0x8 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_adc.o
+ .text.ADC_AnalogWatchdogSingleChannelConfig
+                0x00000000        0xc build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_adc.o
+ .text.ADC_TempSensorVrefintCmd
+                0x00000000       0x1c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_adc.o
+ .text.ADC_RegularChannelConfig
+                0x00000000      0x114 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_adc.o
+ .text.ADC_SoftwareStartConv
+                0x00000000        0xc build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_adc.o
+ .text.ADC_GetSoftwareStartConvStatus
+                0x00000000        0x8 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_adc.o
+ .text.ADC_EOCOnEachRegularChannelCmd
+                0x00000000       0x14 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_adc.o
+ .text.ADC_ContinuousModeCmd
+                0x00000000       0x14 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_adc.o
+ .text.ADC_DiscModeChannelCountConfig
+                0x00000000       0x10 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_adc.o
+ .text.ADC_DiscModeCmd
+                0x00000000       0x14 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_adc.o
+ .text.ADC_GetConversionValue
+                0x00000000        0x8 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_adc.o
+ .text.ADC_DMACmd
+                0x00000000       0x14 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_adc.o
+ .text.ADC_DMARequestAfterLastTransferCmd
+                0x00000000       0x14 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_adc.o
+ .text.ADC_InjectedChannelConfig
+                0x00000000       0x9c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_adc.o
+ .text.ADC_InjectedSequencerLengthConfig
+                0x00000000       0x10 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_adc.o
+ .text.ADC_SetInjectedOffset
+                0x00000000       0x18 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_adc.o
+ .text.ADC_ExternalTrigInjectedConvConfig
+                0x00000000        0xc build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_adc.o
+ .text.ADC_ExternalTrigInjectedConvEdgeConfig
+                0x00000000        0xc build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_adc.o
+ .text.ADC_SoftwareStartInjectedConv
+                0x00000000        0xc build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_adc.o
+ .text.ADC_GetSoftwareStartInjectedConvCmdStatus
+                0x00000000        0x8 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_adc.o
+ .text.ADC_AutoInjectedConvCmd
+                0x00000000       0x14 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_adc.o
+ .text.ADC_InjectedDiscModeCmd
+                0x00000000       0x14 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_adc.o
+ .text.ADC_GetInjectedConversionValue
+                0x00000000       0x1c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_adc.o
+ .text.ADC_ITConfig
+                0x00000000       0x18 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_adc.o
+ .text.ADC_GetFlagStatus
+                0x00000000        0xc build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_adc.o
+ .text.ADC_ClearFlag
+                0x00000000        0x8 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_adc.o
+ .text.ADC_GetITStatus
+                0x00000000       0x1c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_adc.o
+ .text.ADC_ClearITPendingBit
+                0x00000000        0x8 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_adc.o
+ .debug_info    0x00000000      0xcf6 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_adc.o
+ .debug_abbrev  0x00000000      0x1be build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_adc.o
+ .debug_loc     0x00000000      0xd12 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_adc.o
+ .debug_aranges
+                0x00000000      0x148 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_adc.o
+ .debug_ranges  0x00000000      0x138 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_adc.o
+ .debug_line    0x00000000      0x60a build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_adc.o
+ .debug_str     0x00000000      0x879 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_adc.o
+ .comment       0x00000000       0x6f build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_adc.o
+ .debug_frame   0x00000000      0x2dc build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_adc.o
+ .ARM.attributes
+                0x00000000       0x33 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_adc.o
+ .text          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .data          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .bss           0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .text.RTC_StructInit
+                0x00000000        0xc build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .text.RTC_WriteProtectionCmd
+                0x00000000       0x18 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .text.RTC_EnterInitMode
+                0x00000000       0x44 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .text.RTC_Init
+                0x00000000       0x48 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .text.RTC_ExitInitMode
+                0x00000000       0x10 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .text.RTC_WaitForSynchro
+                0x00000000       0x4c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .text.RTC_DeInit
+                0x00000000       0x8c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .text.RTC_RefClockCmd
+                0x00000000       0x40 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .text.RTC_BypassShadowCmd
+                0x00000000       0x30 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .text.RTC_SetTime
+                0x00000000       0xf4 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .text.RTC_TimeStructInit
+                0x00000000        0xc build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .text.RTC_GetTime
+                0x00000000       0x60 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .text.RTC_GetSubSecond
+                0x00000000        0xc build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .text.RTC_SetDate
+                0x00000000       0xe4 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .text.RTC_DateStructInit
+                0x00000000       0x10 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .text.RTC_GetDate
+                0x00000000       0x60 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .text.RTC_SetAlarm
+                0x00000000      0x100 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .text.RTC_AlarmStructInit
+                0x00000000       0x14 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .text.RTC_GetAlarm
+                0x00000000       0x9c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .text.RTC_AlarmCmd
+                0x00000000       0x60 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .text.RTC_AlarmSubSecondConfig
+                0x00000000       0x28 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .text.RTC_GetAlarmSubSecond
+                0x00000000       0x18 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .text.RTC_WakeUpClockConfig
+                0x00000000       0x24 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .text.RTC_SetWakeUpCounter
+                0x00000000       0x1c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .text.RTC_GetWakeUpCounter
+                0x00000000        0xc build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .text.RTC_WakeUpCmd
+                0x00000000       0x5c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .text.RTC_DayLightSavingConfig
+                0x00000000       0x28 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .text.RTC_GetStoreOperation
+                0x00000000       0x10 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .text.RTC_OutputConfig
+                0x00000000       0x28 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .text.RTC_CoarseCalibConfig
+                0x00000000       0x30 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .text.RTC_CoarseCalibCmd
+                0x00000000       0x40 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .text.RTC_CalibOutputCmd
+                0x00000000       0x30 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .text.RTC_CalibOutputConfig
+                0x00000000       0x24 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .text.RTC_SmoothCalibConfig
+                0x00000000       0x4c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .text.RTC_TimeStampCmd
+                0x00000000       0x34 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .text.RTC_GetTimeStamp
+                0x00000000       0xbc build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .text.RTC_GetTimeStampSubSecond
+                0x00000000        0xc build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .text.RTC_TamperTriggerConfig
+                0x00000000       0x1c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .text.RTC_TamperCmd
+                0x00000000       0x1c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .text.RTC_TamperFilterConfig
+                0x00000000       0x18 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .text.RTC_TamperSamplingFreqConfig
+                0x00000000       0x18 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .text.RTC_TamperPinsPrechargeDuration
+                0x00000000       0x18 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .text.RTC_TimeStampOnTamperDetectionCmd
+                0x00000000       0x1c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .text.RTC_TamperPullUpCmd
+                0x00000000       0x1c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .text.RTC_WriteBackupRegister
+                0x00000000       0x20 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .text.RTC_ReadBackupRegister
+                0x00000000       0x20 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .text.RTC_OutputTypeConfig
+                0x00000000       0x18 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .text.RTC_SynchroShiftConfig
+                0x00000000       0x68 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .text.RTC_ITConfig
+                0x00000000       0x48 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .text.RTC_GetFlagStatus
+                0x00000000       0x1c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .text.RTC_ClearFlag
+                0x00000000       0x20 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .text.RTC_GetITStatus
+                0x00000000       0x38 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .text.RTC_ClearITPendingBit
+                0x00000000       0x1c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .debug_info    0x00000000     0x1428 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .debug_abbrev  0x00000000      0x276 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .debug_loc     0x00000000     0x136a build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .debug_aranges
+                0x00000000      0x1c0 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .debug_ranges  0x00000000      0x2b0 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .debug_line    0x00000000      0xa8c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .debug_str     0x00000000      0xbb9 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .comment       0x00000000       0x6f build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .debug_frame   0x00000000      0x4e0 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .ARM.attributes
+                0x00000000       0x33 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+ .text          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_pwr.o
+ .data          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_pwr.o
+ .bss           0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_pwr.o
+ .text.PWR_DeInit
+                0x00000000       0x1c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_pwr.o
+ .text.PWR_RTCAccessCmd
+                0x00000000        0xc build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_pwr.o
+ .text.PWR_PVDLevelConfig
+                0x00000000       0x14 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_pwr.o
+ .text.PWR_PVDCmd
+                0x00000000        0xc build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_pwr.o
+ .text.PWR_WakeUpPinCmd
+                0x00000000       0x18 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_pwr.o
+ .text.PWR_FastWakeUpCmd
+                0x00000000        0xc build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_pwr.o
+ .text.PWR_UltraLowPowerCmd
+                0x00000000        0xc build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_pwr.o
+ .text.PWR_VoltageScalingConfig
+                0x00000000       0x18 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_pwr.o
+ .text.PWR_EnterLowPowerRunMode
+                0x00000000       0x2c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_pwr.o
+ .text.PWR_EnterSleepMode
+                0x00000000       0x38 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_pwr.o
+ .text.PWR_EnterSTOPMode
+                0x00000000       0x3c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_pwr.o
+ .text.PWR_EnterSTANDBYMode
+                0x00000000       0x20 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_pwr.o
+ .text.PWR_GetFlagStatus
+                0x00000000       0x14 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_pwr.o
+ .text.PWR_ClearFlag
+                0x00000000       0x10 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_pwr.o
+ .debug_info    0x00000000      0x63e build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_pwr.o
+ .debug_abbrev  0x00000000      0x1df build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_pwr.o
+ .debug_loc     0x00000000      0x1c8 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_pwr.o
+ .debug_aranges
+                0x00000000       0x88 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_pwr.o
+ .debug_ranges  0x00000000       0x78 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_pwr.o
+ .debug_line    0x00000000      0x3a2 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_pwr.o
+ .debug_str     0x00000000      0x455 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_pwr.o
+ .comment       0x00000000       0x6f build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_pwr.o
+ .debug_frame   0x00000000      0x120 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_pwr.o
+ .ARM.attributes
+                0x00000000       0x33 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_pwr.o
+ .text          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash.o
+ .data          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash.o
+ .bss           0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash.o
+ .text.FLASH_SetLatency
+                0x00000000       0x14 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash.o
+ .text.FLASH_PrefetchBufferCmd
+                0x00000000       0x1c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash.o
+ .text.FLASH_ReadAccess64Cmd
+                0x00000000       0x1c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash.o
+ .text.FLASH_SLEEPPowerDownCmd
+                0x00000000       0x1c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash.o
+ .text.FLASH_Lock
+                0x00000000       0x10 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash.o
+ .text.DATA_EEPROM_Unlock
+                0x00000000       0x20 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash.o
+ .text.DATA_EEPROM_Lock
+                0x00000000       0x10 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash.o
+ .text.DATA_EEPROM_FixedTimeProgramCmd
+                0x00000000       0x1c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash.o
+ .text.FLASH_OB_Unlock
+                0x00000000       0x38 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash.o
+ .text.FLASH_OB_Lock
+                0x00000000       0x10 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash.o
+ .text.FLASH_OB_Launch
+                0x00000000       0x10 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash.o
+ .text.FLASH_OB_GetUser
+                0x00000000       0x10 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash.o
+ .text.FLASH_OB_GetWRP
+                0x00000000        0xc build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash.o
+ .text.FLASH_OB_GetWRP1
+                0x00000000        0xc build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash.o
+ .text.FLASH_OB_GetWRP2
+                0x00000000        0xc build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash.o
+ .text.FLASH_OB_GetWRP3
+                0x00000000        0xc build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash.o
+ .text.FLASH_OB_GetRDP
+                0x00000000       0x14 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash.o
+ .text.FLASH_OB_GetSPRMOD
+                0x00000000       0x10 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash.o
+ .text.FLASH_OB_GetBOR
+                0x00000000       0x10 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash.o
+ .text.FLASH_ITConfig
+                0x00000000       0x1c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash.o
+ .text.FLASH_GetFlagStatus
+                0x00000000       0x14 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash.o
+ .text.DATA_EEPROM_EraseByte
+                0x00000000       0x18 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash.o
+ .text.DATA_EEPROM_EraseHalfWord
+                0x00000000       0x18 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash.o
+ .text.DATA_EEPROM_EraseWord
+                0x00000000       0x18 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash.o
+ .text.DATA_EEPROM_FastProgramWord
+                0x00000000       0x30 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash.o
+ .text.DATA_EEPROM_FastProgramByte
+                0x00000000       0x64 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash.o
+ .text.DATA_EEPROM_FastProgramHalfWord
+                0x00000000       0x80 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash.o
+ .text.DATA_EEPROM_ProgramByte
+                0x00000000       0x54 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash.o
+ .text.DATA_EEPROM_ProgramHalfWord
+                0x00000000       0x70 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash.o
+ .text.FLASH_OB_WRPConfig
+                0x00000000       0x58 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash.o
+ .text.FLASH_OB_WRP1Config
+                0x00000000       0x58 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash.o
+ .text.FLASH_OB_WRP2Config
+                0x00000000       0x58 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash.o
+ .text.FLASH_OB_WRP3Config
+                0x00000000       0x64 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash.o
+ .text.FLASH_OB_RDPConfig
+                0x00000000       0x34 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash.o
+ .text.FLASH_OB_PCROPConfig
+                0x00000000       0x58 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash.o
+ .text.FLASH_OB_PCROP1Config
+                0x00000000       0x58 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash.o
+ .text.FLASH_OB_PCROPSelectionConfig
+                0x00000000       0x30 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash.o
+ .text.FLASH_OB_UserConfig
+                0x00000000       0x44 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash.o
+ .text.FLASH_OB_BORConfig
+                0x00000000       0x3c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash.o
+ .text.FLASH_OB_BootConfig
+                0x00000000       0x38 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash.o
+ .text          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_iwdg.o
+ .data          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_iwdg.o
+ .bss           0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_iwdg.o
+ .text.IWDG_GetFlagStatus
+                0x00000000       0x14 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_iwdg.o
+ .text          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_comp.o
+ .data          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_comp.o
+ .bss           0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_comp.o
+ .text.COMP_DeInit
+                0x00000000        0xc build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_comp.o
+ .text.COMP_Init
+                0x00000000       0x28 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_comp.o
+ .text.COMP_Cmd
+                0x00000000       0x1c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_comp.o
+ .text.COMP_GetOutputLevel
+                0x00000000       0x18 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_comp.o
+ .text.COMP_SW1SwitchConfig
+                0x00000000       0x1c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_comp.o
+ .text.COMP_WindowCmd
+                0x00000000       0x1c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_comp.o
+ .text.COMP_VrefintOutputCmd
+                0x00000000       0x1c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_comp.o
+ .debug_info    0x00000000      0x279 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_comp.o
+ .debug_abbrev  0x00000000      0x162 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_comp.o
+ .debug_loc     0x00000000       0x8b build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_comp.o
+ .debug_aranges
+                0x00000000       0x50 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_comp.o
+ .debug_ranges  0x00000000       0x40 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_comp.o
+ .debug_line    0x00000000      0x2cb build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_comp.o
+ .debug_str     0x00000000      0x31d build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_comp.o
+ .comment       0x00000000       0x6f build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_comp.o
+ .debug_frame   0x00000000       0x8c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_comp.o
+ .ARM.attributes
+                0x00000000       0x33 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_comp.o
+ .text          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_dac.o
+ .data          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_dac.o
+ .bss           0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_dac.o
+ .text.DAC_DeInit
+                0x00000000       0x1c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_dac.o
+ .text.DAC_Init
+                0x00000000       0x30 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_dac.o
+ .text.DAC_StructInit
+                0x00000000        0xc build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_dac.o
+ .text.DAC_Cmd  0x00000000       0x28 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_dac.o
+ .text.DAC_SoftwareTriggerCmd
+                0x00000000       0x2c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_dac.o
+ .text.DAC_DualSoftwareTriggerCmd
+                0x00000000       0x1c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_dac.o
+ .text.DAC_SetChannel1Data
+                0x00000000       0x20 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_dac.o
+ .text.DAC_SetChannel2Data
+                0x00000000       0x20 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_dac.o
+ .text.DAC_SetDualChannelData
+                0x00000000       0x18 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_dac.o
+ .text.DAC_GetDataOutputValue
+                0x00000000       0x24 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_dac.o
+ .text.DAC_DMACmd
+                0x00000000       0x2c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_dac.o
+ .text.DAC_ITConfig
+                0x00000000       0x1c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_dac.o
+ .text.DAC_WaveGenerationCmd
+                0x00000000        0x4 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_dac.o
+ .text.DAC_GetFlagStatus
+                0x00000000       0x14 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_dac.o
+ .text.DAC_ClearFlag
+                0x00000000        0xc build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_dac.o
+ .text.DAC_GetITStatus
+                0x00000000       0x1c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_dac.o
+ .text.DAC_ClearITPendingBit
+                0x00000000        0xc build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_dac.o
+ .debug_info    0x00000000      0x635 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_dac.o
+ .debug_abbrev  0x00000000      0x211 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_dac.o
+ .debug_loc     0x00000000      0x43e build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_dac.o
+ .debug_aranges
+                0x00000000       0x90 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_dac.o
+ .debug_ranges  0x00000000       0x80 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_dac.o
+ .debug_line    0x00000000      0x3a3 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_dac.o
+ .debug_str     0x00000000      0x4aa build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_dac.o
+ .comment       0x00000000       0x6f build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_dac.o
+ .debug_frame   0x00000000      0x154 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_dac.o
+ .ARM.attributes
+                0x00000000       0x33 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_dac.o
+ .text          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash_ramfunc.o
+ .data          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash_ramfunc.o
+ .bss           0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash_ramfunc.o
+ .text          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/stm32l.o
+ .data          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/stm32l.o
+ .bss           0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/stm32l.o
+ .text.enable_interrupts
+                0x00000000       0x10 build_arm_cortex_m3_base_boot_stm32l/stm32l.o
+ .text.get_nest_entry_critical_counter
+                0x00000000        0xc build_arm_cortex_m3_base_boot_stm32l/stm32l.o
+ .text          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/system.o
+ .data          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/system.o
+ .bss           0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/system.o
+ .text.sys_delay_us
+                0x00000000       0x1c build_arm_cortex_m3_base_boot_stm32l/system.o
+ .text.sys_delay_ms
+                0x00000000       0x28 build_arm_cortex_m3_base_boot_stm32l/system.o
+ .text.sys_is_power_on_reset
+                0x00000000        0xc build_arm_cortex_m3_base_boot_stm32l/system.o
+ .text          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/sys_cfg.o
+ .data          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/sys_cfg.o
+ .bss           0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/sys_cfg.o
+ .text.sys_cfg_clock
+                0x00000000       0x24 build_arm_cortex_m3_base_boot_stm32l/sys_cfg.o
+ .text.sys_cfg_svc
+                0x00000000       0x28 build_arm_cortex_m3_base_boot_stm32l/sys_cfg.o
+ .text.sys_cfg_update_info
+                0x00000000        0x4 build_arm_cortex_m3_base_boot_stm32l/sys_cfg.o
+ .text.sys_ctrl_soft_watchdog_init
+                0x00000000       0x64 build_arm_cortex_m3_base_boot_stm32l/sys_cfg.o
+ .text.sys_ctrl_soft_watchdog_reset
+                0x00000000       0x18 build_arm_cortex_m3_base_boot_stm32l/sys_cfg.o
+ .text.sys_ctrl_soft_watchdog_enable
+                0x00000000       0x1c build_arm_cortex_m3_base_boot_stm32l/sys_cfg.o
+ .text.sys_ctrl_soft_watchdog_disable
+                0x00000000       0x1c build_arm_cortex_m3_base_boot_stm32l/sys_cfg.o
+ .text.sys_ctrl_soft_watchdog_increase_counter
+                0x00000000       0x10 build_arm_cortex_m3_base_boot_stm32l/sys_cfg.o
+ .text.sys_ctrl_jump_to_app
+                0x00000000        0x4 build_arm_cortex_m3_base_boot_stm32l/sys_cfg.o
+ .bss.sys_ctrl_soft_counter
+                0x00000000        0x4 build_arm_cortex_m3_base_boot_stm32l/sys_cfg.o
+ .text          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .data          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .bss           0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.io_button_up_init
+                0x00000000       0x34 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.io_button_down_init
+                0x00000000       0x38 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.io_button_up_read
+                0x00000000        0xc build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.io_button_down_read
+                0x00000000       0x10 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.nrf24l01_io_ctrl_init
+                0x00000000       0xbc build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.nrf24l01_ce_low
+                0x00000000       0x10 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.nrf24l01_ce_high
+                0x00000000       0x10 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.nrf24l01_csn_low
+                0x00000000       0x10 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.nrf24l01_csn_high
+                0x00000000       0x10 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.timer_50us_init
+                0x00000000       0x60 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.timer_50us_enable
+                0x00000000       0x1c build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.timer_50us_disable
+                0x00000000       0x1c build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.ir_rev_io_init
+                0x00000000       0x70 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.ir_rev_io_irq_disable
+                0x00000000       0x28 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.ir_rev_io_irq_enable
+                0x00000000       0x28 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.ir_carrier_freq_init
+                0x00000000       0xa8 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.ir_carrier_freq_on
+                0x00000000       0x18 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.ir_carrier_freq_off
+                0x00000000       0x18 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.ir_dir_io_config
+                0x00000000       0x64 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.ir_select_direction
+                0x00000000       0x78 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.sht1x_clk_input_mode
+                0x00000000       0x38 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.sht1x_clk_output_mode
+                0x00000000       0x38 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.sht1x_clk_digital_write_low
+                0x00000000       0x10 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.sht1x_clk_digital_write_high
+                0x00000000       0x10 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.sht1x_data_input_mode
+                0x00000000       0x38 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.sht1x_data_output_mode
+                0x00000000       0x38 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.sht1x_data_digital_write_low
+                0x00000000       0x10 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.sht1x_data_digital_write_high
+                0x00000000       0x10 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.sht1x_data_digital_read
+                0x00000000       0x14 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.ds1302_ce_input_mode
+                0x00000000       0x34 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.ds1302_ce_output_mode
+                0x00000000       0x34 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.ds1302_ce_digital_write_low
+                0x00000000        0xc build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.ds1302_ce_digital_write_high
+                0x00000000        0xc build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.ds1302_clk_input_mode
+                0x00000000       0x38 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.ds1302_clk_output_mode
+                0x00000000       0x38 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.ds1302_clk_digital_write_low
+                0x00000000       0x10 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.ds1302_clk_digital_write_high
+                0x00000000       0x10 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.ds1302_data_input_mode
+                0x00000000       0x34 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.ds1302_data_output_mode
+                0x00000000       0x34 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.ds1302_data_digital_write_low
+                0x00000000        0xc build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.ds1302_data_digital_write_high
+                0x00000000        0xc build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.ds1302_data_digital_read
+                0x00000000        0xc build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.io_cfg_dac_hs1101
+                0x00000000       0x38 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.io_cfg_comp_hs1101
+                0x00000000       0x78 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.io_cfg_timer3_hs1101
+                0x00000000       0xd0 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.io_cfg_timer4_hs1101
+                0x00000000       0xa4 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.io_timer4_get_capture
+                0x00000000        0xc build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.io_reset_timer4_capture
+                0x00000000        0xc build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.io_start_timer4_capture
+                0x00000000        0xc build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.io_hs1101_read_enable
+                0x00000000       0x40 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.io_hs1101_read_disable
+                0x00000000       0x50 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.io_cfg_adc1
+                0x00000000       0x4c build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.adc_ct_io_cfg
+                0x00000000       0x2c build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.adc_thermistor_io_cfg
+                0x00000000       0x2c build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.adc_thermistor_io_read
+                0x00000000       0x3c build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.adc_ct_io_read
+                0x00000000        0x4 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.ssd1306_clk_input_mode
+                0x00000000       0x38 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.ssd1306_clk_output_mode
+                0x00000000       0x38 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.ssd1306_clk_digital_write_low
+                0x00000000       0x10 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.ssd1306_clk_digital_write_high
+                0x00000000       0x10 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.ssd1306_data_input_mode
+                0x00000000       0x38 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.ssd1306_data_output_mode
+                0x00000000       0x38 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.ssd1306_data_digital_write_low
+                0x00000000       0x10 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.ssd1306_data_digital_write_high
+                0x00000000       0x10 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.ssd1306_data_digital_read
+                0x00000000       0x14 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.io_eeprom_read
+                0x00000000       0x34 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.io_eeprom_write
+                0x00000000       0x54 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.io_eeprom_erase
+                0x00000000       0x54 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.internal_flash_lock
+                0x00000000        0x4 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text.erase_internal_flash
+                0x00000000        0x4 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .text          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/system_stm32l1xx.o
+ .data          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/system_stm32l1xx.o
+ .bss           0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/system_stm32l1xx.o
+ .text.SystemCoreClockUpdate
+                0x00000000       0x90 build_arm_cortex_m3_base_boot_stm32l/system_stm32l1xx.o
+ .data.PLLMulTable
+                0x00000000        0x9 build_arm_cortex_m3_base_boot_stm32l/system_stm32l1xx.o
+ .data.AHBPrescTable
+                0x00000000       0x10 build_arm_cortex_m3_base_boot_stm32l/system_stm32l1xx.o
+ .text          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/app.o
+ .data          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/app.o
+ .bss           0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/app.o
+ .bss.boot_app_share_data
+                0x00000000        0x1 build_arm_cortex_m3_base_boot_stm32l/app.o
+ .text          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/uart_boot.o
+ .data          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/uart_boot.o
+ .bss           0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/uart_boot.o
+ .text          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/eeprom.o
+ .data          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/eeprom.o
+ .bss           0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/eeprom.o
+ .text.eeprom_read
+                0x00000000        0x4 build_arm_cortex_m3_base_boot_stm32l/eeprom.o
+ .text.eeprom_write
+                0x00000000        0x4 build_arm_cortex_m3_base_boot_stm32l/eeprom.o
+ .text.eeprom_erase
+                0x00000000        0x4 build_arm_cortex_m3_base_boot_stm32l/eeprom.o
+ .debug_info    0x00000000      0x20c build_arm_cortex_m3_base_boot_stm32l/eeprom.o
+ .debug_abbrev  0x00000000       0xbb build_arm_cortex_m3_base_boot_stm32l/eeprom.o
+ .debug_loc     0x00000000      0x108 build_arm_cortex_m3_base_boot_stm32l/eeprom.o
+ .debug_aranges
+                0x00000000       0x30 build_arm_cortex_m3_base_boot_stm32l/eeprom.o
+ .debug_ranges  0x00000000       0x20 build_arm_cortex_m3_base_boot_stm32l/eeprom.o
+ .debug_line    0x00000000      0x1b2 build_arm_cortex_m3_base_boot_stm32l/eeprom.o
+ .debug_str     0x00000000      0x268 build_arm_cortex_m3_base_boot_stm32l/eeprom.o
+ .comment       0x00000000       0x6f build_arm_cortex_m3_base_boot_stm32l/eeprom.o
+ .debug_frame   0x00000000       0x40 build_arm_cortex_m3_base_boot_stm32l/eeprom.o
+ .ARM.attributes
+                0x00000000       0x33 build_arm_cortex_m3_base_boot_stm32l/eeprom.o
+ .text          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/SPI.o
+ .data          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/SPI.o
+ .bss           0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/SPI.o
+ .text._ZN8SPIClassC2Ev
+                0x00000000        0xc build_arm_cortex_m3_base_boot_stm32l/SPI.o
+ .text._ZN8SPIClassC2Eh
+                0x00000000        0x8 build_arm_cortex_m3_base_boot_stm32l/SPI.o
+ .text._ZN8SPIClass3endEv
+                0x00000000        0x4 build_arm_cortex_m3_base_boot_stm32l/SPI.o
+ .text._ZN8SPIClass11setBitOrderEhh
+                0x00000000        0x4 build_arm_cortex_m3_base_boot_stm32l/SPI.o
+ .text._ZN8SPIClass11setBitOrderEh
+                0x00000000        0x4 build_arm_cortex_m3_base_boot_stm32l/SPI.o
+ .text._ZN8SPIClass11setDataModeEh
+                0x00000000       0x64 build_arm_cortex_m3_base_boot_stm32l/SPI.o
+ .text._ZN8SPIClass15setClockDividerEh
+                0x00000000       0x1c build_arm_cortex_m3_base_boot_stm32l/SPI.o
+ .text._ZN8SPIClass8transferEh
+                0x00000000       0x4c build_arm_cortex_m3_base_boot_stm32l/SPI.o
+ .text._ZN8SPIClass9setModuleEh
+                0x00000000        0x8 build_arm_cortex_m3_base_boot_stm32l/SPI.o
+ .text          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/wiring_digital.o
+ .data          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/wiring_digital.o
+ .bss           0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/wiring_digital.o
+ .text._Z7pinModehh
+                0x00000000       0x90 build_arm_cortex_m3_base_boot_stm32l/wiring_digital.o
+ .text._Z12digitalWritehh
+                0x00000000       0x84 build_arm_cortex_m3_base_boot_stm32l/wiring_digital.o
+ .text._Z11digitalReadh
+                0x00000000       0x20 build_arm_cortex_m3_base_boot_stm32l/wiring_digital.o
+ .debug_info    0x00000000      0x3f9 build_arm_cortex_m3_base_boot_stm32l/wiring_digital.o
+ .debug_abbrev  0x00000000       0xf4 build_arm_cortex_m3_base_boot_stm32l/wiring_digital.o
+ .debug_loc     0x00000000      0x3b0 build_arm_cortex_m3_base_boot_stm32l/wiring_digital.o
+ .debug_aranges
+                0x00000000       0x30 build_arm_cortex_m3_base_boot_stm32l/wiring_digital.o
+ .debug_ranges  0x00000000       0x20 build_arm_cortex_m3_base_boot_stm32l/wiring_digital.o
+ .debug_line    0x00000000      0x257 build_arm_cortex_m3_base_boot_stm32l/wiring_digital.o
+ .debug_str     0x00000000      0x5bb build_arm_cortex_m3_base_boot_stm32l/wiring_digital.o
+ .comment       0x00000000       0x6f build_arm_cortex_m3_base_boot_stm32l/wiring_digital.o
+ .debug_frame   0x00000000       0x4c build_arm_cortex_m3_base_boot_stm32l/wiring_digital.o
+ .ARM.attributes
+                0x00000000       0x33 build_arm_cortex_m3_base_boot_stm32l/wiring_digital.o
+ .text          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/wiring_shift.o
+ .data          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/wiring_shift.o
+ .bss           0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/wiring_shift.o
+ .text._Z7shiftInhhh
+                0x00000000       0x4c build_arm_cortex_m3_base_boot_stm32l/wiring_shift.o
+ .text._Z8shiftOuthhhh
+                0x00000000       0x44 build_arm_cortex_m3_base_boot_stm32l/wiring_shift.o
+ .debug_info    0x00000000      0x24d build_arm_cortex_m3_base_boot_stm32l/wiring_shift.o
+ .debug_abbrev  0x00000000      0x10a build_arm_cortex_m3_base_boot_stm32l/wiring_shift.o
+ .debug_loc     0x00000000      0x171 build_arm_cortex_m3_base_boot_stm32l/wiring_shift.o
+ .debug_aranges
+                0x00000000       0x28 build_arm_cortex_m3_base_boot_stm32l/wiring_shift.o
+ .debug_ranges  0x00000000       0x18 build_arm_cortex_m3_base_boot_stm32l/wiring_shift.o
+ .debug_line    0x00000000      0x1ad build_arm_cortex_m3_base_boot_stm32l/wiring_shift.o
+ .debug_str     0x00000000      0x2c3 build_arm_cortex_m3_base_boot_stm32l/wiring_shift.o
+ .comment       0x00000000       0x6f build_arm_cortex_m3_base_boot_stm32l/wiring_shift.o
+ .debug_frame   0x00000000       0x50 build_arm_cortex_m3_base_boot_stm32l/wiring_shift.o
+ .ARM.attributes
+                0x00000000       0x33 build_arm_cortex_m3_base_boot_stm32l/wiring_shift.o
+ .text          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/Print.o
+ .data          0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/Print.o
+ .bss           0x00000000        0x0 build_arm_cortex_m3_base_boot_stm32l/Print.o
+ .text._ZN5Print5writeEPKhj
+                0x00000000       0x28 build_arm_cortex_m3_base_boot_stm32l/Print.o
+ .text._ZN5Print5printEPKc
+                0x00000000       0x24 build_arm_cortex_m3_base_boot_stm32l/Print.o
+ .text._ZN5Print5printEc
+                0x00000000        0x8 build_arm_cortex_m3_base_boot_stm32l/Print.o
+ .text._ZN5Print5printERK9Printable
+                0x00000000        0xc build_arm_cortex_m3_base_boot_stm32l/Print.o
+ .text._ZN5Print7printlnEv
+                0x00000000       0x1c build_arm_cortex_m3_base_boot_stm32l/Print.o
+ .text._ZN5Print7printlnEPKc
+                0x00000000       0x38 build_arm_cortex_m3_base_boot_stm32l/Print.o
+ .text._ZN5Print7printlnEc
+                0x00000000       0x28 build_arm_cortex_m3_base_boot_stm32l/Print.o
+ .text._ZN5Print7printlnERK9Printable
+                0x00000000       0x2c build_arm_cortex_m3_base_boot_stm32l/Print.o
+ .text._ZN5Print11printNumberEmh
+                0x00000000       0x58 build_arm_cortex_m3_base_boot_stm32l/Print.o
+ .text._ZN5Print5printEmi
+                0x00000000       0x14 build_arm_cortex_m3_base_boot_stm32l/Print.o
+ .text._ZN5Print5printEhi
+                0x00000000        0x4 build_arm_cortex_m3_base_boot_stm32l/Print.o
+ .text._ZN5Print7printlnEhi
+                0x00000000       0x28 build_arm_cortex_m3_base_boot_stm32l/Print.o
+ .text._ZN5Print5printEji
+                0x00000000        0x4 build_arm_cortex_m3_base_boot_stm32l/Print.o
+ .text._ZN5Print7printlnEji
+                0x00000000       0x28 build_arm_cortex_m3_base_boot_stm32l/Print.o
+ .text._ZN5Print7printlnEmi
+                0x00000000       0x28 build_arm_cortex_m3_base_boot_stm32l/Print.o
+ .text._ZN5Print5printEli
+                0x00000000       0x44 build_arm_cortex_m3_base_boot_stm32l/Print.o
+ .text._ZN5Print5printEii
+                0x00000000        0x4 build_arm_cortex_m3_base_boot_stm32l/Print.o
+ .text._ZN5Print7printlnEii
+                0x00000000       0x28 build_arm_cortex_m3_base_boot_stm32l/Print.o
+ .text._ZN5Print7printlnEli
+                0x00000000       0x28 build_arm_cortex_m3_base_boot_stm32l/Print.o
+ .text._ZN5Print10printFloatEdh
+                0x00000000      0x1b8 build_arm_cortex_m3_base_boot_stm32l/Print.o
+ .text._ZN5Print5printEdi
+                0x00000000        0xc build_arm_cortex_m3_base_boot_stm32l/Print.o
+ .text._ZN5Print7printlnEdi
+                0x00000000       0x30 build_arm_cortex_m3_base_boot_stm32l/Print.o
+ .rodata._ZTV5Print
+                0x00000000       0x10 build_arm_cortex_m3_base_boot_stm32l/Print.o
+ .rodata.str1.4
+                0x00000000        0xe build_arm_cortex_m3_base_boot_stm32l/Print.o
+ .debug_info    0x00000000     0x19e0 build_arm_cortex_m3_base_boot_stm32l/Print.o
+ .debug_abbrev  0x00000000      0x332 build_arm_cortex_m3_base_boot_stm32l/Print.o
+ .debug_loc     0x00000000     0x163d build_arm_cortex_m3_base_boot_stm32l/Print.o
+ .debug_aranges
+                0x00000000       0xc8 build_arm_cortex_m3_base_boot_stm32l/Print.o
+ .debug_ranges  0x00000000      0x560 build_arm_cortex_m3_base_boot_stm32l/Print.o
+ .debug_line    0x00000000      0x4f6 build_arm_cortex_m3_base_boot_stm32l/Print.o
+ .debug_str     0x00000000      0x550 build_arm_cortex_m3_base_boot_stm32l/Print.o
+ .comment       0x00000000       0x6f build_arm_cortex_m3_base_boot_stm32l/Print.o
+ .debug_frame   0x00000000      0x29c build_arm_cortex_m3_base_boot_stm32l/Print.o
+ .ARM.attributes
+                0x00000000       0x33 build_arm_cortex_m3_base_boot_stm32l/Print.o
+ .text          0x00000000        0x0 /home/fanning/workspace/tools/gcc-arm-none-eabi-5_4-2016q3/arm-none-eabi/lib/armv7-m/libc.a(lib_a-memcmp.o)
+ .data          0x00000000        0x0 /home/fanning/workspace/tools/gcc-arm-none-eabi-5_4-2016q3/arm-none-eabi/lib/armv7-m/libc.a(lib_a-memcmp.o)
+ .bss           0x00000000        0x0 /home/fanning/workspace/tools/gcc-arm-none-eabi-5_4-2016q3/arm-none-eabi/lib/armv7-m/libc.a(lib_a-memcmp.o)
+ .data          0x00000000        0x0 /home/fanning/workspace/tools/gcc-arm-none-eabi-5_4-2016q3/arm-none-eabi/lib/armv7-m/libc.a(lib_a-memcpy.o)
+ .bss           0x00000000        0x0 /home/fanning/workspace/tools/gcc-arm-none-eabi-5_4-2016q3/arm-none-eabi/lib/armv7-m/libc.a(lib_a-memcpy.o)
+ .text          0x00000000        0x0 /home/fanning/workspace/tools/gcc-arm-none-eabi-5_4-2016q3/arm-none-eabi/lib/armv7-m/libc.a(lib_a-memset.o)
+ .data          0x00000000        0x0 /home/fanning/workspace/tools/gcc-arm-none-eabi-5_4-2016q3/arm-none-eabi/lib/armv7-m/libc.a(lib_a-memset.o)
+ .bss           0x00000000        0x0 /home/fanning/workspace/tools/gcc-arm-none-eabi-5_4-2016q3/arm-none-eabi/lib/armv7-m/libc.a(lib_a-memset.o)
+ .text          0x00000000        0x0 /home/fanning/workspace/tools/gcc-arm-none-eabi-5_4-2016q3/arm-none-eabi/lib/armv7-m/libc.a(lib_a-strlen-stub.o)
+ .data          0x00000000        0x0 /home/fanning/workspace/tools/gcc-arm-none-eabi-5_4-2016q3/arm-none-eabi/lib/armv7-m/libc.a(lib_a-strlen-stub.o)
+ .bss           0x00000000        0x0 /home/fanning/workspace/tools/gcc-arm-none-eabi-5_4-2016q3/arm-none-eabi/lib/armv7-m/libc.a(lib_a-strlen-stub.o)
+ .text.strlen   0x00000000       0x5c /home/fanning/workspace/tools/gcc-arm-none-eabi-5_4-2016q3/arm-none-eabi/lib/armv7-m/libc.a(lib_a-strlen-stub.o)
+ .debug_frame   0x00000000       0x20 /home/fanning/workspace/tools/gcc-arm-none-eabi-5_4-2016q3/arm-none-eabi/lib/armv7-m/libc.a(lib_a-strlen-stub.o)
+ .ARM.attributes
+                0x00000000       0x2d /home/fanning/workspace/tools/gcc-arm-none-eabi-5_4-2016q3/arm-none-eabi/lib/armv7-m/libc.a(lib_a-strlen-stub.o)
+ .text          0x00000000      0x370 /home/fanning/workspace/tools/gcc-arm-none-eabi-5_4-2016q3/lib/gcc/arm-none-eabi/5.4.1/armv7-m/libgcc.a(_arm_addsubdf3.o)
+ .data          0x00000000        0x0 /home/fanning/workspace/tools/gcc-arm-none-eabi-5_4-2016q3/lib/gcc/arm-none-eabi/5.4.1/armv7-m/libgcc.a(_arm_addsubdf3.o)
+ .bss           0x00000000        0x0 /home/fanning/workspace/tools/gcc-arm-none-eabi-5_4-2016q3/lib/gcc/arm-none-eabi/5.4.1/armv7-m/libgcc.a(_arm_addsubdf3.o)
+ .ARM.attributes
+                0x00000000       0x1d /home/fanning/workspace/tools/gcc-arm-none-eabi-5_4-2016q3/lib/gcc/arm-none-eabi/5.4.1/armv7-m/libgcc.a(_arm_addsubdf3.o)
+ .text          0x00000000      0x424 /home/fanning/workspace/tools/gcc-arm-none-eabi-5_4-2016q3/lib/gcc/arm-none-eabi/5.4.1/armv7-m/libgcc.a(_arm_muldivdf3.o)
+ .data          0x00000000        0x0 /home/fanning/workspace/tools/gcc-arm-none-eabi-5_4-2016q3/lib/gcc/arm-none-eabi/5.4.1/armv7-m/libgcc.a(_arm_muldivdf3.o)
+ .bss           0x00000000        0x0 /home/fanning/workspace/tools/gcc-arm-none-eabi-5_4-2016q3/lib/gcc/arm-none-eabi/5.4.1/armv7-m/libgcc.a(_arm_muldivdf3.o)
+ .ARM.attributes
+                0x00000000       0x1d /home/fanning/workspace/tools/gcc-arm-none-eabi-5_4-2016q3/lib/gcc/arm-none-eabi/5.4.1/armv7-m/libgcc.a(_arm_muldivdf3.o)
+ .text          0x00000000      0x110 /home/fanning/workspace/tools/gcc-arm-none-eabi-5_4-2016q3/lib/gcc/arm-none-eabi/5.4.1/armv7-m/libgcc.a(_arm_cmpdf2.o)
+ .data          0x00000000        0x0 /home/fanning/workspace/tools/gcc-arm-none-eabi-5_4-2016q3/lib/gcc/arm-none-eabi/5.4.1/armv7-m/libgcc.a(_arm_cmpdf2.o)
+ .bss           0x00000000        0x0 /home/fanning/workspace/tools/gcc-arm-none-eabi-5_4-2016q3/lib/gcc/arm-none-eabi/5.4.1/armv7-m/libgcc.a(_arm_cmpdf2.o)
+ .ARM.attributes
+                0x00000000       0x1d /home/fanning/workspace/tools/gcc-arm-none-eabi-5_4-2016q3/lib/gcc/arm-none-eabi/5.4.1/armv7-m/libgcc.a(_arm_cmpdf2.o)
+ .text          0x00000000       0x2c /home/fanning/workspace/tools/gcc-arm-none-eabi-5_4-2016q3/lib/gcc/arm-none-eabi/5.4.1/armv7-m/libgcc.a(_arm_unorddf2.o)
+ .data          0x00000000        0x0 /home/fanning/workspace/tools/gcc-arm-none-eabi-5_4-2016q3/lib/gcc/arm-none-eabi/5.4.1/armv7-m/libgcc.a(_arm_unorddf2.o)
+ .bss           0x00000000        0x0 /home/fanning/workspace/tools/gcc-arm-none-eabi-5_4-2016q3/lib/gcc/arm-none-eabi/5.4.1/armv7-m/libgcc.a(_arm_unorddf2.o)
+ .ARM.attributes
+                0x00000000       0x1d /home/fanning/workspace/tools/gcc-arm-none-eabi-5_4-2016q3/lib/gcc/arm-none-eabi/5.4.1/armv7-m/libgcc.a(_arm_unorddf2.o)
+ .text          0x00000000       0x50 /home/fanning/workspace/tools/gcc-arm-none-eabi-5_4-2016q3/lib/gcc/arm-none-eabi/5.4.1/armv7-m/libgcc.a(_arm_fixdfsi.o)
+ .data          0x00000000        0x0 /home/fanning/workspace/tools/gcc-arm-none-eabi-5_4-2016q3/lib/gcc/arm-none-eabi/5.4.1/armv7-m/libgcc.a(_arm_fixdfsi.o)
+ .bss           0x00000000        0x0 /home/fanning/workspace/tools/gcc-arm-none-eabi-5_4-2016q3/lib/gcc/arm-none-eabi/5.4.1/armv7-m/libgcc.a(_arm_fixdfsi.o)
+ .ARM.attributes
+                0x00000000       0x1d /home/fanning/workspace/tools/gcc-arm-none-eabi-5_4-2016q3/lib/gcc/arm-none-eabi/5.4.1/armv7-m/libgcc.a(_arm_fixdfsi.o)
+ .text          0x00000000       0x40 /home/fanning/workspace/tools/gcc-arm-none-eabi-5_4-2016q3/lib/gcc/arm-none-eabi/5.4.1/armv7-m/libgcc.a(_arm_fixunsdfsi.o)
+ .data          0x00000000        0x0 /home/fanning/workspace/tools/gcc-arm-none-eabi-5_4-2016q3/lib/gcc/arm-none-eabi/5.4.1/armv7-m/libgcc.a(_arm_fixunsdfsi.o)
+ .bss           0x00000000        0x0 /home/fanning/workspace/tools/gcc-arm-none-eabi-5_4-2016q3/lib/gcc/arm-none-eabi/5.4.1/armv7-m/libgcc.a(_arm_fixunsdfsi.o)
+ .ARM.attributes
+                0x00000000       0x1d /home/fanning/workspace/tools/gcc-arm-none-eabi-5_4-2016q3/lib/gcc/arm-none-eabi/5.4.1/armv7-m/libgcc.a(_arm_fixunsdfsi.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+FLASH            0x08000000         0x00002000         xr
+BSF              0x08002000         0x00001000         xr
+SRAM             0x20000000         0x00004000         xrw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+                0x00000000                HEAP_SIZE = 0x0
+
+.start_boot_share_data_flash
+                0x08002000        0x0
+                0x08002000                _start_boot_share_data_flash = .
+                0x08002000                . = ALIGN (0x4)
+
+.start_flash    0x08000000        0x0
+                0x08000000                _start_flash = .
+                0x08000000                . = ALIGN (0x4)
+
+.isr_vector     0x08000000       0xf4
+ *(.isr_vector)
+ .isr_vector    0x08000000       0xf4 build_arm_cortex_m3_base_boot_stm32l/system.o
+                0x08000000                isr_vector
+
+.text           0x080000f8     0x18d4
+                0x080000f8                . = ALIGN (0x4)
+ *(.text)
+ .text          0x080000f8       0xec /home/fanning/workspace/tools/gcc-arm-none-eabi-5_4-2016q3/arm-none-eabi/lib/armv7-m/libc.a(lib_a-memcpy.o)
+                0x080000f8                memcpy
+ *(.text*)
+ .text.xprintf  0x080001e4      0x204 build_arm_cortex_m3_base_boot_stm32l/xprintf.o
+                0x080001e4                xprintf
+ .text.led_init
+                0x080003e8       0x20 build_arm_cortex_m3_base_boot_stm32l/led.o
+                0x080003e8                led_init
+ .text.led_off  0x08000408        0xc build_arm_cortex_m3_base_boot_stm32l/led.o
+                0x08000408                led_off
+ .text.led_blink_set
+                0x08000414       0x18 build_arm_cortex_m3_base_boot_stm32l/led.o
+                0x08000414                led_blink_set
+ .text.led_blink_reset
+                0x0800042c       0x14 build_arm_cortex_m3_base_boot_stm32l/led.o
+                0x0800042c                led_blink_reset
+ .text.led_blink_polling
+                0x08000440       0x44 build_arm_cortex_m3_base_boot_stm32l/led.o
+                0x08000440                led_blink_polling
+ .text.flash_wait_to_idle
+                0x08000484       0x44 build_arm_cortex_m3_base_boot_stm32l/flash.o
+ .text.flash_read
+                0x080004c8       0x4c build_arm_cortex_m3_base_boot_stm32l/flash.o
+                0x080004c8                flash_read
+ .text.sys_boot_init
+                0x08000514       0x18 build_arm_cortex_m3_base_boot_stm32l/sys_boot.o
+                0x08000514                sys_boot_init
+ .text.sys_boot_get
+                0x0800052c        0xc build_arm_cortex_m3_base_boot_stm32l/sys_boot.o
+                0x0800052c                sys_boot_get
+ .text.sys_boot_set
+                0x08000538       0x34 build_arm_cortex_m3_base_boot_stm32l/sys_boot.o
+                0x08000538                sys_boot_set
+ .text.GPIO_Init
+                0x0800056c       0x9c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_gpio.o
+                0x0800056c                GPIO_Init
+ .text.GPIO_ReadInputDataBit
+                0x08000608        0xc build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_gpio.o
+                0x08000608                GPIO_ReadInputDataBit
+ .text.GPIO_SetBits
+                0x08000614        0x4 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_gpio.o
+                0x08000614                GPIO_SetBits
+ .text.GPIO_ResetBits
+                0x08000618        0x4 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_gpio.o
+                0x08000618                GPIO_ResetBits
+ .text.GPIO_PinAFConfig
+                0x0800061c       0x28 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_gpio.o
+                0x0800061c                GPIO_PinAFConfig
+ .text.RCC_GetClocksFreq
+                0x08000644       0xb0 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rcc.o
+                0x08000644                RCC_GetClocksFreq
+ .text.RCC_AHBPeriphClockCmd
+                0x080006f4       0x1c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rcc.o
+                0x080006f4                RCC_AHBPeriphClockCmd
+ .text.RCC_APB2PeriphClockCmd
+                0x08000710       0x1c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rcc.o
+                0x08000710                RCC_APB2PeriphClockCmd
+ .text.RCC_APB1PeriphClockCmd
+                0x0800072c       0x1c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rcc.o
+                0x0800072c                RCC_APB1PeriphClockCmd
+ .text.RCC_GetFlagStatus
+                0x08000748       0x20 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rcc.o
+                0x08000748                RCC_GetFlagStatus
+ .text.RCC_ClearFlag
+                0x08000768       0x10 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rcc.o
+                0x08000768                RCC_ClearFlag
+ .text.USART_Init
+                0x08000778       0xbc build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_usart.o
+                0x08000778                USART_Init
+ .text.USART_Cmd
+                0x08000834       0x1c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_usart.o
+                0x08000834                USART_Cmd
+ .text.USART_SendData
+                0x08000850        0x8 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_usart.o
+                0x08000850                USART_SendData
+ .text.USART_ReceiveData
+                0x08000858        0x8 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_usart.o
+                0x08000858                USART_ReceiveData
+ .text.USART_ITConfig
+                0x08000860       0x38 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_usart.o
+                0x08000860                USART_ITConfig
+ .text.USART_GetFlagStatus
+                0x08000898        0xc build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_usart.o
+                0x08000898                USART_GetFlagStatus
+ .text.USART_GetITStatus
+                0x080008a4       0x48 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_usart.o
+                0x080008a4                USART_GetITStatus
+ .text.USART_ClearITPendingBit
+                0x080008ec       0x10 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_usart.o
+                0x080008ec                USART_ClearITPendingBit
+ .text.SPI_Init
+                0x080008fc       0x40 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_spi.o
+                0x080008fc                SPI_Init
+ .text.SPI_Cmd  0x0800093c       0x1c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_spi.o
+                0x0800093c                SPI_Cmd
+ .text.SPI_I2S_ReceiveData
+                0x08000958        0x8 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_spi.o
+                0x08000958                SPI_I2S_ReceiveData
+ .text.SPI_I2S_SendData
+                0x08000960        0x4 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_spi.o
+                0x08000960                SPI_I2S_SendData
+ .text.SPI_I2S_GetFlagStatus
+                0x08000964        0xc build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_spi.o
+                0x08000964                SPI_I2S_GetFlagStatus
+ .text.NVIC_Init
+                0x08000970       0x70 build_arm_cortex_m3_base_boot_stm32l/misc.o
+                0x08000970                NVIC_Init
+ .text.FLASH_Unlock
+                0x080009e0       0x38 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash.o
+                0x080009e0                FLASH_Unlock
+ .text.FLASH_ClearFlag
+                0x08000a18        0xc build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash.o
+                0x08000a18                FLASH_ClearFlag
+ .text.FLASH_GetStatus
+                0x08000a24       0x28 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash.o
+                0x08000a24                FLASH_GetStatus
+ .text.FLASH_WaitForLastOperation
+                0x08000a4c       0x48 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash.o
+                0x08000a4c                FLASH_WaitForLastOperation
+ .text.FLASH_ErasePage
+                0x08000a94       0x48 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash.o
+                0x08000a94                FLASH_ErasePage
+ .text.DATA_EEPROM_ProgramWord
+                0x08000adc       0x24 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash.o
+                0x08000adc                DATA_EEPROM_ProgramWord
+ .text.FLASH_FastProgramWord
+                0x08000b00        0x4 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash.o
+                0x08000b00                FLASH_FastProgramWord
+ .text.IWDG_WriteAccessCmd
+                0x08000b04        0xc build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_iwdg.o
+                0x08000b04                IWDG_WriteAccessCmd
+ .text.IWDG_SetPrescaler
+                0x08000b10        0xc build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_iwdg.o
+                0x08000b10                IWDG_SetPrescaler
+ .text.IWDG_SetReload
+                0x08000b1c        0xc build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_iwdg.o
+                0x08000b1c                IWDG_SetReload
+ .text.IWDG_ReloadCounter
+                0x08000b28       0x10 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_iwdg.o
+                0x08000b28                IWDG_ReloadCounter
+ .text.IWDG_Enable
+                0x08000b38       0x10 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_iwdg.o
+                0x08000b38                IWDG_Enable
+ .text.disable_interrupts
+                0x08000b48       0x10 build_arm_cortex_m3_base_boot_stm32l/stm32l.o
+                0x08000b48                disable_interrupts
+ .text.entry_critical
+                0x08000b58       0x14 build_arm_cortex_m3_base_boot_stm32l/stm32l.o
+                0x08000b58                entry_critical
+ .text.exit_critical
+                0x08000b6c       0x14 build_arm_cortex_m3_base_boot_stm32l/stm32l.o
+                0x08000b6c                exit_critical
+ .text.default_handler
+                0x08000b80        0x4 build_arm_cortex_m3_base_boot_stm32l/system.o
+                0x08000b80                svc_handler
+                0x08000b80                default_handler
+                0x08000b80                dg_monitor_handler
+                0x08000b80                pendsv_handler
+ .text.usage_fault_handler
+                0x08000b84        0x4 build_arm_cortex_m3_base_boot_stm32l/system.o
+                0x08000b84                usage_fault_handler
+ .text.shell_handler
+                0x08000b88       0x20 build_arm_cortex_m3_base_boot_stm32l/system.o
+ .text.reset_handler
+                0x08000ba8       0x8c build_arm_cortex_m3_base_boot_stm32l/system.o
+                0x08000ba8                reset_handler
+ .text.systick_handler
+                0x08000c34        0x4 build_arm_cortex_m3_base_boot_stm32l/system.o
+                0x08000c34                systick_handler
+ .text.bus_fault_handler
+                0x08000c38        0x4 build_arm_cortex_m3_base_boot_stm32l/system.o
+                0x08000c38                bus_fault_handler
+ .text.nmi_handler
+                0x08000c3c        0x4 build_arm_cortex_m3_base_boot_stm32l/system.o
+                0x08000c3c                nmi_handler
+ .text.hard_fault_handler
+                0x08000c40        0x4 build_arm_cortex_m3_base_boot_stm32l/system.o
+                0x08000c40                hard_fault_handler
+ .text.mem_manage_handler
+                0x08000c44        0x4 build_arm_cortex_m3_base_boot_stm32l/system.o
+                0x08000c44                mem_manage_handler
+ .text.sys_cfg_tick
+                0x08000c48       0x4c build_arm_cortex_m3_base_boot_stm32l/sys_cfg.o
+                0x08000c48                sys_cfg_tick
+ .text.sys_cfg_console
+                0x08000c94       0xe0 build_arm_cortex_m3_base_boot_stm32l/sys_cfg.o
+                0x08000c94                sys_cfg_console
+ .text.sys_ctrl_shell_put_char
+                0x08000d74       0x2c build_arm_cortex_m3_base_boot_stm32l/sys_cfg.o
+                0x08000d74                sys_ctrl_shell_put_char
+ .text.xputchar
+                0x08000da0        0x4 build_arm_cortex_m3_base_boot_stm32l/sys_cfg.o
+ .text.sys_ctrl_shell_get_char
+                0x08000da4       0x2c build_arm_cortex_m3_base_boot_stm32l/sys_cfg.o
+                0x08000da4                sys_ctrl_shell_get_char
+ .text.sys_ctrl_reset
+                0x08000dd0       0x20 build_arm_cortex_m3_base_boot_stm32l/sys_cfg.o
+                0x08000dd0                sys_ctrl_reset
+ .text.sys_ctrl_delay_us
+                0x08000df0       0x1c build_arm_cortex_m3_base_boot_stm32l/sys_cfg.o
+                0x08000df0                sys_ctrl_delay_us
+ .text.sys_ctrl_delay_ms
+                0x08000e0c       0x28 build_arm_cortex_m3_base_boot_stm32l/sys_cfg.o
+                0x08000e0c                sys_ctrl_delay_ms
+ .text.sys_ctrl_independent_watchdog_init
+                0x08000e34       0x30 build_arm_cortex_m3_base_boot_stm32l/sys_cfg.o
+                0x08000e34                sys_ctrl_independent_watchdog_init
+ .text.sys_ctrl_independent_watchdog_reset
+                0x08000e64       0x14 build_arm_cortex_m3_base_boot_stm32l/sys_cfg.o
+                0x08000e64                sys_ctrl_independent_watchdog_reset
+ .text.sys_ctrl_get_firmware_info
+                0x08000e78       0x44 build_arm_cortex_m3_base_boot_stm32l/sys_cfg.o
+                0x08000e78                sys_ctrl_get_firmware_info
+ .text.io_button_mode_init
+                0x08000ebc       0x34 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+                0x08000ebc                io_button_mode_init
+ .text.io_button_mode_read
+                0x08000ef0        0xc build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+                0x08000ef0                io_button_mode_read
+ .text.led_life_init
+                0x08000efc       0x38 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+                0x08000efc                led_life_init
+ .text.led_life_on
+                0x08000f34       0x10 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+                0x08000f34                led_life_on
+ .text.led_life_off
+                0x08000f44       0x10 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+                0x08000f44                led_life_off
+ .text.flash_io_ctrl_init
+                0x08000f54       0x38 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+                0x08000f54                flash_io_ctrl_init
+ .text.flash_cs_low
+                0x08000f8c       0x10 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+                0x08000f8c                flash_cs_low
+ .text.flash_cs_high
+                0x08000f9c       0x10 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+                0x08000f9c                flash_cs_high
+ .text.flash_transfer
+                0x08000fac       0x34 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+                0x08000fac                flash_transfer
+ .text.internal_flash_unlock
+                0x08000fe0       0x14 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+                0x08000fe0                internal_flash_unlock
+ .text.internal_flash_erase_pages_cal
+                0x08000ff4       0x28 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+                0x08000ff4                internal_flash_erase_pages_cal
+ .text.internal_flash_write_cal
+                0x0800101c       0x54 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+                0x0800101c                internal_flash_write_cal
+ .text.SystemInit
+                0x08001070      0x118 build_arm_cortex_m3_base_boot_stm32l/system_stm32l1xx.o
+                0x08001070                SystemInit
+ .text._ZL19jump_to_applicationv
+                0x08001188       0x70 build_arm_cortex_m3_base_boot_stm32l/app.o
+ .text._Z29uart_boot_cmd_checksum_fw_resPv
+                0x080011f8       0x4c build_arm_cortex_m3_base_boot_stm32l/app.o
+                0x080011f8                uart_boot_cmd_checksum_fw_res(void*)
+ .text._Z27uart_boot_cmd_handshake_resPv
+                0x08001244       0x48 build_arm_cortex_m3_base_boot_stm32l/app.o
+                0x08001244                uart_boot_cmd_handshake_res(void*)
+ .text._Z24uart_boot_cmd_update_resPv
+                0x0800128c       0xa8 build_arm_cortex_m3_base_boot_stm32l/app.o
+                0x0800128c                uart_boot_cmd_update_res(void*)
+ .text._Z29uart_boot_cmd_transfer_fw_resPv
+                0x08001334       0x9c build_arm_cortex_m3_base_boot_stm32l/app.o
+                0x08001334                uart_boot_cmd_transfer_fw_res(void*)
+ .text.sys_irq_shell
+                0x080013d0       0x10 build_arm_cortex_m3_base_boot_stm32l/app.o
+                0x080013d0                sys_irq_shell
+ .text.boot_main
+                0x080013e0      0x1e4 build_arm_cortex_m3_base_boot_stm32l/app.o
+                0x080013e0                boot_main
+ .text.sys_irq_timer_10ms
+                0x080015c4        0xc build_arm_cortex_m3_base_boot_stm32l/app.o
+                0x080015c4                sys_irq_timer_10ms
+ .text._Z14uart_boot_initPFvPvE
+                0x080015d0       0x14 build_arm_cortex_m3_base_boot_stm32l/uart_boot.o
+                0x080015d0                uart_boot_init(void (*)(void*))
+ .text._Z25set_uart_boot_cmd_handlerPFvPvE
+                0x080015e4       0x10 build_arm_cortex_m3_base_boot_stm32l/uart_boot.o
+                0x080015e4                set_uart_boot_cmd_handler(void (*)(void*))
+ .text._Z21uart_boot_is_requiredv
+                0x080015f4       0x1c build_arm_cortex_m3_base_boot_stm32l/uart_boot.o
+                0x080015f4                uart_boot_is_required()
+ .text._Z15uart_boot_writePhh
+                0x08001610       0x3c build_arm_cortex_m3_base_boot_stm32l/uart_boot.o
+                0x08001610                uart_boot_write(unsigned char*, unsigned char)
+ .text._Z25uart_boot_rx_frame_parserh
+                0x0800164c       0x84 build_arm_cortex_m3_base_boot_stm32l/uart_boot.o
+                0x0800164c                uart_boot_rx_frame_parser(unsigned char)
+ .text._Z31uart_boot_data_cmd_get_len_usedP20uart_boot_data_cmd_t
+                0x080016d0        0x8 build_arm_cortex_m3_base_boot_stm32l/uart_boot.o
+                0x080016d0                uart_boot_data_cmd_get_len_used(uart_boot_data_cmd_t*)
+ .text._ZN8SPIClass5beginEv
+                0x080016d8       0xc0 build_arm_cortex_m3_base_boot_stm32l/SPI.o
+                0x080016d8                SPIClass::begin()
+ .text.startup._GLOBAL__sub_I__ZN8SPIClassC2Ev
+                0x08001798       0x10 build_arm_cortex_m3_base_boot_stm32l/SPI.o
+ .text.memcmp   0x080017a8       0x64 /home/fanning/workspace/tools/gcc-arm-none-eabi-5_4-2016q3/arm-none-eabi/lib/armv7-m/libc.a(lib_a-memcmp.o)
+                0x080017a8                memcmp
+ .text.memset   0x0800180c       0x9c /home/fanning/workspace/tools/gcc-arm-none-eabi-5_4-2016q3/arm-none-eabi/lib/armv7-m/libc.a(lib_a-memset.o)
+                0x0800180c                memset
+ .text.memset.__stub
+                0x080018a8        0x8 linker stubs
+ *(.rodata)
+ *(.rodata*)
+ .rodata.str1.4
+                0x080018b0      0x11c build_arm_cortex_m3_base_boot_stm32l/app.o
+                                0x11a (size before relaxing)
+ *(.glue_7)
+ .glue_7        0x080019cc        0x0 linker stubs
+ *(.glue_7t)
+ .glue_7t       0x080019cc        0x0 linker stubs
+ *(.init)
+ *(.fini)
+                0x080019cc                . = ALIGN (0x4)
+                0x080019cc                _etext = .
+
+.vfp11_veneer   0x080019cc        0x0
+ .vfp11_veneer  0x080019cc        0x0 linker stubs
+
+.v4_bx          0x080019cc        0x0
+ .v4_bx         0x080019cc        0x0 linker stubs
+
+.iplt           0x080019cc        0x0
+ .iplt          0x080019cc        0x0 build_arm_cortex_m3_base_boot_stm32l/utils.o
+
+.rel.dyn        0x080019cc        0x0
+ .rel.iplt      0x080019cc        0x0 build_arm_cortex_m3_base_boot_stm32l/utils.o
+
+.preinit_array  0x080019cc        0x0
+                [!provide]                PROVIDE (__preinit_array_start, .)
+ *(SORT(.preinit_array.*))
+ *(.preinit_array*)
+                [!provide]                PROVIDE (__preinit_array_end, .)
+
+.init_array     0x080019cc        0x4
+                [!provide]                PROVIDE (__init_array_start, .)
+ *(SORT(.init_array.*))
+ *(.init_array*)
+ .init_array    0x080019cc        0x4 build_arm_cortex_m3_base_boot_stm32l/SPI.o
+                [!provide]                PROVIDE (__init_array_end, .)
+
+.fini_array     0x080019d0        0x0
+                [!provide]                PROVIDE (__fini_array_start, .)
+ *(.fini_array*)
+ *(SORT(.fini_array.*))
+                [!provide]                PROVIDE (__fini_array_end, .)
+
+.end_flash      0x080019d0        0x0
+                0x080019d0                _end_flash = .
+
+.start_ram      0x20000000        0x0
+                0x20000000                _start_ram = .
+
+.data           0x20000000      0x2dc load address 0x080019d0
+                0x20000000                _data = .
+                0x080019d0                _ldata = LOADADDR (.data)
+ *(vtable)
+ *(.data)
+ *(.data*)
+ .data.PLLMulTable
+                0x20000000        0x9 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rcc.o
+ *fill*         0x20000009        0x3 
+ .data.APBAHBPrescTable
+                0x2000000c       0x10 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rcc.o
+ .data.SystemCoreClock
+                0x2000001c        0x4 build_arm_cortex_m3_base_boot_stm32l/system_stm32l1xx.o
+                0x2000001c                SystemCoreClock
+ .data.boot_version
+                0x20000020        0x4 build_arm_cortex_m3_base_boot_stm32l/app.o
+                0x20000020                boot_version
+ *(.RamFunc)
+ .RamFunc       0x20000024      0x2b8 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash_ramfunc.o
+                0x20000098                FLASH_RUNPowerDownCmd
+                0x200000d4                FLASH_EraseParallelPage
+                0x20000128                FLASH_ProgramHalfPage
+                0x20000194                FLASH_ProgramParallelHalfPage
+                0x20000228                DATA_EEPROM_EraseDoubleWord
+                0x20000280                DATA_EEPROM_ProgramDoubleWord
+ *(.RamFunc*)
+                0x200002dc                _edata = .
+
+.igot.plt       0x200002dc        0x0 load address 0x08001cac
+ .igot.plt      0x200002dc        0x0 build_arm_cortex_m3_base_boot_stm32l/utils.o
+
+non_clear_ram   0x200002dc        0x1 load address 0x08001cac
+                [!provide]                PROVIDE (__start_non_clear_ram, .)
+ non_clear_ram  0x200002dc        0x1 build_arm_cortex_m3_base_boot_stm32l/system.o
+                0x200002dc                power_on_reset
+                [!provide]                PROVIDE (__stop_non_clear_ram, .)
+
+.non_clear_ram  0x200002dd        0x0
+                0x200002dd                _non_clear_ram = .
+ *(.non_clear_ram)
+ *(.non_clear_ram*)
+                0x200002dd                _enon_clear_ram = .
+
+.bss            0x200002e0      0x1e4 load address 0x08001cb0
+                0x200002e0                _bss = .
+ *(.bss)
+ *(.bss*)
+ .bss.sys_boot_obj
+                0x200002e0       0x58 build_arm_cortex_m3_base_boot_stm32l/sys_boot.o
+ .bss.nest_entry_critical_counter
+                0x20000338        0x4 build_arm_cortex_m3_base_boot_stm32l/stm32l.o
+ .bss.app_sys_boot
+                0x2000033c       0x58 build_arm_cortex_m3_base_boot_stm32l/app.o
+                0x2000033c                app_sys_boot
+ .bss._ZL17transfer_fw_index
+                0x20000394        0x4 build_arm_cortex_m3_base_boot_stm32l/app.o
+ .bss.led_life  0x20000398       0x1c build_arm_cortex_m3_base_boot_stm32l/app.o
+                0x20000398                led_life
+ .bss._ZL15uart_boot_frame
+                0x200003b4      0x108 build_arm_cortex_m3_base_boot_stm32l/uart_boot.o
+ .bss.SPI       0x200004bc        0x2 build_arm_cortex_m3_base_boot_stm32l/SPI.o
+                0x200004bc                SPI
+ *(COMMON)
+ *fill*         0x200004be        0x2 
+ COMMON         0x200004c0        0x4 build_arm_cortex_m3_base_boot_stm32l/xprintf.o
+                0x200004c0                xfunc_out
+                0x200004c4                _ebss = .
+
+.heap           0x200004c4        0x0
+                0x200004c4                __heap_start__ = .
+                0x200004c4                . = (. + HEAP_SIZE)
+                0x200004c4                . = ALIGN (0x4)
+                0x200004c4                __heap_end__ = .
+
+.end_ram        0x200004c4        0x0
+                0x200004c4                _end_ram = .
+                0x20004000                _estack = (ORIGIN (SRAM) + LENGTH (SRAM))
+
+/DISCARD/
+ libc.a(*)
+ libm.a(*)
+ libg.a(*)
+ libgcc.a(*)
+LOAD /home/fanning/workspace/tools/gcc-arm-none-eabi-5_4-2016q3/arm-none-eabi/lib/armv7-m/libc.a
+LOAD /home/fanning/workspace/tools/gcc-arm-none-eabi-5_4-2016q3/arm-none-eabi/lib/armv7-m/libm.a
+LOAD /home/fanning/workspace/tools/gcc-arm-none-eabi-5_4-2016q3/lib/gcc/arm-none-eabi/5.4.1/armv7-m/libgcc.a
+LOAD /home/fanning/workspace/tools/gcc-arm-none-eabi-5_4-2016q3/arm-none-eabi/lib/armv7-m/libg.a
+LOAD build_arm_cortex_m3_base_boot_stm32l/utils.o
+LOAD build_arm_cortex_m3_base_boot_stm32l/xprintf.o
+LOAD build_arm_cortex_m3_base_boot_stm32l/led.o
+LOAD build_arm_cortex_m3_base_boot_stm32l/flash.o
+LOAD build_arm_cortex_m3_base_boot_stm32l/sys_dbg.o
+LOAD build_arm_cortex_m3_base_boot_stm32l/sys_boot.o
+LOAD build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_gpio.o
+LOAD build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rcc.o
+LOAD build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_usart.o
+LOAD build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_spi.o
+LOAD build_arm_cortex_m3_base_boot_stm32l/misc.o
+LOAD build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_exti.o
+LOAD build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_syscfg.o
+LOAD build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_tim.o
+LOAD build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_adc.o
+LOAD build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rtc.o
+LOAD build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_pwr.o
+LOAD build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash.o
+LOAD build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_iwdg.o
+LOAD build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_comp.o
+LOAD build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_dac.o
+LOAD build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash_ramfunc.o
+LOAD build_arm_cortex_m3_base_boot_stm32l/stm32l.o
+LOAD build_arm_cortex_m3_base_boot_stm32l/system.o
+LOAD build_arm_cortex_m3_base_boot_stm32l/sys_cfg.o
+LOAD build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+LOAD build_arm_cortex_m3_base_boot_stm32l/system_stm32l1xx.o
+LOAD build_arm_cortex_m3_base_boot_stm32l/app.o
+LOAD build_arm_cortex_m3_base_boot_stm32l/uart_boot.o
+LOAD build_arm_cortex_m3_base_boot_stm32l/eeprom.o
+LOAD build_arm_cortex_m3_base_boot_stm32l/SPI.o
+LOAD build_arm_cortex_m3_base_boot_stm32l/wiring_digital.o
+LOAD build_arm_cortex_m3_base_boot_stm32l/wiring_shift.o
+LOAD build_arm_cortex_m3_base_boot_stm32l/Print.o
+LOAD /home/fanning/workspace/tools/gcc-arm-none-eabi-5_4-2016q3/arm-none-eabi/lib/armv7-m/libc.a
+LOAD /home/fanning/workspace/tools/gcc-arm-none-eabi-5_4-2016q3/arm-none-eabi/lib/armv7-m/libm.a
+LOAD /home/fanning/workspace/tools/gcc-arm-none-eabi-5_4-2016q3/lib/gcc/arm-none-eabi/5.4.1/armv7-m/libgcc.a
+LOAD /home/fanning/workspace/tools/gcc-arm-none-eabi-5_4-2016q3/arm-none-eabi/lib/armv7-m/libg.a
+OUTPUT(build_arm_cortex_m3_base_boot_stm32l/arm_cortex_m3_base_boot.axf elf32-littlearm)
+
+.debug_info     0x00000000     0xc8b8
+ .debug_info    0x00000000      0x3b8 build_arm_cortex_m3_base_boot_stm32l/xprintf.o
+ .debug_info    0x000003b8      0x374 build_arm_cortex_m3_base_boot_stm32l/led.o
+ .debug_info    0x0000072c      0x6b8 build_arm_cortex_m3_base_boot_stm32l/flash.o
+ .debug_info    0x00000de4      0x393 build_arm_cortex_m3_base_boot_stm32l/sys_boot.o
+ .debug_info    0x00001177      0x7e4 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_gpio.o
+ .debug_info    0x0000195b      0xac8 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rcc.o
+ .debug_info    0x00002423      0xb03 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_usart.o
+ .debug_info    0x00002f26      0x9c1 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_spi.o
+ .debug_info    0x000038e7      0x560 build_arm_cortex_m3_base_boot_stm32l/misc.o
+ .debug_info    0x00003e47     0x142d build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash.o
+ .debug_info    0x00005274      0x211 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_iwdg.o
+ .debug_info    0x00005485      0x52d build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash_ramfunc.o
+ .debug_info    0x000059b2      0x166 build_arm_cortex_m3_base_boot_stm32l/stm32l.o
+ .debug_info    0x00005b18      0x485 build_arm_cortex_m3_base_boot_stm32l/system.o
+ .debug_info    0x00005f9d     0x129d build_arm_cortex_m3_base_boot_stm32l/sys_cfg.o
+ .debug_info    0x0000723a     0x2e32 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .debug_info    0x0000a06c      0x596 build_arm_cortex_m3_base_boot_stm32l/system_stm32l1xx.o
+ .debug_info    0x0000a602     0x1285 build_arm_cortex_m3_base_boot_stm32l/app.o
+ .debug_info    0x0000b887      0x4e9 build_arm_cortex_m3_base_boot_stm32l/uart_boot.o
+ .debug_info    0x0000bd70      0xb48 build_arm_cortex_m3_base_boot_stm32l/SPI.o
+
+.debug_abbrev   0x00000000     0x299c
+ .debug_abbrev  0x00000000      0x1a9 build_arm_cortex_m3_base_boot_stm32l/xprintf.o
+ .debug_abbrev  0x000001a9      0x15d build_arm_cortex_m3_base_boot_stm32l/led.o
+ .debug_abbrev  0x00000306      0x16c build_arm_cortex_m3_base_boot_stm32l/flash.o
+ .debug_abbrev  0x00000472      0x16a build_arm_cortex_m3_base_boot_stm32l/sys_boot.o
+ .debug_abbrev  0x000005dc      0x1f5 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_gpio.o
+ .debug_abbrev  0x000007d1      0x299 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rcc.o
+ .debug_abbrev  0x00000a6a      0x1d9 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_usart.o
+ .debug_abbrev  0x00000c43      0x1e8 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_spi.o
+ .debug_abbrev  0x00000e2b      0x158 build_arm_cortex_m3_base_boot_stm32l/misc.o
+ .debug_abbrev  0x00000f83      0x2da build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash.o
+ .debug_abbrev  0x0000125d      0x114 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_iwdg.o
+ .debug_abbrev  0x00001371      0x1b9 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash_ramfunc.o
+ .debug_abbrev  0x0000152a       0xac build_arm_cortex_m3_base_boot_stm32l/stm32l.o
+ .debug_abbrev  0x000015d6      0x280 build_arm_cortex_m3_base_boot_stm32l/system.o
+ .debug_abbrev  0x00001856      0x390 build_arm_cortex_m3_base_boot_stm32l/sys_cfg.o
+ .debug_abbrev  0x00001be6      0x32e build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .debug_abbrev  0x00001f14      0x147 build_arm_cortex_m3_base_boot_stm32l/system_stm32l1xx.o
+ .debug_abbrev  0x0000205b      0x41e build_arm_cortex_m3_base_boot_stm32l/app.o
+ .debug_abbrev  0x00002479      0x268 build_arm_cortex_m3_base_boot_stm32l/uart_boot.o
+ .debug_abbrev  0x000026e1      0x2bb build_arm_cortex_m3_base_boot_stm32l/SPI.o
+
+.debug_loc      0x00000000     0x501c
+ .debug_loc     0x00000000      0x43b build_arm_cortex_m3_base_boot_stm32l/xprintf.o
+ .debug_loc     0x0000043b      0x25a build_arm_cortex_m3_base_boot_stm32l/led.o
+ .debug_loc     0x00000695      0x296 build_arm_cortex_m3_base_boot_stm32l/flash.o
+ .debug_loc     0x0000092b       0x58 build_arm_cortex_m3_base_boot_stm32l/sys_boot.o
+ .debug_loc     0x00000983      0x424 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_gpio.o
+ .debug_loc     0x00000da7      0x7fb build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rcc.o
+ .debug_loc     0x000015a2      0x80f build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_usart.o
+ .debug_loc     0x00001db1      0x55f build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_spi.o
+ .debug_loc     0x00002310      0x184 build_arm_cortex_m3_base_boot_stm32l/misc.o
+ .debug_loc     0x00002494     0x16ca build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash.o
+ .debug_loc     0x00003b5e       0x62 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_iwdg.o
+ .debug_loc     0x00003bc0      0x461 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash_ramfunc.o
+ .debug_loc     0x00004021       0x51 build_arm_cortex_m3_base_boot_stm32l/system.o
+ .debug_loc     0x00004072       0xe1 build_arm_cortex_m3_base_boot_stm32l/sys_cfg.o
+ .debug_loc     0x00004153      0x5e9 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .debug_loc     0x0000473c      0x134 build_arm_cortex_m3_base_boot_stm32l/system_stm32l1xx.o
+ .debug_loc     0x00004870      0x394 build_arm_cortex_m3_base_boot_stm32l/app.o
+ .debug_loc     0x00004c04      0x27b build_arm_cortex_m3_base_boot_stm32l/uart_boot.o
+ .debug_loc     0x00004e7f      0x19d build_arm_cortex_m3_base_boot_stm32l/SPI.o
+
+.debug_aranges  0x00000000      0xc18
+ .debug_aranges
+                0x00000000       0x28 build_arm_cortex_m3_base_boot_stm32l/xprintf.o
+ .debug_aranges
+                0x00000028       0x50 build_arm_cortex_m3_base_boot_stm32l/led.o
+ .debug_aranges
+                0x00000078       0x58 build_arm_cortex_m3_base_boot_stm32l/flash.o
+ .debug_aranges
+                0x000000d0       0x30 build_arm_cortex_m3_base_boot_stm32l/sys_boot.o
+ .debug_aranges
+                0x00000100       0x88 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_gpio.o
+ .debug_aranges
+                0x00000188      0x148 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rcc.o
+ .debug_aranges
+                0x000002d0      0x100 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_usart.o
+ .debug_aranges
+                0x000003d0       0xd0 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_spi.o
+ .debug_aranges
+                0x000004a0       0x40 build_arm_cortex_m3_base_boot_stm32l/misc.o
+ .debug_aranges
+                0x000004e0      0x188 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash.o
+ .debug_aranges
+                0x00000668       0x48 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_iwdg.o
+ .debug_aranges
+                0x000006b0       0x58 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash_ramfunc.o
+ .debug_aranges
+                0x00000708       0x40 build_arm_cortex_m3_base_boot_stm32l/stm32l.o
+ .debug_aranges
+                0x00000748       0x58 build_arm_cortex_m3_base_boot_stm32l/system.o
+ .debug_aranges
+                0x000007a0       0xa8 build_arm_cortex_m3_base_boot_stm32l/sys_cfg.o
+ .debug_aranges
+                0x00000848      0x298 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .debug_aranges
+                0x00000ae0       0x28 build_arm_cortex_m3_base_boot_stm32l/system_stm32l1xx.o
+ .debug_aranges
+                0x00000b08       0x58 build_arm_cortex_m3_base_boot_stm32l/app.o
+ .debug_aranges
+                0x00000b60       0x48 build_arm_cortex_m3_base_boot_stm32l/uart_boot.o
+ .debug_aranges
+                0x00000ba8       0x70 build_arm_cortex_m3_base_boot_stm32l/SPI.o
+
+.debug_ranges   0x00000000      0xd60
+ .debug_ranges  0x00000000       0xb0 build_arm_cortex_m3_base_boot_stm32l/xprintf.o
+ .debug_ranges  0x000000b0       0x40 build_arm_cortex_m3_base_boot_stm32l/led.o
+ .debug_ranges  0x000000f0       0x48 build_arm_cortex_m3_base_boot_stm32l/flash.o
+ .debug_ranges  0x00000138       0x20 build_arm_cortex_m3_base_boot_stm32l/sys_boot.o
+ .debug_ranges  0x00000158       0x78 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_gpio.o
+ .debug_ranges  0x000001d0      0x158 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rcc.o
+ .debug_ranges  0x00000328       0xf0 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_usart.o
+ .debug_ranges  0x00000418       0xc0 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_spi.o
+ .debug_ranges  0x000004d8       0x30 build_arm_cortex_m3_base_boot_stm32l/misc.o
+ .debug_ranges  0x00000508      0x238 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash.o
+ .debug_ranges  0x00000740       0x38 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_iwdg.o
+ .debug_ranges  0x00000778       0x48 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash_ramfunc.o
+ .debug_ranges  0x000007c0       0x30 build_arm_cortex_m3_base_boot_stm32l/stm32l.o
+ .debug_ranges  0x000007f0       0x48 build_arm_cortex_m3_base_boot_stm32l/system.o
+ .debug_ranges  0x00000838       0xb0 build_arm_cortex_m3_base_boot_stm32l/sys_cfg.o
+ .debug_ranges  0x000008e8      0x288 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .debug_ranges  0x00000b70       0x38 build_arm_cortex_m3_base_boot_stm32l/system_stm32l1xx.o
+ .debug_ranges  0x00000ba8      0x108 build_arm_cortex_m3_base_boot_stm32l/app.o
+ .debug_ranges  0x00000cb0       0x50 build_arm_cortex_m3_base_boot_stm32l/uart_boot.o
+ .debug_ranges  0x00000d00       0x60 build_arm_cortex_m3_base_boot_stm32l/SPI.o
+
+.debug_line     0x00000000     0x4fed
+ .debug_line    0x00000000      0x267 build_arm_cortex_m3_base_boot_stm32l/xprintf.o
+ .debug_line    0x00000267      0x235 build_arm_cortex_m3_base_boot_stm32l/led.o
+ .debug_line    0x0000049c      0x2d4 build_arm_cortex_m3_base_boot_stm32l/flash.o
+ .debug_line    0x00000770      0x1b4 build_arm_cortex_m3_base_boot_stm32l/sys_boot.o
+ .debug_line    0x00000924      0x3cb build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_gpio.o
+ .debug_line    0x00000cef      0x565 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rcc.o
+ .debug_line    0x00001254      0x53c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_usart.o
+ .debug_line    0x00001790      0x481 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_spi.o
+ .debug_line    0x00001c11      0x29e build_arm_cortex_m3_base_boot_stm32l/misc.o
+ .debug_line    0x00001eaf      0x822 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash.o
+ .debug_line    0x000026d1      0x240 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_iwdg.o
+ .debug_line    0x00002911      0x31c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash_ramfunc.o
+ .debug_line    0x00002c2d      0x1d6 build_arm_cortex_m3_base_boot_stm32l/stm32l.o
+ .debug_line    0x00002e03      0x355 build_arm_cortex_m3_base_boot_stm32l/system.o
+ .debug_line    0x00003158      0x4ff build_arm_cortex_m3_base_boot_stm32l/sys_cfg.o
+ .debug_line    0x00003657      0xbd2 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .debug_line    0x00004229      0x24b build_arm_cortex_m3_base_boot_stm32l/system_stm32l1xx.o
+ .debug_line    0x00004474      0x55c build_arm_cortex_m3_base_boot_stm32l/app.o
+ .debug_line    0x000049d0      0x2b2 build_arm_cortex_m3_base_boot_stm32l/uart_boot.o
+ .debug_line    0x00004c82      0x36b build_arm_cortex_m3_base_boot_stm32l/SPI.o
+
+.debug_str      0x00000000     0x3de2
+ .debug_str     0x00000000      0x202 build_arm_cortex_m3_base_boot_stm32l/xprintf.o
+                                0x26d (size before relaxing)
+ .debug_str     0x00000202       0xce build_arm_cortex_m3_base_boot_stm32l/led.o
+                                0x28e (size before relaxing)
+ .debug_str     0x000002d0      0x131 build_arm_cortex_m3_base_boot_stm32l/flash.o
+                                0x2f5 (size before relaxing)
+ .debug_str     0x00000401      0x196 build_arm_cortex_m3_base_boot_stm32l/sys_boot.o
+                                0x3bc (size before relaxing)
+ .debug_str     0x00000597      0x320 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_gpio.o
+                                0x54b (size before relaxing)
+ .debug_str     0x000008b7      0x515 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rcc.o
+                                0x77c (size before relaxing)
+ .debug_str     0x00000dcc      0x467 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_usart.o
+                                0x73c (size before relaxing)
+ .debug_str     0x00001233      0x37e build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_spi.o
+                                0x6a9 (size before relaxing)
+ .debug_str     0x000015b1      0x225 build_arm_cortex_m3_base_boot_stm32l/misc.o
+                                0x43b (size before relaxing)
+ .debug_str     0x000017d6      0x601 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash.o
+                                0x838 (size before relaxing)
+ .debug_str     0x00001dd7       0xf0 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_iwdg.o
+                                0x2d9 (size before relaxing)
+ .debug_str     0x00001ec7      0x155 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash_ramfunc.o
+                                0x434 (size before relaxing)
+ .debug_str     0x0000201c       0x81 build_arm_cortex_m3_base_boot_stm32l/stm32l.o
+                                0x247 (size before relaxing)
+ .debug_str     0x0000209d      0x13d build_arm_cortex_m3_base_boot_stm32l/system.o
+                                0x3bf (size before relaxing)
+ .debug_str     0x000021da      0x64a build_arm_cortex_m3_base_boot_stm32l/sys_cfg.o
+                                0xdac (size before relaxing)
+ .debug_str     0x00002824      0xc45 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+                               0x17b4 (size before relaxing)
+ .debug_str     0x00003469       0x43 build_arm_cortex_m3_base_boot_stm32l/system_stm32l1xx.o
+                                0x3a9 (size before relaxing)
+ .debug_str     0x000034ac      0x76c build_arm_cortex_m3_base_boot_stm32l/app.o
+                                0xdee (size before relaxing)
+ .debug_str     0x00003c18       0x63 build_arm_cortex_m3_base_boot_stm32l/uart_boot.o
+                                0x509 (size before relaxing)
+ .debug_str     0x00003c7b      0x167 build_arm_cortex_m3_base_boot_stm32l/SPI.o
+                                0x88a (size before relaxing)
+
+.comment        0x00000000       0x6e
+ .comment       0x00000000       0x6e build_arm_cortex_m3_base_boot_stm32l/xprintf.o
+                                 0x6f (size before relaxing)
+ .comment       0x0000006e       0x6f build_arm_cortex_m3_base_boot_stm32l/led.o
+ .comment       0x0000006e       0x6f build_arm_cortex_m3_base_boot_stm32l/flash.o
+ .comment       0x0000006e       0x6f build_arm_cortex_m3_base_boot_stm32l/sys_boot.o
+ .comment       0x0000006e       0x6f build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_gpio.o
+ .comment       0x0000006e       0x6f build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rcc.o
+ .comment       0x0000006e       0x6f build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_usart.o
+ .comment       0x0000006e       0x6f build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_spi.o
+ .comment       0x0000006e       0x6f build_arm_cortex_m3_base_boot_stm32l/misc.o
+ .comment       0x0000006e       0x6f build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash.o
+ .comment       0x0000006e       0x6f build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_iwdg.o
+ .comment       0x0000006e       0x6f build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash_ramfunc.o
+ .comment       0x0000006e       0x6f build_arm_cortex_m3_base_boot_stm32l/stm32l.o
+ .comment       0x0000006e       0x6f build_arm_cortex_m3_base_boot_stm32l/system.o
+ .comment       0x0000006e       0x6f build_arm_cortex_m3_base_boot_stm32l/sys_cfg.o
+ .comment       0x0000006e       0x6f build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .comment       0x0000006e       0x6f build_arm_cortex_m3_base_boot_stm32l/system_stm32l1xx.o
+ .comment       0x0000006e       0x6f build_arm_cortex_m3_base_boot_stm32l/app.o
+ .comment       0x0000006e       0x6f build_arm_cortex_m3_base_boot_stm32l/uart_boot.o
+ .comment       0x0000006e       0x6f build_arm_cortex_m3_base_boot_stm32l/SPI.o
+
+.ARM.attributes
+                0x00000000       0x31
+ .ARM.attributes
+                0x00000000       0x33 build_arm_cortex_m3_base_boot_stm32l/xprintf.o
+ .ARM.attributes
+                0x00000033       0x33 build_arm_cortex_m3_base_boot_stm32l/led.o
+ .ARM.attributes
+                0x00000066       0x33 build_arm_cortex_m3_base_boot_stm32l/flash.o
+ .ARM.attributes
+                0x00000099       0x33 build_arm_cortex_m3_base_boot_stm32l/sys_boot.o
+ .ARM.attributes
+                0x000000cc       0x33 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_gpio.o
+ .ARM.attributes
+                0x000000ff       0x33 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rcc.o
+ .ARM.attributes
+                0x00000132       0x33 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_usart.o
+ .ARM.attributes
+                0x00000165       0x33 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_spi.o
+ .ARM.attributes
+                0x00000198       0x33 build_arm_cortex_m3_base_boot_stm32l/misc.o
+ .ARM.attributes
+                0x000001cb       0x33 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash.o
+ .ARM.attributes
+                0x000001fe       0x33 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_iwdg.o
+ .ARM.attributes
+                0x00000231       0x33 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash_ramfunc.o
+ .ARM.attributes
+                0x00000264       0x33 build_arm_cortex_m3_base_boot_stm32l/stm32l.o
+ .ARM.attributes
+                0x00000297       0x33 build_arm_cortex_m3_base_boot_stm32l/system.o
+ .ARM.attributes
+                0x000002ca       0x33 build_arm_cortex_m3_base_boot_stm32l/sys_cfg.o
+ .ARM.attributes
+                0x000002fd       0x33 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .ARM.attributes
+                0x00000330       0x33 build_arm_cortex_m3_base_boot_stm32l/system_stm32l1xx.o
+ .ARM.attributes
+                0x00000363       0x33 build_arm_cortex_m3_base_boot_stm32l/app.o
+ .ARM.attributes
+                0x00000396       0x33 build_arm_cortex_m3_base_boot_stm32l/uart_boot.o
+ .ARM.attributes
+                0x000003c9       0x33 build_arm_cortex_m3_base_boot_stm32l/SPI.o
+ .ARM.attributes
+                0x000003fc       0x2d /home/fanning/workspace/tools/gcc-arm-none-eabi-5_4-2016q3/arm-none-eabi/lib/armv7-m/libc.a(lib_a-memcmp.o)
+ .ARM.attributes
+                0x00000429       0x1b /home/fanning/workspace/tools/gcc-arm-none-eabi-5_4-2016q3/arm-none-eabi/lib/armv7-m/libc.a(lib_a-memcpy.o)
+ .ARM.attributes
+                0x00000444       0x2d /home/fanning/workspace/tools/gcc-arm-none-eabi-5_4-2016q3/arm-none-eabi/lib/armv7-m/libc.a(lib_a-memset.o)
+
+.debug_frame    0x00000000     0x204c
+ .debug_frame   0x00000000       0x98 build_arm_cortex_m3_base_boot_stm32l/xprintf.o
+ .debug_frame   0x00000098       0xa8 build_arm_cortex_m3_base_boot_stm32l/led.o
+ .debug_frame   0x00000140       0xfc build_arm_cortex_m3_base_boot_stm32l/flash.o
+ .debug_frame   0x0000023c       0x54 build_arm_cortex_m3_base_boot_stm32l/sys_boot.o
+ .debug_frame   0x00000290      0x15c build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_gpio.o
+ .debug_frame   0x000003ec      0x290 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_rcc.o
+ .debug_frame   0x0000067c      0x258 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_usart.o
+ .debug_frame   0x000008d4      0x1cc build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_spi.o
+ .debug_frame   0x00000aa0       0x6c build_arm_cortex_m3_base_boot_stm32l/misc.o
+ .debug_frame   0x00000b0c      0x4b8 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash.o
+ .debug_frame   0x00000fc4       0x70 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_iwdg.o
+ .debug_frame   0x00001034       0xe8 build_arm_cortex_m3_base_boot_stm32l/stm32l1xx_flash_ramfunc.o
+ .debug_frame   0x0000111c       0x60 build_arm_cortex_m3_base_boot_stm32l/stm32l.o
+ .debug_frame   0x0000117c       0xf8 build_arm_cortex_m3_base_boot_stm32l/system.o
+ .debug_frame   0x00001274      0x210 build_arm_cortex_m3_base_boot_stm32l/sys_cfg.o
+ .debug_frame   0x00001484      0x854 build_arm_cortex_m3_base_boot_stm32l/io_cfg.o
+ .debug_frame   0x00001cd8       0x48 build_arm_cortex_m3_base_boot_stm32l/system_stm32l1xx.o
+ .debug_frame   0x00001d20      0x11c build_arm_cortex_m3_base_boot_stm32l/app.o
+ .debug_frame   0x00001e3c       0xa8 build_arm_cortex_m3_base_boot_stm32l/uart_boot.o
+ .debug_frame   0x00001ee4       0xfc build_arm_cortex_m3_base_boot_stm32l/SPI.o
+ .debug_frame   0x00001fe0       0x38 /home/fanning/workspace/tools/gcc-arm-none-eabi-5_4-2016q3/arm-none-eabi/lib/armv7-m/libc.a(lib_a-memcmp.o)
+ .debug_frame   0x00002018       0x34 /home/fanning/workspace/tools/gcc-arm-none-eabi-5_4-2016q3/arm-none-eabi/lib/armv7-m/libc.a(lib_a-memset.o)

@@ -15,8 +15,8 @@ OPTIMIZE_OPTION		= -g -O2
 RELEASE_OPTION		= -DRELEASE
 WARNING_OPTION		= -Werror -W
 
-GCC_PATH	= /home/thannt/workspace/tools/gcc-arm-none-eabi-5_4-2016q3
-OPENOCD_PATH	= /home/thannt/workspace/tools/openocd
+GCC_PATH	= /home/fanning/workspace/tools/gcc-arm-none-eabi-5_4-2016q3
+OPENOCD_PATH	= /home/fanning/workspace/tools/openocd
 
 OBJECTS_DIR = build_$(NAME_MODULE)_stm32l
 TARGET = $(OBJECTS_DIR)/$(NAME_MODULE).axf
